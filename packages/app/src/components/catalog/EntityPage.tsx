@@ -30,7 +30,6 @@ import {
   EntityDependsOnComponentsCard,
   EntityDependsOnResourcesCard,
   EntityHasComponentsCard,
-  EntityHasSubcomponentsCard,
   EntityHasSystemsCard,
   EntityLayout,
   EntityLinksCard,
@@ -64,6 +63,7 @@ import {
 } from '@backstage/plugin-jenkins';
 import { EntityKafkaContent } from '@backstage/plugin-kafka';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+
 import {
   EntityLastLighthouseAuditCard,
   EntityLighthouseContent,
@@ -110,6 +110,7 @@ import {
 } from '@roadiehq/backstage-plugin-travis-ci';
 import { EntityCodeCoverageContent } from '@backstage/plugin-code-coverage';
 import { EmptyState } from '@backstage/core-components';
+
 
 const EntityLayoutWrapper = (props: { children?: ReactNode }) => {
   const [badgesDialogOpen, setBadgesDialogOpen] = useState(false);
@@ -271,6 +272,7 @@ const overviewContent = (
       </EntitySwitch.Case>
     </EntitySwitch>
 
+
     <EntitySwitch>
       <EntitySwitch.Case if={isLighthouseAvailable}>
         <Grid item sm={4}>
@@ -286,10 +288,6 @@ const overviewContent = (
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
-
-    <Grid item md={8} xs={12}>
-      <EntityHasSubcomponentsCard variant="gridItem" />
-    </Grid>
   </Grid>
 );
 
