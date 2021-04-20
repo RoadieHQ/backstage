@@ -61,7 +61,6 @@ import {
   EntityLatestJenkinsRunCard,
   isJenkinsAvailable,
 } from '@backstage/plugin-jenkins';
-import { EntityKafkaContent } from '@backstage/plugin-kafka';
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
 
 import {
@@ -110,7 +109,6 @@ import {
 } from '@roadiehq/backstage-plugin-travis-ci';
 import { EntityCodeCoverageContent } from '@backstage/plugin-code-coverage';
 import { EmptyState } from '@backstage/core-components';
-
 
 const EntityLayoutWrapper = (props: { children?: ReactNode }) => {
   const [badgesDialogOpen, setBadgesDialogOpen] = useState(false);
@@ -254,11 +252,11 @@ const overviewContent = (
       </EntitySwitch.Case>
     </EntitySwitch>
 
-    <Grid item md={4} xs={12}>
+    {cicdCard}
+
+    <Grid item sm={6}>
       <EntityLinksCard />
     </Grid>
-
-    {cicdCard}
 
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
@@ -272,7 +270,6 @@ const overviewContent = (
       </EntitySwitch.Case>
     </EntitySwitch>
 
-
     <EntitySwitch>
       <EntitySwitch.Case if={isLighthouseAvailable}>
         <Grid item sm={4}>
@@ -283,7 +280,7 @@ const overviewContent = (
 
     <EntitySwitch>
       <EntitySwitch.Case if={e => Boolean(isGithubPullRequestsAvailable(e))}>
-        <Grid item sm={4}>
+        <Grid item sm={6}>
           <EntityGithubPullRequestsOverviewCard />
         </Grid>
       </EntitySwitch.Case>
@@ -337,18 +334,6 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/pull-requests" title="Pull Requests">
       <EntityGithubPullRequestsContent />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/code-insights" title="Code Insights">
-      <EntityGithubInsightsContent />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/code-coverage" title="Code Coverage">
-      <EntityCodeCoverageContent />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/kafka" title="Kafka">
-      <EntityKafkaContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/todos" title="TODOs">
