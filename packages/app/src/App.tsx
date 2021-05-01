@@ -54,7 +54,7 @@ import { apis } from './apis';
 import { Root } from './components/Root';
 import { entityPage } from './components/catalog/EntityPage';
 import { searchPage } from './components/search/SearchPage';
-import { providers } from './identityProviders';
+// import { providers } from './identityProviders';
 import * as plugins from './plugins';
 
 const app = createApp({
@@ -70,7 +70,7 @@ const app = createApp({
       return (
         <SignInPage
           {...props}
-          providers={['guest', 'custom', ...providers]}
+          providers={['guest']}
           title="Select a sign-in method"
           align="center"
         />
