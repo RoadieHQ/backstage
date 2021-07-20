@@ -242,13 +242,10 @@ export class ElasticSearchSearchEngine implements SearchEngine {
     const { elasticQueryBuilder } = this.translator(
       query,
     ) as ConcreteElasticSearchQuery;
-
-    const requestBody = elasticQueryBuilder();
-
     const queryIndices = query.types
       ? query.types.map(it => this.constructSearchAlias(it))
       : this.constructSearchAlias('*');
-    const body = requestBody.toJSON();
+    const body = elasticQueryBuilder().toJSON();
     const result = await this.elasticSearchClient.search({
       index: queryIndices,
       body,

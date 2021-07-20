@@ -252,13 +252,27 @@ an example:
 Backstage Search isn't a search engine itself, rather, it provides an interface
 between your Backstage instance and a
 [Search Engine](./concepts.md#search-engines) of your choice. Currently, we only
-support one, an in-memory search Engine called Lunr. It can be instantiated like
-this:
+support two engines, an in-memory search Engine called Lunr and ElasticSearch.
+
+Lunr can be instantiated like this:
 
 ```typescript
 const searchEngine = new LunrSearchEngine({ logger });
 const indexBuilder = new IndexBuilder({ logger, searchEngine });
 ```
+
+ElasticSearch can be set up like this:
+
+```typescript
+const searchEngine = await ElasticSearchSearchEngine.initialize({
+  logger,
+  config,
+});
+const indexBuilder = new IndexBuilder({ logger, searchEngine });
+```
+
+The configuration options needed to use are documented in the
+[configuration schema definition file.](https://github.com/backstage/backstage/blob/master/plugins/search-backend-node/config.d.ts)
 
 Backstage Search can be used to power search of anything! Plugins like the
 Catalog offer default [collators](./concepts.md#collators) (e.g.
