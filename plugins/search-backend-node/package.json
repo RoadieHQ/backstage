@@ -25,6 +25,7 @@
     "@acuris/aws-es-connection": "^2.2.0",
     "aws-sdk": "^2.948.0",
     "elastic-builder": "^2.16.0",
+    "lodash": "^4.17.21",
     "winston": "^3.2.1",
     "lunr": "^2.3.9",
     "@types/lunr": "^2.3.3"
