@@ -86,10 +86,11 @@ const TechDocsSearchBar = ({
 
   const handleSelection = (_: any, selection: TechDocsSearchResult | null) => {
     if (selection?.document) {
+      const { namespace, kind, name, path, location } = selection.document;
       navigate(
         context === 'entitypage'
-          ? `/catalog/${selection.document.namespace}/${selection.document.kind}/${selection.document.name}/docs/${selection.document.path}`
-          : selection.document.location,
+          ? `/catalog/${namespace}/${kind}/${name}/docs/${path}`
+          : location,
       );
     }
   };
@@ -117,7 +118,6 @@ const TechDocsSearchBar = ({
         options={options}
         renderOption={({ document }) => (
           <DocsResultListItem
-            key={document.location}
             result={document}
             lineClamp={3}
             asListItem={false}
