@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Software Templates is now in Beta · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**TLDR**; At a high level, Backstage performs three main jobs: [Create, Manage, and Explore](https://backstage.io/blog/2021/05/20/adopting-backstage#three-jobs-create-manage-explore). Throughout the year, we’ve been focussed on improving the stability and scalability of these areas while enhancing the feature sets based upon requests from the community. Software Templates — which enable push-button deployments with all your standards and best practices built-in — is our first feature-complete release candidate to graduate to beta. Read on to learn how this release improves template customization and flexibility, as well as performance."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Software Templates is now in Beta · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta"/><meta property="og:description" content="**TLDR**; At a high level, Backstage performs three main jobs: [Create, Manage, and Explore](https://backstage.io/blog/2021/05/20/adopting-backstage#three-jobs-create-manage-explore). Throughout the year, we’ve been focussed on improving the stability and scalability of these areas while enhancing the feature sets based upon requests from the community. Software Templates — which enable push-button deployments with all your standards and best practices built-in — is our first feature-complete release candidate to graduate to beta. Read on to learn how this release improves template customization and flexibility, as well as performance."/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-163836834-5', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class="siteNavGroupActive"><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="https://mailchi.mp/spotify/backstage-community" target="_self">Newsletter</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2021/07/26/software-templates-are-now-in-beta">Software Templates is now in Beta</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/06/24/announcing-backstage-search-platform">Announcing the Backstage Search platform: a customizable search tool built just for you</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/06/22/spotify-backstage-is-growing">How Spotify is helping more companies adopt Backstage</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/05/20/adopting-backstage">Where do you start when adopting Backstage?</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners">New Backstage feature: Kubernetes for Service owners</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2021/07/26/software-templates-are-now-in-beta">Software Templates is now in Beta</a></h1><p class="post-meta">July 26, 2021</p><div class="authorBlock"><p class="post-authorName"><a href="https://github.com/benjdlambert" target="_blank" rel="noreferrer noopener">Ben Lambert, Spotify</a></p><div class="authorPhoto"><a href="https://github.com/benjdlambert" target="_blank" rel="noreferrer noopener"><img src="https://avatars.githubusercontent.com/u/3645856?v=4" alt="Ben Lambert, Spotify"/></a></div></div></header><div><span><p><img src="/blog/assets/21-07-26/backstage-software-templates-beta.gif" alt="Software Templates in Beta"></p>
+<p><strong>TLDR</strong>; At a high level, Backstage performs three main jobs: <a href="https://backstage.io/blog/2021/05/20/adopting-backstage#three-jobs-create-manage-explore">Create, Manage, and Explore</a>. Throughout the year, we’ve been focussed on improving the stability and scalability of these areas while enhancing the feature sets based upon requests from the community. Software Templates — which enable push-button deployments with all your standards and best practices built-in — is our first feature-complete release candidate to graduate to beta. Read on to learn how this release improves template customization and flexibility, as well as performance.</p>
+<!--truncate-->
+<p>Let’s rewind a little bit, around a year in fact. Backstage had been open sourced, and we released our first version of Software Templates and our Scaffolder plugin.</p>
+<p>In case you missed it, <a href="https://backstage.io/blog/2020/08/05/announcing-backstage-software-templates">Software Templates</a> are part of the Create feature set, where you can set up Backstage to give your engineers the ability to spin up a new microservice, website, or any other software component with your organization’s best practices built-in, right from the start.</p>
+<p>Back when we released the first version of these templates, with the <code>apiVersion</code> <code>backstage.io/v1alpha1</code>, they were a little restrictive in what they could do. The generated repository could only have one template source and it was restricted to only being <a href="https://github.com/cookiecutter/cookiecutter">cookiecutter</a> templates. And it had to fit into the three stages of templating which was <code>Prepare</code>, <code>Template</code>, and <code>Publish</code>.</p>
+<p>We <a href="https://github.com/backstage/backstage/issues/2771">opened up for feedback</a> from the community knowing that this wasn’t going to be the final version, but something of a stepping stone to where we want to be in the future.</p>
+<p>And now we come to today…</p>
+<h2><a class="anchor" aria-hidden="true" id="anddddd-actions-"></a><a href="#anddddd-actions-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Anddddd… Action(s)! 🎬</h2>
+<p>Following the removal of the previously deprecated <code>backstage.io/v1alpha1</code> templates, today we’re officially announcing the beta version of Software Templates, or <code>backstage.io/v1beta2</code>.</p>
+<p>With it comes an entirely new architecture to the Software Templates functionality, and a load of new exciting features, which I’ll dig into a little deeper.</p>
+<h3><a class="anchor" aria-hidden="true" id="template-actions"></a><a href="#template-actions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Template actions</h3>
+<p>We’ve totally opened up the ability to compose your own workflows for each Template that you have registered in Software Templates. This means no restrictions on where your template skeleton is kept, and no restrictions on what your workflow should look like.</p>
+<p>Template Actions are customizable JavaScript functions that allow you to extend the capabilities of the Software Templates by adding your own business logic or reusing some of our Built-In actions.</p>
+<p><img src="/blog/assets/21-07-26/example-template-code.png" alt="New template syntax with actions"></p>
+<p><em>An example of the new template syntax with steps and parameters</em></p>
+<p>The workflow for Software Templates are now step-based, and each Software Template can have a customizable amount of steps which will in turn call these new actions.</p>
+<p><img src="/blog/assets/21-07-26/steps-running.gif" alt="New steps being rendered in the frontend"></p>
+<p><em>An example of a Template with customizable steps</em></p>
+<p>These actions are very heavily inspired by GitHub Actions and GitHub Workflows, and we’ve given back a lot of control to the template authors so they can build the boilerplate and push the code however they want.</p>
+<h3><a class="anchor" aria-hidden="true" id="custom-ui-extensions"></a><a href="#custom-ui-extensions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom UI extensions</h3>
+<p>A large part of the Software Templates feature is the form that we use to collect user input which is then passed on to these new actions. Sometimes, it makes sense that Template Authors want to provide their own React components which can be rendered in the frontend to maybe do some more complex things like calling internal APIs to provide autocomplete.</p>
+<p>This is now possible with the new <code>ScaffolderFieldExtensions</code>.</p>
+<p><img src="/blog/assets/21-07-26/custom-components.gif" alt="Custom UI extensions"></p>
+<p><em>An example of <code>ScaffolderFieldExtension</code> is the <code>OwnerPicker</code> component which can automatically add options and suggest typeahead with data from an async API request</em></p>
+<p>Template Authors can create their own components to provide data to the custom actions in any way you see fit, and even override our own built in ones too like the <code>RepoUrlPicker</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="horizontal-scalability"></a><a href="#horizontal-scalability" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Horizontal scalability</h3>
+<p>The Scaffolder Service and Software Templates are now horizontally scalable, coordinating work between your deployed backend machines. This means now that the number of instances of the <code>@backstage/plugin-scaffolder-backend</code> plugin you have, is the same amount of jobs that you can have in parallel. This ensures that your tasks are handled quickly and reliably, while providing great feedback in the process.</p>
+<h2><a class="anchor" aria-hidden="true" id="try-out-the-new-templates"></a><a href="#try-out-the-new-templates" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Try out the new templates</h2>
+<p>We’re still on the journey to making the Software Templates a great user experience for both authors and developers — but we’re not done yet, so watch this space for new exciting features to come!</p>
+<p>In the meantime, make sure to visit the documentation for <a href="https://backstage.io/docs/features/software-templates/adding-templates">building templates</a> or creating your own <a href="https://backstage.io/docs/features/software-templates/writing-custom-actions">custom actions</a>.</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#anddddd-actions-">Anddddd… Action(s)! 🎬</a><ul class="toc-headings"><li><a href="#template-actions">Template actions</a></li><li><a href="#custom-ui-extensions">Custom UI extensions</a></li><li><a href="#horizontal-scalability">Horizontal scalability</a></li></ul></li><li><a href="#try-out-the-new-templates">Try out the new templates</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

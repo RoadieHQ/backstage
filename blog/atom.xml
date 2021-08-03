@@ -2,12 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2021-06-24T06:00:00.000Z</updated>
+    <updated>2021-07-26T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Software Templates is now in Beta]]></title>
+        <id>https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta.html</id>
+        <link href="https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta.html"/>
+        <updated>2021-07-26T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/21-07-26/backstage-software-templates-beta.gif" alt="Software Templates in Beta"></p>
+<p><strong>TLDR</strong>; At a high level, Backstage performs three main jobs: <a href="https://backstage.io/blog/2021/05/20/adopting-backstage#three-jobs-create-manage-explore">Create, Manage, and Explore</a>. Throughout the year, we’ve been focussed on improving the stability and scalability of these areas while enhancing the feature sets based upon requests from the community. Software Templates — which enable push-button deployments with all your standards and best practices built-in — is our first feature-complete release candidate to graduate to beta. Read on to learn how this release improves template customization and flexibility, as well as performance.</p>
+]]></summary>
+        <author>
+            <name>Ben Lambert, Spotify</name>
+            <uri>https://github.com/benjdlambert</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Announcing the Backstage Search platform: a customizable search tool built just for you]]></title>
         <id>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</id>

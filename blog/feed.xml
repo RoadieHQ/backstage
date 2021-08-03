@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Thu, 24 Jun 2021 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Jul 2021 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,15 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[Software Templates is now in Beta]]></title>
+            <link>https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta.html</link>
+            <guid>https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta.html</guid>
+            <pubDate>Mon, 26 Jul 2021 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><img src="/blog/assets/21-07-26/backstage-software-templates-beta.gif" alt="Software Templates in Beta"></p>
+<p><strong>TLDR</strong>; At a high level, Backstage performs three main jobs: <a href="https://backstage.io/blog/2021/05/20/adopting-backstage#three-jobs-create-manage-explore">Create, Manage, and Explore</a>. Throughout the year, we’ve been focussed on improving the stability and scalability of these areas while enhancing the feature sets based upon requests from the community. Software Templates — which enable push-button deployments with all your standards and best practices built-in — is our first feature-complete release candidate to graduate to beta. Read on to learn how this release improves template customization and flexibility, as well as performance.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Announcing the Backstage Search platform: a customizable search tool built just for you]]></title>
             <link>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</link>
