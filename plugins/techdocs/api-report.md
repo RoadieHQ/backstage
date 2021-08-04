@@ -33,11 +33,13 @@ export const DocsResultListItem: ({
   lineClamp,
   asListItem,
   asLink,
+  title,
 }: {
   result: any;
   lineClamp?: number | undefined;
   asListItem?: boolean | undefined;
   asLink?: boolean | undefined;
+  title?: string | undefined;
 }) => JSX.Element;
 
 // Warning: (ae-missing-release-tag) "DocsTable" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)

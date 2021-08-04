@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import {
   Grid,
   IconButton,
@@ -28,7 +28,6 @@ import { DocsResultListItem } from '../../components/DocsResultListItem';
 import SearchIcon from '@material-ui/icons/Search';
 import { useDebounce } from 'react-use';
 import { useNavigate } from 'react-router';
-import { TechDocsDocument } from '@backstage/techdocs-common';
 
 type TechDocsSearchProps = {
   entityId: {
@@ -40,9 +39,18 @@ type TechDocsSearchProps = {
   context?: string;
 };
 
+type TechDocsDoc = {
+  namespace: string;
+  kind: string;
+  name: string;
+  path: string;
+  location: string;
+  title: string;
+};
+
 type TechDocsSearchResult = {
   type: string;
-  document: TechDocsDocument;
+  document: TechDocsDoc;
 };
 
 const TechDocsSearchBar = ({
@@ -57,8 +65,8 @@ const TechDocsSearchBar = ({
     setTerm,
     result: { loading, value: searchVal },
   } = useSearch();
-  const [options, setOptions] = React.useState<TechDocsSearchResult[]>([]);
-  React.useEffect(() => {
+  const [options, setOptions] = useState<any[]>([]);
+  useEffect(() => {
     let mounted = true;
 
     if (mounted && searchVal) {
@@ -66,7 +74,7 @@ const TechDocsSearchBar = ({
       // once pagination is implemented for search engines
       // See: https://github.com/backstage/backstage/issues/6062
       const searchResults = searchVal.results.slice(0, 10);
-      setOptions(searchResults as TechDocsSearchResult[]);
+      setOptions(searchResults);
     }
     return () => {
       mounted = false;
@@ -122,6 +130,7 @@ const TechDocsSearchBar = ({
             lineClamp={3}
             asListItem={false}
             asLink={false}
+            title={document.title}
           />
         )}
         loading={loading}

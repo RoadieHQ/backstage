@@ -34,18 +34,20 @@ export const DocsResultListItem = ({
   lineClamp = 5,
   asListItem = true,
   asLink = true,
+  title,
 }: {
   result: any;
   lineClamp?: number;
   asListItem?: boolean;
   asLink?: boolean;
+  title?: string;
 }) => {
   const classes = useStyles();
   const TextItem = () => (
     <ListItemText
       className={classes.itemText}
       primaryTypographyProps={{ variant: 'h6' }}
-      primary={`${result.title} | ${result.name} docs `}
+      primary={title ? title : `${result.title} | ${result.name} docs`}
       secondary={
         <TextTruncate
           line={lineClamp}
