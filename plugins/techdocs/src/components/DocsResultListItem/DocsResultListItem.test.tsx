@@ -25,7 +25,7 @@ jest.mock('react-text-truncate', () => {
 
 const validResult = {
   location: 'https://backstage.io/docs',
-  title: 'Documentation Docs Docs',
+  title: 'Documentation',
   text: 'Backstage is an open-source developer portal that puts the developer experience first.',
   kind: 'library',
   namespace: '',
@@ -37,7 +37,22 @@ describe('DocsResultListItem test', () => {
   it('should render search doc passed in', async () => {
     const { findByText } = render(<DocsResultListItem result={validResult} />);
 
-    expect(await findByText('Documentation Docs Docs')).toBeInTheDocument();
+    expect(
+      await findByText('Documentation | Backstage docs'),
+    ).toBeInTheDocument();
+    expect(
+      await findByText(
+        'Backstage is an open-source developer portal that puts the developer experience first.',
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it('should use title if defined', async () => {
+    const { findByText } = render(
+      <DocsResultListItem result={validResult} title="Count Dookumentation" />,
+    );
+
+    expect(await findByText('Count Dookumentation')).toBeInTheDocument();
     expect(
       await findByText(
         'Backstage is an open-source developer portal that puts the developer experience first.',
