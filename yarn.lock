@@ -1971,12 +1971,23 @@
   dependencies:
     yaml-ast-parser "0.0.43"
 
-"@gitbeaker/core@^30.2.0", "@gitbeaker/core@^30.3.0":
+"@gitbeaker/core@^30.3.0":
   version "30.3.0"
   resolved "https://registry.npmjs.org/@gitbeaker/core/-/core-30.3.0.tgz#d005891d47cfacb41d4a3cc8bf3ee8c68c53d378"
   integrity sha512-j7GHsFo6AOuRmLaK4F4Kx967jTy6LFZh5vjmRxjlRvX0qlfl3NJKiQIl30fZz1rPXWdQLAq+kwl1i0BKrWhOpA==
   dependencies:
     "@gitbeaker/requester-utils" "^30.3.0"
+    form-data "^4.0.0"
+    li "^1.3.0"
+    query-string "^7.0.0"
+    xcase "^2.0.1"
+
+"@gitbeaker/core@^32.1.0":
+  version "32.1.0"
+  resolved "https://registry.npmjs.org/@gitbeaker/core/-/core-32.1.0.tgz#bb7ac887a283286f20be11639ab59d29709dbae6"
+  integrity sha512-rFv+PeZ2cVVWeqTyUGF/fzYXQDDxsGO7KiUr5YvtGeTgBH1eykRmpFPZPwuSDNDDsDomSm29ss+m8ezPw9rBsA==
+  dependencies:
+    "@gitbeaker/requester-utils" "^32.1.0"
     form-data "^4.0.0"
     li "^1.3.0"
     query-string "^7.0.0"
@@ -1997,6 +2008,15 @@
   version "30.3.0"
   resolved "https://registry.npmjs.org/@gitbeaker/requester-utils/-/requester-utils-30.3.0.tgz#fbbaae20263ff90952da116d8782f74f47b29c81"
   integrity sha512-b5vCaUqP2Jrqdpt5CkmFET4VFHwJYjnIovwZGYd5H0aKmiPw4NmeW1JtP+65J4xf0c4AOQQj6XSf7TZLuPNAqw==
+  dependencies:
+    form-data "^4.0.0"
+    query-string "^7.0.0"
+    xcase "^2.0.1"
+
+"@gitbeaker/requester-utils@^32.1.0":
+  version "32.1.0"
+  resolved "https://registry.npmjs.org/@gitbeaker/requester-utils/-/requester-utils-32.1.0.tgz#d87ea414e748e010a7d8d6a751aafbe55bfdad9e"
+  integrity sha512-q3M80nVCumK3TSD112v+e+n2bvzjRS3pdmOp+asYmHt4ni5t28A518D4qSN3ce+0TpLDB3LPKm0KDRfxkkuaPA==
   dependencies:
     form-data "^4.0.0"
     query-string "^7.0.0"
