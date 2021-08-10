@@ -102,21 +102,21 @@ export class DefaultTechDocsCollator implements DocumentCollator {
                 path: doc.location,
               }),
               path: doc.location,
-                ...entityInfo,
-                componentType: entity.spec?.type?.toString() || 'other',
-                lifecycle: (entity.spec?.lifecycle as string) || '',
-                owner:
-                  entity.relations?.find(r => r.type === RELATION_OWNED_BY)
-                    ?.target?.name || '',
-              }));
-            } catch (e) {
-              this.logger.warn(
-                `Failed to retrieve tech docs search index for entity ${entityInfo.namespace}/${entityInfo.kind}/${entityInfo.name}`,
-                e,
-              );
-              return [];
-            }
-          }),
+              ...entityInfo,
+              componentType: entity.spec?.type?.toString() || 'other',
+              lifecycle: (entity.spec?.lifecycle as string) || '',
+              owner:
+                entity.relations?.find(r => r.type === RELATION_OWNED_BY)
+                  ?.target?.name || '',
+            }));
+          } catch (e) {
+            this.logger.warn(
+              `Failed to retrieve tech docs search index for entity ${entityInfo.namespace}/${entityInfo.kind}/${entityInfo.name}`,
+              e,
+            );
+            return [];
+          }
+        }),
       );
     return (await Promise.all(docPromises)).flat();
   }
