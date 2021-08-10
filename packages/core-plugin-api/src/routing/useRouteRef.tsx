@@ -16,6 +16,7 @@
 
 import { useMemo } from 'react';
 import { matchRoutes, useLocation } from 'react-router-dom';
+import { Location } from 'history';
 import { useVersionedContext } from '../lib/versionedValues';
 import {
   AnyParams,
@@ -33,6 +34,8 @@ export interface RouteResolver {
       | ExternalRouteRef<Params, any>,
     sourceLocation: Parameters<typeof matchRoutes>[1],
   ): RouteFunc<Params> | undefined;
+
+  resolveRefForLocation(location: Location): RouteRef;
 }
 
 export function useRouteRef<Optional extends boolean, Params extends AnyParams>(

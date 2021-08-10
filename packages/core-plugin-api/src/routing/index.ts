@@ -19,4 +19,5 @@ export { createRouteRef } from './RouteRef';
 export { createSubRouteRef } from './SubRouteRef';
 export { createExternalRouteRef } from './ExternalRouteRef';
 export { useRouteRef } from './useRouteRef';
+export { useActiveRouteRef } from './useActiveRouteRef';
 export { useRouteRefParams } from './useRouteRefParams';

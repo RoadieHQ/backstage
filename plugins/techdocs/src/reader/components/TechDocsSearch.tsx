@@ -28,6 +28,7 @@ import { DocsResultListItem } from '../../components/DocsResultListItem';
 import SearchIcon from '@material-ui/icons/Search';
 import { useDebounce } from 'react-use';
 import { useNavigate } from 'react-router';
+import { useActiveRouteRef, useRouteRef } from '@backstage/core-plugin-api';
 
 type TechDocsSearchProps = {
   entityId: {
@@ -65,6 +66,8 @@ const TechDocsSearchBar = ({
     setTerm,
     result: { loading, value: searchVal },
   } = useSearch();
+  const activeRouteRef = useActiveRouteRef();
+  const getBaseDocsUrl = useRouteRef(activeRouteRef);
   const [options, setOptions] = useState<any[]>([]);
   useEffect(() => {
     let mounted = true;
@@ -93,13 +96,14 @@ const TechDocsSearchBar = ({
   };
 
   const handleSelection = (_: any, selection: TechDocsSearchResult | null) => {
-    if (selection?.document) {
-      const { namespace, kind, name, path, location } = selection.document;
-      navigate(
-        context === 'entitypage'
-          ? `/catalog/${namespace}/${kind}/${name}/docs/${path}`
-          : location,
-      );
+    if (selection?.document && getBaseDocsUrl) {
+      const { path, location } = selection.document;
+
+      // TODO: Modify this to use getBaseDocsUrl for non entitypage context as well
+      // After https://github.com/backstage/backstage/pull/6458/ is in
+      const loc =
+        context === 'entitypage' ? `${getBaseDocsUrl()}/${path}` : location;
+      navigate(loc);
     }
   };
 

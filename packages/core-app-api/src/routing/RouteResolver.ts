@@ -225,4 +225,12 @@ export class RouteResolver {
     };
     return routeFunc;
   }
+
+  resolveRefForLocation(sourceLocation: Location): RouteRef {
+    const routes = matchRoutes(this.routeObjects, sourceLocation) ?? [];
+    const routeRefs = routes.flatMap(it =>
+      Array.from((it.route as BackstageRouteObject).routeRefs),
+    );
+    return routeRefs[routeRefs.length - 1];
+  }
 }
