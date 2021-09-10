@@ -215,11 +215,65 @@ the relation edges, both incoming and outgoing, no matter who produced them.</p>
 <p>The stitching is currently a fixed process, that cannot be modified or extended.
 This means that any modifications you want to make on the final result, has to
 happen during ingestion or processing.</p>
-<h2><a class="anchor" aria-hidden="true" id="deletion"></a><a href="#deletion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deletion</h2>
+<h2><a class="anchor" aria-hidden="true" id="errors"></a><a href="#errors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h2>
 <blockquote>
-<p>TODO</p>
+<p>TODO: Describe how errors are exposed through entities</p>
 </blockquote>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/6/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/software-catalog-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/software-catalog/configuration"><span>Catalog Configuration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#key-concepts">Key Concepts</a></li><li><a href="#ingestion">Ingestion</a></li><li><a href="#processing">Processing</a></li><li><a href="#stitching">Stitching</a></li><li><a href="#deletion">Deletion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<h2><a class="anchor" aria-hidden="true" id="orphaning"></a><a href="#orphaning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Orphaning</h2>
+<p>As mentioned earlier, entities internally form a graph. The edges go from
+processed parent entities, to child entities emitted while processing the
+parent.</p>
+<p>The processing loop runs continuously, so these edges are reconsidered over
+time. If processing a parent entity no longer emits a given child entity, then
+that former edge is severed. If that child has no other edges pointing at it
+either, it becomes <em>orphaned</em>. The end result is as follows:</p>
+<ul>
+<li>The stitching process injects a <code>backstage.io/orphan: 'true'</code> annotation on
+the child entity.</li>
+<li>The child entity is <em>not</em> removed from the catalog, but stays around until
+explicitly deleted via the catalog API, or &quot;reclaimed&quot; by the original parent
+or another parent starting to reference it.</li>
+<li>The catalog page in Backstage for the child entity detects the new annotation
+and informs users about the orphan status.</li>
+</ul>
+<p>Orphaning can occur in several different scenarios. One common cause is that the
+end user edited a corresponding catalog catalog-info YAML file removing the
+entity's entry. In the case of a <code>Location</code> parent entity, orphaning can happen
+if removing the target line pointing to the file containing the child entity.
+Another common cause is large batch processors such as the ones that crawl
+through remote systems looking for entities, no longer finding something that it
+used to find before. Maybe the data was moved, or deleted, in the remote system.
+So for example when a person leaves the company an LDAP org discovery processor
+might leave an orphaned <code>User</code> entity behind. Note that this only applies to
+processors - ingestion that happens using entity providers work differently,
+described below.</p>
+<blockquote>
+<p>Note that removing a file, or accidentally corrupting a file so that it cannot
+be read successfully, does <em>not</em> lead to orphaning. Hard errors, including the
+inability to find or read a distinct remote, are marked as such on the entity
+to inform the owner that something is wrong. But processing and other
+behaviors continue as usual.</p>
+</blockquote>
+<p>The reason that the orphaning mechanism exists instead of having an eager
+deletion triggered, is safety. Scenarios like these can happen purely by
+accident, due to the asynchronous nature of the system and the fallible nature
+of humans. In particular when external systems start consuming and relying on
+the catalog, there could be substantial consequences to suddenly dropping
+entities without explicit owner consent. The catalog therefore takes the stance
+that entities that often were added by direct user action should also be deleted
+only by direct user action.</p>
+<p>It is possible to use the catalog API to build automated &quot;reaper&quot; systems that
+finally delete entities that are orphaned. This is however not something that's
+provided out of the box.</p>
+<h2><a class="anchor" aria-hidden="true" id="implicit-deletion"></a><a href="#implicit-deletion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implicit Deletion</h2>
+<blockquote>
+<p>TODO: Describe the process of entity providers eagerly deleting entities</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="explicit-deletion"></a><a href="#explicit-deletion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Explicit Deletion</h2>
+<blockquote>
+<p>TODO: Describe direct deletion via the catalog API</p>
+</blockquote>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/10/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/software-catalog-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/software-catalog/configuration"><span>Catalog Configuration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#key-concepts">Key Concepts</a></li><li><a href="#ingestion">Ingestion</a></li><li><a href="#processing">Processing</a></li><li><a href="#stitching">Stitching</a></li><li><a href="#errors">Errors</a></li><li><a href="#orphaning">Orphaning</a></li><li><a href="#implicit-deletion">Implicit Deletion</a></li><li><a href="#explicit-deletion">Explicit Deletion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
