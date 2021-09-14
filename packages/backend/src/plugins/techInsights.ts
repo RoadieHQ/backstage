@@ -16,7 +16,7 @@
 import {
   createRouter,
   FactRetriever,
-  TechInsightCheck,
+  TechInsightJsonRuleCheck,
   TechInsightsBuilder,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
@@ -36,19 +36,19 @@ export default async function createPlugin({
       schema: {
         version: '0.1.0',
         schema: {
-          testnumberfact: {
+          examplenumberfact: {
             type: 'integer',
           },
-          teststringfact: {
+          examplestringfact: {
             type: 'string',
           },
-          testfloatfact: {
+          examplefloatfact: {
             type: 'float',
           },
-          testbooleanfact: {
+          examplebooleanfact: {
             type: 'boolean',
           },
-          testdatetimefact: {
+          exampledatetimefact: {
             type: 'datetime',
           },
         },
@@ -63,11 +63,11 @@ export default async function createPlugin({
               name: 'a',
             },
             facts: {
-              testnumberfact: 2,
-              teststringfact: 'stringy',
-              testfloatfact: 0.331,
-              testbooleanfact: false,
-              testdatetimefact: DateTime.now(), // TODO: example how to add a custom operator to fact checker
+              examplenumberfact: 2,
+              examplestringfact: 'stringy',
+              examplefloatfact: 0.331,
+              examplebooleanfact: false,
+              exampledatetimefact: DateTime.now(),
             },
           },
         ]);
@@ -84,36 +84,37 @@ export default async function createPlugin({
         conditions: {
           all: [
             {
-              fact: 'testnumberfact',
+              fact: 'examplenumberfact',
               operator: 'greaterThanInclusive',
               value: 2,
             },
             {
-              fact: 'teststringfact',
+              fact: 'examplestringfact',
               operator: 'equal',
               value: 'stringy',
             },
             {
-              fact: 'testfloatfact',
+              fact: 'examplefloatfact',
               operator: 'greaterThanInclusive',
               value: 0.2,
             },
             {
-              fact: 'testbooleanfact',
+              fact: 'examplebooleanfact',
               operator: 'equal',
               value: false,
             },
+            // TODO: example how to add a custom operator to fact checker
           ],
         },
         event: {
           type: 'demo-data-success-event',
           params: {
-            message: 'Everything matches for demo data. Green!',
+            message: 'Check successful for demo data. Green!',
           },
         },
       },
     },
-  ] as TechInsightCheck[];
+  ] as TechInsightJsonRuleCheck[];
 
   const builder = new TechInsightsBuilder({
     logger,

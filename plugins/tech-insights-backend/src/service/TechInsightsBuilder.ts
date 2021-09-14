@@ -21,7 +21,7 @@ import {
 } from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
 import { FactRetrieverRegistry } from './FactRetrieverRegistry';
-import { FactRetriever, TechInsightCheck } from '../types';
+import { FactRetriever, TechInsightJsonRuleCheck } from '../types';
 import { Config } from '@backstage/config';
 import {
   PluginDatabaseManager,
@@ -35,15 +35,15 @@ import {
 export interface TechInsightsOptions {
   logger: Logger;
   factRetrievers: FactRetriever[];
-  checks: TechInsightCheck[];
+  checks: TechInsightJsonRuleCheck[];
   config: Config;
   discovery: PluginEndpointDiscovery;
   database: PluginDatabaseManager;
 }
 
-export type TechInsightsContext = {
+export type TechInsightsContext<CheckType> = {
   factRetrieverEngine: FactRetrieverEngine;
-  factChecker: FactChecker;
+  factChecker: FactChecker<CheckType>;
   repository: TechInsightsStore;
 };
 
@@ -54,7 +54,7 @@ export class TechInsightsBuilder {
     this.options = options;
   }
 
-  async build(): Promise<TechInsightsContext> {
+  async build(): Promise<TechInsightsContext<TechInsightJsonRuleCheck>> {
     const { factRetrievers, checks, config, discovery, database } =
       this.options;
 

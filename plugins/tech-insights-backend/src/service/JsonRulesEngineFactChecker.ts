@@ -14,27 +14,29 @@
  * limitations under the License.
  */
 
-import { CheckResult, FactSchema, TechInsightCheck } from '../types';
+import { CheckResult, FactSchema, TechInsightJsonRuleCheck } from '../types';
 import { Engine } from 'json-rules-engine';
 import { TechInsightCheckRegistry } from './CheckRegistry';
 import { TechInsightsStore } from './TechInsightsDatabase';
 
-export interface FactChecker {
+export interface FactChecker<CheckType> {
   check(entity: string, checkName: string): Promise<CheckResult>;
-  addCheck(check: TechInsightCheck): Promise<boolean>;
-  getChecks(): TechInsightCheck[];
-  validate(check: TechInsightCheck): Promise<boolean>;
+  addCheck(check: CheckType): Promise<boolean>;
+  getChecks(): CheckType[];
+  validate(check: CheckType): Promise<boolean>;
 }
 
 // This should likely be a submodule when it extends to handle multiple checks
-export class JsonRulesEngineFactChecker implements FactChecker {
+export class JsonRulesEngineFactChecker
+  implements FactChecker<TechInsightJsonRuleCheck>
+{
   private readonly checkRegistry: TechInsightCheckRegistry;
   private repository: TechInsightsStore;
   private readonly schemas: FactSchema[];
 
   constructor(
     schemas: FactSchema[],
-    checks: TechInsightCheck[],
+    checks: TechInsightJsonRuleCheck[],
     repository: TechInsightsStore,
   ) {
     this.repository = repository;
@@ -74,7 +76,7 @@ export class JsonRulesEngineFactChecker implements FactChecker {
     };
   }
 
-  validate(check: TechInsightCheck): Promise<boolean> {
+  validate(check: TechInsightJsonRuleCheck): Promise<boolean> {
     const schemas = this.schemas;
     const rule = check.rule;
     console.log(schemas.length);
@@ -83,11 +85,11 @@ export class JsonRulesEngineFactChecker implements FactChecker {
     return Promise.resolve(false);
   }
 
-  getChecks(): TechInsightCheck[] {
+  getChecks(): TechInsightJsonRuleCheck[] {
     return this.checkRegistry.list();
   }
 
-  addCheck(check: TechInsightCheck): Promise<boolean> {
+  addCheck(check: TechInsightJsonRuleCheck): Promise<boolean> {
     return this.validate(check);
   }
 }

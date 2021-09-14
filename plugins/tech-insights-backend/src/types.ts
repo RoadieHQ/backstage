@@ -37,7 +37,7 @@ export type TechInsightFact = {
 type FactValueDefinitions = {
   [key: string]: {
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime';
-    desription?: string;
+    description?: string;
     since?: string;
   };
 };
@@ -58,6 +58,8 @@ export type FactRetriever = {
   /**
    * Cron expression to indicate when the retriever should be triggered.
    * Defaults to a random point in time every 24h
+   *
+   * To be complemented with an event listening solution when bus across the app is implemented
    */
   cadence?: string;
 
@@ -65,6 +67,22 @@ export type FactRetriever = {
 
   schema: FactSchema;
 };
+
+/**
+ * Generic CheckResult
+ * TODO: (unfinished)
+ *
+ * Should be parseable by the frontend to display check.
+ * A collection of these should be parseable by the frontend to display scorecards
+ */
+export type CheckResult = {
+  value: boolean;
+  text: string;
+};
+
+/**
+ * Specific to JSON rule engine impl
+ */
 
 // TODO: wrap types from json-rules-engine to some more specific internal types?
 type DynamicFact<T = unknown> = {
@@ -80,15 +98,11 @@ export type Rule = {
   priority?: number;
 };
 
-export type TechInsightCheck = {
+// TODO
+export type TechInsightJsonRuleCheck = {
   name: string;
   description?: string;
   factRefs: string[];
   rule: Rule;
   dynamicFacts?: DynamicFact[];
-};
-
-export type CheckResult = {
-  value: boolean;
-  text: string;
 };

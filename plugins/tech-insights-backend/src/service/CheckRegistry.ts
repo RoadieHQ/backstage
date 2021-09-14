@@ -14,19 +14,19 @@
  * limitations under the License.
  */
 
-import { TechInsightCheck } from '../types';
+import { TechInsightJsonRuleCheck } from '../types';
 import { ConflictError, NotFoundError } from '@backstage/errors';
 
 export class TechInsightCheckRegistry {
-  private readonly checks = new Map<string, TechInsightCheck>();
+  private readonly checks = new Map<string, TechInsightJsonRuleCheck>();
 
-  constructor(checks: TechInsightCheck[]) {
+  constructor(checks: TechInsightJsonRuleCheck[]) {
     checks.forEach(check => {
       this.register(check);
     });
   }
 
-  register(check: TechInsightCheck) {
+  register(check: TechInsightJsonRuleCheck) {
     if (this.checks.has(check.name)) {
       throw new ConflictError(
         `Tech insight check with name '${check.name}' has already been registered`,
@@ -35,7 +35,7 @@ export class TechInsightCheckRegistry {
     this.checks.set(check.name, check);
   }
 
-  get(checkName: string): TechInsightCheck {
+  get(checkName: string): TechInsightJsonRuleCheck {
     const retriever = this.checks.get(checkName);
     if (!retriever) {
       throw new NotFoundError(
@@ -45,7 +45,7 @@ export class TechInsightCheckRegistry {
     return retriever;
   }
 
-  list(): TechInsightCheck[] {
+  list(): TechInsightJsonRuleCheck[] {
     return [...this.checks.values()];
   }
 }

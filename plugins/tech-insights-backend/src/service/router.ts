@@ -22,16 +22,16 @@ import { FactRetrieverEngine } from './FactRetrieverEngine';
 import { FactChecker } from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
 
-export interface RouterOptions {
+export interface RouterOptions<CheckType> {
   factRetrieverEngine: FactRetrieverEngine;
-  factChecker: FactChecker;
+  factChecker: FactChecker<CheckType>;
   repository: TechInsightsStore;
   config: Config;
   logger: Logger;
 }
 
-export async function createRouter(
-  options: RouterOptions,
+export async function createRouter<CheckType>(
+  options: RouterOptions<CheckType>,
 ): Promise<express.Router> {
   const router = Router();
 
@@ -39,10 +39,7 @@ export async function createRouter(
   const { repository, factRetrieverEngine, factChecker } = options;
 
   router.get('/check/:check/:namespace/:kind/:name', async (req, res) => {
-    const namespace = req.params.namespace;
-    const kind = req.params.kind;
-    const name = req.params.name;
-    const check = req.params.check;
+    const { namespace, kind, name, check } = req.params;
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     const checkResult = await factChecker.check(entityTriplet, check);
     return res.send(checkResult);
@@ -54,7 +51,7 @@ export async function createRouter(
 
   // get facts
   // get facts between dates
-  // get scorecards (multiple checks)
+  // get scorecards (aggregation of checks)
 
   return router;
 }
