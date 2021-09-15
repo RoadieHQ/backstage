@@ -15,13 +15,12 @@
  */
 import {
   createRouter,
-  FactRetriever,
-  TechInsightJsonRuleCheck,
-  TechInsightsBuilder,
+  exampleChecks,
+  exampleFactRetrievers,
+  TechInsightsDefaultBuilder,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import { DateTime } from 'luxon';
 
 export default async function createPlugin({
   logger,
@@ -29,100 +28,13 @@ export default async function createPlugin({
   discovery,
   database,
 }: PluginEnvironment): Promise<Router> {
-  const factRetrievers = [
-    {
-      cadence: '* 1 * * *',
-      ref: 'demo-poc.factretriever',
-      schema: {
-        version: '0.1.0',
-        schema: {
-          examplenumberfact: {
-            type: 'integer',
-          },
-          examplestringfact: {
-            type: 'string',
-          },
-          examplefloatfact: {
-            type: 'float',
-          },
-          examplebooleanfact: {
-            type: 'boolean',
-          },
-          exampledatetimefact: {
-            type: 'datetime',
-          },
-        },
-      },
-      handler: _ctx => {
-        return Promise.resolve([
-          {
-            ref: 'demo-poc.factretriever',
-            entity: {
-              namespace: 'a',
-              kind: 'a',
-              name: 'a',
-            },
-            facts: {
-              examplenumberfact: 2,
-              examplestringfact: 'stringy',
-              examplefloatfact: 0.331,
-              examplebooleanfact: false,
-              exampledatetimefact: DateTime.now(),
-            },
-          },
-        ]);
-      },
-    },
-  ] as FactRetriever[];
-
-  const checks = [
-    {
-      name: 'demodatacheck',
-      description: 'A fact check for demoing purposes',
-      factRefs: ['demo-poc.factretriever'],
-      rule: {
-        conditions: {
-          all: [
-            {
-              fact: 'examplenumberfact',
-              operator: 'greaterThanInclusive',
-              value: 2,
-            },
-            {
-              fact: 'examplestringfact',
-              operator: 'equal',
-              value: 'stringy',
-            },
-            {
-              fact: 'examplefloatfact',
-              operator: 'greaterThanInclusive',
-              value: 0.2,
-            },
-            {
-              fact: 'examplebooleanfact',
-              operator: 'equal',
-              value: false,
-            },
-            // TODO: example how to add a custom operator to fact checker
-          ],
-        },
-        event: {
-          type: 'demo-data-success-event',
-          params: {
-            message: 'Check successful for demo data. Green!',
-          },
-        },
-      },
-    },
-  ] as TechInsightJsonRuleCheck[];
-
-  const builder = new TechInsightsBuilder({
+  const builder = new TechInsightsDefaultBuilder({
     logger,
     config,
     database,
     discovery,
-    factRetrievers,
-    checks,
+    factRetrievers: exampleFactRetrievers,
+    checks: exampleChecks,
   });
 
   return await createRouter({

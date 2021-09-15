@@ -21,8 +21,9 @@ import { TechInsightsStore } from './TechInsightsDatabase';
 import { FactRetrieverEngine } from './FactRetrieverEngine';
 import { FactChecker } from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
+import { TechInsightCheck } from '../types';
 
-export interface RouterOptions<CheckType> {
+export interface RouterOptions<CheckType extends TechInsightCheck> {
   factRetrieverEngine: FactRetrieverEngine;
   factChecker: FactChecker<CheckType>;
   repository: TechInsightsStore;
@@ -30,7 +31,7 @@ export interface RouterOptions<CheckType> {
   logger: Logger;
 }
 
-export async function createRouter<CheckType>(
+export async function createRouter<CheckType extends TechInsightCheck>(
   options: RouterOptions<CheckType>,
 ): Promise<express.Router> {
   const router = Router();

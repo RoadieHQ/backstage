@@ -21,7 +21,11 @@ import {
 } from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
 import { FactRetrieverRegistry } from './FactRetrieverRegistry';
-import { FactRetriever, TechInsightJsonRuleCheck } from '../types';
+import {
+  FactRetriever,
+  TechInsightCheck,
+  TechInsightJsonRuleCheck,
+} from '../types';
 import { Config } from '@backstage/config';
 import {
   PluginDatabaseManager,
@@ -41,13 +45,13 @@ export interface TechInsightsOptions {
   database: PluginDatabaseManager;
 }
 
-export type TechInsightsContext<CheckType> = {
+export type TechInsightsContext<CheckType extends TechInsightCheck> = {
   factRetrieverEngine: FactRetrieverEngine;
   factChecker: FactChecker<CheckType>;
   repository: TechInsightsStore;
 };
 
-export class TechInsightsBuilder {
+export class TechInsightsDefaultBuilder {
   private readonly options: TechInsightsOptions;
 
   constructor(options: TechInsightsOptions) {

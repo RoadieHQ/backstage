@@ -52,7 +52,7 @@ export type FactRetrieverContext = {
   // ...others
 };
 
-export type FactRetriever = {
+export interface FactRetriever {
   ref: string;
 
   /**
@@ -66,7 +66,7 @@ export type FactRetriever = {
   handler: (ctx: FactRetrieverContext) => Promise<TechInsightFact[]>;
 
   schema: FactSchema;
-};
+}
 
 /**
  * Generic CheckResult
@@ -85,11 +85,11 @@ export type CheckResult = {
  */
 
 // TODO: wrap types from json-rules-engine to some more specific internal types?
-type DynamicFact<T = unknown> = {
+interface DynamicFact<T = unknown> {
   id: string;
   calculationMethod: DynamicFactCallback<T> | T;
   options?: FactOptions;
-};
+}
 
 export type Rule = {
   conditions: TopLevelCondition;
@@ -98,11 +98,13 @@ export type Rule = {
   priority?: number;
 };
 
-// TODO
-export type TechInsightJsonRuleCheck = {
+export interface TechInsightCheck {
   name: string;
   description?: string;
   factRefs: string[];
+}
+
+export interface TechInsightJsonRuleCheck extends TechInsightCheck {
   rule: Rule;
   dynamicFacts?: DynamicFact[];
-};
+}

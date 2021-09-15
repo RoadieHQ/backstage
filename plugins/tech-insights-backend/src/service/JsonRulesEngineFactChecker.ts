@@ -14,12 +14,17 @@
  * limitations under the License.
  */
 
-import { CheckResult, FactSchema, TechInsightJsonRuleCheck } from '../types';
+import {
+  CheckResult,
+  FactSchema,
+  TechInsightCheck,
+  TechInsightJsonRuleCheck,
+} from '../types';
 import { Engine } from 'json-rules-engine';
 import { TechInsightCheckRegistry } from './CheckRegistry';
 import { TechInsightsStore } from './TechInsightsDatabase';
 
-export interface FactChecker<CheckType> {
+export interface FactChecker<CheckType extends TechInsightCheck> {
   check(entity: string, checkName: string): Promise<CheckResult>;
   addCheck(check: CheckType): Promise<boolean>;
   getChecks(): CheckType[];
@@ -30,7 +35,7 @@ export interface FactChecker<CheckType> {
 export class JsonRulesEngineFactChecker
   implements FactChecker<TechInsightJsonRuleCheck>
 {
-  private readonly checkRegistry: TechInsightCheckRegistry;
+  private readonly checkRegistry: TechInsightCheckRegistry<TechInsightJsonRuleCheck>;
   private repository: TechInsightsStore;
   private readonly schemas: FactSchema[];
 
