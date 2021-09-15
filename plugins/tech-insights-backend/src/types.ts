@@ -61,6 +61,8 @@ export interface FactRetriever {
    *
    * To be complemented with an event listening solution when bus across the app is implemented
    */
+  // This could probably work better if it is defined outside of the retriever.
+  // That way community can provide retrievers but integrators can define the cadence
   cadence?: string;
 
   handler: (ctx: FactRetrieverContext) => Promise<TechInsightFact[]>;
