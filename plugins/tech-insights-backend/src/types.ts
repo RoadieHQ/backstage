@@ -52,6 +52,7 @@ export type FactRetrieverContext = {
   // ...others
 };
 
+// TODO: Possibly add return type type param
 export interface FactRetriever {
   ref: string;
 
