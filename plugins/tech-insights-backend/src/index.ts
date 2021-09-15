@@ -18,4 +18,4 @@ export * from './service/router';
 export * from './types';
 export * from './example';
 export { FactRetrieverEngine } from './service/FactRetrieverEngine';
-export { TechInsightsDefaultBuilder } from './service/TechInsightsDefaultBuilder';
+export { DefaultTechInsightsBuilder } from './service/DefaultTechInsightsBuilder';

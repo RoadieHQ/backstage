@@ -31,13 +31,13 @@ exports.up = async function up(knex) {
     table
       .text('ref')
       .notNullable()
-      .comment('Identifier of the fact retriever plugin/package');
+      .comment('Unique identifier of the fact retriever plugin/package');
     table
       .string('version')
       .notNullable()
       .comment(
         'SemVer string defining the version of schema this fact is based on.',
-      ); // Should be FK to schema version table?
+      ); // Should be FK to schema table?
     table
       .dateTime('timestamp')
       .defaultTo(knex.fn.now())
@@ -51,13 +51,12 @@ exports.up = async function up(knex) {
       .text('facts')
       .notNullable()
       .comment(
-        'Values of the fact collection store as key-value pairs in JSON format.',
+        'Values of the fact collection stored as key-value pairs in JSON format.',
       );
 
     table.index('index', 'fact_index_idx');
     table.index('ref', 'fact_ref_idx');
-    table.index(['ref', 'facts'], 'fact_ref_fact_idx');
-    table.index('timestamp', 'fact_timestamp_idx');
+    table.index(['ref', 'entity'], 'fact_ref_entity_idx');
   });
 };
 
@@ -68,8 +67,7 @@ exports.down = async function down(knex) {
   await knex.schema.alterTable('facts', table => {
     table.dropIndex([], 'facts_index_idx');
     table.dropIndex([], 'fact_ref_idx');
-    table.dropIndex([], 'fact_ref_fact_idx');
-    table.dropIndex([], 'fact_timestamp_idx');
+    table.dropIndex([], 'fact_ref_entity_idx');
   });
   await knex.schema.dropTable('facts');
 };

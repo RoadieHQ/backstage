@@ -17,9 +17,9 @@ import { TechInsightJsonRuleCheck } from '../types';
 
 export const exampleChecks = [
   {
-    name: 'demodatacheck', // This name is used as an identifier when check is wanted to run
+    name: 'demodatacheck', // This name is used as an identifier on catalog-info for example to indicate which checks should be run for an entity
     description: 'A fact check for demoing purposes',
-    factRefs: ['demo-poc.factretriever'], // References a fact with these names
+    factRefs: ['demo-poc.factretriever'], // References facts with these names to know what data to use
     rule: {
       conditions: {
         all: [

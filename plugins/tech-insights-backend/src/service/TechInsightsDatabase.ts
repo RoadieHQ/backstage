@@ -38,7 +38,7 @@ export interface TechInsightsStore {
   retrieveLatestFactsForRefs(
     refs: string[],
     entity: string,
-  ): Promise<{ [p: string]: TechInsightFact }>;
+  ): Promise<{ [factRef: string]: TechInsightFact }>;
 
   insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
 }
@@ -90,17 +90,20 @@ export class TechInsightsDatabase implements TechInsightsStore {
   }
 
   async insertFacts(facts: TechInsightFact[]): Promise<void> {
-    console.log(`inserting fact: ${JSON.stringify(facts)}`);
+    console.log(`inserting facts: ${JSON.stringify(facts)}`);
 
     const tx = await this.db.transaction();
     if (facts.length === 0) return;
     const currentSchema = await this.getLatestSchema(facts[0].ref);
-    const factRows = facts.map(it => ({
-      ref: it.ref,
-      version: currentSchema.version,
-      entity: `${it.entity.namespace.toLowerCase()}/${it.entity.kind.toLowerCase()}/${it.entity.name.toLowerCase()}`,
-      facts: JSON.stringify(it.facts),
-    }));
+    const factRows = facts.map(it => {
+      const { namespace, name, kind } = it.entity;
+      return {
+        ref: it.ref,
+        version: currentSchema.version,
+        entity: `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`,
+        facts: JSON.stringify(it.facts),
+      };
+    });
 
     await tx.batchInsert<RawDbFactRow>('facts', factRows, this.CHUNK_SIZE);
     tx.commit();

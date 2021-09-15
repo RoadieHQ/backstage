@@ -17,7 +17,7 @@ import {
   createRouter,
   exampleChecks,
   exampleFactRetrievers,
-  TechInsightsDefaultBuilder,
+  DefaultTechInsightsBuilder,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
@@ -28,7 +28,7 @@ export default async function createPlugin({
   discovery,
   database,
 }: PluginEnvironment): Promise<Router> {
-  const builder = new TechInsightsDefaultBuilder({
+  const builder = new DefaultTechInsightsBuilder({
     logger,
     config,
     database,

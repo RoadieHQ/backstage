@@ -31,10 +31,18 @@ export interface FactChecker<CheckType extends TechInsightCheck> {
   validate(check: CheckType): Promise<boolean>;
 }
 
-// This should likely be a submodule when it extends to handle multiple checks
+// This should likely be a submodule when we expand it to handle multiple checks
 export class JsonRulesEngineFactChecker
   implements FactChecker<TechInsightJsonRuleCheck>
 {
+  /*
+  Checks:
+    - [x] JSON code
+    - [ ] Store in DB? (No dynamic facts)
+    - [ ] Read from catalog-info? (No dynamic facts)
+    - [X] Read reference of a check from catalog-info on the frontend, use predefined JSON/code as a check
+  */
+
   private readonly checkRegistry: TechInsightCheckRegistry<TechInsightJsonRuleCheck>;
   private repository: TechInsightsStore;
   private readonly schemas: FactSchema[];
@@ -86,7 +94,7 @@ export class JsonRulesEngineFactChecker
     const rule = check.rule;
     console.log(schemas.length);
     console.log(rule.conditions);
-    // Check that all keys referred in the check exists in the items of the ref array used to construct this check
+    // Check that all keys referred in the check exists in the schemas of facts listed in the factRef array
     return Promise.resolve(false);
   }
 

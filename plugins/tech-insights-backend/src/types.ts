@@ -70,14 +70,15 @@ export interface FactRetriever {
 
 /**
  * Generic CheckResult
- * TODO: (unfinished)
  *
- * Should be parseable by the frontend to display check.
+ * Should be parseable by the frontend to display a check result.
  * A collection of these should be parseable by the frontend to display scorecards
  */
 export type CheckResult = {
   value: boolean;
   text: string;
+  // Possibly fact data used to calculate the result of this check
+  // A check could be good here as well but since implementation might differ, tricky to define a shape for
 };
 
 /**

@@ -51,7 +51,7 @@ export type TechInsightsContext<CheckType extends TechInsightCheck> = {
   repository: TechInsightsStore;
 };
 
-export class TechInsightsDefaultBuilder {
+export class DefaultTechInsightsBuilder {
   private readonly options: TechInsightsOptions;
 
   constructor(options: TechInsightsOptions) {
@@ -72,8 +72,8 @@ export class TechInsightsDefaultBuilder {
       repository,
       factRetrieverRegistry,
       {
-        config: config,
-        discovery: discovery,
+        config,
+        discovery,
       },
     );
 
@@ -82,14 +82,6 @@ export class TechInsightsDefaultBuilder {
       checks,
       repository,
     );
-
-    /*
-    Checks:
-      - [x] JSON code
-      - [ ] Store in DB? (No dynamic facts)
-      - [ ] Read from catalog-info? (No dynamic facts)
-      - [ ] Read reference of a check from catalog-info on the frontend, use predefined JSON as a check
-    */
 
     factRetrieverEngine.schedule();
 
