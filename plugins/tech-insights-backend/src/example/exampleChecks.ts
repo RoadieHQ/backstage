@@ -46,6 +46,9 @@ export const exampleChecks = [
           // TODO: example how to add a custom operator to fact checker
         ],
       },
+
+      // This event type is directly piped to json-rules-engine for now
+      // But we'd most likely want to create our own success/failure types that we'd use instead.
       event: {
         type: 'demo-data-success-event',
         params: {
