@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 export * from './exampleChecks';
-export * from './exampleFactRetrievers';
+export * from './exampleFactRetriever';

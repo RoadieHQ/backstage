@@ -55,20 +55,24 @@ export type FactRetrieverContext = {
 export interface FactRetriever {
   ref: string;
 
+  handler: (ctx: FactRetrieverContext) => Promise<TechInsightFact[]>;
+
+  schema: FactSchema;
+}
+
+export type FactRetrieverRegistration = {
+  factRetriever: FactRetriever;
+
   /**
    * Cron expression to indicate when the retriever should be triggered.
    * Defaults to a random point in time every 24h
    *
    * To be complemented with an event listening solution when bus across the app is implemented
    */
-  // This could probably work better if it is defined outside of the retriever.
-  // That way community can provide retrievers but integrators can define the cadence
   cadence?: string;
 
-  handler: (ctx: FactRetrieverContext) => Promise<TechInsightFact[]>;
-
-  schema: FactSchema;
-}
+  // Other options integrator could find helpful
+};
 
 /**
  * Generic CheckResult

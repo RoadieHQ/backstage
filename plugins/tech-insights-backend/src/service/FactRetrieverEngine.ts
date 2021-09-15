@@ -33,7 +33,7 @@ export class FactRetrieverEngine {
   ) {
     await Promise.all(
       factRetrieverRegistry
-        .list()
+        .listRetrievers()
         .map(it => repository.insertFactSchema(it.ref, it.schema)),
     );
 
@@ -51,22 +51,20 @@ export class FactRetrieverEngine {
   ) {}
 
   schedule() {
-    const retrievers = this.factRetrieverRegistry.list();
-    retrievers.forEach(retriever => {
-      if (!this.scheduledJobs.has(retriever.ref)) {
+    const registrations = this.factRetrieverRegistry.listRegistrations();
+    registrations.forEach(registration => {
+      const { factRetriever, cadence } = registration;
+      if (!this.scheduledJobs.has(factRetriever.ref)) {
         const randomDailyCron = `${randomInt(0, 59)} ${randomInt(0, 23)} * * *`;
-        const job = cron.schedule(
-          retriever.cadence || randomDailyCron,
-          async () => {
-            const facts = await retriever.handler(this.factRetrieverContext);
-            try {
-              await this.repository.insertFacts(facts);
-            } catch (e) {
-              console.log('Failed to insert facts', e);
-            }
-          },
-        );
-        this.scheduledJobs.set(retriever.ref, job);
+        const job = cron.schedule(cadence || randomDailyCron, async () => {
+          const facts = await factRetriever.handler(this.factRetrieverContext);
+          try {
+            await this.repository.insertFacts(facts);
+          } catch (e) {
+            console.log('Failed to insert facts', e);
+          }
+        });
+        this.scheduledJobs.set(factRetriever.ref, job);
       }
     });
   }

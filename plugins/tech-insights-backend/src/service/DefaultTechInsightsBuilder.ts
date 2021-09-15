@@ -22,7 +22,7 @@ import {
 import { Logger } from 'winston';
 import { FactRetrieverRegistry } from './FactRetrieverRegistry';
 import {
-  FactRetriever,
+  FactRetrieverRegistration,
   TechInsightCheck,
   TechInsightJsonRuleCheck,
 } from '../types';
@@ -38,7 +38,7 @@ import {
 
 export interface TechInsightsOptions {
   logger: Logger;
-  factRetrievers: FactRetriever[];
+  factRetrievers: FactRetrieverRegistration[];
   checks: TechInsightJsonRuleCheck[];
   config: Config;
   discovery: PluginEndpointDiscovery;

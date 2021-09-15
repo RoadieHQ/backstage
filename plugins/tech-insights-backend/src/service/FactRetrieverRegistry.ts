@@ -14,42 +14,46 @@
  * limitations under the License.
  */
 
-import { FactRetriever, FactSchema } from '../types';
+import { FactRetriever, FactRetrieverRegistration, FactSchema } from '../types';
 import { ConflictError, NotFoundError } from '@backstage/errors';
 
 export class FactRetrieverRegistry {
-  private readonly retrievers = new Map<string, FactRetriever>();
+  private readonly retrievers = new Map<string, FactRetrieverRegistration>();
 
-  constructor(retrievers: FactRetriever[]) {
+  constructor(retrievers: FactRetrieverRegistration[]) {
     retrievers.forEach(it => {
       this.register(it);
     });
   }
 
-  register(retriever: FactRetriever) {
-    if (this.retrievers.has(retriever.ref)) {
+  register(registration: FactRetrieverRegistration) {
+    if (this.retrievers.has(registration.factRetriever.ref)) {
       throw new ConflictError(
-        `Tech insight fact retriever with reference '${retriever.ref}' has already been registered`,
+        `Tech insight fact retriever with reference '${registration.factRetriever.ref}' has already been registered`,
       );
     }
-    this.retrievers.set(retriever.ref, retriever);
+    this.retrievers.set(registration.factRetriever.ref, registration);
   }
 
   get(retrieverReference: string): FactRetriever {
-    const retriever = this.retrievers.get(retrieverReference);
-    if (!retriever) {
+    const registration = this.retrievers.get(retrieverReference);
+    if (!registration) {
       throw new NotFoundError(
         `Tech insight fact retriever with reference '${retrieverReference}' is not registered.`,
       );
     }
-    return retriever;
+    return registration.factRetriever;
   }
 
-  list(): FactRetriever[] {
+  listRetrievers(): FactRetriever[] {
+    return [...this.retrievers.values()].map(it => it.factRetriever);
+  }
+
+  listRegistrations(): FactRetrieverRegistration[] {
     return [...this.retrievers.values()];
   }
 
   getSchemas(): FactSchema[] {
-    return this.list().map(it => it.schema);
+    return this.listRetrievers().map(it => it.schema);
   }
 }

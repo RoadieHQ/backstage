@@ -19,32 +19,30 @@ import { FactRetriever } from '../types';
 // @ts-ignore
 import { CatalogClient } from '@backstage/catalog-client';
 
-export const exampleFactRetrievers = [
-  {
-    cadence: '* 1 * * *',
-    ref: 'demo-poc.factretriever',
+export const exampleFactRetriever = {
+  ref: 'demo-poc.factretriever',
+  schema: {
+    version: '0.1.0',
     schema: {
-      version: '0.1.0',
-      schema: {
-        examplenumberfact: {
-          type: 'integer',
-        },
-        examplestringfact: {
-          type: 'string',
-        },
-        examplefloatfact: {
-          type: 'float',
-        },
-        examplebooleanfact: {
-          type: 'boolean',
-        },
-        exampledatetimefact: {
-          type: 'datetime',
-        },
+      examplenumberfact: {
+        type: 'integer',
+      },
+      examplestringfact: {
+        type: 'string',
+      },
+      examplefloatfact: {
+        type: 'float',
+      },
+      examplebooleanfact: {
+        type: 'boolean',
+      },
+      exampledatetimefact: {
+        type: 'datetime',
       },
     },
-    handler: async _ctx => {
-      /*
+  },
+  handler: async _ctx => {
+    /*
       const { config, discovery } = _ctx;
       const catalogClient = new CatalogClient({ discoveryApi: discovery });
       const entities = await catalogClient.getEntities();
@@ -52,23 +50,22 @@ export const exampleFactRetrievers = [
       // do api call, map response values to entities.
       */
 
-      return Promise.resolve([
-        {
-          ref: 'demo-poc.factretriever',
-          entity: {
-            namespace: 'a',
-            kind: 'a',
-            name: 'a',
-          },
-          facts: {
-            examplenumberfact: 2,
-            examplestringfact: 'stringy',
-            examplefloatfact: 0.331,
-            examplebooleanfact: false,
-            exampledatetimefact: DateTime.now(),
-          },
+    return Promise.resolve([
+      {
+        ref: 'demo-poc.factretriever',
+        entity: {
+          namespace: 'a',
+          kind: 'a',
+          name: 'a',
         },
-      ]);
-    },
+        facts: {
+          examplenumberfact: 2,
+          examplestringfact: 'stringy',
+          examplefloatfact: 0.331,
+          examplebooleanfact: false,
+          exampledatetimefact: DateTime.now(),
+        },
+      },
+    ]);
   },
-] as FactRetriever[];
+} as FactRetriever;

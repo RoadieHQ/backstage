@@ -32,14 +32,12 @@ exports.up = async function up(knex) {
     table
       .string('version')
       .notNullable()
-      .comment(
-        'SemVer string defining the version of schema this fact is based on.',
-      );
+      .comment('SemVer string defining the version of schema.');
     table
       .text('schema')
       .notNullable()
       .comment(
-        'Fact schema defining the values what this version of the fact would contain.',
+        'Fact schema defining the values/types what this version of the fact would contain.',
       );
 
     table.index('ref', 'fact_schema_ref_idx');

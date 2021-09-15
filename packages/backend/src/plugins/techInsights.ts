@@ -16,7 +16,7 @@
 import {
   createRouter,
   exampleChecks,
-  exampleFactRetrievers,
+  exampleFactRetriever,
   DefaultTechInsightsBuilder,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
@@ -33,7 +33,12 @@ export default async function createPlugin({
     config,
     database,
     discovery,
-    factRetrievers: exampleFactRetrievers,
+    factRetrievers: [
+      {
+        factRetriever: exampleFactRetriever,
+        cadence: '* 1 * * *',
+      },
+    ],
     checks: exampleChecks,
   });
 
