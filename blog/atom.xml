@@ -2,12 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2021-07-26T06:00:00.000Z</updated>
+    <updated>2021-09-16T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[The TechDocs Beta has landed]]></title>
+        <id>https://backstage.io/blog/2021/09/16/the-techdocs-beta-has-landed.html</id>
+        <link href="https://backstage.io/blog/2021/09/16/the-techdocs-beta-has-landed.html"/>
+        <updated>2021-09-16T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/21-09-16/backstage-techdocs-beta.gif" alt="TechDocs in Beta"></p>
+<p><strong>TLDR:</strong> Another beta has landed! We continue to focus on improving the stability and scalability of Backstage while enhancing its functionality. Thanks to focused efforts from the TechDocs core team and community, we're happy to say that TechDocs — <a href="https://backstage.io/blog/2020/09/08/announcing-tech-docs">our docs-like-code solution</a> for all the software in your catalog — is now, after <a href="https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta">Software Templates</a>, the second core feature to graduate to beta.</p>
+]]></summary>
+        <author>
+            <name>Eric Peterson, Spotify</name>
+            <uri>https://github.com/iamEAP</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Software Templates is now in Beta]]></title>
         <id>https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta.html</id>

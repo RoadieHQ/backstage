@@ -1,0 +1,124 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>The TechDocs Beta has landed · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**TLDR:** Another beta has landed! We continue to focus on improving the stability and scalability of Backstage while enhancing its functionality. Thanks to focused efforts from the TechDocs core team and community, we&#x27;re happy to say that TechDocs — [our docs-like-code solution](https://backstage.io/blog/2020/09/08/announcing-tech-docs) for all the software in your catalog — is now, after [Software Templates](https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta), the second core feature to graduate to beta."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="The TechDocs Beta has landed · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/blog/2021/09/16/the-techdocs-beta-has-landed"/><meta property="og:description" content="**TLDR:** Another beta has landed! We continue to focus on improving the stability and scalability of Backstage while enhancing its functionality. Thanks to focused efforts from the TechDocs core team and community, we&#x27;re happy to say that TechDocs — [our docs-like-code solution](https://backstage.io/blog/2020/09/08/announcing-tech-docs) for all the software in your catalog — is now, after [Software Templates](https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta), the second core feature to graduate to beta."/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-163836834-5', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class="siteNavGroupActive"><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="https://mailchi.mp/spotify/backstage-community" target="_self">Newsletter</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2021/09/16/the-techdocs-beta-has-landed">The TechDocs Beta has landed</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/07/26/software-templates-are-now-in-beta">Software Templates is now in Beta</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/06/24/announcing-backstage-search-platform">Announcing the Backstage Search platform: a customizable search tool built just for you</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/06/22/spotify-backstage-is-growing">How Spotify is helping more companies adopt Backstage</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/05/20/adopting-backstage">Where do you start when adopting Backstage?</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2021/09/16/the-techdocs-beta-has-landed">The TechDocs Beta has landed</a></h1><p class="post-meta">September 16, 2021</p><div class="authorBlock"><p class="post-authorName"><a href="https://github.com/iamEAP" target="_blank" rel="noreferrer noopener">Eric Peterson, Spotify</a></p><div class="authorPhoto"><a href="https://github.com/iamEAP" target="_blank" rel="noreferrer noopener"><img src="https://avatars.githubusercontent.com/u/3496491?v=4" alt="Eric Peterson, Spotify"/></a></div></div></header><div><span><p><img src="/blog/assets/21-09-16/backstage-techdocs-beta.gif" alt="TechDocs in Beta"></p>
+<p><strong>TLDR:</strong> Another beta has landed! We continue to focus on improving the stability and scalability of Backstage while enhancing its functionality. Thanks to focused efforts from the TechDocs core team and community, we're happy to say that TechDocs — <a href="https://backstage.io/blog/2020/09/08/announcing-tech-docs">our docs-like-code solution</a> for all the software in your catalog — is now, after <a href="https://backstage.io/blog/2021/07/26/software-templates-are-now-in-beta">Software Templates</a>, the second core feature to graduate to beta.</p>
+<!--truncate-->
+<p>In addition to new features and improvements, we made numerous compatibility updates ahead of this feature release. You'll find support for a variety of CI systems, cloud storage solutions, and source control systems — so that TechDocs works for most orgs, right out of box. But there's much more to explore in this beta, thanks to contributions from the community.</p>
+<p>When we set out to define what beta looked like, we combed through GitHub issues, Discord discussions, and other media to identify common pain points and challenges encountered by those around the world who consume and author TechDocs documentation in their organization's Backstage instance. Based on this research, we put together a user-focused milestone and got to work. For an issue-by-issue breakdown, check out the milestone <a href="https://github.com/backstage/backstage/milestone/29?closed=1">on GitHub</a> — or, just read on to get the highlights.</p>
+<h2><a class="anchor" aria-hidden="true" id="real-time-builds-and-feedback"></a><a href="#real-time-builds-and-feedback" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Real-time builds and feedback</h2>
+<p><img src="/blog/assets/21-09-16/refresh-button.gif" alt="Click the refresh button to hot-reload the updated content"></p>
+<p>TechDocs can be transformational once fully up and running (update your code and your docs with the same pull request!). But for first-time users and especially those unfamiliar with the MkDocs ecosystem upon which TechDocs is built, there are often many small, obtuse hurdles that can get in the way of success. Leading up to the beta release, we worked to surface and improve relevant errors and other details during the documentation generation process. Better still, all of this detail is now provided to users <em>in real-time</em>, as docs are generated and refreshed.</p>
+<!-- vale off -->
+<p>🙌 Shout out to <a href="https://github.com/dhenneke">Dominik Henneke</a> for implementing the interactive experience.</p>
+<!-- vale on -->
+<h2><a class="anchor" aria-hidden="true" id="custom-homepages-make-techdocs-yours"></a><a href="#custom-homepages-make-techdocs-yours" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom homepages: Make TechDocs yours</h2>
+<p><img src="/blog/assets/21-09-16/techdocs-custom-homepage.png" alt="TechDocs custom homepage"></p>
+<p>We strive to make it so that you can mold Backstage into the shape that best fits your organization. With this beta release, just as you can with the Catalog entities and <a href="https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform#composable-search-page-experiences">Search</a>, you can now customize and compose your own TechDocs homepage. Use it to level up the front page of your Backstage documentation by highlighting golden documentation at your company, or use the new and improved (and Catalog-inspired) experience. Read more about <a href="https://backstage.io/docs/features/techdocs/how-to-guides#how-to-customize-the-techdocs-home-page">how to customize the TechDocs homepage</a>.</p>
+<!-- vale off -->
+<p>🙏 Thanks to <a href="https://github.com/kuangp">Phil Kuang</a> for the improved default TechDocs home experience.</p>
+<!-- vale on -->
+<h2><a class="anchor" aria-hidden="true" id="simpler-yaml-annotations-whats-in-a-ref"></a><a href="#simpler-yaml-annotations-whats-in-a-ref" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Simpler YAML annotations: What's in a ref?</h2>
+<p><img src="/blog/assets/21-09-16/techdocs-ref.png" alt="A simpler techdocs-ref annotation value"></p>
+<p>We often forget that in order to enable TechDocs on a Catalog entity, documentation authors have to sprinkle a little ref annotation voodoo into their catalog-info.yaml file. The form of this magic — the <code>backstage.io/techdocs-ref</code> annotation — has evolved over TechDocs' life. But unless you're a real Backstage aficionado, the specifics of what the value meant and how to construct it could be somewhat of a mystery.</p>
+<p>In the beta, we've simplified this annotation dramatically for documentation authors, aligning its value with TechDocs' docs-like-code philosophy itself. In the vast majority of cases, its value will simply be <code>dir:.</code> — which means this catalog entity contains documentation and the mkdocs.yml file describing this documentation lives in the current directory. We continue to support edge cases for <a href="https://backstage.io/docs/features/techdocs/how-to-guides#how-to-understand-techdocs-ref-annotation-values">other techdocs-ref annotation values</a>, as well.</p>
+<!-- vale off -->
+<p>👏 Another round of applause for Dominik for driving this improvement through.</p>
+<!-- vale on -->
+<h2><a class="anchor" aria-hidden="true" id="everything-neat-and-tidy"></a><a href="#everything-neat-and-tidy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Everything neat and tidy</h2>
+<p>If you've ever twitched a little looking at the address bar as you navigated through your TechDocs, because the &quot;C&quot; in &quot;Component&quot; was capitalized, or cringed whilst perusing through your TechDocs storage bucket, only to see assets you definitely remember deleting from a documentation site cluttering up the place…twitch and cringe no more!</p>
+<p>TechDocs base paths are now case-insensitive, stale files are automatically cleaned up by the TechDocs publishing process — and even though <a href="https://open.spotify.com/track/6NDaYWg85ZnJ3Ae0WkILWh">I say <em>.yaml</em> and you say <em>.yml</em></a> — TechDocs will now happily accept either file extension for your MkDocs YAML file.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-should-i-do-to-upgrade"></a><a href="#what-should-i-do-to-upgrade" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What should I do to upgrade?</h2>
+<p>If you've been waiting for the beta to give TechDocs a shot, good news! You'll get all of the above, plus all of TechDocs' existing features, right out of the box. Newly created Backstage apps come ready-to-go. You'll know you're on beta if you're using the following versions:</p>
+<ul>
+<li>TechDocs Plugin version &gt;= 0.11.0</li>
+<li>TechDocs Backend Plugin version &gt;= 0.10.0</li>
+<li>TechDocs CLI version &gt;= 0.7.0</li>
+</ul>
+<p>If you're upgrading from a prior, alpha version of TechDocs, be aware that there are some breaking changes that you will need to account for. Most importantly:</p>
+<ul>
+<li>Be sure your app's instance of TechDocs is wired up to use the composability API. <a href="https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-alpha-to-beta">See full migration instructions here</a>.</li>
+<li>If you've configured TechDocs to publish generated content to a remote storage solution provider like AWS S3, Google Cloud Storage, or Azure Blob Storage, you will need to use the TechDocs CLI to migrate the contents of your storage bucket. <a href="https://backstage.io/docs/features/techdocs/how-to-guides#how-to-migrate-from-techdocs-alpha-to-beta">See full migration instructions here</a>.</li>
+<li>In order to take advantage of the stale file deletion functionality, you may need to add some permissions to the account or role used by your TechDocs backend to publish contents to your storage provider. <a href="https://backstage.io/docs/features/techdocs/using-cloud-storage">See &quot;Using Cloud Storage docs&quot;</a> for updated permissions recommendations.</li>
+</ul>
+<p>Thanks again to the whole community for hitting this milestone with us! Catch us in <a href="https://discord.gg/MUpMjP2">Discord</a> or an <a href="https://github.com/backstage/community">upcoming community session</a> if you have any questions.</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#real-time-builds-and-feedback">Real-time builds and feedback</a></li><li><a href="#custom-homepages-make-techdocs-yours">Custom homepages: Make TechDocs yours</a></li><li><a href="#simpler-yaml-annotations-whats-in-a-ref">Simpler YAML annotations: What's in a ref?</a></li><li><a href="#everything-neat-and-tidy">Everything neat and tidy</a></li><li><a href="#what-should-i-do-to-upgrade">What should I do to upgrade?</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
