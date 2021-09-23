@@ -66,13 +66,11 @@
 catalog entities located in Bitbucket. The processor will crawl your Bitbucket
 account and register entities matching the configured path. This can be useful
 as an alternative to static locations or manually adding things to the catalog.</p>
-<blockquote>
-<p>Note: The Bitbucket Discovery Processor currently only supports a self-hosted
-Bitbucket Server, and not the hosted Bitbucket Cloud product.</p>
-</blockquote>
-<p>To use the discovery processor, you'll need a Bitbucket integration
-<a href="/docs/integrations/bitbucket/locations">set up</a> with a <code>BITBUCKET_TOKEN</code> and a <code>BITBUCKET_API_BASE_URL</code>.
-Then you can add a location target to the catalog configuration:</p>
+<h2><a class="anchor" aria-hidden="true" id="self-hosted-bitbucket-server"></a><a href="#self-hosted-bitbucket-server" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Self-hosted Bitbucket Server</h2>
+<p>To use the discovery processor with a self-hosted Bitbucket Server, you'll need
+a Bitbucket integration <a href="/docs/integrations/bitbucket/locations">set up</a> with a <code>BITBUCKET_TOKEN</code> and a
+<code>BITBUCKET_API_BASE_URL</code>. Then you can add a location target to the catalog
+configuration:</p>
 <pre><code class="hljs css language-yaml"><span class="hljs-attr">catalog:</span>
   <span class="hljs-attr">locations:</span>
     <span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">bitbucket-discovery</span>
@@ -96,6 +94,53 @@ exists, <code>https://bitbucket.mycompany.com/projects/my-project/repos/service-
 will result in:
 <code>https://bitbucket.mycompany.com/projects/my-project/repos/service-a/catalog-info.yaml</code>.</li>
 </ul>
+<h2><a class="anchor" aria-hidden="true" id="bitbucket-cloud"></a><a href="#bitbucket-cloud" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bitbucket Cloud</h2>
+<p>To use the discovery processor with Bitbucket Cloud, you'll need a Bitbucket
+integration <a href="/docs/integrations/bitbucket/locations">set up</a> with a <code>username</code> and an <code>appPassword</code>. Then
+you can add a location target to the catalog configuration:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">locations:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">bitbucket-discovery</span>
+      <span class="hljs-attr">target:</span> <span class="hljs-string">https://bitbucket.org/workspaces/my-workspace</span>
+</code></pre>
+<p>Note the <code>bitbucket-discovery</code> type, as this is not a regular <code>url</code> processor.</p>
+<p>The target is composed of the following parts:</p>
+<ul>
+<li>The base URL for Bitbucket, <code>https://bitbucket.org</code></li>
+<li>The workspace name to scan (following the <code>workspaces/</code> path part), which must
+match a workspace accessible with the username of your integration.</li>
+<li>(Optional) The project key to scan (following the <code>projects/</code> path part),
+which accepts * wildcard tokens. If omitted, repositories from all projects
+in the workspace are included.</li>
+<li>(Optional) The repository blob to scan (following the <code>repos/</code> path part),
+which accepts * wildcard tokens. If omitted, all repositories in the
+workspace are included.</li>
+<li>(Optional) The <code>catalogPath</code> query argument to specify the location within
+each repository to find the catalog YAML file. This will usually be
+<code>/catalog-info.yaml</code> or a similar variation for catalog files stored in the
+root directory of each repository. If omitted, the default value
+<code>catalog-info.yaml</code> will be used.</li>
+<li>(Optional) The <code>q</code> query argument to be passed through to Bitbucket for
+filtering results via the API. This is the most flexible option and will
+reduce the amount of API calls if you have a large workspace.
+<a href="https://developer.atlassian.com/bitbucket/api/2/reference/meta/filtering">See here for the specification</a>
+for the query argument (will be passed as the <code>q</code> query parameter).</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li><code>https://bitbucket.org/workspaces/my-workspace/projects/my-project</code> will find
+all repositories in the <code>my-project</code> project in the <code>my-workspace</code> workspace.</li>
+<li><code>https://bitbucket.org/workspaces/my-workspace/repos/service-*</code> will find all
+repositories starting with <code>service-</code> in the <code>my-workspace</code> workspace.</li>
+<li><code>https://bitbucket.org/workspaces/my-workspace/projects/apis-*/repos/service-*</code>
+will find all repositories starting with <code>service-</code>, in all projects starting
+with <code>apis-</code> in the <code>my-workspace</code> workspace.</li>
+<li><code>https://bitbucket.org/workspaces/my-workspace?q=project.key ~ &quot;my-project&quot;</code>
+will find all repositories in a project containing <code>my-project</code> in its key.</li>
+<li><code>https://bitbucket.org/workspaces/my-workspace?catalogPath=my/nested/path/catalog.yaml</code>
+will find all repositories in the <code>my-workspace</code> workspace and use the catalog
+file at <code>my/nested/path/catalog.yaml</code>.</li>
+</ul>
 <h2><a class="anchor" aria-hidden="true" id="custom-repository-processing"></a><a href="#custom-repository-processing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom repository processing</h2>
 <p>The Bitbucket Discovery Processor will by default emit a location for each
 matching repository for further processing by other processors. However, it is
@@ -115,7 +160,7 @@ repository.</p>
   logger: env.logger,
 });
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/20/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/integrations/bitbucket/locations"><span class="arrow-prev">← </span><span>Locations</span></a><a class="docs-next button" href="/docs/integrations/datadog-rum/installation"><span>Installation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#custom-repository-processing">Custom repository processing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/23/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/integrations/bitbucket/locations"><span class="arrow-prev">← </span><span>Locations</span></a><a class="docs-next button" href="/docs/integrations/datadog-rum/installation"><span>Installation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#self-hosted-bitbucket-server">Self-hosted Bitbucket Server</a></li><li><a href="#bitbucket-cloud">Bitbucket Cloud</a></li><li><a href="#custom-repository-processing">Custom repository processing</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

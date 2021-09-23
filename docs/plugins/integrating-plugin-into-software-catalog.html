@@ -69,8 +69,8 @@ API to change over time</p>
 <h2><a class="anchor" aria-hidden="true" id="steps"></a><a href="#steps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Steps</h2>
 <ol>
 <li><a href="#create-a-plugin">Create a plugin</a></li>
-<li><a href="#export-a-router">Export a router with relative routes</a></li>
-<li><a href="#import-and-use-router-in-the-app">Import and use router in the APP</a></li>
+<li><a href="#reading-entities-from-within-your-plugin">Reading entities from within your plugin</a></li>
+<li><a href="#import-your-plugin-and-embed-in-the-entities-page">Import your plugin and embed in the entities page</a></li>
 </ol>
 <h3><a class="anchor" aria-hidden="true" id="create-a-plugin"></a><a href="#create-a-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create a plugin</h3>
 <p>Follow the <a href="/docs/plugins/create-a-plugin">same process</a> as for standalone plugin. You
@@ -82,85 +82,82 @@ should have a separate package in a folder, which represents your plugin.</p>
 
 <span class="hljs-string">Creating </span><span class="hljs-string">the </span><span class="hljs-string">plugin.</span>..
 </code></pre>
-<h3><a class="anchor" aria-hidden="true" id="export-a-router"></a><a href="#export-a-router" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Export a router</h3>
-<p>Now in the plugin you have a <code>Router.tsx</code> file in the <code>src</code> folder. By default
-it contains only one example route. Create a routing structure needed for your
-plugin, keeping in mind that the whole set of routes defined here are going to
-be mounted under some different route in the App.</p>
-<p>Example:</p>
-<p><code>my-plugin</code> consists of 2 different views - <code>/me</code> and <code>/about</code>. I envision
-people integrating it into plugin catalog as a tab named &quot;MyPlugin&quot;. Then, my
-<code>Routes.tsx</code> for the plugin is going to look like:</p>
-<pre><code class="hljs css language-tsx"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Routes</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/me"</span> <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">MePage</span> /&gt;</span>} /&gt;
-  <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/about"</span> <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">AboutPage</span> /&gt;</span>} /&gt;
-<span class="hljs-tag">&lt;/<span class="hljs-name">Routes</span>&gt;</span>
-</span></code></pre>
-<p>(where MePage and AboutPage are 2 components defined in your plugin and imported
-accordingly inside <code>Router.tsx</code>)</p>
-<blockquote>
-<p>Pay attention, if your <code>MePage</code> references the <code>AboutPage</code> it needs to do it
-through link to <code>about</code>, not <code>/about</code>. This allows react-router v6 to enable
-its relative routing mechanism. Read more -
-<a href="https://reacttraining.com/blog/react-router-v6-pre/#relative-route-path-and-link-to">https://reacttraining.com/blog/react-router-v6-pre/#relative-route-path-and-link-to</a></p>
-</blockquote>
-<h3><a class="anchor" aria-hidden="true" id="import-and-use-router-in-the-app"></a><a href="#import-and-use-router-in-the-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Import and use router in the APP</h3>
-<p>In the <code>app/src/components/catalog/EntityPage.tsx</code> (app === your folder,
-containing Backstage app) import your created Router:</p>
-<pre><code class="hljs css language-tsx">import { Router <span class="hljs-keyword">as</span> MyPluginRouter } <span class="hljs-keyword">from</span> '@backstage/plugin-<span class="hljs-keyword">my</span>-plugin;
-</code></pre>
-<p>Now, you need to mount <code>MyPluginRouter</code> onto some route, for example if you had:</p>
-<pre><code class="hljs css language-tsx"><span class="hljs-keyword">const</span> DefaultEntityPage = <span class="hljs-function">(<span class="hljs-params">{ entity }: { entity: Entity }</span>) =&gt;</span> (
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">EntityPageLayout</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">EntityPageLayout.Content</span>
-      <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span>
-      <span class="hljs-attr">title</span>=<span class="hljs-string">"Overview"</span>
-      <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">OverviewPage</span> <span class="hljs-attr">entity</span>=<span class="hljs-string">{entity}</span> /&gt;</span>}
-    /&gt;
-  <span class="hljs-tag">&lt;/<span class="hljs-name">EntityPageLayout</span>&gt;</span></span>
-);
-</code></pre>
-<p>after you add your code it becomes:</p>
-<pre><code class="hljs css language-tsx"><span class="hljs-keyword">const</span> DefaultEntityPage = <span class="hljs-function">(<span class="hljs-params">{ entity }: { entity: Entity }</span>) =&gt;</span> (
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">EntityPageLayout</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">EntityPageLayout.Content</span>
-      <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span>
-      <span class="hljs-attr">title</span>=<span class="hljs-string">"Overview"</span>
-      <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">OverviewPage</span> <span class="hljs-attr">entity</span>=<span class="hljs-string">{entity}</span> /&gt;</span>}
-    /&gt;
-    <span class="hljs-tag">&lt;<span class="hljs-name">EntityPageLayout.Content</span>
-      <span class="hljs-attr">path</span>=<span class="hljs-string">"/my-plugin"</span>
-      <span class="hljs-attr">title</span>=<span class="hljs-string">"My Plugin"</span>
-      <span class="hljs-attr">element</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">MyPluginRouter</span> <span class="hljs-attr">entity</span>=<span class="hljs-string">{entity}</span> /&gt;</span>}
-    /&gt;
-  <span class="hljs-tag">&lt;/<span class="hljs-name">EntityPageLayout</span>&gt;</span></span>
-);
-</code></pre>
-<p>All of magic happens thanks to the <code>EntityPageLayout</code> component, which comes as
-an export from <code>@backstage/plugin-catalog</code> package.</p>
-<pre><code class="hljs css language-tsx"><span class="hljs-built_in">type</span> EntityPageLayoutContentProps = {
-  <span class="hljs-comment">/**
-   * Going to be transformed into react-router v6
-   * path under the hood. Read more at https://reacttraining.com/blog/react-router-v6-pre
-   */</span>
-  path: <span class="hljs-keyword">string</span>;
-  <span class="hljs-comment">/**
-   * Gets transformed into the title for the tab
-   */</span>
-  <span class="hljs-built_in">title</span>: <span class="hljs-keyword">string</span>;
-  <span class="hljs-comment">/**
-   * Element that is rendered when the location
-   * matches the path provided
-   */</span>
-  element: JSX.Element;
+<h3><a class="anchor" aria-hidden="true" id="reading-entities-from-within-your-plugin"></a><a href="#reading-entities-from-within-your-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reading entities from within your plugin</h3>
+<p>You can access the currently selected entity using the backstage api
+<a href="/docs/reference/plugin-catalog-react.useentity"><code>useEntity</code></a>. For example,</p>
+<pre><code class="hljs css language-tsx"><span class="hljs-keyword">import</span> { useEntity } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-catalog-react'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> MyPluginEntityContent = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> { entity, loading, error, refresh } = useEntity();
+
+  <span class="hljs-comment">// Do something with the entity data...</span>
 };
 </code></pre>
-<blockquote>
-<p>You can either pass the entity from App to the plugin's router as a prop or
-use <code>useEntity</code> hook from <code>@backstage/plugin-catalog</code> directly inside your
-plugin.</p>
-</blockquote>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/20/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/structure-of-a-plugin"><span class="arrow-prev">← </span><span>Structure of a Plugin</span></a><a class="docs-next button" href="/docs/plugins/composability"><span>Composability System Migration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#steps">Steps</a><ul class="toc-headings"><li><a href="#create-a-plugin">Create a plugin</a></li><li><a href="#export-a-router">Export a router</a></li><li><a href="#import-and-use-router-in-the-app">Import and use router in the APP</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<p>Internally <code>useEntity</code> makes use of
+<a href="https://reactjs.org/docs/context.html">react <code>Context</code>s</a>. The entity context is
+provided by the entity page into which your plugin will be embedded.</p>
+<h3><a class="anchor" aria-hidden="true" id="import-your-plugin-and-embed-in-the-entities-page"></a><a href="#import-your-plugin-and-embed-in-the-entities-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Import your plugin and embed in the entities page</h3>
+<p>To begin, you will need to import your plugin in the entities page. Located at
+<code>packages/app/src/components/Catalog/EntityPage.tsx</code> from the root package of
+your backstage app.</p>
+<pre><code class="hljs css language-tsx"><span class="hljs-section">import</span> { <span class="hljs-attribute">MyPluginEntityContent</span> } from <span class="hljs-string">'<span class="hljs-variable">@backstage</span>/plugin-my-plugin;
+</span></code></pre>
+<p>To add your component to the Entity view, you will need to modify the
+<code>packages/app/src/components/Catalog/EntityPage.tsx</code>. Depending on the needs of
+your plugin, you may only care about certain kinds of
+<a href="https://backstage.io/docs/features/software-catalog/descriptor-format">entities</a>,
+each of which has its own
+<a href="https://reactjs.org/docs/rendering-elements.html">element</a> for rendering. This
+functionality is handled by the <code>EntitySwitch</code> component:</p>
+<pre><code class="hljs css language-tsx"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> entityPage = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">component</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{componentPage}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">api</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{apiPage}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">group</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{groupPage}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">user</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{userPage}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">system</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{systemPage}</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span> <span class="hljs-attr">if</span>=<span class="hljs-string">{isKind(</span>'<span class="hljs-attr">domain</span>')} <span class="hljs-attr">children</span>=<span class="hljs-string">{domainPage}</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntitySwitch.Case</span>&gt;</span>{defaultEntityPage}<span class="hljs-tag">&lt;/<span class="hljs-name">EntitySwitch.Case</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">EntitySwitch</span>&gt;</span></span>
+);
+</code></pre>
+<p>At this point, you will need to modify the specific page where you want your
+component to appear. If you are extending the Software Catalog model you will
+need to add a new case to the <code>EntitySwitch</code>. For adding a plugin to an existing
+component type, you modify the existing page. For example, if you want to add
+your plugin to the <code>systemPage</code>, you can add a new tab by adding an
+<code>EntityLayout.Route</code> such as below:</p>
+<pre><code class="hljs css language-tsx"><span class="xml">const systemPage = (
+  <span class="hljs-tag">&lt;<span class="hljs-name">EntityLayout</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntityLayout.Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Overview"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span> <span class="hljs-attr">container</span> <span class="hljs-attr">spacing</span>=</span></span><span class="hljs-template-variable">{3}</span><span class="xml"><span class="hljs-tag"> <span class="hljs-attr">alignItems</span>=<span class="hljs-string">"stretch"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span> <span class="hljs-attr">item</span> <span class="hljs-attr">md</span>=</span></span><span class="hljs-template-variable">{6}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">EntityAboutCard</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"gridItem"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span> <span class="hljs-attr">item</span> <span class="hljs-attr">md</span>=</span></span><span class="hljs-template-variable">{6}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">EntityHasComponentsCard</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"gridItem"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span> <span class="hljs-attr">item</span> <span class="hljs-attr">md</span>=</span></span><span class="hljs-template-variable">{6}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">EntityHasApisCard</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"gridItem"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Grid</span> <span class="hljs-attr">item</span> <span class="hljs-attr">md</span>=</span></span><span class="hljs-template-variable">{6}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">EntityHasResourcesCard</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"gridItem"</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Grid</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">EntityLayout.Route</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntityLayout.Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/diagram"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Diagram"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">EntitySystemDiagramCard</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">EntityLayout.Route</span>&gt;</span>
+
+    </span><span class="hljs-template-tag">{/* <span class="hljs-name">Adding</span> a new tab to the system view */}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">EntityLayout.Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/your-custom-route"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"CustomTitle"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">MyPluginEntityContent</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">EntityLayout.Route</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">EntityLayout</span>&gt;</span>
+);
+</span></code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/23/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/structure-of-a-plugin"><span class="arrow-prev">← </span><span>Structure of a Plugin</span></a><a class="docs-next button" href="/docs/plugins/composability"><span>Composability System Migration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#steps">Steps</a><ul class="toc-headings"><li><a href="#create-a-plugin">Create a plugin</a></li><li><a href="#reading-entities-from-within-your-plugin">Reading entities from within your plugin</a></li><li><a href="#import-your-plugin-and-embed-in-the-entities-page">Import your plugin and embed in the entities page</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
