@@ -23957,13 +23957,13 @@ replace-ext@^1.0.0:
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
 replace-in-file@^6.0.0:
-  version "6.1.0"
-  resolved "https://registry.npmjs.org/replace-in-file/-/replace-in-file-6.1.0.tgz#9f9ddd7bb70d6ad231d2ad692e1b646e73d06647"
-  integrity sha512-URzjyF3nucvejuY13HFd7O+Q6tFJRLKGHLYVvSh+LiZj3gFXzSYGnIkQflnJJulCAI2/RTZaZkpOtdVdW0EhQA==
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/replace-in-file/-/replace-in-file-6.2.0.tgz#9c0e381b0e02f27f83d5ba500bb4046f63d18566"
+  integrity sha512-Im2AF9G/qgkYneOc9QwWwUS/efyyonTUBvzXS2VXuxPawE5yQIjT/e6x4CTijO0Quq48lfAujuo+S89RR2TP2Q==
   dependencies:
-    chalk "^4.0.0"
+    chalk "^4.1.0"
     glob "^7.1.6"
-    yargs "^15.3.1"
+    yargs "^16.2.0"
 
 replaceall@^0.1.6:
   version "0.1.6"
