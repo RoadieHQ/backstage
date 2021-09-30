@@ -46,7 +46,7 @@
     "@backstage/test-utils": "^0.1.11",
     "@graphql-codegen/cli": "^1.21.3",
     "@graphql-codegen/typescript": "^1.17.7",
-    "@graphql-codegen/typescript-resolvers": "^1.17.7",
+    "@graphql-codegen/typescript-resolvers": "^2.2.1",
     "eslint-plugin-graphql": "^4.0.0",
     "msw": "^0.29.0"
   },
