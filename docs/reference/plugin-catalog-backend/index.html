@@ -74,6 +74,7 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogentitydocument">CatalogEntityDocument</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingengine">CatalogProcessingEngine</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingorchestrator">CatalogProcessingOrchestrator</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorcache">CatalogProcessorCache</a></td><td>A cache for storing data during processing.<!-- -->The values stored in the cache are always local to each processor, meaning no processor can see cache values from other processors.<!-- -->The cache instance provided to the CatalogProcessor is also scoped to the entity being processed, meaning that each processor run can't see cache values from processing runs for other entities.<!-- -->Values that are set during a processing run will only be visible in the directly following run. The cache will be overwritten every run unless no new cache items are written, in which case the existing values remain in the cache.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovider">EntityProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityproviderconnection">EntityProviderConnection</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationservice">LocationService</a></td><td></td></tr>
@@ -132,6 +133,7 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesrequest">EntitiesRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesresponse">EntitiesResponse</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiessearchfilter">EntitiesSearchFilter</a></td><td>Matches rows in the entities_search table.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityancestryresponse">EntityAncestryResponse</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityfilter">EntityFilter</a></td><td>A filter expression for entities.<!-- -->Any (at least one) of the outer sets must match, within which all of the individual filters must match.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitypagination">EntityPagination</a></td><td>A pagination rule for entities.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingrequest">EntityProcessingRequest</a></td><td></td></tr>

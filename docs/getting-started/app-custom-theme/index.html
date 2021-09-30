@@ -89,9 +89,7 @@ exported by <a href="https://www.npmjs.com/package/@backstage/theme">@backstage/
 in combination with
 <a href="https://material-ui.com/customization/theming/#createmuitheme-options-args-theme">createTheme</a>
 from <a href="https://www.npmjs.com/package/@material-ui/core">@material-ui/core</a>. See
-the
-<a href="https://github.com/backstage/backstage/tree/master/packages/theme/src">@backstage/theme source</a>
-and the implementation of the <code>createTheme</code> function for how this is done.</p>
+the &quot;Overriding Backstage and Material UI css rules&quot; section below.</p>
 <p>You can also create a theme from scratch that matches the <code>BackstageTheme</code> type
 exported by <a href="https://www.npmjs.com/package/@backstage/theme">@backstage/theme</a>.
 See the
@@ -177,6 +175,72 @@ want to use the default themes, they are exported as <code>lightTheme</code> and
   },
 });
 </code></pre>
+<h2><a class="anchor" aria-hidden="true" id="overriding-backstage-and-material-ui-components-styles"></a><a href="#overriding-backstage-and-material-ui-components-styles" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overriding Backstage and Material UI components styles</h2>
+<p>When creating a custom theme you would be applying different values to
+component's css rules that use the theme object. For example, a Backstage
+component's styles might look like this:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">const</span> useStyles = makeStyles&lt;BackstageTheme&gt;(
+  <span class="hljs-function"><span class="hljs-params">theme</span> =&gt;</span> ({
+    header: {
+      padding: theme.spacing(<span class="hljs-number">3</span>),
+      boxShadow: <span class="hljs-string">'0 0 8px 3px rgba(20, 20, 20, 0.3)'</span>,
+      backgroundImage: theme.page.backgroundImage,
+    },
+  }),
+  { name: <span class="hljs-string">'BackstageHeader'</span> },
+);
+</code></pre>
+<p>Notice how the <code>padding</code> is getting its value from <code>theme.spacing</code>, that means
+that setting a value for spacing in your custom theme would affect this
+component padding property and the same goes for <code>backgroundImage</code> which uses
+<code>theme.page.backgroundImage</code>. However, the <code>boxShadow</code> property doesn't
+reference any value from the theme, that means that creating a custom theme
+wouldn't be enough to alter the <code>box-shadow</code> property or to add css rules that
+aren't already defined like a margin. For these cases you should also create an
+override.</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { createApp } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/core-app-api'</span>;
+<span class="hljs-keyword">import</span> { BackstageTheme, lightTheme } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/theme'</span>;
+<span class="hljs-comment">/**
+ * The `@backstage/core-components` package exposes this type that
+ * contains all Backstage and `material-ui` components that can be
+ * overridden along with the classes key those components use.
+ */</span>
+<span class="hljs-keyword">import</span> { BackstageOverrides } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/core-components'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> createCustomThemeOverrides = (
+  theme: BackstageTheme,
+): <span class="hljs-function"><span class="hljs-params">BackstageOverrides</span> =&gt;</span> {
+  <span class="hljs-keyword">return</span> {
+    BackstageHeader: {
+      header: {
+        width: <span class="hljs-string">'auto'</span>,
+        margin: <span class="hljs-string">'20px'</span>,
+        boxShadow: <span class="hljs-string">'none'</span>,
+        borderBottom: <span class="hljs-string">`4px solid <span class="hljs-subst">${theme.palette.primary.main}</span>`</span>,
+      },
+    },
+  };
+};
+
+<span class="hljs-keyword">const</span> app = createApp({
+  apis: ...,
+  plugins: ...,
+  themes: [{
+    id: <span class="hljs-string">'my-theme'</span>,
+    title: <span class="hljs-string">'My Custom Theme'</span>,
+    variant: <span class="hljs-string">'light'</span>,
+    theme: {
+      ...lightTheme,
+      overrides: {
+        <span class="hljs-comment">// These are the overrides that Backstage applies to `material-ui` components</span>
+        ...lightTheme.overrides,
+        <span class="hljs-comment">// These are your custom overrides, either to `material-ui` or Backstage components.</span>
+        ...createCustomThemeOverrides(lightTheme),
+      },
+    },
+  }]
+});
+</code></pre>
 <h2><a class="anchor" aria-hidden="true" id="custom-logo"></a><a href="#custom-logo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom Logo</h2>
 <p>In addition to a custom theme, you can also customize the logo displayed at the
 far top left of the site.</p>
@@ -199,7 +263,7 @@ this, place your new image into a new subdirectory such as
   <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{MyCustomLogoFull}</span> /&gt;</span></span>;
 };
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/23/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started/configure-app-with-plugins"><span class="arrow-prev">← </span><span>Configuring App with plugins</span></a><a class="docs-next button" href="/docs/getting-started/keeping-backstage-updated"><span>Keeping Backstage Updated</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-a-custom-theme">Creating a Custom Theme</a></li><li><a href="#using-your-custom-theme">Using your Custom Theme</a></li><li><a href="#example-of-a-custom-theme">Example of a custom theme</a></li><li><a href="#custom-logo">Custom Logo</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/30/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started/configure-app-with-plugins"><span class="arrow-prev">← </span><span>Configuring App with plugins</span></a><a class="docs-next button" href="/docs/getting-started/keeping-backstage-updated"><span>Keeping Backstage Updated</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-a-custom-theme">Creating a Custom Theme</a></li><li><a href="#using-your-custom-theme">Using your Custom Theme</a></li><li><a href="#example-of-a-custom-theme">Example of a custom theme</a></li><li><a href="#overriding-backstage-and-material-ui-components-styles">Overriding Backstage and Material UI components styles</a></li><li><a href="#custom-logo">Custom Logo</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

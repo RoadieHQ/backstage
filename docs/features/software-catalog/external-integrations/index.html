@@ -198,7 +198,104 @@ export default async function createPlugin(
 </code></pre>
 <p>Start up the backend - it should now start reading from the previously
 registered location and you'll see your entities start to appear in Backstage.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/23/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/extending-the-model"><span class="arrow-prev">← </span><span>Extending the model</span></a><a class="docs-next button" href="/docs/features/software-catalog/catalog-customization"><span>Catalog Customization</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#background">Background</a></li><li><a href="#processors-and-the-ingestion-loop">Processors and the Ingestion Loop</a></li><li><a href="#deciding-on-the-new-locations">Deciding on the New Locations</a></li><li><a href="#creating-a-catalog-data-reader-processor">Creating a Catalog Data Reader Processor</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<h2><a class="anchor" aria-hidden="true" id="caching-processing-results"></a><a href="#caching-processing-results" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Caching processing results</h2>
+<p>The catalog periodically refreshes entities in the catalog, and in doing so it
+calls out to external systems to fetch changes. This can be taxing for upstream
+services and large deployments may get rate limited if too many requests are
+sent. Luckily many external systems provide ETag support to check for changes
+which usually doesn't count towards the quota and saves resources both
+internally and externally.</p>
+<p>The catalog has built in support for leveraging ETags when refreshing external
+locations in GitHub. This example aims to demonstrate how to add the same
+behavior for <code>system-x</code> that we implemented earlier.</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { UrlReader } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/backend-common'</span>;
+<span class="hljs-keyword">import</span> { Entity, LocationSpec } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/catalog-model'</span>;
+<span class="hljs-keyword">import</span> {
+  results,
+  CatalogProcessor,
+  CatalogProcessorEmit,
+  CatalogProcessorCache,
+  CatalogProcessorParser,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-catalog-backend'</span>;
+
+<span class="hljs-comment">// It's recommended to always bump the CACHE_KEY version if you make</span>
+<span class="hljs-comment">// changes to the processor implementation or CacheItem.</span>
+<span class="hljs-keyword">const</span> CACHE_KEY = <span class="hljs-string">'v1'</span>;
+
+<span class="hljs-comment">// Our cache item contains the ETag used in the upstream request</span>
+<span class="hljs-comment">// as well as the processing result used when the Etag matches.</span>
+<span class="hljs-comment">// Bump the CACHE_KEY version if you make any changes to this type.</span>
+<span class="hljs-keyword">type</span> CacheItem = {
+  etag: <span class="hljs-built_in">string</span>;
+  entity: Entity;
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> SystemXReaderProcessor <span class="hljs-keyword">implements</span> CatalogProcessor {
+  <span class="hljs-keyword">constructor</span>(<span class="hljs-params"><span class="hljs-keyword">private</span> readonly reader: UrlReader</span>) {}
+
+  <span class="hljs-comment">// It's recommended to give the processor a unique name.</span>
+  getProcessorName() {
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'system-x-processor'</span>;
+  }
+
+  <span class="hljs-keyword">async</span> readLocation(
+    location: LocationSpec,
+    _optional: <span class="hljs-built_in">boolean</span>,
+    emit: CatalogProcessorEmit,
+    _parser: CatalogProcessorParser,
+    cache: CatalogProcessorCache,
+  ): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">boolean</span>&gt; {
+    <span class="hljs-comment">// Pick a custom location type string. A location will be</span>
+    <span class="hljs-comment">// registered later with this type.</span>
+    <span class="hljs-keyword">if</span> (location.type !== <span class="hljs-string">'system-x'</span>) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+    <span class="hljs-keyword">const</span> cacheItem = <span class="hljs-keyword">await</span> cache.get&lt;CacheItem&gt;(CACHE_KEY);
+    <span class="hljs-keyword">try</span> {
+      <span class="hljs-comment">// This assumes an URL reader that returns the response together with the ETag.</span>
+      <span class="hljs-comment">// We send the ETag from the previous run if it exists.</span>
+      <span class="hljs-comment">// The previous ETag will be set in the headers for the outgoing request and system-x</span>
+      <span class="hljs-comment">// is going to throw NOT_MODIFIED (HTTP 304) if the ETag matches.</span>
+      <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> <span class="hljs-keyword">this</span>.reader.readUrl?.(location.target, {
+        etag: cacheItem?.etag,
+      });
+      <span class="hljs-keyword">if</span> (!response) {
+        <span class="hljs-comment">// readUrl is currently optional to implement so we have to check if we get a response back.</span>
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+          <span class="hljs-string">'No URL reader that can parse system-x targets installed'</span>,
+        );
+      }
+
+      <span class="hljs-comment">// ETag is optional in the response but we need it to cache the result.</span>
+      <span class="hljs-keyword">if</span> (!response.etag) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(
+          <span class="hljs-string">'No ETag returned from system-x, cannot use response for caching'</span>,
+        );
+      }
+
+      <span class="hljs-comment">// For this example the JSON payload is a single entity.</span>
+      <span class="hljs-keyword">const</span> entity: Entity = <span class="hljs-built_in">JSON</span>.parse(response.buffer.toString());
+      emit(results.entity(location, entity));
+
+      <span class="hljs-comment">// Update the cache with the new ETag and entity used for the next run.</span>
+      <span class="hljs-keyword">await</span> cache.set&lt;CacheItem&gt;(CACHE_KEY, {
+        etag: response.etag,
+        entity,
+      });
+    } <span class="hljs-keyword">catch</span> (error) {
+      <span class="hljs-keyword">if</span> (error.name === <span class="hljs-string">'NotModifiedError'</span> &amp;&amp; cacheItem) {
+        <span class="hljs-comment">// The ETag matches and we have a cached value from the previous run.</span>
+        emit(results.entity(location, cacheItem.entity));
+      }
+      <span class="hljs-keyword">const</span> message = <span class="hljs-string">`Unable to read <span class="hljs-subst">${location.<span class="hljs-keyword">type</span>}</span>, <span class="hljs-subst">${error}</span>`</span>;
+      emit(results.generalError(location, message));
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+  }
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 9/30/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/extending-the-model"><span class="arrow-prev">← </span><span>Extending the model</span></a><a class="docs-next button" href="/docs/features/software-catalog/catalog-customization"><span>Catalog Customization</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#background">Background</a></li><li><a href="#processors-and-the-ingestion-loop">Processors and the Ingestion Loop</a></li><li><a href="#deciding-on-the-new-locations">Deciding on the New Locations</a></li><li><a href="#creating-a-catalog-data-reader-processor">Creating a Catalog Data Reader Processor</a></li><li><a href="#caching-processing-results">Caching processing results</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
