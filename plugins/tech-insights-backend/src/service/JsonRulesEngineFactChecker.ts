@@ -15,6 +15,7 @@
  */
 
 import {
+  BooleanCheckResult,
   CheckResult,
   FactSchema,
   TechInsightCheck,
@@ -24,8 +25,11 @@ import { Engine } from 'json-rules-engine';
 import { TechInsightCheckRegistry } from './CheckRegistry';
 import { TechInsightsStore } from './TechInsightsDatabase';
 
-export interface FactChecker<CheckType extends TechInsightCheck> {
-  check(entity: string, checkName: string): Promise<CheckResult>;
+export interface FactChecker<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  check(entity: string, checkName: string): Promise<CheckResultType>;
   addCheck(check: CheckType): Promise<boolean>;
   getChecks(): CheckType[];
   validate(check: CheckType): Promise<boolean>;
@@ -33,7 +37,7 @@ export interface FactChecker<CheckType extends TechInsightCheck> {
 
 // This should likely be a submodule when we expand it to handle multiple checks
 export class JsonRulesEngineFactChecker
-  implements FactChecker<TechInsightJsonRuleCheck>
+  implements FactChecker<TechInsightJsonRuleCheck, BooleanCheckResult>
 {
   /*
   Checks:
@@ -58,7 +62,7 @@ export class JsonRulesEngineFactChecker
     this.checkRegistry = new TechInsightCheckRegistry(checks);
   }
 
-  async check(entity: string, checkName: string): Promise<CheckResult> {
+  async check(entity: string, checkName: string): Promise<BooleanCheckResult> {
     const engine = new Engine();
     const techInsightCheck = this.checkRegistry.get(checkName);
     const facts = await this.repository.retrieveLatestFactsForRefs(

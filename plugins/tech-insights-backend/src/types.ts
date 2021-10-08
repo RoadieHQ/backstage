@@ -31,14 +31,15 @@ export type TechInsightFact = {
     kind: string;
     name: string;
   };
-  facts: Record<string, number | string | boolean | DateTime>;
+  facts: Record<string, number | string | boolean | DateTime | []>;
 };
 
 type FactValueDefinitions = {
   [key: string]: {
-    type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime';
-    description?: string;
+    type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
+    description: string;
     since?: string;
+    metadata: Record<string, any>;
   };
 };
 export type FactSchema = {
@@ -75,6 +76,10 @@ export type FactRetrieverRegistration = {
   // Other options integrator could find helpful
 };
 
+export interface BooleanCheckResult extends CheckResult {
+  value: boolean;
+}
+
 /**
  * Generic CheckResult
  *
@@ -82,7 +87,6 @@ export type FactRetrieverRegistration = {
  * A collection of these should be parseable by the frontend to display scorecards
  */
 export type CheckResult = {
-  value: boolean;
   text: string;
   // Possibly fact data used to calculate the result of this check
   // A check could be good here as well but since implementation might differ, tricky to define a shape for

@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-import { FactRetrieverEngine } from './FactRetrieverEngine';
+import { FactRetrieverEngine } from './fact/FactRetrieverEngine';
 import {
   FactChecker,
   JsonRulesEngineFactChecker,
 } from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
-import { FactRetrieverRegistry } from './FactRetrieverRegistry';
+import { FactRetrieverRegistry } from './fact/FactRetrieverRegistry';
 import {
+  BooleanCheckResult,
+  CheckResult,
   FactRetrieverRegistration,
   TechInsightCheck,
   TechInsightJsonRuleCheck,
@@ -45,9 +47,12 @@ export interface TechInsightsOptions {
   database: PluginDatabaseManager;
 }
 
-export type TechInsightsContext<CheckType extends TechInsightCheck> = {
+export type TechInsightsContext<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> = {
   factRetrieverEngine: FactRetrieverEngine;
-  factChecker: FactChecker<CheckType>;
+  factChecker: FactChecker<CheckType, CheckResultType>;
   repository: TechInsightsStore;
 };
 
@@ -58,7 +63,9 @@ export class DefaultTechInsightsBuilder {
     this.options = options;
   }
 
-  async build(): Promise<TechInsightsContext<TechInsightJsonRuleCheck>> {
+  async build(): Promise<
+    TechInsightsContext<TechInsightJsonRuleCheck, BooleanCheckResult>
+  > {
     const { factRetrievers, checks, config, discovery, database } =
       this.options;
 
