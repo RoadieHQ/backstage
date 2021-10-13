@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Thu, 16 Sep 2021 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 30 Sep 2021 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,16 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[The Big 5-0]]></title>
+            <link>https://backstage.io/blog/2021/09/30/50-public-adopters.html</link>
+            <guid>https://backstage.io/blog/2021/09/30/50-public-adopters.html</guid>
+            <pubDate>Thu, 30 Sep 2021 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>We’re excited to celebrate an important milestone for the Backstage community: 50+ <a href="https://github.com/backstage/backstage/blob/master/ADOPTERS.md">public adopters</a>!</p>
+<p><img src="/blog/assets/21-09-30/50-public-adopters.png" alt="Celebrating all of Backstage’s 50+ adopters."></p>
+<p>Before digging into why we believe this is so important, we want to send a huge “thank you” to all the Backstage adopters and contributors who have helped grow the Backstage community. First, to the publicly listed adopters as your visible support for the project excites others to learn more about Backstage. Second, to those non-listed adopters, many of whom still engage in the community via issues, comments, or code contributions. Thank you!</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[The TechDocs Beta has landed]]></title>
             <link>https://backstage.io/blog/2021/09/16/the-techdocs-beta-has-landed.html</link>

@@ -36,6 +36,7 @@
 <tr><td><a href="/docs/reference/core-plugin-api.createrouteref">createRouteRef(config)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.createsubrouteref">createSubRouteRef(config)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.getcomponentdata">getComponentData(node, type)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.useanalytics">useAnalytics()</a></td><td>Get a pre-configured analytics tracker.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useapi">useApi(apiRef)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useapiholder">useApiHolder()</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useelementfilter">useElementFilter(node, filterFn, dependencies)</a></td><td>useElementFilter is a utility that helps you narrow down and retrieve data from a React element tree, typically operating on the <code>children</code> property passed in to a component. A common use-case is to construct declarative APIs where a React component defines its behavior based on its children, such as the relationship between <code>Routes</code> and <code>Route</code> in <code>react-router</code>.<!-- -->The purpose of this hook is similar to <code>React.Children.map</code>, and it expands upon it to also handle traversal of fragments and Backstage specific things like the <code>FeatureFlagged</code> component.<!-- -->The return value of the hook is computed by the provided filter function, but with added memoization based on the input <code>node</code>. If further memoization dependencies are used in the filter function, they should be added to the third <code>dependencies</code> argument, just like <code>useMemo</code>, <code>useEffect</code>, etc.</td></tr>
@@ -63,8 +64,11 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/core-plugin-api.alertapiref">alertApiRef</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsapiref">analyticsApiRef</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticscontext">AnalyticsContext</a></td><td>Provides components in the child react tree an Analytics Context, ensuring all analytics events captured within the context have relevant attributes.<!-- -->Analytics contexts are additive, meaning the context ultimately emitted with an event is the combination of all contexts in the parent tree.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.appthemeapiref">appThemeApiRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.auth0authapiref">auth0AuthApiRef</a></td><td>Provides authentication towards Auth0 APIs.<!-- -->See <a href="https://auth0.com/docs/scopes/current/oidc-scopes">https://auth0.com/docs/scopes/current/oidc-scopes</a> for a full list of supported scopes.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.bitbucketauthapiref">bitbucketAuthApiRef</a></td><td>Provides authentication towards Bitbucket APIs.<!-- -->See <a href="https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/">https://support.atlassian.com/bitbucket-cloud/docs/use-oauth-on-bitbucket-cloud/</a> for a full list of supported scopes.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.configapiref">configApiRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.discoveryapiref">discoveryApiRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.errorapiref">errorApiRef</a></td><td></td></tr>
@@ -92,6 +96,12 @@
 <tbody>
 <tr><td><a href="/docs/reference/core-plugin-api.alertapi">AlertApi</a></td><td>The alert API is used to report alerts to the app, and display them to the user.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.alertmessage">AlertMessage</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsapi">AnalyticsApi</a></td><td>The Analytics API is used to track user behavior in a Backstage instance.<!-- -->To instrument your App or Plugin, retrieve an analytics tracker using the useAnalytics() hook. This will return a pre-configured AnalyticsTracker with relevant methods for instrumentation.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticscontextvalue">AnalyticsContextValue</a></td><td>Analytics context envelope.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsevent">AnalyticsEvent</a></td><td>Represents an event worth tracking in an analytics system that could inform how users of a Backstage instance are using its features.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticseventattributes">AnalyticsEventAttributes</a></td><td>A structure allowing other arbitrary metadata to be provided by analytics event emitters.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticstracker">AnalyticsTracker</a></td><td>Represents a tracker with methods that can be called to track events in a configured analytics service.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.anyanalyticscontext">AnyAnalyticsContext</a></td><td>Allow arbitrary scalar values as context attributes too.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.anyapifactory">AnyApiFactory</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.anyapiref">AnyApiRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.apifactory">ApiFactory</a></td><td></td></tr>
@@ -111,6 +121,7 @@
 <tr><td><a href="/docs/reference/core-plugin-api.backstageidentityapi">BackstageIdentityApi</a></td><td>This API provides access to the user's identity within Backstage.<!-- -->An auth provider that implements this interface can be used to sign-in to backstage. It is not intended to be used directly from a plugin, but instead serves as a connection between this authentication method and the app's</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.backstageplugin">BackstagePlugin</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.booterrorpageprops">BootErrorPageProps</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.commonanalyticscontext">CommonAnalyticsContext</a></td><td>Common analytics context attributes.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.configapi">ConfigApi</a></td><td>The Config API is used to provide a mechanism to access the runtime configuration of the system.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.discoveryapi">DiscoveryApi</a></td><td>The discovery API is used to provide a mechanism for plugins to discover the endpoint to use to talk to their backend counterpart.<!-- -->The purpose of the discovery API is to allow for many different deployment setups and routing methods through a central configuration, instead of letting each individual plugin manage that configuration.<!-- -->Implementations of the discovery API can be a simple as a URL pattern using the pluginId, but could also have overrides for individual plugins, or query a separate discovery service.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.errorapi">ErrorApi</a></td><td>The error API is used to report errors to the app, and display them to the user.<!-- -->Plugins can use this API as a method of displaying errors to the user, but also to report errors for collection by error reporting services.<!-- -->If an error can be displayed inline, e.g. as feedback in a form, that should be preferred over relying on this API to display the error. The main use of this API for displaying errors should be for asynchronous errors, such as a failing background process.<!-- -->Even if an error is displayed inline, it should still be reported through this API if it would be useful to collect or log it for debugging purposes, but with the hidden flag set. For example, an error arising from form field validation should probably not be reported, while a failed REST call would be useful to report.</td></tr>

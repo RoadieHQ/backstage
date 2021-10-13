@@ -2,12 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2021-09-16T06:00:00.000Z</updated>
+    <updated>2021-09-30T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[The Big 5-0]]></title>
+        <id>https://backstage.io/blog/2021/09/30/50-public-adopters.html</id>
+        <link href="https://backstage.io/blog/2021/09/30/50-public-adopters.html"/>
+        <updated>2021-09-30T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>We’re excited to celebrate an important milestone for the Backstage community: 50+ <a href="https://github.com/backstage/backstage/blob/master/ADOPTERS.md">public adopters</a>!</p>
+<p><img src="/blog/assets/21-09-30/50-public-adopters.png" alt="Celebrating all of Backstage’s 50+ adopters."></p>
+<p>Before digging into why we believe this is so important, we want to send a huge “thank you” to all the Backstage adopters and contributors who have helped grow the Backstage community. First, to the publicly listed adopters as your visible support for the project excites others to learn more about Backstage. Second, to those non-listed adopters, many of whom still engage in the community via issues, comments, or code contributions. Thank you!</p>
+]]></summary>
+        <author>
+            <name>Francesco Corti, Spotify</name>
+            <uri>https://github.com/fcorti/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The TechDocs Beta has landed]]></title>
         <id>https://backstage.io/blog/2021/09/16/the-techdocs-beta-has-landed.html</id>

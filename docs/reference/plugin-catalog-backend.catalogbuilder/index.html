@@ -12,6 +12,7 @@
 <ul>
 <li>Entity policies can be added or replaced. These are automatically run after the processors' pre-processing steps. All policies are given the chance to inspect the entity, and all of them have to pass in order for the entity to be considered valid from an overall point of view. - Placeholder resolvers can be replaced or added. These run on the raw structured data between the parsing and pre-processing steps, to replace dollar-prefixed entries with their actual values (like $file). - Field format validators can be replaced. These check the format of individual core fields such as metadata.name, to ensure that they adhere to certain rules. - Processors can be added or replaced. These implement the functionality of reading, parsing, validating, and processing the entity data before it is persisted in the catalog.</li>
 </ul>
+<p>NOTE(freben): Not actually marking the class as deprecated formally, since it would appear to end users that even using <code>create</code> is deprecated. We will instead hot-swap the entire exported class when we are ready.</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">class</span> CatalogBuilder 
 </code></pre>
