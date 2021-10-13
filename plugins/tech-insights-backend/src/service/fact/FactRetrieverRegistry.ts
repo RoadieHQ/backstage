@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-import { FactRetriever, FactRetrieverRegistration, FactSchema } from '../types';
+import {
+  FactRetriever,
+  FactRetrieverRegistration,
+  FactSchema,
+} from '@backstage/plugin-tech-insights-common';
 import { ConflictError, NotFoundError } from '@backstage/errors';
 
 export class FactRetrieverRegistry {

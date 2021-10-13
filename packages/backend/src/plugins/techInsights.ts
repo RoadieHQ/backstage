@@ -15,12 +15,15 @@
  */
 import {
   createRouter,
-  exampleChecks,
-  exampleFactRetriever,
   DefaultTechInsightsBuilder,
+  exampleFactRetriever,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
+import {
+  exampleChecks,
+  JsonRulesEngineFactCheckerFactory,
+} from '@backstage/plugin-tech-insights-backend-module-jsonfc';
 
 export default async function createPlugin({
   logger,
@@ -39,7 +42,7 @@ export default async function createPlugin({
         cadence: '* 1 * * *',
       },
     ],
-    checks: exampleChecks,
+    factCheckerFactory: new JsonRulesEngineFactCheckerFactory(exampleChecks),
   });
 
   return await createRouter({

@@ -14,6 +14,11 @@
  * limitations under the License.
  */
 
-export * from './service/router';
-export * from './example';
-export { DefaultTechInsightsBuilder } from './service/DefaultTechInsightsBuilder';
+import * as anything from './';
+
+describe('search-common', () => {
+  // TODO: Test real things once they exist.
+  it('should exist', () => {
+    expect(anything).toBeTruthy();
+  });
+});

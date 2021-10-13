@@ -13,7 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {
+  DynamicFactCallback,
+  Event,
+  FactOptions,
+  TopLevelCondition,
+} from 'json-rules-engine';
+import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 
-export * from './service/router';
-export * from './example';
-export { DefaultTechInsightsBuilder } from './service/DefaultTechInsightsBuilder';
+interface DynamicFact<T = unknown> {
+  id: string;
+  calculationMethod: DynamicFactCallback<T> | T;
+  options?: FactOptions;
+}
+
+export type Rule = {
+  conditions: TopLevelCondition;
+  event: Event;
+  name?: string;
+  priority?: number;
+};
+
+export interface TechInsightJsonRuleCheck extends TechInsightCheck {
+  rule: Rule;
+  dynamicFacts?: DynamicFact[];
+}

@@ -17,41 +17,72 @@
 import express from 'express';
 import Router from 'express-promise-router';
 import { Config } from '@backstage/config';
-import { TechInsightsStore } from './TechInsightsDatabase';
-import { FactRetrieverEngine } from './FactRetrieverEngine';
-import { FactChecker } from './JsonRulesEngineFactChecker';
+import {
+  TechInsightsStore,
+  FactChecker,
+  TechInsightCheck,
+  CheckResult,
+} from '@backstage/plugin-tech-insights-common';
 import { Logger } from 'winston';
-import { TechInsightCheck } from '../types';
+import { DateTime } from 'luxon';
 
-export interface RouterOptions<CheckType extends TechInsightCheck> {
-  factRetrieverEngine: FactRetrieverEngine;
-  factChecker: FactChecker<CheckType>;
+export interface RouterOptions<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  factChecker: FactChecker<CheckType, CheckResultType>;
   repository: TechInsightsStore;
   config: Config;
   logger: Logger;
 }
 
-export async function createRouter<CheckType extends TechInsightCheck>(
-  options: RouterOptions<CheckType>,
-): Promise<express.Router> {
+export async function createRouter<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+>(options: RouterOptions<CheckType, CheckResultType>): Promise<express.Router> {
   const router = Router();
 
-  // @ts-ignore
-  const { repository, factRetrieverEngine, factChecker } = options;
+  const { repository, factChecker } = options;
 
-  router.get('/check/:check/:namespace/:kind/:name', async (req, res) => {
+  router.get('/checks', (_req, res) => {
+    return res.send(factChecker.getChecks());
+  });
+
+  router.get('fact-schemas', (req, res) => {
+    const refs = req.query.refs as string[];
+    return res.send(repository.getLatestSchemas(refs));
+  });
+
+  router.get('/checks/:check/:namespace/:kind/:name', async (req, res) => {
     const { namespace, kind, name, check } = req.params;
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     const checkResult = await factChecker.check(entityTriplet, check);
     return res.send(checkResult);
   });
 
-  router.get('/checks', (_req, res) => {
-    return res.send(factChecker.getChecks());
+  router.get('facts/latest/:namespace/:kind/:name', (req, res) => {
+    const { namespace, kind, name } = req.params;
+    const refs = req.query.refs as string[];
+    const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
+    return res.send(repository.getLatestFactsForRefs(refs, entityTriplet));
   });
 
-  // get facts
-  // get facts between dates
+  router.get('facts/range/:namespace/:kind/:name', (req, res) => {
+    const { namespace, kind, name } = req.params;
+    const refs = req.query.refs as string[];
+    const startDatetime = DateTime.fromISO(req.query.startDatetime as string);
+    const endDatetime = DateTime.fromISO(req.query.endDatetime as string);
+    const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
+    return res.send(
+      repository.getFactsBetweenTimestampsForRefs(
+        refs,
+        entityTriplet,
+        startDatetime,
+        endDatetime,
+      ),
+    );
+  });
+
   // get scorecards (aggregation of checks)
 
   return router;

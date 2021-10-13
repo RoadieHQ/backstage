@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { TechInsightCheck } from '../types';
 import { ConflictError, NotFoundError } from '@backstage/errors';
+import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 
 export class TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
   private readonly checks = new Map<string, CheckType>();

@@ -16,13 +16,8 @@
 
 import { Config } from '@backstage/config';
 import { DateTime } from 'luxon';
-import {
-  DynamicFactCallback,
-  Event,
-  FactOptions,
-  TopLevelCondition,
-} from 'json-rules-engine';
 import { PluginEndpointDiscovery } from '@backstage/backend-common';
+import { Logger } from 'winston';
 
 export type TechInsightFact = {
   ref: string;
@@ -39,7 +34,8 @@ type FactValueDefinitions = {
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
     description: string;
     since?: string;
-    metadata: Record<string, any>;
+    metadata?: Record<string, any>;
+    entityKinds: string[];
   };
 };
 export type FactSchema = {
@@ -50,7 +46,7 @@ export type FactSchema = {
 export type FactRetrieverContext = {
   config: Config;
   discovery: PluginEndpointDiscovery;
-  // ...others
+  logger: Logger;
 };
 
 // TODO: Possibly add return type type param
@@ -72,12 +68,26 @@ export type FactRetrieverRegistration = {
    * To be complemented with an event listening solution when bus across the app is implemented
    */
   cadence?: string;
-
-  // Other options integrator could find helpful
 };
 
-export interface BooleanCheckResult extends CheckResult {
-  value: boolean;
+export interface FactCheckerFactory<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  construct(
+    schemas: FactSchema[],
+    repository: TechInsightsStore,
+  ): FactChecker<CheckType, CheckResultType>;
+}
+
+export interface FactChecker<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  check(entity: string, checkName: string): Promise<CheckResultType>;
+  addCheck(check: CheckType): Promise<boolean>;
+  getChecks(): CheckType[];
+  validate(check: CheckType): Promise<boolean>;
 }
 
 /**
@@ -88,27 +98,13 @@ export interface BooleanCheckResult extends CheckResult {
  */
 export type CheckResult = {
   text: string;
-  // Possibly fact data used to calculate the result of this check
-  // A check could be good here as well but since implementation might differ, tricky to define a shape for
+  facts: TechInsightFact[];
+  check: TechInsightCheck;
 };
 
-/**
- * Specific to JSON rule engine impl
- */
-
-// TODO: wrap types from json-rules-engine to some more specific internal types?
-interface DynamicFact<T = unknown> {
-  id: string;
-  calculationMethod: DynamicFactCallback<T> | T;
-  options?: FactOptions;
+export interface BooleanCheckResult extends CheckResult {
+  value: boolean;
 }
-
-export type Rule = {
-  conditions: TopLevelCondition;
-  event: Event;
-  name?: string;
-  priority?: number;
-};
 
 export interface TechInsightCheck {
   name: string;
@@ -116,7 +112,22 @@ export interface TechInsightCheck {
   factRefs: string[];
 }
 
-export interface TechInsightJsonRuleCheck extends TechInsightCheck {
-  rule: Rule;
-  dynamicFacts?: DynamicFact[];
+export interface TechInsightsStore {
+  insertFacts(facts: TechInsightFact[]): Promise<void>;
+
+  getLatestFactsForRefs(
+    refs: string[],
+    entity: string,
+  ): Promise<{ [factRef: string]: TechInsightFact }>;
+
+  getFactsBetweenTimestampsForRefs(
+    refs: string[],
+    entity: string,
+    startDateTime: DateTime,
+    endDateTime: DateTime,
+  ): Promise<{ [factRef: string]: TechInsightFact }>;
+
+  insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
+
+  getLatestSchemas(refs: string[]): Promise<FactSchema[]>;
 }

@@ -14,6 +14,5 @@
  * limitations under the License.
  */
 
-export * from './service/router';
-export * from './example';
-export { DefaultTechInsightsBuilder } from './service/DefaultTechInsightsBuilder';
+export { Factory as JsonRulesEngineFactCheckerFactory } from './service/JsonRulesEngineFactChecker';
+export { exampleChecks } from './service/exampleChecks';

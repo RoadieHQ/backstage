@@ -15,7 +15,14 @@
  */
 import { resolvePackagePath } from '@backstage/backend-common';
 import { Knex } from 'knex';
-import { FactSchema, TechInsightFact } from '../types';
+import {
+  FactSchema,
+  TechInsightFact,
+  TechInsightsStore,
+} from '@backstage/plugin-tech-insights-common';
+import { rsort } from 'semver';
+import { groupBy } from 'lodash';
+import { DateTime } from 'luxon';
 
 export type RawDbFactRow = {
   ref: string;
@@ -31,17 +38,6 @@ type RawDbFactSchemaRow = {
   version: string;
   schema: string;
 };
-
-export interface TechInsightsStore {
-  insertFacts(facts: TechInsightFact[]): Promise<void>;
-
-  retrieveLatestFactsForRefs(
-    refs: string[],
-    entity: string,
-  ): Promise<{ [factRef: string]: TechInsightFact }>;
-
-  insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
-}
 
 const migrationsDir = resolvePackagePath(
   '@backstage/plugin-tech-insights-backend',
@@ -59,17 +55,36 @@ export class TechInsightsDatabase implements TechInsightsStore {
 
   constructor(private readonly db: Knex) {}
 
-  // We should probably get this based on version instead of insert order
   private async getLatestSchema(ref: string): Promise<RawDbFactSchemaRow> {
     const existingSchemas = await this.db<RawDbFactSchemaRow>('fact_schemas')
       .where({ ref })
       .orderBy('id', 'desc')
-      .limit(1)
       .select();
     if (existingSchemas.length < 1) {
       throw new Error(`No schema found for ${ref}. `);
     }
-    return existingSchemas[0];
+    const sorted = rsort(existingSchemas.map(it => it.version));
+    return existingSchemas.find(it => it.version === sorted[0])!!;
+  }
+
+  async getLatestSchemas(refs: string[]): Promise<FactSchema[]> {
+    const existingSchemas = await this.db<RawDbFactSchemaRow>('fact_schemas')
+      .whereIn('ref', refs)
+      .orderBy('id', 'desc')
+      .select();
+
+    const groupedSchemas = groupBy(existingSchemas, 'ref');
+    return Object.values(groupedSchemas)
+      .map(schemas => {
+        const sorted = rsort(schemas.map(it => it.version));
+        return schemas.find(it => it.version === sorted[0])!!;
+      })
+      .map((it: RawDbFactSchemaRow) => {
+        return {
+          ...it,
+          schema: JSON.parse(it.schema),
+        };
+      });
   }
 
   async insertFactSchema(ref: string, schema: FactSchema) {
@@ -90,8 +105,6 @@ export class TechInsightsDatabase implements TechInsightsStore {
   }
 
   async insertFacts(facts: TechInsightFact[]): Promise<void> {
-    console.log(`inserting facts: ${JSON.stringify(facts)}`);
-
     const tx = await this.db.transaction();
     if (facts.length === 0) return;
     const currentSchema = await this.getLatestSchema(facts[0].ref);
@@ -109,27 +122,53 @@ export class TechInsightsDatabase implements TechInsightsStore {
     tx.commit();
   }
 
-  async retrieveLatestFactsForRefs(
+  async getLatestFactsForRefs(
     refs: string[],
     entityTriplet: string,
   ): Promise<{ [p: string]: TechInsightFact }> {
-    // TODO: Knexify
-    const results = await this.db.raw(
-      `SELECT * from facts f
-    WHERE entity = ?
-    AND f.ref IN (${refs.map(_ => '?').join(',')})
-          AND f.timestamp =
-        (SELECT max(f2.timestamp) FROM facts f2 WHERE f.ref = f2.ref)`,
-      [entityTriplet, ...refs],
-    );
+    const results = await this.db<RawDbFactRow>('facts')
+      .where({ entity: entityTriplet })
+      .and.whereIn('ref', refs)
+      .join(
+        this.db('facts')
+          .max('timestamp')
+          .column('ref as subRef')
+          .groupBy('ref')
+          .as('subQ'),
+        'facts.ref',
+        'subQ.subRef',
+      );
+    return this.dbFactRowsToTechInsightFacts(results);
+  }
 
-    return results.rows.map((it: RawDbFactRow) => {
+  async getFactsBetweenTimestampsForRefs(
+    refs: string[],
+    entityTriplet: string,
+    startDateTime: DateTime,
+    endDateTime: DateTime,
+  ): Promise<{ [p: string]: TechInsightFact }> {
+    const results = await this.db<RawDbFactRow>('facts')
+      .where({ entity: entityTriplet })
+      .and.whereIn('ref', refs)
+      .andWhereBetween('timestamp', [
+        startDateTime.toISOTime(),
+        endDateTime.toISOTime(),
+      ]);
+
+    return this.dbFactRowsToTechInsightFacts(results);
+  }
+
+  private dbFactRowsToTechInsightFacts(rows: RawDbFactRow[]) {
+    return rows.reduce((acc, it) => {
       const [namespace, kind, name] = it.entity.split('/');
       return {
-        ref: it.ref,
-        entity: { namespace, kind, name },
-        facts: JSON.parse(it.facts),
+        ...acc,
+        [it.ref]: {
+          ref: it.ref,
+          entity: { namespace, kind, name },
+          facts: JSON.parse(it.facts),
+        },
       };
-    });
+    }, {});
   }
 }

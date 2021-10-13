@@ -15,33 +15,30 @@
  */
 
 import { FactRetrieverEngine } from './fact/FactRetrieverEngine';
-import {
-  FactChecker,
-  JsonRulesEngineFactChecker,
-} from './JsonRulesEngineFactChecker';
 import { Logger } from 'winston';
 import { FactRetrieverRegistry } from './fact/FactRetrieverRegistry';
-import {
-  BooleanCheckResult,
-  CheckResult,
-  FactRetrieverRegistration,
-  TechInsightCheck,
-  TechInsightJsonRuleCheck,
-} from '../types';
 import { Config } from '@backstage/config';
 import {
   PluginDatabaseManager,
   PluginEndpointDiscovery,
 } from '@backstage/backend-common';
+import { TechInsightsDatabase } from './persistence/TechInsightsDatabase';
 import {
-  TechInsightsDatabase,
+  CheckResult,
+  FactChecker,
+  FactCheckerFactory,
+  FactRetrieverRegistration,
+  TechInsightCheck,
   TechInsightsStore,
-} from './TechInsightsDatabase';
+} from '@backstage/plugin-tech-insights-common';
 
-export interface TechInsightsOptions {
+export interface TechInsightsOptions<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
   logger: Logger;
   factRetrievers: FactRetrieverRegistration[];
-  checks: TechInsightJsonRuleCheck[];
+  factCheckerFactory: FactCheckerFactory<CheckType, CheckResultType>;
   config: Config;
   discovery: PluginEndpointDiscovery;
   database: PluginDatabaseManager;
@@ -51,23 +48,29 @@ export type TechInsightsContext<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > = {
-  factRetrieverEngine: FactRetrieverEngine;
   factChecker: FactChecker<CheckType, CheckResultType>;
   repository: TechInsightsStore;
 };
 
-export class DefaultTechInsightsBuilder {
-  private readonly options: TechInsightsOptions;
+export class DefaultTechInsightsBuilder<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  private readonly options: TechInsightsOptions<CheckType, CheckResultType>;
 
-  constructor(options: TechInsightsOptions) {
+  constructor(options: TechInsightsOptions<CheckType, CheckResultType>) {
     this.options = options;
   }
 
-  async build(): Promise<
-    TechInsightsContext<TechInsightJsonRuleCheck, BooleanCheckResult>
-  > {
-    const { factRetrievers, checks, config, discovery, database } =
-      this.options;
+  async build(): Promise<TechInsightsContext<CheckType, CheckResultType>> {
+    const {
+      factRetrievers,
+      factCheckerFactory,
+      config,
+      discovery,
+      database,
+      logger,
+    } = this.options;
 
     const factRetrieverRegistry = new FactRetrieverRegistry(factRetrievers);
 
@@ -81,12 +84,12 @@ export class DefaultTechInsightsBuilder {
       {
         config,
         discovery,
+        logger,
       },
     );
 
-    const factChecker = new JsonRulesEngineFactChecker(
+    const factChecker = factCheckerFactory.construct(
       factRetrieverRegistry.getSchemas(),
-      checks,
       repository,
     );
 
@@ -95,7 +98,6 @@ export class DefaultTechInsightsBuilder {
     return {
       repository,
       factChecker,
-      factRetrieverEngine, // Not possibly needed to be exposed. Leaving for now since we can stop/start/reschedule fetch events manually with this
     };
   }
 }

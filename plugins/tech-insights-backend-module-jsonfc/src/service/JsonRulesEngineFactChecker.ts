@@ -14,39 +14,19 @@
  * limitations under the License.
  */
 
+import { TechInsightJsonRuleCheck } from '../types';
 import {
   BooleanCheckResult,
-  CheckResult,
+  FactChecker,
   FactSchema,
-  TechInsightCheck,
-  TechInsightJsonRuleCheck,
-} from '../types';
+  TechInsightsStore,
+} from '@backstage/plugin-tech-insights-common';
 import { Engine } from 'json-rules-engine';
 import { TechInsightCheckRegistry } from './CheckRegistry';
-import { TechInsightsStore } from './TechInsightsDatabase';
 
-export interface FactChecker<
-  CheckType extends TechInsightCheck,
-  CheckResultType extends CheckResult,
-> {
-  check(entity: string, checkName: string): Promise<CheckResultType>;
-  addCheck(check: CheckType): Promise<boolean>;
-  getChecks(): CheckType[];
-  validate(check: CheckType): Promise<boolean>;
-}
-
-// This should likely be a submodule when we expand it to handle multiple checks
-export class JsonRulesEngineFactChecker
+class JsonRulesEngineFactChecker
   implements FactChecker<TechInsightJsonRuleCheck, BooleanCheckResult>
 {
-  /*
-  Checks:
-    - [x] JSON code
-    - [ ] Store in DB? (No dynamic facts)
-    - [ ] Read from catalog-info? (No dynamic facts)
-    - [X] Read reference of a check from catalog-info on the frontend, use predefined JSON/code as a check
-  */
-
   private readonly checkRegistry: TechInsightCheckRegistry<TechInsightJsonRuleCheck>;
   private repository: TechInsightsStore;
   private readonly schemas: FactSchema[];
@@ -65,7 +45,7 @@ export class JsonRulesEngineFactChecker
   async check(entity: string, checkName: string): Promise<BooleanCheckResult> {
     const engine = new Engine();
     const techInsightCheck = this.checkRegistry.get(checkName);
-    const facts = await this.repository.retrieveLatestFactsForRefs(
+    const facts = await this.repository.getLatestFactsForRefs(
       techInsightCheck.factRefs,
       entity,
     );
@@ -88,8 +68,10 @@ export class JsonRulesEngineFactChecker
     const firstRuleResult = results.results[0];
     const firstEvent = results.events[0];
     return {
+      facts: Object.values(facts),
       value: firstRuleResult.result,
       text: firstEvent.params?.message,
+      check: techInsightCheck,
     };
   }
 
@@ -108,5 +90,16 @@ export class JsonRulesEngineFactChecker
 
   addCheck(check: TechInsightJsonRuleCheck): Promise<boolean> {
     return this.validate(check);
+  }
+}
+
+export class Factory {
+  private readonly checks: TechInsightJsonRuleCheck[];
+  constructor(checks: TechInsightJsonRuleCheck[]) {
+    this.checks = checks;
+  }
+
+  construct(schemas: FactSchema[], repository: TechInsightsStore) {
+    return new JsonRulesEngineFactChecker(schemas, this.checks, repository);
   }
 }

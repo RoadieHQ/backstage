@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 import { DateTime } from 'luxon';
-import { FactRetriever } from '../types';
-
-// @ts-ignore
+import { FactRetriever } from '@backstage/plugin-tech-insights-common';
 import { CatalogClient } from '@backstage/catalog-client';
 
 export const exampleFactRetriever = {
@@ -26,46 +24,54 @@ export const exampleFactRetriever = {
     schema: {
       examplenumberfact: {
         type: 'integer',
+        description: '',
+        entityKinds: ['component'],
       },
       examplestringfact: {
         type: 'string',
+        description: '',
+        entityKinds: ['component'],
       },
       examplefloatfact: {
         type: 'float',
+        description: '',
+        entityKinds: ['component'],
       },
       examplebooleanfact: {
         type: 'boolean',
+        description: '',
+        entityKinds: ['component'],
       },
       exampledatetimefact: {
         type: 'datetime',
+        description: '',
+        entityKinds: ['component'],
       },
     },
   },
   handler: async _ctx => {
-    /*
-      const { config, discovery } = _ctx;
-      const catalogClient = new CatalogClient({ discoveryApi: discovery });
-      const entities = await catalogClient.getEntities();
-      const url = config.getString('some.needed.configvalue');
-      // do api call, map response values to entities.
-      */
+    const { config, discovery } = _ctx;
+    const catalogClient = new CatalogClient({ discoveryApi: discovery });
+    const entities = await catalogClient.getEntities();
 
-    return Promise.resolve([
-      {
-        ref: 'demo-poc.factretriever',
-        entity: {
-          namespace: 'a',
-          kind: 'a',
-          name: 'a',
-        },
-        facts: {
-          examplenumberfact: 2,
-          examplestringfact: 'stringy',
-          examplefloatfact: 0.331,
-          examplebooleanfact: false,
-          exampledatetimefact: DateTime.now(),
-        },
-      },
-    ]);
+    return Promise.resolve(
+      entities.items.map(it => {
+        return {
+          ref: 'demo-poc.factretriever',
+          entity: {
+            namespace: it.metadata.namespace,
+            kind: it.kind,
+            name: it.metadata.name,
+          },
+          facts: {
+            examplenumberfact: 2,
+            examplestringfact: 'stringy',
+            examplefloatfact: 0.331,
+            examplebooleanfact: false,
+            exampledatetimefact: DateTime.now(),
+          },
+        };
+      }),
+    );
   },
 } as FactRetriever;

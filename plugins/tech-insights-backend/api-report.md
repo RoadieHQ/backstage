@@ -1,1 +1,1 @@
-## API Report File for "@backstage/tech-insights-backend"
+## API Report File for "@backstage/plugin-tech-insights-backend"
