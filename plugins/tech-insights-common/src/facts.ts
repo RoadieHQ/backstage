@@ -28,7 +28,7 @@ export type TechInsightFact = {
   facts: Record<string, number | string | boolean | DateTime | []>;
 };
 
-type FactValueDefinitions = {
+export type FactValueDefinitions = {
   [key: string]: {
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
     description: string;

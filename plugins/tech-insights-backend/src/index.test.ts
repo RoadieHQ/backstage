@@ -16,7 +16,7 @@
 
 import * as anything from './';
 
-describe('tech-insights-common', () => {
+describe('tech-insights-backend', () => {
   // TODO: Test real things once they exist.
   it('should exist', () => {
     expect(anything).toBeTruthy();

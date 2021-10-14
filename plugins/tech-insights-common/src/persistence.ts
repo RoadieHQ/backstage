@@ -13,6 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { FactSchema, TechInsightFact } from './facts';
+import { DateTime } from 'luxon';
+
 export interface TechInsightsStore {
   insertFacts(facts: TechInsightFact[]): Promise<void>;
 

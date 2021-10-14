@@ -18,6 +18,7 @@ import { JsonRuleBooleanCheckResult, TechInsightJsonRuleCheck } from '../types';
 import {
   FactChecker,
   FactResponse,
+  FactValueDefinitions,
   TechInsightFact,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
@@ -89,7 +90,7 @@ class JsonRulesEngineFactChecker
     return await this.ruleEngineResultsToCheckResponse(
       results,
       techInsightChecks,
-      facts,
+      Object.values(facts),
     );
   }
 
@@ -151,7 +152,7 @@ class JsonRulesEngineFactChecker
   private async ruleEngineResultsToCheckResponse(
     results: EngineResult,
     techInsightChecks: TechInsightJsonRuleCheck[],
-    facts: { [p: string]: TechInsightFact },
+    facts: TechInsightFact[],
   ) {
     return await Promise.all(
       [...results.results, ...results.failureResults].map(async result => {
@@ -196,6 +197,8 @@ class JsonRulesEngineFactChecker
     };
 
     if ('toJSON' in result) {
+      // Results serialize wrong since the objects are creating their own ser impls
+      // 'toJSON' should always be present in the result object bit it is missing from the types
       const rule = JSON.parse(result.toJSON());
       return { ...returnable, conditions: rule.conditions };
     }
@@ -203,17 +206,16 @@ class JsonRulesEngineFactChecker
   }
 
   private async constructFactInformationResponse(
-    facts: { [p: string]: TechInsightFact },
+    facts: TechInsightFact[],
     techInsightCheck: TechInsightJsonRuleCheck,
   ): Promise<FactResponse> {
-    const schemas = await this.repository.getLatestSchemas(
-      techInsightCheck.factRefs,
-    );
-
+    const schemas: FactValueDefinitions = (
+      await this.repository.getLatestSchemas(techInsightCheck.factRefs)
+    ).reduce((acc, schema) => ({ ...acc, ...schema.schema }), {});
     const individualFacts = this.retrieveFactReferences(
       techInsightCheck.rule.conditions,
     );
-    const factValues = Object.values(facts)
+    const factValues = facts
       .filter(factContainer =>
         techInsightCheck.factRefs.includes(factContainer.ref),
       )
@@ -229,7 +231,7 @@ class JsonRulesEngineFactChecker
         ...acc,
         [key]: {
           value,
-          ...schemas.map(schema => schema.schema[key])[0],
+          ...schemas[key],
         },
       };
     }, {});
