@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import { Config } from '@backstage/config';
 import { DateTime } from 'luxon';
+import { Config } from '@backstage/config';
 import { PluginEndpointDiscovery } from '@backstage/backend-common';
 import { Logger } from 'winston';
 
@@ -69,65 +68,3 @@ export type FactRetrieverRegistration = {
    */
   cadence?: string;
 };
-
-export interface FactCheckerFactory<
-  CheckType extends TechInsightCheck,
-  CheckResultType extends CheckResult,
-> {
-  construct(
-    schemas: FactSchema[],
-    repository: TechInsightsStore,
-  ): FactChecker<CheckType, CheckResultType>;
-}
-
-export interface FactChecker<
-  CheckType extends TechInsightCheck,
-  CheckResultType extends CheckResult,
-> {
-  check(entity: string, checkName: string): Promise<CheckResultType>;
-  addCheck(check: CheckType): Promise<boolean>;
-  getChecks(): CheckType[];
-  validate(check: CheckType): Promise<boolean>;
-}
-
-/**
- * Generic CheckResult
- *
- * Should be parseable by the frontend to display a check result.
- * A collection of these should be parseable by the frontend to display scorecards
- */
-export type CheckResult = {
-  text: string;
-  facts: TechInsightFact[];
-  check: TechInsightCheck;
-};
-
-export interface BooleanCheckResult extends CheckResult {
-  value: boolean;
-}
-
-export interface TechInsightCheck {
-  name: string;
-  description?: string;
-  factRefs: string[];
-}
-
-export interface TechInsightsStore {
-  insertFacts(facts: TechInsightFact[]): Promise<void>;
-
-  getLatestFactsForRefs(
-    refs: string[],
-    entity: string,
-  ): Promise<{ [factRef: string]: TechInsightFact }>;
-
-  getFactsBetweenTimestampsForRefs(
-    refs: string[],
-    entity: string,
-    startDateTime: DateTime,
-    endDateTime: DateTime,
-  ): Promise<{ [factRef: string]: TechInsightFact }>;
-
-  insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
-
-  getLatestSchemas(refs: string[]): Promise<FactSchema[]>;
-}

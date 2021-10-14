@@ -14,92 +14,255 @@
  * limitations under the License.
  */
 
-import { TechInsightJsonRuleCheck } from '../types';
+import { JsonRuleBooleanCheckResult, TechInsightJsonRuleCheck } from '../types';
 import {
-  BooleanCheckResult,
   FactChecker,
-  FactSchema,
+  FactResponse,
+  TechInsightFact,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
-import { Engine } from 'json-rules-engine';
-import { TechInsightCheckRegistry } from './CheckRegistry';
+import { Engine, EngineResult, TopLevelCondition } from 'json-rules-engine';
+import {
+  DefaultCheckRegistry,
+  TechInsightCheckRegistry,
+} from './CheckRegistry';
+import { Logger } from 'winston';
+import { pick } from 'lodash';
+
+type JsonRulesEngineFactCheckerOptions = {
+  checks: TechInsightJsonRuleCheck[];
+  repository: TechInsightsStore;
+  logger: Logger;
+  checkRegistry?: TechInsightCheckRegistry<any>;
+};
+
+const noopEvent = {
+  type: 'noop',
+};
 
 class JsonRulesEngineFactChecker
-  implements FactChecker<TechInsightJsonRuleCheck, BooleanCheckResult>
+  implements FactChecker<TechInsightJsonRuleCheck, JsonRuleBooleanCheckResult>
 {
   private readonly checkRegistry: TechInsightCheckRegistry<TechInsightJsonRuleCheck>;
   private repository: TechInsightsStore;
-  private readonly schemas: FactSchema[];
+  private readonly logger: Logger;
 
-  constructor(
-    schemas: FactSchema[],
-    checks: TechInsightJsonRuleCheck[],
-    repository: TechInsightsStore,
-  ) {
+  constructor({
+    checks,
+    repository,
+    logger,
+    checkRegistry,
+  }: JsonRulesEngineFactCheckerOptions) {
     this.repository = repository;
-    this.schemas = schemas;
+    this.logger = logger;
     checks.forEach(check => this.validate(check));
-    this.checkRegistry = new TechInsightCheckRegistry(checks);
+    this.checkRegistry = checkRegistry ?? new DefaultCheckRegistry(checks);
   }
 
-  async check(entity: string, checkName: string): Promise<BooleanCheckResult> {
+  async runChecks(
+    entity: string,
+    checks: string[],
+  ): Promise<JsonRuleBooleanCheckResult[]> {
     const engine = new Engine();
-    const techInsightCheck = this.checkRegistry.get(checkName);
-    const facts = await this.repository.getLatestFactsForRefs(
-      techInsightCheck.factRefs,
-      entity,
-    );
+    const techInsightChecks = this.checkRegistry.getAll(checks);
+    const factRefs = techInsightChecks.flatMap(it => it.factRefs);
+    const facts = await this.repository.getLatestFactsForRefs(factRefs, entity);
 
-    engine.addRule(techInsightCheck.rule);
+    techInsightChecks.forEach(techInsightCheck => {
+      const rule = techInsightCheck.rule;
+      rule.name = techInsightCheck.name;
+      engine.addRule({ ...techInsightCheck.rule, event: noopEvent });
 
-    if (techInsightCheck.dynamicFacts) {
-      techInsightCheck.dynamicFacts.forEach(it =>
-        engine.addFact(it.id, it.calculationMethod, it.options),
-      );
-    }
+      if (techInsightCheck.dynamicFacts) {
+        techInsightCheck.dynamicFacts.forEach(it =>
+          engine.addFact(it.id, it.calculationMethod, it.options),
+        );
+      }
+    });
 
-    const facts1 = Object.values(facts).reduce(
+    const factValues = Object.values(facts).reduce(
       (acc, it) => ({ ...acc, ...it.facts }),
       {},
     );
-    const results = await engine.run(facts1);
+    const results = await engine.run(factValues);
 
-    // TODO: maybe cache/store in DB
-    const firstRuleResult = results.results[0];
-    const firstEvent = results.events[0];
-    return {
-      facts: Object.values(facts),
-      value: firstRuleResult.result,
-      text: firstEvent.params?.message,
-      check: techInsightCheck,
-    };
+    return await this.ruleEngineResultsToCheckResponse(
+      results,
+      techInsightChecks,
+      facts,
+    );
   }
 
-  validate(check: TechInsightJsonRuleCheck): Promise<boolean> {
-    const schemas = this.schemas;
-    const rule = check.rule;
-    console.log(schemas.length);
-    console.log(rule.conditions);
-    // Check that all keys referred in the check exists in the schemas of facts listed in the factRef array
-    return Promise.resolve(false);
+  async validate(check: TechInsightJsonRuleCheck): Promise<boolean> {
+    const existingSchemas = await this.repository.getLatestSchemas(
+      check.factRefs,
+    );
+    const references = this.retrieveFactReferences(check.rule.conditions);
+    const results = references.map(ref => ({
+      ref,
+      result: existingSchemas.some(schema => schema.schema.hasOwnProperty(ref)),
+    }));
+    const failedReferences = results.filter(it => !it.result);
+    failedReferences.forEach(it => {
+      this.logger.warn(
+        `Validation failed for check ${check.name}. Reference to value ${
+          it.ref
+        } does not exists in referred fact schemas: ${check.factRefs.join(
+          ',',
+        )}`,
+      );
+    });
+    return failedReferences.length === 0;
   }
 
   getChecks(): TechInsightJsonRuleCheck[] {
     return this.checkRegistry.list();
   }
 
-  addCheck(check: TechInsightJsonRuleCheck): Promise<boolean> {
-    return this.validate(check);
+  async addCheck(check: TechInsightJsonRuleCheck): Promise<boolean> {
+    if (!(await this.validate(check))) {
+      this.logger.warn(
+        `Check validation failed when adding check ${check.name} to check registry.`,
+      );
+      return false;
+    }
+    this.checkRegistry.register(check);
+    return true;
+  }
+
+  private retrieveFactReferences(
+    condition: TopLevelCondition | { fact: string },
+  ): string[] {
+    let results: string[] = [];
+    if ('all' in condition) {
+      results = results.concat(
+        condition.all.flatMap(con => this.retrieveFactReferences(con)),
+      );
+    } else if ('any' in condition) {
+      results = results.concat(
+        condition.any.flatMap(con => this.retrieveFactReferences(con)),
+      );
+    } else {
+      results.push(condition.fact);
+    }
+    return results;
+  }
+
+  private async ruleEngineResultsToCheckResponse(
+    results: EngineResult,
+    techInsightChecks: TechInsightJsonRuleCheck[],
+    facts: { [p: string]: TechInsightFact },
+  ) {
+    return await Promise.all(
+      [...results.results, ...results.failureResults].map(async result => {
+        const techInsightCheck = techInsightChecks.find(
+          check => check.name === result.name,
+        );
+        if (!techInsightCheck) {
+          // This should never happen, we just constructed these based on each other
+          throw new Error(
+            `Failed to determine tech insight check with name ${result.name}. Discrepancy between ran rule engine and configured checks.`,
+          );
+        }
+
+        const factResponse = await this.constructFactInformationResponse(
+          facts,
+          techInsightCheck,
+        );
+        return {
+          facts: factResponse,
+          result: result.result,
+          check: JsonRulesEngineFactChecker.constructCheckResponse(
+            techInsightCheck,
+            result,
+          ),
+        };
+      }),
+    );
+  }
+
+  private static constructCheckResponse(
+    techInsightCheck: TechInsightJsonRuleCheck,
+    result: any,
+  ) {
+    const returnable = {
+      name: techInsightCheck.name,
+      description: techInsightCheck.description,
+      factRefs: techInsightCheck.factRefs,
+      metadata: result.result
+        ? techInsightCheck.successMetadata
+        : techInsightCheck.failureMetadata,
+      conditions: {},
+    };
+
+    if ('toJSON' in result) {
+      const rule = JSON.parse(result.toJSON());
+      return { ...returnable, conditions: rule.conditions };
+    }
+    return returnable;
+  }
+
+  private async constructFactInformationResponse(
+    facts: { [p: string]: TechInsightFact },
+    techInsightCheck: TechInsightJsonRuleCheck,
+  ): Promise<FactResponse> {
+    const schemas = await this.repository.getLatestSchemas(
+      techInsightCheck.factRefs,
+    );
+
+    const individualFacts = this.retrieveFactReferences(
+      techInsightCheck.rule.conditions,
+    );
+    const factValues = Object.values(facts)
+      .filter(factContainer =>
+        techInsightCheck.factRefs.includes(factContainer.ref),
+      )
+      .reduce(
+        (acc, factContainer) => ({
+          ...acc,
+          ...pick(factContainer.facts, individualFacts),
+        }),
+        {},
+      );
+    return Object.entries(factValues).reduce((acc, [key, value]) => {
+      return {
+        ...acc,
+        [key]: {
+          value,
+          ...schemas.map(schema => schema.schema[key])[0],
+        },
+      };
+    }, {});
   }
 }
 
+type JsonRulesEngineFactCheckerFactoryOptions = {
+  checks: TechInsightJsonRuleCheck[];
+  logger: Logger;
+  checkRegistry?: TechInsightCheckRegistry<any>;
+};
+
 export class Factory {
   private readonly checks: TechInsightJsonRuleCheck[];
-  constructor(checks: TechInsightJsonRuleCheck[]) {
+  private readonly logger: Logger;
+  private readonly checkRegistry?: TechInsightCheckRegistry<any>;
+
+  constructor({
+    checks,
+    logger,
+    checkRegistry,
+  }: JsonRulesEngineFactCheckerFactoryOptions) {
+    this.logger = logger;
     this.checks = checks;
+    this.checkRegistry = checkRegistry;
   }
 
-  construct(schemas: FactSchema[], repository: TechInsightsStore) {
-    return new JsonRulesEngineFactChecker(schemas, this.checks, repository);
+  construct(repository: TechInsightsStore) {
+    return new JsonRulesEngineFactChecker({
+      checks: this.checks,
+      logger: this.logger,
+      checkRegistry: this.checkRegistry,
+      repository,
+    });
   }
 }

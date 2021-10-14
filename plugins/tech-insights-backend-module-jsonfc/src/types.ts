@@ -15,11 +15,14 @@
  */
 import {
   DynamicFactCallback,
-  Event,
   FactOptions,
   TopLevelCondition,
 } from 'json-rules-engine';
-import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
+import {
+  BooleanCheckResult,
+  CheckResponse,
+  TechInsightCheck,
+} from '@backstage/plugin-tech-insights-common';
 
 interface DynamicFact<T = unknown> {
   id: string;
@@ -29,7 +32,6 @@ interface DynamicFact<T = unknown> {
 
 export type Rule = {
   conditions: TopLevelCondition;
-  event: Event;
   name?: string;
   priority?: number;
 };
@@ -37,4 +39,26 @@ export type Rule = {
 export interface TechInsightJsonRuleCheck extends TechInsightCheck {
   rule: Rule;
   dynamicFacts?: DynamicFact[];
+}
+
+type ResponseTopLevelCondition =
+  | { all: CheckCondition[] }
+  | { any: CheckCondition[] };
+
+type CheckCondition = {
+  operator: string;
+  fact: string;
+  factValue: any;
+  factResult: any;
+  result: boolean;
+};
+
+export interface JsonRuleCheckResponse extends CheckResponse {
+  conditions: ResponseTopLevelCondition & {
+    priority: number;
+  };
+}
+
+export interface JsonRuleBooleanCheckResult extends BooleanCheckResult {
+  check: JsonRuleCheckResponse;
 }

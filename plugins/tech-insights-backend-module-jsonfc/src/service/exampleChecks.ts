@@ -44,18 +44,41 @@ export const exampleChecks = [
             operator: 'equal',
             value: false,
           },
-          // TODO: example how to add a custom operator to fact checker
         ],
       },
-
-      // This event type is directly piped to json-rules-engine for now
-      // But we'd most likely want to create our own success/failure types that we'd use instead.
-      event: {
-        type: 'demo-data-success-event',
-        params: {
-          message: 'Check successful for demo data. Green!',
-        },
+    },
+    successMetadata: {
+      link: 'https://old.reddit.com/r/rarepuppers',
+    },
+    failureMetadata: {
+      link: 'https://www.reddit.com/r/cats/',
+    },
+  },
+  {
+    name: 'demodatacheck2', // This name is used as an identifier on catalog-info for example to indicate which checks should be run for an entity
+    description: 'A fact check for demoing purposes',
+    factRefs: ['demo-poc.factretriever'], // References facts with these names to know what data to use
+    rule: {
+      conditions: {
+        all: [
+          {
+            fact: 'examplenumberfact',
+            operator: 'greaterThanInclusive',
+            value: 6,
+          },
+          {
+            fact: 'examplebooleanfact',
+            operator: 'equal',
+            value: false,
+          },
+        ],
       },
+    },
+    successMetadata: {
+      link: 'https://old.reddit.com/r/rarepuppers',
+    },
+    failureMetadata: {
+      link: 'https://www.reddit.com/r/cats/',
     },
   },
 ] as TechInsightJsonRuleCheck[];

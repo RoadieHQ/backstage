@@ -88,10 +88,7 @@ export class DefaultTechInsightsBuilder<
       },
     );
 
-    const factChecker = factCheckerFactory.construct(
-      factRetrieverRegistry.getSchemas(),
-      repository,
-    );
+    const factChecker = factCheckerFactory.construct(repository);
 
     factRetrieverEngine.schedule();
 

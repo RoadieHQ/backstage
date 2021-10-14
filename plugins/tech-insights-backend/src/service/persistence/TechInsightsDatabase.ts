@@ -67,11 +67,12 @@ export class TechInsightsDatabase implements TechInsightsStore {
     return existingSchemas.find(it => it.version === sorted[0])!!;
   }
 
-  async getLatestSchemas(refs: string[]): Promise<FactSchema[]> {
-    const existingSchemas = await this.db<RawDbFactSchemaRow>('fact_schemas')
-      .whereIn('ref', refs)
-      .orderBy('id', 'desc')
-      .select();
+  async getLatestSchemas(refs?: string[]): Promise<FactSchema[]> {
+    const queryBuilder = this.db<RawDbFactSchemaRow>('fact_schemas');
+    if (refs) {
+      queryBuilder.whereIn('ref', refs);
+    }
+    const existingSchemas = await queryBuilder.orderBy('id', 'desc').select();
 
     const groupedSchemas = groupBy(existingSchemas, 'ref');
     return Object.values(groupedSchemas)
@@ -79,12 +80,10 @@ export class TechInsightsDatabase implements TechInsightsStore {
         const sorted = rsort(schemas.map(it => it.version));
         return schemas.find(it => it.version === sorted[0])!!;
       })
-      .map((it: RawDbFactSchemaRow) => {
-        return {
-          ...it,
-          schema: JSON.parse(it.schema),
-        };
-      });
+      .map((it: RawDbFactSchemaRow) => ({
+        ...it,
+        schema: JSON.parse(it.schema),
+      }));
   }
 
   async insertFactSchema(ref: string, schema: FactSchema) {
@@ -146,13 +145,15 @@ export class TechInsightsDatabase implements TechInsightsStore {
     entityTriplet: string,
     startDateTime: DateTime,
     endDateTime: DateTime,
-  ): Promise<{ [p: string]: TechInsightFact }> {
+  ): Promise<{
+    [p: string]: TechInsightFact & { version: string; timestamp: string };
+  }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })
       .and.whereIn('ref', refs)
       .andWhereBetween('timestamp', [
-        startDateTime.toISOTime(),
-        endDateTime.toISOTime(),
+        startDateTime.toISO(),
+        endDateTime.toISO(),
       ]);
 
     return this.dbFactRowsToTechInsightFacts(results);
@@ -166,6 +167,8 @@ export class TechInsightsDatabase implements TechInsightsStore {
         [it.ref]: {
           ref: it.ref,
           entity: { namespace, kind, name },
+          timestamp: it.timestamp,
+          version: it.version,
           facts: JSON.parse(it.facts),
         },
       };

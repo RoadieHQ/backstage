@@ -17,7 +17,16 @@
 import { ConflictError, NotFoundError } from '@backstage/errors';
 import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 
-export class TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
+export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
+  register(check: CheckType): void;
+  get(checkName: string): CheckType;
+  getAll(checks: string[]): CheckType[];
+  list(): CheckType[];
+}
+
+export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
+  implements TechInsightCheckRegistry<CheckType>
+{
   private readonly checks = new Map<string, CheckType>();
 
   constructor(checks: CheckType[]) {
@@ -36,13 +45,16 @@ export class TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
   }
 
   get(checkName: string): CheckType {
-    const retriever = this.checks.get(checkName);
-    if (!retriever) {
+    const check = this.checks.get(checkName);
+    if (!check) {
       throw new NotFoundError(
         `Tech insight check with name '${checkName}' is not registered.`,
       );
     }
-    return retriever;
+    return check;
+  }
+  getAll(checks: string[]): CheckType[] {
+    return checks.map(checkName => this.get(checkName));
   }
 
   list(): CheckType[] {

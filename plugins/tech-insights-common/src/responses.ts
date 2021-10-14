@@ -14,7 +14,22 @@
  * limitations under the License.
  */
 
-export * from './checks';
-export * from './facts';
-export * from './persistence';
-export * from './responses';
+import { DateTime } from 'luxon';
+
+export interface CheckResponse {
+  name: string;
+  description: string;
+  factRefs: string[];
+  metadata?: Record<string, any>;
+}
+
+export type FactResponse = {
+  [key: string]: {
+    type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
+    description: string;
+    value: number | string | boolean | DateTime | [];
+    since?: string;
+    metadata?: Record<string, any>;
+    entityKinds: string[];
+  };
+};

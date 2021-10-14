@@ -13,8 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+export interface TechInsightsStore {
+  insertFacts(facts: TechInsightFact[]): Promise<void>;
 
-export * from './checks';
-export * from './facts';
-export * from './persistence';
-export * from './responses';
+  getLatestFactsForRefs(
+    refs: string[],
+    entity: string,
+  ): Promise<{ [factRef: string]: TechInsightFact }>;
+
+  getFactsBetweenTimestampsForRefs(
+    refs: string[],
+    entity: string,
+    startDateTime: DateTime,
+    endDateTime: DateTime,
+  ): Promise<{ [factRef: string]: TechInsightFact }>;
+
+  insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
+
+  getLatestSchemas(refs?: string[]): Promise<FactSchema[]>;
+}

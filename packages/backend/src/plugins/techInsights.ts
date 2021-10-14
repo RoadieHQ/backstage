@@ -42,7 +42,10 @@ export default async function createPlugin({
         cadence: '* 1 * * *',
       },
     ],
-    factCheckerFactory: new JsonRulesEngineFactCheckerFactory(exampleChecks),
+    factCheckerFactory: new JsonRulesEngineFactCheckerFactory({
+      checks: exampleChecks,
+      logger,
+    }),
   });
 
   return await createRouter({

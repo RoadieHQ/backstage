@@ -20,7 +20,7 @@ import { CatalogClient } from '@backstage/catalog-client';
 export const exampleFactRetriever = {
   ref: 'demo-poc.factretriever',
   schema: {
-    version: '0.1.0',
+    version: '0.1.1',
     schema: {
       examplenumberfact: {
         type: 'integer',
@@ -50,7 +50,7 @@ export const exampleFactRetriever = {
     },
   },
   handler: async _ctx => {
-    const { config, discovery } = _ctx;
+    const { discovery } = _ctx;
     const catalogClient = new CatalogClient({ discoveryApi: discovery });
     const entities = await catalogClient.getEntities();
 

@@ -48,33 +48,36 @@ export async function createRouter<
     return res.send(factChecker.getChecks());
   });
 
-  router.get('fact-schemas', (req, res) => {
+  router.get('/fact-schemas', async (req, res) => {
     const refs = req.query.refs as string[];
-    return res.send(repository.getLatestSchemas(refs));
+    return res.send(await repository.getLatestSchemas(refs));
   });
 
-  router.get('/checks/:check/:namespace/:kind/:name', async (req, res) => {
-    const { namespace, kind, name, check } = req.params;
+  router.get('/checks/:namespace/:kind/:name', async (req, res) => {
+    const { namespace, kind, name } = req.params;
+    const checks = req.query.checks as string[];
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
-    const checkResult = await factChecker.check(entityTriplet, check);
+    const checkResult = await factChecker.runChecks(entityTriplet, checks);
     return res.send(checkResult);
   });
 
-  router.get('facts/latest/:namespace/:kind/:name', (req, res) => {
+  router.get('/facts/latest/:namespace/:kind/:name', async (req, res) => {
     const { namespace, kind, name } = req.params;
     const refs = req.query.refs as string[];
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
-    return res.send(repository.getLatestFactsForRefs(refs, entityTriplet));
+    return res.send(
+      await repository.getLatestFactsForRefs(refs, entityTriplet),
+    );
   });
 
-  router.get('facts/range/:namespace/:kind/:name', (req, res) => {
+  router.get('/facts/range/:namespace/:kind/:name', async (req, res) => {
     const { namespace, kind, name } = req.params;
     const refs = req.query.refs as string[];
     const startDatetime = DateTime.fromISO(req.query.startDatetime as string);
     const endDatetime = DateTime.fromISO(req.query.endDatetime as string);
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     return res.send(
-      repository.getFactsBetweenTimestampsForRefs(
+      await repository.getFactsBetweenTimestampsForRefs(
         refs,
         entityTriplet,
         startDatetime,
@@ -82,8 +85,5 @@ export async function createRouter<
       ),
     );
   });
-
-  // get scorecards (aggregation of checks)
-
   return router;
 }

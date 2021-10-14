@@ -15,4 +15,5 @@
  */
 
 export { Factory as JsonRulesEngineFactCheckerFactory } from './service/JsonRulesEngineFactChecker';
+export type { TechInsightCheckRegistry } from './service/CheckRegistry';
 export { exampleChecks } from './service/exampleChecks';
