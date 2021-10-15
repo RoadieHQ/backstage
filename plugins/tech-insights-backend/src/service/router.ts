@@ -83,6 +83,9 @@ export async function createRouter<
     const refs = req.query.refs as string[];
     const startDatetime = DateTime.fromISO(req.query.startDatetime as string);
     const endDatetime = DateTime.fromISO(req.query.endDatetime as string);
+    if (!startDatetime.isValid || !endDatetime.isValid) {
+      return res.status(422).send('Failed to parse datetime from request');
+    }
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     return res.send(
       await techInsightsStore.getFactsBetweenTimestampsForRefs(
