@@ -22,15 +22,17 @@ import {
   PluginDatabaseManager,
   PluginEndpointDiscovery,
 } from '@backstage/backend-common';
-import { TechInsightsDatabase } from './persistence/TechInsightsDatabase';
 import {
   CheckResult,
   FactChecker,
   FactCheckerFactory,
   FactRetrieverRegistration,
   TechInsightCheck,
-  TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
+import {
+  DatabaseManager,
+  PersistenceContext,
+} from './persistence/DatabaseManager';
 
 export interface TechInsightsOptions<
   CheckType extends TechInsightCheck,
@@ -38,7 +40,7 @@ export interface TechInsightsOptions<
 > {
   logger: Logger;
   factRetrievers: FactRetrieverRegistration[];
-  factCheckerFactory: FactCheckerFactory<CheckType, CheckResultType>;
+  factCheckerFactory?: FactCheckerFactory<CheckType, CheckResultType>;
   config: Config;
   discovery: PluginEndpointDiscovery;
   database: PluginDatabaseManager;
@@ -48,8 +50,8 @@ export type TechInsightsContext<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > = {
-  factChecker: FactChecker<CheckType, CheckResultType>;
-  repository: TechInsightsStore;
+  factChecker?: FactChecker<CheckType, CheckResultType>;
+  persistenceContext: PersistenceContext;
 };
 
 export class DefaultTechInsightsBuilder<
@@ -74,27 +76,36 @@ export class DefaultTechInsightsBuilder<
 
     const factRetrieverRegistry = new FactRetrieverRegistry(factRetrievers);
 
-    const repository = await TechInsightsDatabase.create(
-      await database.getClient(),
-    );
+    const persistenceContext =
+      await DatabaseManager.initializePersistenceContext(
+        await database.getClient(),
+        { logger },
+      );
 
-    const factRetrieverEngine = await FactRetrieverEngine.create(
-      repository,
+    const factRetrieverEngine = await FactRetrieverEngine.fromConfig({
+      repository: persistenceContext.techInsightsStore,
       factRetrieverRegistry,
-      {
+      factRetrieverContext: {
         config,
         discovery,
         logger,
       },
-    );
-
-    const factChecker = factCheckerFactory.construct(repository);
+    });
 
     factRetrieverEngine.schedule();
 
+    if (factCheckerFactory) {
+      const factChecker = factCheckerFactory.construct(
+        persistenceContext.techInsightsStore,
+      );
+      return {
+        persistenceContext,
+        factChecker,
+      };
+    }
+
     return {
-      repository,
-      factChecker,
+      persistenceContext,
     };
   }
 }

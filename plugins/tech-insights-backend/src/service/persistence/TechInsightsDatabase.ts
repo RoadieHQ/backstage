@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { resolvePackagePath } from '@backstage/backend-common';
 import { Knex } from 'knex';
 import {
   FactSchema,
@@ -23,6 +22,7 @@ import {
 import { rsort } from 'semver';
 import { groupBy } from 'lodash';
 import { DateTime } from 'luxon';
+import { Logger } from 'winston';
 
 export type RawDbFactRow = {
   ref: string;
@@ -39,33 +39,10 @@ type RawDbFactSchemaRow = {
   schema: string;
 };
 
-const migrationsDir = resolvePackagePath(
-  '@backstage/plugin-tech-insights-backend',
-  'migrations',
-);
-
 export class TechInsightsDatabase implements TechInsightsStore {
   private readonly CHUNK_SIZE = 50;
-  static async create(knex: Knex): Promise<TechInsightsStore> {
-    await knex.migrate.latest({
-      directory: migrationsDir,
-    });
-    return new TechInsightsDatabase(knex);
-  }
 
-  constructor(private readonly db: Knex) {}
-
-  private async getLatestSchema(ref: string): Promise<RawDbFactSchemaRow> {
-    const existingSchemas = await this.db<RawDbFactSchemaRow>('fact_schemas')
-      .where({ ref })
-      .orderBy('id', 'desc')
-      .select();
-    if (existingSchemas.length < 1) {
-      throw new Error(`No schema found for ${ref}. `);
-    }
-    const sorted = rsort(existingSchemas.map(it => it.version));
-    return existingSchemas.find(it => it.version === sorted[0])!!;
-  }
+  constructor(private readonly db: Knex, private readonly logger: Logger) {}
 
   async getLatestSchemas(refs?: string[]): Promise<FactSchema[]> {
     const queryBuilder = this.db<RawDbFactSchemaRow>('fact_schemas');
@@ -112,7 +89,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
       return {
         ref: it.ref,
         version: currentSchema.version,
-        entity: `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`,
+        entity: `${namespace}/${kind}/${name}`.toLocaleLowerCase('en-US'),
         facts: JSON.stringify(it.facts),
       };
     });
@@ -146,17 +123,42 @@ export class TechInsightsDatabase implements TechInsightsStore {
     startDateTime: DateTime,
     endDateTime: DateTime,
   ): Promise<{
-    [p: string]: TechInsightFact & { version: string; timestamp: string };
+    [p: string]: TechInsightFact[];
   }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })
       .and.whereIn('ref', refs)
-      .andWhereBetween('timestamp', [
+      .and.whereBetween('timestamp', [
         startDateTime.toISO(),
         endDateTime.toISO(),
       ]);
 
-    return this.dbFactRowsToTechInsightFacts(results);
+    return groupBy(
+      results.map(it => {
+        const [namespace, kind, name] = it.entity.split('/');
+        return {
+          ref: it.ref,
+          entity: { namespace, kind, name },
+          timestamp: it.timestamp,
+          version: it.version,
+          facts: JSON.parse(it.facts),
+        };
+      }),
+      'ref',
+    );
+  }
+
+  private async getLatestSchema(ref: string): Promise<RawDbFactSchemaRow> {
+    const existingSchemas = await this.db<RawDbFactSchemaRow>('fact_schemas')
+      .where({ ref })
+      .orderBy('id', 'desc')
+      .select();
+    if (existingSchemas.length < 1) {
+      this.logger.warn(`No schema found for ${ref}. `);
+      throw new Error(`No schema found for ${ref}. `);
+    }
+    const sorted = rsort(existingSchemas.map(it => it.version));
+    return existingSchemas.find(it => it.version === sorted[0])!!;
   }
 
   private dbFactRowsToTechInsightFacts(rows: RawDbFactRow[]) {

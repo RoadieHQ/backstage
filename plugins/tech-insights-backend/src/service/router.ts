@@ -18,20 +18,20 @@ import express from 'express';
 import Router from 'express-promise-router';
 import { Config } from '@backstage/config';
 import {
-  TechInsightsStore,
   FactChecker,
   TechInsightCheck,
   CheckResult,
 } from '@backstage/plugin-tech-insights-common';
 import { Logger } from 'winston';
 import { DateTime } from 'luxon';
+import { PersistenceContext } from './persistence/DatabaseManager';
 
 export interface RouterOptions<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > {
-  factChecker: FactChecker<CheckType, CheckResultType>;
-  repository: TechInsightsStore;
+  factChecker?: FactChecker<CheckType, CheckResultType>;
+  persistenceContext: PersistenceContext;
   config: Config;
   logger: Logger;
 }
@@ -42,23 +42,31 @@ export async function createRouter<
 >(options: RouterOptions<CheckType, CheckResultType>): Promise<express.Router> {
   const router = Router();
 
-  const { repository, factChecker } = options;
+  const { persistenceContext, factChecker, logger } = options;
+  const { techInsightsStore } = persistenceContext;
 
-  router.get('/checks', (_req, res) => {
-    return res.send(factChecker.getChecks());
-  });
+  if (factChecker) {
+    logger.info('Fact checker configured. Enabling fact checking endpoints.');
+    router.get('/checks', (_req, res) => {
+      return res.send(factChecker.getChecks());
+    });
+
+    router.get('/checks/:namespace/:kind/:name', async (req, res) => {
+      const { namespace, kind, name } = req.params;
+      const checks = req.query.checks as string[];
+      const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
+      const checkResult = await factChecker.runChecks(entityTriplet, checks);
+      return res.send(checkResult);
+    });
+  } else {
+    logger.info(
+      'Starting tech insights module without fact checking endpoints.',
+    );
+  }
 
   router.get('/fact-schemas', async (req, res) => {
     const refs = req.query.refs as string[];
-    return res.send(await repository.getLatestSchemas(refs));
-  });
-
-  router.get('/checks/:namespace/:kind/:name', async (req, res) => {
-    const { namespace, kind, name } = req.params;
-    const checks = req.query.checks as string[];
-    const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
-    const checkResult = await factChecker.runChecks(entityTriplet, checks);
-    return res.send(checkResult);
+    return res.send(await techInsightsStore.getLatestSchemas(refs));
   });
 
   router.get('/facts/latest/:namespace/:kind/:name', async (req, res) => {
@@ -66,7 +74,7 @@ export async function createRouter<
     const refs = req.query.refs as string[];
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     return res.send(
-      await repository.getLatestFactsForRefs(refs, entityTriplet),
+      await techInsightsStore.getLatestFactsForRefs(refs, entityTriplet),
     );
   });
 
@@ -77,7 +85,7 @@ export async function createRouter<
     const endDatetime = DateTime.fromISO(req.query.endDatetime as string);
     const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
     return res.send(
-      await repository.getFactsBetweenTimestampsForRefs(
+      await techInsightsStore.getFactsBetweenTimestampsForRefs(
         refs,
         entityTriplet,
         startDatetime,

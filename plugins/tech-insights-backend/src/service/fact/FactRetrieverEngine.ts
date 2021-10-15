@@ -19,7 +19,7 @@ import {
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { FactRetrieverRegistry } from './FactRetrieverRegistry';
-import cron, { ScheduledTask } from 'node-cron';
+import { schedule, ScheduledTask } from 'node-cron';
 import { Logger } from 'winston';
 
 function randomDailyCron() {
@@ -38,16 +38,24 @@ export class FactRetrieverEngine {
   private scheduledJobs = new Map<string, ScheduledTask>();
 
   constructor(
-    readonly repository: TechInsightsStore,
-    readonly factRetrieverRegistry: FactRetrieverRegistry,
-    readonly factRetrieverContext: FactRetrieverContext,
-    readonly logger: Logger,
+    private readonly repository: TechInsightsStore,
+    private readonly factRetrieverRegistry: FactRetrieverRegistry,
+    private readonly factRetrieverContext: FactRetrieverContext,
+    private readonly logger: Logger,
+    private readonly defaultCadence?: string,
   ) {}
-  static async create(
-    repository: TechInsightsStore,
-    factRetrieverRegistry: FactRetrieverRegistry,
-    factRetrieverContext: FactRetrieverContext,
-  ) {
+
+  static async fromConfig({
+    repository,
+    factRetrieverRegistry,
+    factRetrieverContext,
+    defaultCadence,
+  }: {
+    repository: TechInsightsStore;
+    factRetrieverRegistry: FactRetrieverRegistry;
+    factRetrieverContext: FactRetrieverContext;
+    defaultCadence?: string;
+  }) {
     await Promise.all(
       factRetrieverRegistry
         .listRetrievers()
@@ -59,6 +67,7 @@ export class FactRetrieverEngine {
       factRetrieverRegistry,
       factRetrieverContext,
       factRetrieverContext.logger,
+      defaultCadence,
     );
   }
 
@@ -67,8 +76,8 @@ export class FactRetrieverEngine {
     registrations.forEach(registration => {
       const { factRetriever, cadence } = registration;
       if (!this.scheduledJobs.has(factRetriever.ref)) {
-        const job = cron.schedule(
-          cadence || randomDailyCron(),
+        const job = schedule(
+          cadence || this.defaultCadence || randomDailyCron(),
           this.createFactRetrieverHandler(factRetriever),
         );
         this.scheduledJobs.set(factRetriever.ref, job);
@@ -102,7 +111,6 @@ export class FactRetrieverEngine {
             factRetriever.ref
           } in ${duration(startTimestamp)}`,
         );
-        this.logger.info(``);
       } catch (e) {
         this.logger.warn(
           `Failed to insert facts for fact retriever ${factRetriever.ref}`,

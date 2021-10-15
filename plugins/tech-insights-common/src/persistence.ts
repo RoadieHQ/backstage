@@ -29,7 +29,7 @@ export interface TechInsightsStore {
     entity: string,
     startDateTime: DateTime,
     endDateTime: DateTime,
-  ): Promise<{ [factRef: string]: TechInsightFact }>;
+  ): Promise<{ [factRef: string]: TechInsightFact[] }>;
 
   insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
 

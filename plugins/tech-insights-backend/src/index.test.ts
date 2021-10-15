@@ -13,12 +13,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { DefaultTechInsightsBuilder } from './service/DefaultTechInsightsBuilder';
+import { createRouter } from './service/router';
+import { getVoidLogger } from '@backstage/backend-common';
+import { ConfigReader } from '@backstage/config';
+import request from 'supertest';
+import express from 'express';
+import { DatabaseManager } from './service/persistence/DatabaseManager';
 
-import * as anything from './';
+describe('Tech Insights integration tests', () => {
+  let app: express.Express;
+  beforeAll(async () => {
+    const techInsightsContext = await new DefaultTechInsightsBuilder({
+      database: {
+        getClient: () => DatabaseManager.createTestDatabaseConnection(),
+      },
+      logger: getVoidLogger(),
 
-describe('tech-insights-backend', () => {
-  // TODO: Test real things once they exist.
-  it('should exist', () => {
-    expect(anything).toBeTruthy();
+      factRetrievers: [],
+      config: ConfigReader.fromConfigs([]),
+      discovery: {
+        getBaseUrl: (_: string) => Promise.resolve('http://mock.url'),
+        getExternalBaseUrl: (_: string) => Promise.resolve('http://mock.url'),
+      },
+    }).build();
+
+    const router = await createRouter({
+      logger: getVoidLogger(),
+      config: ConfigReader.fromConfigs([]),
+      ...techInsightsContext,
+    });
+
+    app = express().use(router);
+  });
+
+  it('should return not contain check endpoints when checker not present', async () => {
+    await request(app).get('/tech-insights/checks').expect(404);
+    await request(app).get('/tech-insights/checks/a/a/a').expect(404);
   });
 });
