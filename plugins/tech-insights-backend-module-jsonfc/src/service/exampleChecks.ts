@@ -18,7 +18,8 @@ import { TechInsightJsonRuleCheck } from '../types';
 
 export const exampleChecks = [
   {
-    name: 'demodatacheck', // This name is used as an identifier on catalog-info for example to indicate which checks should be run for an entity
+    id: 'demodatacheck',
+    name: 'demodatacheck',
     description: 'A fact check for demoing purposes',
     factRefs: ['demo-poc.factretriever'], // References facts with these names to know what data to use
     rule: {
@@ -55,7 +56,8 @@ export const exampleChecks = [
     },
   },
   {
-    name: 'demodatacheck2', // This name is used as an identifier on catalog-info for example to indicate which checks should be run for an entity
+    id: 'demodatacheck2',
+    name: 'demodatacheck2',
     description: 'A fact check for demoing purposes',
     factRefs: ['demo-poc.factretriever'], // References facts with these names to know what data to use
     rule: {

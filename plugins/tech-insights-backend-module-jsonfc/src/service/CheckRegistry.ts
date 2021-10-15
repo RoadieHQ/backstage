@@ -19,7 +19,7 @@ import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 
 export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
   register(check: CheckType): void;
-  get(checkName: string): CheckType;
+  get(checkId: string): CheckType;
   getAll(checks: string[]): CheckType[];
   list(): CheckType[];
 }
@@ -36,25 +36,25 @@ export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
   }
 
   register(check: CheckType) {
-    if (this.checks.has(check.name)) {
+    if (this.checks.has(check.id)) {
       throw new ConflictError(
-        `Tech insight check with name '${check.name}' has already been registered`,
+        `Tech insight check with id ${check.id} has already been registered`,
       );
     }
-    this.checks.set(check.name, check);
+    this.checks.set(check.id, check);
   }
 
-  get(checkName: string): CheckType {
-    const check = this.checks.get(checkName);
+  get(checkId: string): CheckType {
+    const check = this.checks.get(checkId);
     if (!check) {
       throw new NotFoundError(
-        `Tech insight check with name '${checkName}' is not registered.`,
+        `Tech insight check with id '${checkId}' is not registered.`,
       );
     }
     return check;
   }
   getAll(checks: string[]): CheckType[] {
-    return checks.map(checkName => this.get(checkName));
+    return checks.map(checkId => this.get(checkId));
   }
 
   list(): CheckType[] {

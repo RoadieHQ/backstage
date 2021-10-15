@@ -54,8 +54,10 @@ type CheckCondition = {
 };
 
 export interface JsonRuleCheckResponse extends CheckResponse {
-  conditions: ResponseTopLevelCondition & {
-    priority: number;
+  rule: {
+    conditions: ResponseTopLevelCondition & {
+      priority: number;
+    };
   };
 }
 

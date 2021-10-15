@@ -71,7 +71,7 @@ class JsonRulesEngineFactChecker
 
     techInsightChecks.forEach(techInsightCheck => {
       const rule = techInsightCheck.rule;
-      rule.name = techInsightCheck.name;
+      rule.name = techInsightCheck.id;
       engine.addRule({ ...techInsightCheck.rule, event: noopEvent });
 
       if (techInsightCheck.dynamicFacts) {
@@ -157,12 +157,12 @@ class JsonRulesEngineFactChecker
     return await Promise.all(
       [...results.results, ...results.failureResults].map(async result => {
         const techInsightCheck = techInsightChecks.find(
-          check => check.name === result.name,
+          check => check.id === result.name,
         );
         if (!techInsightCheck) {
           // This should never happen, we just constructed these based on each other
           throw new Error(
-            `Failed to determine tech insight check with name ${result.name}. Discrepancy between ran rule engine and configured checks.`,
+            `Failed to determine tech insight check with id ${result.name}. Discrepancy between ran rule engine and configured checks.`,
           );
         }
 
@@ -187,20 +187,21 @@ class JsonRulesEngineFactChecker
     result: any,
   ) {
     const returnable = {
+      id: techInsightCheck.id,
       name: techInsightCheck.name,
       description: techInsightCheck.description,
       factRefs: techInsightCheck.factRefs,
       metadata: result.result
         ? techInsightCheck.successMetadata
         : techInsightCheck.failureMetadata,
-      conditions: {},
+      rule: { conditions: {} },
     };
 
     if ('toJSON' in result) {
-      // Results serialize wrong since the objects are creating their own ser impls
+      // Results serialize "wrong" since the objects are creating their own serialization implementations
       // 'toJSON' should always be present in the result object bit it is missing from the types
       const rule = JSON.parse(result.toJSON());
-      return { ...returnable, conditions: rule.conditions };
+      return { ...returnable, rule: pick(rule, ['conditions']) };
     }
     return returnable;
   }

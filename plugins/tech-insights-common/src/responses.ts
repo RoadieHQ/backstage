@@ -17,6 +17,7 @@
 import { DateTime } from 'luxon';
 
 export interface CheckResponse {
+  id: string;
   name: string;
   description: string;
   factRefs: string[];

@@ -51,6 +51,7 @@ export interface BooleanCheckResult extends CheckResult {
 }
 
 export interface TechInsightCheck {
+  id: string;
   name: string;
   description: string;
   factRefs: string[];
