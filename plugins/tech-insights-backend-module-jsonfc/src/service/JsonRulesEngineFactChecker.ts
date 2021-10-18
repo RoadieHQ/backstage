@@ -19,16 +19,16 @@ import {
   FactChecker,
   FactResponse,
   FactValueDefinitions,
+  TechInsightCheckRegistry,
   TechInsightFact,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { Engine, EngineResult, TopLevelCondition } from 'json-rules-engine';
-import {
-  DefaultCheckRegistry,
-  TechInsightCheckRegistry,
-} from './CheckRegistry';
+import { DefaultCheckRegistry } from './CheckRegistry';
 import { Logger } from 'winston';
 import { pick } from 'lodash';
+import Ajv from 'ajv';
+import * as validationSchema from './validation-schema.json';
 
 type JsonRulesEngineFactCheckerOptions = {
   checks: TechInsightJsonRuleCheck[];
@@ -68,7 +68,6 @@ class JsonRulesEngineFactChecker
     const techInsightChecks = this.checkRegistry.getAll(checks);
     const factRefs = techInsightChecks.flatMap(it => it.factRefs);
     const facts = await this.repository.getLatestFactsForRefs(factRefs, entity);
-
     techInsightChecks.forEach(techInsightCheck => {
       const rule = techInsightCheck.rule;
       rule.name = techInsightCheck.id;
@@ -85,16 +84,31 @@ class JsonRulesEngineFactChecker
       (acc, it) => ({ ...acc, ...it.facts }),
       {},
     );
-    const results = await engine.run(factValues);
 
-    return await this.ruleEngineResultsToCheckResponse(
-      results,
-      techInsightChecks,
-      Object.values(facts),
-    );
+    try {
+      const results = await engine.run(factValues);
+      return await this.ruleEngineResultsToCheckResponse(
+        results,
+        techInsightChecks,
+        Object.values(facts),
+      );
+    } catch (e) {
+      throw new Error(`Failed to run rules engine, ${e.message}`);
+    }
   }
 
   async validate(check: TechInsightJsonRuleCheck): Promise<boolean> {
+    const ajv = new Ajv({ verbose: true });
+    const validator = ajv.compile(validationSchema);
+    const isValidToSchema = validator(check.rule);
+    if (!isValidToSchema) {
+      this.logger.warn(
+        'Failed to to validate conditions against JSON schema',
+        validator.errors,
+      );
+      return false;
+    }
+
     const existingSchemas = await this.repository.getLatestSchemas(
       check.factRefs,
     );
@@ -155,7 +169,10 @@ class JsonRulesEngineFactChecker
     facts: TechInsightFact[],
   ) {
     return await Promise.all(
-      [...results.results, ...results.failureResults].map(async result => {
+      [
+        ...(results.results && results.results),
+        ...(results.failureResults && results.failureResults),
+      ].map(async result => {
         const techInsightCheck = techInsightChecks.find(
           check => check.id === result.name,
         );
@@ -165,7 +182,6 @@ class JsonRulesEngineFactChecker
             `Failed to determine tech insight check with id ${result.name}. Discrepancy between ran rule engine and configured checks.`,
           );
         }
-
         const factResponse = await this.constructFactInformationResponse(
           facts,
           techInsightCheck,
@@ -210,9 +226,13 @@ class JsonRulesEngineFactChecker
     facts: TechInsightFact[],
     techInsightCheck: TechInsightJsonRuleCheck,
   ): Promise<FactResponse> {
-    const schemas: FactValueDefinitions = (
-      await this.repository.getLatestSchemas(techInsightCheck.factRefs)
-    ).reduce((acc, schema) => ({ ...acc, ...schema.schema }), {});
+    const factSchemas = await this.repository.getLatestSchemas(
+      techInsightCheck.factRefs,
+    );
+    const schemas: FactValueDefinitions = factSchemas.reduce(
+      (acc, schema) => ({ ...acc, ...schema.schema }),
+      {},
+    );
     const individualFacts = this.retrieveFactReferences(
       techInsightCheck.rule.conditions,
     );

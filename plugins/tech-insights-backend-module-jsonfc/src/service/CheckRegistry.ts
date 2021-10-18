@@ -15,14 +15,10 @@
  */
 
 import { ConflictError, NotFoundError } from '@backstage/errors';
-import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
-
-export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
-  register(check: CheckType): void;
-  get(checkId: string): CheckType;
-  getAll(checks: string[]): CheckType[];
-  list(): CheckType[];
-}
+import {
+  TechInsightCheck,
+  TechInsightCheckRegistry,
+} from '@backstage/plugin-tech-insights-common';
 
 export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
   implements TechInsightCheckRegistry<CheckType>

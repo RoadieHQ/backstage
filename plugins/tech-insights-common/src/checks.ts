@@ -35,6 +35,13 @@ export interface FactChecker<
   validate(check: CheckType): Promise<boolean>;
 }
 
+export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
+  register(check: CheckType): void;
+  get(checkId: string): CheckType;
+  getAll(checks: string[]): CheckType[];
+  list(): CheckType[];
+}
+
 /**
  * Generic CheckResult
  *

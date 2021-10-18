@@ -37,6 +37,7 @@
     "@backstage/errors": "^0.1.1",
     "@backstage/plugin-tech-insights-common": "^0.0.1",
     "@types/express": "^4.17.6",
+    "ajv": "^7.0.3",
     "cross-fetch": "^3.0.6",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",

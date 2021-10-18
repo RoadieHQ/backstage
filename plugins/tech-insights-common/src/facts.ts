@@ -26,6 +26,7 @@ export type TechInsightFact = {
     name: string;
   };
   facts: Record<string, number | string | boolean | DateTime | []>;
+  timestamp?: DateTime;
 };
 
 export type FactValueDefinitions = {
@@ -37,6 +38,7 @@ export type FactValueDefinitions = {
     entityKinds: string[];
   };
 };
+
 export type FactSchema = {
   version: string;
   schema: FactValueDefinitions;
@@ -48,7 +50,6 @@ export type FactRetrieverContext = {
   logger: Logger;
 };
 
-// TODO: Possibly add return type type param
 export interface FactRetriever {
   ref: string;
 

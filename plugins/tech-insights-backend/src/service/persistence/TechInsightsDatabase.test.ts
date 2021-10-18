@@ -109,7 +109,6 @@ describe('Tech Insights database', () => {
     testDbClient = await DatabaseManager.createTestDatabaseConnection();
     store = (await DatabaseManager.createTestDatabase(testDbClient))
       .techInsightsStore;
-
     await testDbClient.batchInsert('fact_schemas', factSchemas);
     await testDbClient.batchInsert('facts', facts);
   });
@@ -117,7 +116,7 @@ describe('Tech Insights database', () => {
   const baseAssertionFact = {
     ref: 'test-fact',
     entity: { namespace: 'a', kind: 'a', name: 'a' },
-    timestamp: shortlyInTheFuture,
+    timestamp: DateTime.fromISO(shortlyInTheFuture),
     version: '0.0.1-test',
     facts: { testNumberFact: 2 },
   };
@@ -187,7 +186,7 @@ describe('Tech Insights database', () => {
     expect(returnedFacts['second-test-fact']).toMatchObject({
       ...baseAssertionFact,
       ref: 'second-test-fact',
-      timestamp: farInTheFuture,
+      timestamp: DateTime.fromISO(farInTheFuture),
       facts: { testNumberFact: 3 },
     });
   });
@@ -201,17 +200,18 @@ describe('Tech Insights database', () => {
       DateTime.fromISO(shortlyInTheFuture).plus(Duration.fromMillis(10)),
     );
     expect(returnedFacts['test-fact']).toHaveLength(2);
-    expect(returnedFacts['test-fact']).toContainEqual({
+
+    expect(returnedFacts['test-fact'][0]).toMatchObject({
       ...baseAssertionFact,
-      timestamp: now,
+      timestamp: DateTime.fromISO(now),
       facts: { testNumberFact: 1 },
     });
-    expect(returnedFacts['test-fact']).toContainEqual({
+    expect(returnedFacts['test-fact'][1]).toMatchObject({
       ...baseAssertionFact,
     });
     expect(returnedFacts['test-fact']).not.toContainEqual({
       ...baseAssertionFact,
-      timestamp: farInTheFuture,
+      timestamp: DateTime.fromISO(farInTheFuture),
       facts: { testNumberFact: 3 },
     });
   });

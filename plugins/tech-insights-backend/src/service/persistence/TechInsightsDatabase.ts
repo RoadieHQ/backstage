@@ -91,6 +91,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         version: currentSchema.version,
         entity: `${namespace}/${kind}/${name}`.toLocaleLowerCase('en-US'),
         facts: JSON.stringify(it.facts),
+        ...(it.timestamp && { timestamp: it.timestamp.toISO() }),
       };
     });
 
@@ -139,7 +140,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         return {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: it.timestamp,
+          timestamp: DateTime.fromISO(it.timestamp),
           version: it.version,
           facts: JSON.parse(it.facts),
         };
@@ -169,7 +170,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         [it.ref]: {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: it.timestamp,
+          timestamp: DateTime.fromISO(it.timestamp),
           version: it.version,
           facts: JSON.parse(it.facts),
         },

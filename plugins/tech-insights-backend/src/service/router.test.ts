@@ -19,12 +19,10 @@ import { getVoidLogger } from '@backstage/backend-common';
 import { ConfigReader } from '@backstage/config';
 import request from 'supertest';
 import express from 'express';
-import {
-  DatabaseManager,
-  PersistenceContext,
-} from './persistence/DatabaseManager';
+import { PersistenceContext } from './persistence/DatabaseManager';
 import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 import { DateTime } from 'luxon';
+import { Knex } from 'knex';
 
 describe('Tech Insights router tests', () => {
   let app: express.Express;
@@ -48,7 +46,13 @@ describe('Tech Insights router tests', () => {
   beforeAll(async () => {
     const techInsightsContext = await new DefaultTechInsightsBuilder({
       database: {
-        getClient: () => DatabaseManager.createTestDatabaseConnection(),
+        getClient: () => {
+          return Promise.resolve({
+            migrate: {
+              latest: () => {},
+            },
+          }) as unknown as Promise<Knex>;
+        },
       },
       logger: getVoidLogger(),
       factRetrievers: [],
