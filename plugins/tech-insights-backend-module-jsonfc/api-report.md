@@ -14,27 +14,84 @@ import { TechInsightCheckRegistry } from '@backstage/plugin-tech-insights-common
 import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 import { TopLevelCondition } from 'json-rules-engine';
 
-// Warning: (ae-forgotten-export) The symbol "TechInsightJsonRuleCheck" needs to be exported by the entry point index.d.ts
-// Warning: (ae-missing-release-tag) "exampleChecks" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "JsonRuleBooleanCheckResult" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const exampleChecks: TechInsightJsonRuleCheck[];
+export interface JsonRuleBooleanCheckResult extends BooleanCheckResult {
+  // (undocumented)
+  check: JsonRuleCheckResponse;
+}
 
-// Warning: (ae-missing-release-tag) "Factory" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "JsonRuleCheckResponse" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
+export interface JsonRuleCheckResponse extends CheckResponse {
+  // (undocumented)
+  rule: {
+    conditions: ResponseTopLevelCondition & {
+      priority: number;
+    };
+  };
+}
+
+// Warning: (ae-forgotten-export) The symbol "TechInsightJsonRuleCheck" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class JsonRulesEngineFactChecker
+  implements FactChecker<TechInsightJsonRuleCheck, JsonRuleBooleanCheckResult>
+{
+  constructor({
+    checks,
+    repository,
+    logger,
+    checkRegistry,
+  }: JsonRulesEngineFactCheckerOptions);
+  // (undocumented)
+  addCheck(check: TechInsightJsonRuleCheck): Promise<boolean>;
+  // (undocumented)
+  getChecks(): Promise<TechInsightJsonRuleCheck[]>;
+  // (undocumented)
+  runChecks(
+    entity: string,
+    checks: string[],
+  ): Promise<JsonRuleBooleanCheckResult[]>;
+  // (undocumented)
+  validate(check: TechInsightJsonRuleCheck): Promise<boolean>;
+}
+
+// @public
 export class JsonRulesEngineFactCheckerFactory {
-  // Warning: (ae-forgotten-export) The symbol "JsonRulesEngineFactCheckerFactoryOptions" needs to be exported by the entry point index.d.ts
   constructor({
     checks,
     logger,
     checkRegistry,
   }: JsonRulesEngineFactCheckerFactoryOptions);
-  // Warning: (ae-forgotten-export) The symbol "JsonRulesEngineFactChecker" needs to be exported by the entry point index.d.ts
-  //
   // (undocumented)
   construct(repository: TechInsightsStore): JsonRulesEngineFactChecker;
 }
+
+// Warning: (ae-missing-release-tag) "JsonRulesEngineFactCheckerFactoryOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type JsonRulesEngineFactCheckerFactoryOptions = {
+  checks: TechInsightJsonRuleCheck[];
+  logger: Logger_2;
+  checkRegistry?: TechInsightCheckRegistry<any>;
+};
+
+// Warning: (ae-missing-release-tag) "JsonRulesEngineFactCheckerOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type JsonRulesEngineFactCheckerOptions = {
+  checks: TechInsightJsonRuleCheck[];
+  repository: TechInsightsStore;
+  logger: Logger_2;
+  checkRegistry?: TechInsightCheckRegistry<any>;
+};
+
+// Warnings were encountered during analysis:
+//
+// src/types.d.ts:31:9 - (ae-forgotten-export) The symbol "ResponseTopLevelCondition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 ```

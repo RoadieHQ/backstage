@@ -8,58 +8,38 @@ import { DateTime } from 'luxon';
 import { Logger as Logger_2 } from 'winston';
 import { PluginEndpointDiscovery } from '@backstage/backend-common';
 
-// Warning: (ae-missing-release-tag) "BooleanCheckResult" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface BooleanCheckResult extends CheckResult {
-  // (undocumented)
   result: boolean;
 }
 
-// Warning: (ae-missing-release-tag) "CheckResponse" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface CheckResponse {
-  // (undocumented)
   description: string;
-  // (undocumented)
   factRefs: string[];
-  // (undocumented)
   id: string;
-  // (undocumented)
   metadata?: Record<string, any>;
-  // (undocumented)
   name: string;
 }
 
-// Warning: (ae-missing-release-tag) "CheckResult" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export type CheckResult = {
   facts: FactResponse;
   check: CheckResponse;
 };
 
-// Warning: (ae-missing-release-tag) "FactChecker" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface FactChecker<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > {
-  // (undocumented)
   addCheck(check: CheckType): Promise<boolean>;
-  // (undocumented)
-  getChecks(): CheckType[];
-  // (undocumented)
+  getChecks(): Promise<CheckType[]>;
   runChecks(entity: string, checks: string[]): Promise<CheckResultType[]>;
-  // (undocumented)
   validate(check: CheckType): Promise<boolean>;
 }
 
-// Warning: (ae-missing-release-tag) "FactCheckerFactory" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface FactCheckerFactory<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -70,9 +50,7 @@ export interface FactCheckerFactory<
   ): FactChecker<CheckType, CheckResultType>;
 }
 
-// Warning: (ae-missing-release-tag) "FactResponse" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type FactResponse = {
   [key: string]: {
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
@@ -84,46 +62,33 @@ export type FactResponse = {
   };
 };
 
-// Warning: (ae-missing-release-tag) "FactRetriever" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface FactRetriever {
-  // (undocumented)
   handler: (ctx: FactRetrieverContext) => Promise<TechInsightFact[]>;
-  // (undocumented)
   ref: string;
-  // (undocumented)
   schema: FactSchema;
 }
 
-// Warning: (ae-missing-release-tag) "FactRetrieverContext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type FactRetrieverContext = {
   config: Config;
   discovery: PluginEndpointDiscovery;
   logger: Logger_2;
 };
 
-// Warning: (ae-missing-release-tag) "FactRetrieverRegistration" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type FactRetrieverRegistration = {
   factRetriever: FactRetriever;
   cadence?: string;
 };
 
-// Warning: (ae-missing-release-tag) "FactSchema" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type FactSchema = {
   version: string;
   schema: FactValueDefinitions;
 };
 
-// Warning: (ae-missing-release-tag) "FactValueDefinitions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type FactValueDefinitions = {
   [key: string]: {
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
@@ -134,41 +99,25 @@ export type FactValueDefinitions = {
   };
 };
 
-// Warning: (ae-missing-release-tag) "TechInsightCheck" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface TechInsightCheck {
-  // (undocumented)
   description: string;
-  // (undocumented)
   factRefs: string[];
-  // (undocumented)
   failureMetadata?: Record<string, any>;
-  // (undocumented)
   id: string;
-  // (undocumented)
   name: string;
-  // (undocumented)
   successMetadata?: Record<string, any>;
 }
 
-// Warning: (ae-missing-release-tag) "TechInsightCheckRegistry" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
-  // (undocumented)
-  get(checkId: string): CheckType;
-  // (undocumented)
-  getAll(checks: string[]): CheckType[];
-  // (undocumented)
-  list(): CheckType[];
-  // (undocumented)
-  register(check: CheckType): void;
+  get(checkId: string): Promise<CheckType>;
+  getAll(checks: string[]): Promise<CheckType[]>;
+  list(): Promise<CheckType[]>;
+  register(check: CheckType): Promise<void>;
 }
 
-// Warning: (ae-missing-release-tag) "TechInsightFact" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type TechInsightFact = {
   ref: string;
   entity: {
@@ -180,11 +129,8 @@ export type TechInsightFact = {
   timestamp?: DateTime;
 };
 
-// Warning: (ae-missing-release-tag) "TechInsightsStore" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface TechInsightsStore {
-  // (undocumented)
   getFactsBetweenTimestampsForRefs(
     refs: string[],
     entity: string,
@@ -200,11 +146,8 @@ export interface TechInsightsStore {
   ): Promise<{
     [factRef: string]: TechInsightFact;
   }>;
-  // (undocumented)
   getLatestSchemas(refs?: string[]): Promise<FactSchema[]>;
-  // (undocumented)
   insertFacts(facts: TechInsightFact[]): Promise<void>;
-  // (undocumented)
   insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
 }
 

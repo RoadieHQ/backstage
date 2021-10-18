@@ -26,16 +26,48 @@ import { Logger } from 'winston';
 import { DateTime } from 'luxon';
 import { PersistenceContext } from './persistence/DatabaseManager';
 
+/**
+ * @public
+ *
+ * RouterOptions to construct TechInsights endpoints
+ * @typeParam CheckType - Type of the check for the fact checker this builder returns
+ * @typeParam CheckResultType - Type of the check result for the fact checker this builder returns
+ */
 export interface RouterOptions<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > {
+  /**
+   * Optional FactChecker implementation. If omitted, endpoints are not constructed
+   */
   factChecker?: FactChecker<CheckType, CheckResultType>;
+
+  /**
+   * TechInsights PersistenceContext. Should contain an implementation of TechInsightsStore
+   */
   persistenceContext: PersistenceContext;
+
+  /**
+   * Backstage config object
+   */
   config: Config;
+
+  /**
+   * Implementation of Winston logger
+   */
   logger: Logger;
 }
 
+/**
+ * @public
+ *
+ * Constructs a tech-insights router.
+ *
+ * Exposes endpoints to handle facts
+ * Exposes optional endpoints to handle checks if a FactChecker implementation is passed in
+ *
+ * @param options
+ */
 export async function createRouter<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -55,8 +87,12 @@ export async function createRouter<
       const { namespace, kind, name } = req.params;
       const checks = req.query.checks as string[];
       const entityTriplet = `${namespace.toLowerCase()}/${kind.toLowerCase()}/${name.toLowerCase()}`;
-      const checkResult = await factChecker.runChecks(entityTriplet, checks);
-      return res.send(checkResult);
+      try {
+        const checkResult = await factChecker.runChecks(entityTriplet, checks);
+        return res.send(checkResult);
+      } catch (e) {
+        return res.status(500).json({ message: e.message }).send();
+      }
     });
   } else {
     logger.info(

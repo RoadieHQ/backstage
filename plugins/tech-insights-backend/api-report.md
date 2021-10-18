@@ -8,7 +8,6 @@ import { Config } from '@backstage/config';
 import express from 'express';
 import { FactChecker } from '@backstage/plugin-tech-insights-common';
 import { FactCheckerFactory } from '@backstage/plugin-tech-insights-common';
-import { FactRetriever } from '@backstage/plugin-tech-insights-common';
 import { FactRetrieverRegistration } from '@backstage/plugin-tech-insights-common';
 import { Logger as Logger_2 } from 'winston';
 import { PluginDatabaseManager } from '@backstage/backend-common';
@@ -16,51 +15,71 @@ import { PluginEndpointDiscovery } from '@backstage/backend-common';
 import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 
-// Warning: (ae-missing-release-tag) "createRouter" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
 //
-// @public (undocumented)
+// @public
 export function createRouter<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 >(options: RouterOptions<CheckType, CheckResultType>): Promise<express.Router>;
 
-// Warning: (ae-missing-release-tag) "DefaultTechInsightsBuilder" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public (undocumented)
 export class DefaultTechInsightsBuilder<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > {
-  // Warning: (ae-forgotten-export) The symbol "TechInsightsOptions" needs to be exported by the entry point index.d.ts
   constructor(options: TechInsightsOptions<CheckType, CheckResultType>);
-  // Warning: (ae-forgotten-export) The symbol "TechInsightsContext" needs to be exported by the entry point index.d.ts
-  //
-  // (undocumented)
   build(): Promise<TechInsightsContext<CheckType, CheckResultType>>;
 }
 
-// Warning: (ae-missing-release-tag) "exampleFactRetriever" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "PersistenceContext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const exampleFactRetriever: FactRetriever;
+export type PersistenceContext = {
+  techInsightsStore: TechInsightsStore;
+};
 
-// Warning: (ae-missing-release-tag) "RouterOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// @public
+export interface RouterOptions<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> {
+  config: Config;
+  factChecker?: FactChecker<CheckType, CheckResultType>;
+  logger: Logger_2;
+  persistenceContext: PersistenceContext;
+}
+
+// Warning: (ae-missing-release-tag) "TechInsightsContext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export interface RouterOptions<
+export type TechInsightsContext<
+  CheckType extends TechInsightCheck,
+  CheckResultType extends CheckResult,
+> = {
+  factChecker?: FactChecker<CheckType, CheckResultType>;
+  persistenceContext: PersistenceContext;
+};
+
+// Warning: (ae-missing-release-tag) "TechInsightsOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export interface TechInsightsOptions<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
 > {
   // (undocumented)
   config: Config;
   // (undocumented)
-  factChecker?: FactChecker<CheckType, CheckResultType>;
+  database: PluginDatabaseManager;
+  // (undocumented)
+  discovery: PluginEndpointDiscovery;
+  // (undocumented)
+  factCheckerFactory?: FactCheckerFactory<CheckType, CheckResultType>;
+  // (undocumented)
+  factRetrievers: FactRetrieverRegistration[];
   // (undocumented)
   logger: Logger_2;
-  // Warning: (ae-forgotten-export) The symbol "PersistenceContext" needs to be exported by the entry point index.d.ts
-  //
-  // (undocumented)
-  persistenceContext: PersistenceContext;
 }
 
 // (No @packageDocumentation comment for this package)

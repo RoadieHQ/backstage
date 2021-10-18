@@ -31,7 +31,7 @@ export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
     });
   }
 
-  register(check: CheckType) {
+  async register(check: CheckType) {
     if (this.checks.has(check.id)) {
       throw new ConflictError(
         `Tech insight check with id ${check.id} has already been registered`,
@@ -40,7 +40,7 @@ export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
     this.checks.set(check.id, check);
   }
 
-  get(checkId: string): CheckType {
+  async get(checkId: string): Promise<CheckType> {
     const check = this.checks.get(checkId);
     if (!check) {
       throw new NotFoundError(
@@ -49,11 +49,11 @@ export class DefaultCheckRegistry<CheckType extends TechInsightCheck>
     }
     return check;
   }
-  getAll(checks: string[]): CheckType[] {
-    return checks.map(checkId => this.get(checkId));
+  async getAll(checks: string[]): Promise<CheckType[]> {
+    return Promise.all(checks.map(checkId => this.get(checkId)));
   }
 
-  list(): CheckType[] {
+  async list(): Promise<CheckType[]> {
     return [...this.checks.values()];
   }
 }

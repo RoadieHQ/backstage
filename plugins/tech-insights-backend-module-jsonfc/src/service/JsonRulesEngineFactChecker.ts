@@ -30,7 +30,7 @@ import { pick } from 'lodash';
 import Ajv from 'ajv';
 import * as validationSchema from './validation-schema.json';
 
-type JsonRulesEngineFactCheckerOptions = {
+export type JsonRulesEngineFactCheckerOptions = {
   checks: TechInsightJsonRuleCheck[];
   repository: TechInsightsStore;
   logger: Logger;
@@ -41,7 +41,12 @@ const noopEvent = {
   type: 'noop',
 };
 
-class JsonRulesEngineFactChecker
+/**
+ * @public
+ *
+ * FactChecker implementation using json-rules-engine
+ */
+export class JsonRulesEngineFactChecker
   implements FactChecker<TechInsightJsonRuleCheck, JsonRuleBooleanCheckResult>
 {
   private readonly checkRegistry: TechInsightCheckRegistry<TechInsightJsonRuleCheck>;
@@ -65,7 +70,7 @@ class JsonRulesEngineFactChecker
     checks: string[],
   ): Promise<JsonRuleBooleanCheckResult[]> {
     const engine = new Engine();
-    const techInsightChecks = this.checkRegistry.getAll(checks);
+    const techInsightChecks = await this.checkRegistry.getAll(checks);
     const factRefs = techInsightChecks.flatMap(it => it.factRefs);
     const facts = await this.repository.getLatestFactsForRefs(factRefs, entity);
     techInsightChecks.forEach(techInsightCheck => {
@@ -130,7 +135,7 @@ class JsonRulesEngineFactChecker
     return failedReferences.length === 0;
   }
 
-  getChecks(): TechInsightJsonRuleCheck[] {
+  getChecks(): Promise<TechInsightJsonRuleCheck[]> {
     return this.checkRegistry.list();
   }
 
@@ -259,13 +264,20 @@ class JsonRulesEngineFactChecker
   }
 }
 
-type JsonRulesEngineFactCheckerFactoryOptions = {
+export type JsonRulesEngineFactCheckerFactoryOptions = {
   checks: TechInsightJsonRuleCheck[];
   logger: Logger;
   checkRegistry?: TechInsightCheckRegistry<any>;
 };
 
-export class Factory {
+/**
+ * @public
+ *
+ * Factory to construct JsonRulesEngineFactChecker
+ * Can be constructed with optional implementation of CheckInsightCheckRegistry if needed.
+ * Otherwise defaults to using in-memory CheckRegistry
+ */
+export class JsonRulesEngineFactCheckerFactory {
   private readonly checks: TechInsightJsonRuleCheck[];
   private readonly logger: Logger;
   private readonly checkRegistry?: TechInsightCheckRegistry<any>;
@@ -280,6 +292,11 @@ export class Factory {
     this.checkRegistry = checkRegistry;
   }
 
+  /**
+   * @param repository - Implementation of TechInsightsStore. Used by the returned JsonRulesEngineFactChecker
+   *                     to retrieve fact and fact schema data
+   * @returns JsonRulesEngineFactChecker implementation
+   */
   construct(repository: TechInsightsStore) {
     return new JsonRulesEngineFactChecker({
       checks: this.checks,

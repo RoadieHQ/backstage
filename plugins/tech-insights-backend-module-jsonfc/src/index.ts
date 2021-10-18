@@ -13,6 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-export { Factory as JsonRulesEngineFactCheckerFactory } from './service/JsonRulesEngineFactChecker';
-export { exampleChecks } from './service/exampleChecks';
+export {
+  JsonRulesEngineFactCheckerFactory,
+  JsonRulesEngineFactChecker,
+} from './service/JsonRulesEngineFactChecker';
+export type {
+  JsonRulesEngineFactCheckerFactoryOptions,
+  JsonRulesEngineFactCheckerOptions,
+} from './service/JsonRulesEngineFactChecker';
+export type {
+  JsonRuleCheckResponse,
+  JsonRuleBooleanCheckResult,
+} from './types';

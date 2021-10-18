@@ -54,6 +54,13 @@ export type TechInsightsContext<
   persistenceContext: PersistenceContext;
 };
 
+/**
+ * @public
+ * @typeParam CheckType - Type of the check for the fact checker this builder returns
+ * @typeParam CheckResultType - Type of the check result for the fact checker this builder returns
+ *
+ * Default implementation of TechInsightsBuilder.
+ */
 export class DefaultTechInsightsBuilder<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -64,6 +71,12 @@ export class DefaultTechInsightsBuilder<
     this.options = options;
   }
 
+  /**
+   * Constructs needed persistence context, fact retriever engine
+   * and optionally fact checker implementations to be used in the tech insights module.
+   *
+   * @returns PersistenceContext and optionally an implementation of a FactChecker
+   */
   async build(): Promise<TechInsightsContext<CheckType, CheckResultType>> {
     const {
       factRetrievers,

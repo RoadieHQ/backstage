@@ -16,14 +16,10 @@
 import {
   createRouter,
   DefaultTechInsightsBuilder,
-  exampleFactRetriever,
 } from '@backstage/plugin-tech-insights-backend';
 import { Router } from 'express';
 import { PluginEnvironment } from '../types';
-import {
-  exampleChecks,
-  JsonRulesEngineFactCheckerFactory,
-} from '@backstage/plugin-tech-insights-backend-module-jsonfc';
+import { JsonRulesEngineFactCheckerFactory } from '@backstage/plugin-tech-insights-backend-module-jsonfc';
 
 export default async function createPlugin({
   logger,
@@ -36,14 +32,9 @@ export default async function createPlugin({
     config,
     database,
     discovery,
-    factRetrievers: [
-      {
-        factRetriever: exampleFactRetriever,
-        cadence: '* 1 * * *',
-      },
-    ],
+    factRetrievers: [],
     factCheckerFactory: new JsonRulesEngineFactCheckerFactory({
-      checks: exampleChecks,
+      checks: [],
       logger,
     }),
   });
