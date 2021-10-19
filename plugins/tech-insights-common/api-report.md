@@ -126,7 +126,6 @@ export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
 
 // @public
 export type TechInsightFact = {
-  ref: string;
   entity: {
     namespace: string;
     kind: string;
@@ -137,6 +136,11 @@ export type TechInsightFact = {
 };
 
 // @public
+export type TechInsightFactResponse = TechInsightFact & {
+  ref: string;
+};
+
+// @public
 export interface TechInsightsStore {
   getFactsBetweenTimestampsForRefs(
     refs: string[],
@@ -144,17 +148,17 @@ export interface TechInsightsStore {
     startDateTime: DateTime,
     endDateTime: DateTime,
   ): Promise<{
-    [factRef: string]: TechInsightFact[];
+    [factRef: string]: TechInsightFactResponse[];
   }>;
   // (undocumented)
   getLatestFactsForRefs(
     refs: string[],
     entity: string,
   ): Promise<{
-    [factRef: string]: TechInsightFact;
+    [factRef: string]: TechInsightFactResponse;
   }>;
   getLatestSchemas(refs?: string[]): Promise<FactSchema[]>;
-  insertFacts(facts: TechInsightFact[]): Promise<void>;
+  insertFacts(ref: string, facts: TechInsightFact[]): Promise<void>;
   insertFactSchema(ref: string, schema: FactSchema): Promise<void>;
 }
 
