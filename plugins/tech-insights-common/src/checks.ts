@@ -40,7 +40,7 @@ export interface FactCheckerFactory<
  * FactChecker interface
  *
  * A generic interface that can be implemented to create checkers for specific check and check return types.
- * This is used
+ * This is used especially when creating Scorecards and displaying results of rules when run against facts.
  *
  * @public
  * @typeParam CheckType - Implementation specific Check. Can extend TechInsightCheck with additional information
@@ -51,7 +51,7 @@ export interface FactChecker<
   CheckResultType extends CheckResult,
 > {
   /**
-   * Runs checks against an entity
+   * Runs checks against an entity.
    *
    * @param entity - A reference to an entity to run checks against. In a format namespace/kind/name
    * @param checks - A collection of checks to run against provided entity
@@ -61,6 +61,7 @@ export interface FactChecker<
 
   /**
    * Adds and stores new checks so they can be run checks against.
+   * Implementation should ideally run validation against the check.
    *
    * @param check - The actual check to be added.
    * @returns  - An indicator if fact was successfully added
@@ -68,7 +69,8 @@ export interface FactChecker<
   addCheck(check: CheckType): Promise<boolean>;
 
   /**
-   * Retrieves all available checks that can be used to run checks against
+   * Retrieves all available checks that can be used to run checks against.
+   * The implementation can be just a piping through to CheckRegistry implementation if such is in use.
    *
    * @returns - A collection of checks
    */
@@ -91,34 +93,9 @@ export interface FactChecker<
  *
  */
 export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
-  /**
-   * Stores checks into a registry.
-   *
-   * @param check - The actual check to be stored
-   */
   register(check: CheckType): Promise<void>;
-
-  /**
-   * Retrieves a specific check from the registry
-   *
-   * @param checkId - Check identifier to be retrieved
-   * @returns - The actual check. `never` if specified identifier cannot be used to find a check
-   */
   get(checkId: string): Promise<CheckType>;
-
-  /**
-   * Retrieves multiple checks from the registry
-   *
-   * @param checks - a collection of string identifiers of checks to be retrieved
-   * @returns - A collection of checks
-   */
   getAll(checks: string[]): Promise<CheckType[]>;
-
-  /**
-   * Lists all checks in the registry
-   *
-   * @returns - A collection of checks
-   */
   list(): Promise<CheckType[]>;
 }
 
@@ -126,19 +103,13 @@ export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
  * Generic CheckResult
  *
  * Contains information about the facts used to calculate the check result
- * and information about the check itself. Both include metadata to
+ * and information about the check itself. Both may include metadata to be able to display additional information.
  * A collection of these should be parseable by the frontend to display scorecards
  *
  * @public
  */
 export type CheckResult = {
-  /**
-   * Facts used to calculate this CheckResult
-   */
   facts: FactResponse;
-  /**
-   * The check used to calculate this CheckResult
-   */
   check: CheckResponse;
 };
 
@@ -148,9 +119,6 @@ export type CheckResult = {
  * @public
  */
 export interface BooleanCheckResult extends CheckResult {
-  /**
-   * Actual result value of this CheckResult
-   */
   result: boolean;
 }
 
@@ -163,17 +131,11 @@ export interface TechInsightCheck {
   /**
    * Unique identifier of the check
    *
-   * Used to identify which checks to use when running checks
+   * Used to identify which checks to use when running checks.
    */
   id: string;
 
-  /**
-   * Human readable name for the check
-   */
   name: string;
-  /**
-   * Description of the check
-   */
   description: string;
 
   /**

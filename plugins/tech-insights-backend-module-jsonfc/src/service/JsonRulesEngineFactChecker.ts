@@ -30,6 +30,16 @@ import { pick } from 'lodash';
 import Ajv from 'ajv';
 import * as validationSchema from './validation-schema.json';
 
+const noopEvent = {
+  type: 'noop',
+};
+
+/**
+ * @public
+ * Should actually be at-internal
+ *
+ * Constructor options for JsonRulesEngineFactChecker
+ */
 export type JsonRulesEngineFactCheckerOptions = {
   checks: TechInsightJsonRuleCheck[];
   repository: TechInsightsStore;
@@ -37,12 +47,9 @@ export type JsonRulesEngineFactCheckerOptions = {
   checkRegistry?: TechInsightCheckRegistry<any>;
 };
 
-const noopEvent = {
-  type: 'noop',
-};
-
 /**
  * @public
+ * Should actually be at-internal
  *
  * FactChecker implementation using json-rules-engine
  */
@@ -264,6 +271,15 @@ export class JsonRulesEngineFactChecker
   }
 }
 
+/**
+ * @public
+ *
+ * Constructor options for JsonRulesEngineFactCheckerFactory
+ *
+ * Implementation of checkRegistry is optional.
+ * If there is a need to use persistent storage for checks, it is recommended to inject a storage implementation here.
+ * Otherwise an in-memory option is instantiated and used.
+ */
 export type JsonRulesEngineFactCheckerFactoryOptions = {
   checks: TechInsightJsonRuleCheck[];
   logger: Logger;

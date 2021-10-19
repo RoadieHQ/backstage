@@ -24,4 +24,6 @@ export type {
 export type {
   JsonRuleCheckResponse,
   JsonRuleBooleanCheckResult,
+  TechInsightJsonRuleCheck,
+  ResponseTopLevelCondition,
 } from './types';

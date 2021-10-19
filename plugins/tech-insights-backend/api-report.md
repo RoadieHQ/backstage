@@ -15,8 +15,6 @@ import { PluginEndpointDiscovery } from '@backstage/backend-common';
 import { TechInsightCheck } from '@backstage/plugin-tech-insights-common';
 import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 
-// Warning: (tsdoc-param-tag-missing-hyphen) The @param block should be followed by a parameter name and then a hyphen
-//
 // @public
 export function createRouter<
   CheckType extends TechInsightCheck,
@@ -32,9 +30,7 @@ export class DefaultTechInsightsBuilder<
   build(): Promise<TechInsightsContext<CheckType, CheckResultType>>;
 }
 
-// Warning: (ae-missing-release-tag) "PersistenceContext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type PersistenceContext = {
   techInsightsStore: TechInsightsStore;
 };
@@ -50,9 +46,7 @@ export interface RouterOptions<
   persistenceContext: PersistenceContext;
 }
 
-// Warning: (ae-missing-release-tag) "TechInsightsContext" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type TechInsightsContext<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -61,9 +55,7 @@ export type TechInsightsContext<
   persistenceContext: PersistenceContext;
 };
 
-// Warning: (ae-missing-release-tag) "TechInsightsOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export interface TechInsightsOptions<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -74,9 +66,7 @@ export interface TechInsightsOptions<
   database: PluginDatabaseManager;
   // (undocumented)
   discovery: PluginEndpointDiscovery;
-  // (undocumented)
   factCheckerFactory?: FactCheckerFactory<CheckType, CheckResultType>;
-  // (undocumented)
   factRetrievers: FactRetrieverRegistration[];
   // (undocumented)
   logger: Logger_2;

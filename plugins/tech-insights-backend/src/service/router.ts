@@ -66,7 +66,7 @@ export interface RouterOptions<
  * Exposes endpoints to handle facts
  * Exposes optional endpoints to handle checks if a FactChecker implementation is passed in
  *
- * @param options
+ * @param options - RouterOptions object
  */
 export async function createRouter<
   CheckType extends TechInsightCheck,

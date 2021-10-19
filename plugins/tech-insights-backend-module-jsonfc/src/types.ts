@@ -36,14 +36,13 @@ export type Rule = {
   priority?: number;
 };
 
+/**
+ * @public
+ */
 export interface TechInsightJsonRuleCheck extends TechInsightCheck {
   rule: Rule;
   dynamicFacts?: DynamicFact[];
 }
-
-type ResponseTopLevelCondition =
-  | { all: CheckCondition[] }
-  | { any: CheckCondition[] };
 
 type CheckCondition = {
   operator: string;
@@ -53,6 +52,16 @@ type CheckCondition = {
   result: boolean;
 };
 
+/**
+ * @public
+ */
+export type ResponseTopLevelCondition =
+  | { all: CheckCondition[] }
+  | { any: CheckCondition[] };
+
+/**
+ * @public
+ */
 export interface JsonRuleCheckResponse extends CheckResponse {
   rule: {
     conditions: ResponseTopLevelCondition & {
@@ -61,6 +70,9 @@ export interface JsonRuleCheckResponse extends CheckResponse {
   };
 }
 
+/**
+ * @public
+ */
 export interface JsonRuleBooleanCheckResult extends BooleanCheckResult {
   check: JsonRuleCheckResponse;
 }

@@ -25,6 +25,11 @@ const migrationsDir = resolvePackagePath(
   'migrations',
 );
 
+/**
+ * A Container for persistence related components in TechInsights
+ *
+ * @public
+ */
 export type PersistenceContext = {
   techInsightsStore: TechInsightsStore;
 };
@@ -37,6 +42,11 @@ const defaultOptions: CreateDatabaseOptions = {
   logger: getVoidLogger(),
 };
 
+/**
+ * A factory class to construct persistence context for both running implmentation and test cases.
+ *
+ * @internal
+ */
 export class DatabaseManager {
   public static async initializePersistenceContext(
     knex: Knex,

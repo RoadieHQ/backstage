@@ -10,6 +10,7 @@ import { PluginEndpointDiscovery } from '@backstage/backend-common';
 
 // @public
 export interface BooleanCheckResult extends CheckResult {
+  // (undocumented)
   result: boolean;
 }
 
@@ -101,19 +102,25 @@ export type FactValueDefinitions = {
 
 // @public
 export interface TechInsightCheck {
+  // (undocumented)
   description: string;
   factRefs: string[];
   failureMetadata?: Record<string, any>;
   id: string;
+  // (undocumented)
   name: string;
   successMetadata?: Record<string, any>;
 }
 
 // @public
 export interface TechInsightCheckRegistry<CheckType extends TechInsightCheck> {
+  // (undocumented)
   get(checkId: string): Promise<CheckType>;
+  // (undocumented)
   getAll(checks: string[]): Promise<CheckType[]>;
+  // (undocumented)
   list(): Promise<CheckType[]>;
+  // (undocumented)
   register(check: CheckType): Promise<void>;
 }
 

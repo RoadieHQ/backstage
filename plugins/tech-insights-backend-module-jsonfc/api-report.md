@@ -14,16 +14,12 @@ import { TechInsightCheckRegistry } from '@backstage/plugin-tech-insights-common
 import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 import { TopLevelCondition } from 'json-rules-engine';
 
-// Warning: (ae-missing-release-tag) "JsonRuleBooleanCheckResult" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public (undocumented)
 export interface JsonRuleBooleanCheckResult extends BooleanCheckResult {
   // (undocumented)
   check: JsonRuleCheckResponse;
 }
 
-// Warning: (ae-missing-release-tag) "JsonRuleCheckResponse" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public (undocumented)
 export interface JsonRuleCheckResponse extends CheckResponse {
   // (undocumented)
@@ -34,8 +30,6 @@ export interface JsonRuleCheckResponse extends CheckResponse {
   };
 }
 
-// Warning: (ae-forgotten-export) The symbol "TechInsightJsonRuleCheck" needs to be exported by the entry point index.d.ts
-//
 // @public
 export class JsonRulesEngineFactChecker
   implements FactChecker<TechInsightJsonRuleCheck, JsonRuleBooleanCheckResult>
@@ -70,18 +64,17 @@ export class JsonRulesEngineFactCheckerFactory {
   construct(repository: TechInsightsStore): JsonRulesEngineFactChecker;
 }
 
-// Warning: (ae-missing-release-tag) "JsonRulesEngineFactCheckerFactoryOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export type JsonRulesEngineFactCheckerFactoryOptions = {
   checks: TechInsightJsonRuleCheck[];
   logger: Logger_2;
   checkRegistry?: TechInsightCheckRegistry<any>;
 };
 
+// Warning: (tsdoc-undefined-tag) The TSDoc tag "@private" is not defined in this configuration
 // Warning: (ae-missing-release-tag) "JsonRulesEngineFactCheckerOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export type JsonRulesEngineFactCheckerOptions = {
   checks: TechInsightJsonRuleCheck[];
   repository: TechInsightsStore;
@@ -89,9 +82,30 @@ export type JsonRulesEngineFactCheckerOptions = {
   checkRegistry?: TechInsightCheckRegistry<any>;
 };
 
+// @public (undocumented)
+export type ResponseTopLevelCondition =
+  | {
+      all: CheckCondition[];
+    }
+  | {
+      any: CheckCondition[];
+    };
+
+// @public (undocumented)
+export interface TechInsightJsonRuleCheck extends TechInsightCheck {
+  // Warning: (ae-forgotten-export) The symbol "DynamicFact" needs to be exported by the entry point index.d.ts
+  //
+  // (undocumented)
+  dynamicFacts?: DynamicFact[];
+  // Warning: (ae-forgotten-export) The symbol "Rule" needs to be exported by the entry point index.d.ts
+  //
+  // (undocumented)
+  rule: Rule;
+}
+
 // Warnings were encountered during analysis:
 //
-// src/types.d.ts:31:9 - (ae-forgotten-export) The symbol "ResponseTopLevelCondition" needs to be exported by the entry point index.d.ts
+// src/types.d.ts:31:5 - (ae-forgotten-export) The symbol "CheckCondition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 ```
