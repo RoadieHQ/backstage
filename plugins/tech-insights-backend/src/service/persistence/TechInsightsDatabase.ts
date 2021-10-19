@@ -27,7 +27,7 @@ import { Logger } from 'winston';
 export type RawDbFactRow = {
   ref: string;
   version: string;
-  timestamp: string;
+  timestamp: Date;
   entity: string;
   facts: string;
 };
@@ -91,7 +91,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         version: currentSchema.version,
         entity: `${namespace}/${kind}/${name}`.toLocaleLowerCase('en-US'),
         facts: JSON.stringify(it.facts),
-        ...(it.timestamp && { timestamp: it.timestamp.toISO() }),
+        ...(it.timestamp && { timestamp: it.timestamp.toJSDate() }),
       };
     });
 
@@ -140,7 +140,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         return {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: DateTime.fromISO(it.timestamp),
+          timestamp: DateTime.fromJSDate(it.timestamp),
           version: it.version,
           facts: JSON.parse(it.facts),
         };
@@ -170,7 +170,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
         [it.ref]: {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: DateTime.fromISO(it.timestamp),
+          timestamp: DateTime.fromJSDate(it.timestamp),
           version: it.version,
           facts: JSON.parse(it.facts),
         },

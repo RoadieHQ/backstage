@@ -227,7 +227,7 @@ export class JsonRulesEngineFactChecker
 
     if ('toJSON' in result) {
       // Results serialize "wrong" since the objects are creating their own serialization implementations
-      // 'toJSON' should always be present in the result object bit it is missing from the types
+      // 'toJSON' should always be present in the result object but it is missing from the types
       const rule = JSON.parse(result.toJSON());
       return { ...returnable, rule: pick(rule, ['conditions']) };
     }

@@ -102,6 +102,62 @@ discovery,
 });
 ```
 
+### Creating Fact Retrievers
+
+A Fact Retriever consist of three parts:
+
+1. `ref` - unique identifier of a fact retriever
+2. `schema` - A versioned schema defining the shape of data a fact retriever returns
+3. `handler` - An asynchronous function handling the logic of retrieving and returning facts for an entity
+
+An example implementation of a FactRetriever could for example be as follows:
+
+```ts
+const myFactRetriever: FactRetriever = {
+  ref: 'documentation-number-factretriever', // unique ref, identifier of the fact retriever
+  schema: {
+    version: '0.1.1', // Semver version number of this fact retriever schema. This should be incremented if the implementation changes
+    schema: {
+      // the actual schema
+      examplenumberfact: {
+        // Name/identifier of an individual fact that this retriever returns
+        type: 'integer', // Type of the fact
+        description: 'A fact of a number', // Description of the fact
+        entityKinds: ['component'], // An array of entity kinds that this fact is applicable to
+      },
+    },
+  },
+  handler: async ctx => {
+    // Handler function that retrieves the fact
+    const { discovery, config, logger } = ctx;
+    const catalogClient = new CatalogClient({
+      discoveryApi: discovery,
+    });
+    const entities = await catalogClient.getEntities(); // Retrieve all entities
+    /**
+     * snip: Do complex logic to retrieve facts from external system or calculate fact values
+     */
+    return entities.items.map(it => {
+      // Respond with an array of entity/fact values
+      return {
+        ref: 'documentation-number-factretriever', // ref of the retriever. Needs to match the ref of the schema/retriever
+        entity: {
+          // Entity information that this fact relates to
+          namespace: it.metadata.namespace,
+          kind: it.kind,
+          name: it.metadata.name,
+        },
+        facts: {
+          // All facts that this retriever returns
+          examplenumberfact: 2, //
+        },
+        // (optional) timestamp to use as a Luxon Datetime object
+      };
+    });
+  },
+};
+```
+
 ### Adding a fact checker
 
 This module comes with a possibility to additionally add a fact checker and expose fact checking endpoints from the API. To be able to enable this feature you need to add a FactCheckerFactory implementation to be part of the `DefaultTechInsightsBuilder` constructor options.
