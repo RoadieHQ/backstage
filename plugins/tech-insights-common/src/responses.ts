@@ -58,6 +58,10 @@ export interface CheckResponse {
 export type FactResponse = {
   [key: string]: {
     /**
+     * Reference and unique identifier of the fact row
+     */
+    ref: string;
+    /**
      * Type of the individual fact value
      *
      * Numbers are split into integers and floating point values.

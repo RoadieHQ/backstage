@@ -37,7 +37,7 @@ exports.up = async function up(knex) {
       .notNullable()
       .comment(
         'SemVer string defining the version of schema this fact is based on.',
-      ); // Should be FK to schema table?
+      );
     table
       .dateTime('timestamp')
       .defaultTo(knex.fn.now())

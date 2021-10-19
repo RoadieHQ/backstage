@@ -18,7 +18,8 @@
   },
   "keywords": [
     "backstage",
-    "badges"
+    "tech-insights",
+    "scorecard"
   ],
   "scripts": {
     "start": "backstage-cli backend:dev",

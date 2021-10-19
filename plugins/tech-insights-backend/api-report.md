@@ -46,7 +46,7 @@ export interface RouterOptions<
   persistenceContext: PersistenceContext;
 }
 
-// @public
+// @public (undocumented)
 export type TechInsightsContext<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,
@@ -55,7 +55,7 @@ export type TechInsightsContext<
   persistenceContext: PersistenceContext;
 };
 
-// @public
+// @public (undocumented)
 export interface TechInsightsOptions<
   CheckType extends TechInsightCheck,
   CheckResultType extends CheckResult,

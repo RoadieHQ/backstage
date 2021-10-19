@@ -72,7 +72,7 @@ async function main() {
 ### Adding fact retrievers
 
 At this point the Tech Insights backend is installed in your backend package, but
-you will not have any fact retrievers present in your application. To have the FactRetrieverEngine implemented within this package to be able to retrieve and store fact data into the database, you need to add these.
+you will not have any fact retrievers present in your application. To have the implemented FactRetrieverEngine within this package to be able to retrieve and store fact data into the database, you need to add these.
 
 To create factRetrieverRegistration you need to implement `FactRetriever` interface defined in `@backstage/plugin-tech-insights-common` package. After you have implemented this interface you can wrap that into a registration object like follows:
 
@@ -116,11 +116,12 @@ An example implementation of a FactRetriever could for example be as follows:
 const myFactRetriever: FactRetriever = {
   ref: 'documentation-number-factretriever', // unique ref, identifier of the fact retriever
   schema: {
-    version: '0.1.1', // Semver version number of this fact retriever schema. This should be incremented if the implementation changes
+    version: '0.1.1', // SemVer version number of this fact retriever schema. This should be incremented if the implementation changes
+
+    // the actual schema
     schema: {
-      // the actual schema
+      // Name/identifier of an individual fact that this retriever returns
       examplenumberfact: {
-        // Name/identifier of an individual fact that this retriever returns
         type: 'integer', // Type of the fact
         description: 'A fact of a number', // Description of the fact
         entityKinds: ['component'], // An array of entity kinds that this fact is applicable to
@@ -137,20 +138,22 @@ const myFactRetriever: FactRetriever = {
     /**
      * snip: Do complex logic to retrieve facts from external system or calculate fact values
      */
+
+    // Respond with an array of entity/fact values
     return entities.items.map(it => {
-      // Respond with an array of entity/fact values
       return {
+        // Entity information that this fact relates to
         entity: {
-          // Entity information that this fact relates to
           namespace: it.metadata.namespace,
           kind: it.kind,
           name: it.metadata.name,
         },
+
+        // All facts that this retriever returns
         facts: {
-          // All facts that this retriever returns
           examplenumberfact: 2, //
         },
-        // (optional) timestamp to use as a Luxon Datetime object
+        // (optional) timestamp to use as a Luxon DateTime object
       };
     });
   },
@@ -159,9 +162,9 @@ const myFactRetriever: FactRetriever = {
 
 ### Adding a fact checker
 
-This module comes with a possibility to additionally add a fact checker and expose fact checking endpoints from the API. To be able to enable this feature you need to add a FactCheckerFactory implementation to be part of the `DefaultTechInsightsBuilder` constructor options.
+This module comes with a possibility to additionally add a fact checker and expose fact checking endpoints from the API. To be able to enable this feature you need to add a FactCheckerFactory implementation to be part of the `DefaultTechInsightsBuilder` constructor call.
 
-There is a default FactChecker implementation provided in a module `@backstage/plugin-tech-insights-backend-module-jsonfc`. This implementation uses `json-rules-engine` as the underlying functionality to run checks. If you want to implement your own FactChecker for example to be able to handle other than `boolean` result types, you can do so by implementing `FactCheckerFactory` and `FactChecker` interfaces from `@backstage/plugin-tech-insights-common` package.
+There is a default FactChecker implementation provided in module `@backstage/plugin-tech-insights-backend-module-jsonfc`. This implementation uses `json-rules-engine` as the underlying functionality to run checks. If you want to implement your own FactChecker, for example to be able to handle other than `boolean` result types, you can do so by implementing `FactCheckerFactory` and `FactChecker` interfaces from `@backstage/plugin-tech-insights-common` package.
 
 To add the default FactChecker into your Tech Insights you need to install the module into your backend application:
 
@@ -171,7 +174,7 @@ cd packages/backend
 yarn add @backstage/plugin-tech-insights-backend-module-jsonfc
 ```
 
-and modify the `techInsights.ts` file to contain a reference to the FactCheckers implementation.
+and modify the `techInsights.ts` file to contain a reference to the FactChecker implementation.
 
 ```diff
 + import { JsonRulesEngineFactCheckerFactory } from '@backstage/plugin-tech-insights-backend-module-jsonfc';
@@ -195,7 +198,7 @@ To be able to run checks, you need to additionally add individual checks into yo
 
 #### Modifying check persistence
 
-The default FactChecker implementation comes with an in-memory storage to store checks. You can inject an additional data store by adding an implementation of `TechInsightCheckRegistry` into the constructor options when creating a `JsonRulesEngineFactCheckerFactory`. That can be done as follows
+The default FactChecker implementation comes with an in-memory storage to store checks. You can inject an additional data store by adding an implementation of `TechInsightCheckRegistry` into the constructor options when creating a `JsonRulesEngineFactCheckerFactory`. That can be done as follows:
 
 ```diff
 const myTechInsightCheckRegistry: TechInsightCheckRegistry<MyCheckType> = // snip

@@ -58,7 +58,7 @@ export type TechInsightFact = {
  *
  *  @public
  */
-export type TechInsightFactResponse = TechInsightFact & {
+export type FlatTechInsightFact = TechInsightFact & {
   /**
    * Reference and unique identifier of the fact row
    */

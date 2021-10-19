@@ -35,13 +35,12 @@ import {
 } from './persistence/DatabaseManager';
 
 /**
- * Configuration options to initialize TechInsightsBuilder. Generic types params are needed if FactCheckerFactory
- * is included for FactChecker creation.
- *
  * @public
  * @typeParam CheckType - Type of the check for the fact checker this builder returns
  * @typeParam CheckResultType - Type of the check result for the fact checker this builder returns
  *
+ * Configuration options to initialize TechInsightsBuilder. Generic types params are needed if FactCheckerFactory
+ * is included for FactChecker creation.
  */
 export interface TechInsightsOptions<
   CheckType extends TechInsightCheck,
@@ -65,12 +64,12 @@ export interface TechInsightsOptions<
 }
 
 /**
- * A container for exported implementations related to TechInsights.
- * FactChecker is present if an optional FactCheckerFactory is included in the build stage.
- *
  * @public
  * @typeParam CheckType - Type of the check for the fact checker this builder returns
  * @typeParam CheckResultType - Type of the check result for the fact checker this builder returns
+ *
+ * A container for exported implementations related to TechInsights.
+ * FactChecker is present if an optional FactCheckerFactory is included in the build stage.
  */
 export type TechInsightsContext<
   CheckType extends TechInsightCheck,

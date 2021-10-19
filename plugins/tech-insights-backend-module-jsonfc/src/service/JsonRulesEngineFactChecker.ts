@@ -20,7 +20,7 @@ import {
   FactResponse,
   FactValueDefinitions,
   TechInsightCheckRegistry,
-  TechInsightFactResponse,
+  FlatTechInsightFact,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { Engine, EngineResult, TopLevelCondition } from 'json-rules-engine';
@@ -178,7 +178,7 @@ export class JsonRulesEngineFactChecker
   private async ruleEngineResultsToCheckResponse(
     results: EngineResult,
     techInsightChecks: TechInsightJsonRuleCheck[],
-    facts: TechInsightFactResponse[],
+    facts: FlatTechInsightFact[],
   ) {
     return await Promise.all(
       [
@@ -235,7 +235,7 @@ export class JsonRulesEngineFactChecker
   }
 
   private async constructFactInformationResponse(
-    facts: TechInsightFactResponse[],
+    facts: FlatTechInsightFact[],
     techInsightCheck: TechInsightJsonRuleCheck,
   ): Promise<FactResponse> {
     const factSchemas = await this.repository.getLatestSchemas(

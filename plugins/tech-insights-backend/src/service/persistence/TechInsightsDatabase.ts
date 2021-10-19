@@ -17,7 +17,7 @@ import { Knex } from 'knex';
 import {
   FactSchema,
   TechInsightFact,
-  TechInsightFactResponse,
+  FlatTechInsightFact,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { rsort } from 'semver';
@@ -82,7 +82,6 @@ export class TechInsightsDatabase implements TechInsightsStore {
   }
 
   async insertFacts(ref: string, facts: TechInsightFact[]): Promise<void> {
-    const tx = await this.db.transaction();
     if (facts.length === 0) return;
     const currentSchema = await this.getLatestSchema(ref);
     const factRows = facts.map(it => {
@@ -95,15 +94,15 @@ export class TechInsightsDatabase implements TechInsightsStore {
         ...(it.timestamp && { timestamp: it.timestamp.toJSDate() }),
       };
     });
-
-    await tx.batchInsert<RawDbFactRow>('facts', factRows, this.CHUNK_SIZE);
-    tx.commit();
+    await this.db.transaction(async tx => {
+      await tx.batchInsert<RawDbFactRow>('facts', factRows, this.CHUNK_SIZE);
+    });
   }
 
   async getLatestFactsForRefs(
     refs: string[],
     entityTriplet: string,
-  ): Promise<{ [p: string]: TechInsightFactResponse }> {
+  ): Promise<{ [p: string]: FlatTechInsightFact }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })
       .and.whereIn('ref', refs)
@@ -125,7 +124,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
     startDateTime: DateTime,
     endDateTime: DateTime,
   ): Promise<{
-    [p: string]: TechInsightFactResponse[];
+    [p: string]: FlatTechInsightFact[];
   }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })

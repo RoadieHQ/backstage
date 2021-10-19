@@ -54,6 +54,7 @@ export interface FactCheckerFactory<
 // @public
 export type FactResponse = {
   [key: string]: {
+    ref: string;
     type: 'integer' | 'float' | 'string' | 'boolean' | 'datetime' | 'set';
     description: string;
     value: number | string | boolean | DateTime | [];
@@ -101,6 +102,11 @@ export type FactValueDefinitions = {
 };
 
 // @public
+export type FlatTechInsightFact = TechInsightFact & {
+  ref: string;
+};
+
+// @public
 export interface TechInsightCheck {
   // (undocumented)
   description: string;
@@ -136,11 +142,6 @@ export type TechInsightFact = {
 };
 
 // @public
-export type TechInsightFactResponse = TechInsightFact & {
-  ref: string;
-};
-
-// @public
 export interface TechInsightsStore {
   getFactsBetweenTimestampsForRefs(
     refs: string[],
@@ -148,14 +149,14 @@ export interface TechInsightsStore {
     startDateTime: DateTime,
     endDateTime: DateTime,
   ): Promise<{
-    [factRef: string]: TechInsightFactResponse[];
+    [factRef: string]: FlatTechInsightFact[];
   }>;
   // (undocumented)
   getLatestFactsForRefs(
     refs: string[],
     entity: string,
   ): Promise<{
-    [factRef: string]: TechInsightFactResponse;
+    [factRef: string]: FlatTechInsightFact;
   }>;
   getLatestSchemas(refs?: string[]): Promise<FactSchema[]>;
   insertFacts(ref: string, facts: TechInsightFact[]): Promise<void>;

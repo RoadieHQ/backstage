@@ -45,7 +45,7 @@ const defaultOptions: CreateDatabaseOptions = {
 /**
  * A factory class to construct persistence context for both running implmentation and test cases.
  *
- * @internal
+ * @public
  */
 export class DatabaseManager {
   public static async initializePersistenceContext(

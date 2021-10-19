@@ -19,7 +19,7 @@ import {
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { FactRetrieverRegistry } from './FactRetrieverRegistry';
-import { schedule, ScheduledTask } from 'node-cron';
+import { schedule, validate, ScheduledTask } from 'node-cron';
 import { Logger } from 'winston';
 
 function randomDailyCron() {
@@ -73,16 +73,29 @@ export class FactRetrieverEngine {
 
   schedule() {
     const registrations = this.factRetrieverRegistry.listRegistrations();
+    const newRegs: string[] = [];
     registrations.forEach(registration => {
       const { factRetriever, cadence } = registration;
       if (!this.scheduledJobs.has(factRetriever.ref)) {
+        const cronExpression =
+          cadence || this.defaultCadence || randomDailyCron();
+        if (!validate(cronExpression)) {
+          this.logger.warn(
+            `Validation failed for cron expression ${cronExpression} when trying to schedule fact retriever ${factRetriever.ref}`,
+          );
+          return;
+        }
         const job = schedule(
-          cadence || this.defaultCadence || randomDailyCron(),
+          cronExpression,
           this.createFactRetrieverHandler(factRetriever),
         );
         this.scheduledJobs.set(factRetriever.ref, job);
+        newRegs.push(factRetriever.ref);
       }
     });
+    this.logger.info(
+      `Scheduled ${newRegs.length} fact retrievers to Fact Retriever Engine.`,
+    );
   }
 
   getJob(ref: string) {
