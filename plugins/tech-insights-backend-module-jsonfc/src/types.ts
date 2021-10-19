@@ -24,12 +24,18 @@ import {
   TechInsightCheck,
 } from '@backstage/plugin-tech-insights-common';
 
-interface DynamicFact<T = unknown> {
+/**
+ * @public
+ */
+export interface DynamicFact<T = unknown> {
   id: string;
   calculationMethod: DynamicFactCallback<T> | T;
   options?: FactOptions;
 }
 
+/**
+ * @public
+ */
 export type Rule = {
   conditions: TopLevelCondition;
   name?: string;
@@ -44,7 +50,10 @@ export interface TechInsightJsonRuleCheck extends TechInsightCheck {
   dynamicFacts?: DynamicFact[];
 }
 
-type CheckCondition = {
+/**
+ * @public
+ */
+export type CheckCondition = {
   operator: string;
   fact: string;
   factValue: any;

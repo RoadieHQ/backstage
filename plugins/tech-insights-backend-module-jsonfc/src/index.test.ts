@@ -17,7 +17,6 @@
 import * as anything from './';
 
 describe('tech-insights.backend-module-jsonfc', () => {
-  // TODO: Test real things once they exist.
   it('should exist', () => {
     expect(anything).toBeTruthy();
   });

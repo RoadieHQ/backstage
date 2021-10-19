@@ -15,6 +15,25 @@ import { TechInsightsStore } from '@backstage/plugin-tech-insights-common';
 import { TopLevelCondition } from 'json-rules-engine';
 
 // @public (undocumented)
+export type CheckCondition = {
+  operator: string;
+  fact: string;
+  factValue: any;
+  factResult: any;
+  result: boolean;
+};
+
+// @public (undocumented)
+export interface DynamicFact<T = unknown> {
+  // (undocumented)
+  calculationMethod: DynamicFactCallback<T> | T;
+  // (undocumented)
+  id: string;
+  // (undocumented)
+  options?: FactOptions;
+}
+
+// @public (undocumented)
 export interface JsonRuleBooleanCheckResult extends BooleanCheckResult {
   // (undocumented)
   check: JsonRuleCheckResponse;
@@ -71,9 +90,6 @@ export type JsonRulesEngineFactCheckerFactoryOptions = {
   checkRegistry?: TechInsightCheckRegistry<any>;
 };
 
-// Warning: (tsdoc-undefined-tag) The TSDoc tag "@private" is not defined in this configuration
-// Warning: (ae-missing-release-tag) "JsonRulesEngineFactCheckerOptions" is exported by the package, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
 export type JsonRulesEngineFactCheckerOptions = {
   checks: TechInsightJsonRuleCheck[];
@@ -92,20 +108,19 @@ export type ResponseTopLevelCondition =
     };
 
 // @public (undocumented)
+export type Rule = {
+  conditions: TopLevelCondition;
+  name?: string;
+  priority?: number;
+};
+
+// @public (undocumented)
 export interface TechInsightJsonRuleCheck extends TechInsightCheck {
-  // Warning: (ae-forgotten-export) The symbol "DynamicFact" needs to be exported by the entry point index.d.ts
-  //
   // (undocumented)
   dynamicFacts?: DynamicFact[];
-  // Warning: (ae-forgotten-export) The symbol "Rule" needs to be exported by the entry point index.d.ts
-  //
   // (undocumented)
   rule: Rule;
 }
-
-// Warnings were encountered during analysis:
-//
-// src/types.d.ts:31:5 - (ae-forgotten-export) The symbol "CheckCondition" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 ```

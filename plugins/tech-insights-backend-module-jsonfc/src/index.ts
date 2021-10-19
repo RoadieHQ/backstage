@@ -26,4 +26,7 @@ export type {
   JsonRuleBooleanCheckResult,
   TechInsightJsonRuleCheck,
   ResponseTopLevelCondition,
+  Rule,
+  DynamicFact,
+  CheckCondition,
 } from './types';
