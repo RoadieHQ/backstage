@@ -17,6 +17,7 @@ import { Knex } from 'knex';
 import {
   FactSchema,
   TechInsightFact,
+  TechInsightFactResponse,
   TechInsightsStore,
 } from '@backstage/plugin-tech-insights-common';
 import { rsort } from 'semver';
@@ -27,7 +28,7 @@ import { Logger } from 'winston';
 export type RawDbFactRow = {
   ref: string;
   version: string;
-  timestamp: Date;
+  timestamp: Date | string;
   entity: string;
   facts: string;
 };
@@ -80,14 +81,14 @@ export class TechInsightsDatabase implements TechInsightsStore {
     }
   }
 
-  async insertFacts(facts: TechInsightFact[]): Promise<void> {
+  async insertFacts(ref: string, facts: TechInsightFact[]): Promise<void> {
     const tx = await this.db.transaction();
     if (facts.length === 0) return;
-    const currentSchema = await this.getLatestSchema(facts[0].ref);
+    const currentSchema = await this.getLatestSchema(ref);
     const factRows = facts.map(it => {
       const { namespace, name, kind } = it.entity;
       return {
-        ref: it.ref,
+        ref: ref,
         version: currentSchema.version,
         entity: `${namespace}/${kind}/${name}`.toLocaleLowerCase('en-US'),
         facts: JSON.stringify(it.facts),
@@ -102,7 +103,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
   async getLatestFactsForRefs(
     refs: string[],
     entityTriplet: string,
-  ): Promise<{ [p: string]: TechInsightFact }> {
+  ): Promise<{ [p: string]: TechInsightFactResponse }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })
       .and.whereIn('ref', refs)
@@ -124,7 +125,7 @@ export class TechInsightsDatabase implements TechInsightsStore {
     startDateTime: DateTime,
     endDateTime: DateTime,
   ): Promise<{
-    [p: string]: TechInsightFact[];
+    [p: string]: TechInsightFactResponse[];
   }> {
     const results = await this.db<RawDbFactRow>('facts')
       .where({ entity: entityTriplet })
@@ -137,10 +138,14 @@ export class TechInsightsDatabase implements TechInsightsStore {
     return groupBy(
       results.map(it => {
         const [namespace, kind, name] = it.entity.split('/');
+        const timestamp =
+          typeof it.timestamp === 'string'
+            ? DateTime.fromISO(it.timestamp)
+            : DateTime.fromJSDate(it.timestamp);
         return {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: DateTime.fromJSDate(it.timestamp),
+          timestamp,
           version: it.version,
           facts: JSON.parse(it.facts),
         };
@@ -165,12 +170,16 @@ export class TechInsightsDatabase implements TechInsightsStore {
   private dbFactRowsToTechInsightFacts(rows: RawDbFactRow[]) {
     return rows.reduce((acc, it) => {
       const [namespace, kind, name] = it.entity.split('/');
+      const timestamp =
+        typeof it.timestamp === 'string'
+          ? DateTime.fromISO(it.timestamp)
+          : DateTime.fromJSDate(it.timestamp);
       return {
         ...acc,
         [it.ref]: {
           ref: it.ref,
           entity: { namespace, kind, name },
-          timestamp: DateTime.fromJSDate(it.timestamp),
+          timestamp,
           version: it.version,
           facts: JSON.parse(it.facts),
         },

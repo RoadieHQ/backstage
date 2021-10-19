@@ -29,11 +29,6 @@ import { Logger } from 'winston';
  */
 export type TechInsightFact = {
   /**
-   * Reference and unique identifier of the fact row
-   */
-  ref: string;
-
-  /**
    * Entity reference that this fact relates to
    */
   entity: {
@@ -54,6 +49,20 @@ export type TechInsightFact = {
    * Otherwise when stored into data storage, defaults to current time
    */
   timestamp?: DateTime;
+};
+
+/**
+
+ * Response type used when returning from database and API.
+ * Adds a field for ref for easier usage
+ *
+ *  @public
+ */
+export type TechInsightFactResponse = TechInsightFact & {
+  /**
+   * Reference and unique identifier of the fact row
+   */
+  ref: string;
 };
 
 /**

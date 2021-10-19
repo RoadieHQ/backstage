@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { FactSchema, TechInsightFact } from './facts';
+import { FactSchema, TechInsightFact, TechInsightFactResponse } from './facts';
 import { DateTime } from 'luxon';
 
 /**
@@ -28,9 +28,10 @@ export interface TechInsightsStore {
    *
    * Each row may contain multiple individual facts and values
    *
+   * @param ref - Unique identifier of the fact retriever these facts relate to
    * @param facts - A collection of TechInsightFacts
    */
-  insertFacts(facts: TechInsightFact[]): Promise<void>;
+  insertFacts(ref: string, facts: TechInsightFact[]): Promise<void>;
 
   /**
    * @param refs - A collection of reference string to a fact row
@@ -41,7 +42,7 @@ export interface TechInsightsStore {
   getLatestFactsForRefs(
     refs: string[],
     entity: string,
-  ): Promise<{ [factRef: string]: TechInsightFact }>;
+  ): Promise<{ [factRef: string]: TechInsightFactResponse }>;
 
   /**
    * Retrieves fact values identified by fact row references for an individual entity.
@@ -58,7 +59,7 @@ export interface TechInsightsStore {
     entity: string,
     startDateTime: DateTime,
     endDateTime: DateTime,
-  ): Promise<{ [factRef: string]: TechInsightFact[] }>;
+  ): Promise<{ [factRef: string]: TechInsightFactResponse[] }>;
 
   /**
    * Stores versioned fact schemas into data store

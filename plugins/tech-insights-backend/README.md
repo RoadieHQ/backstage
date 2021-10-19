@@ -140,7 +140,6 @@ const myFactRetriever: FactRetriever = {
     return entities.items.map(it => {
       // Respond with an array of entity/fact values
       return {
-        ref: 'documentation-number-factretriever', // ref of the retriever. Needs to match the ref of the schema/retriever
         entity: {
           // Entity information that this fact relates to
           namespace: it.metadata.namespace,
