@@ -73,14 +73,14 @@ export async function createRouter<
   CheckResultType extends CheckResult,
 >(options: RouterOptions<CheckType, CheckResultType>): Promise<express.Router> {
   const router = Router();
-
+  router.use(express.json());
   const { persistenceContext, factChecker, logger } = options;
   const { techInsightsStore } = persistenceContext;
 
   if (factChecker) {
     logger.info('Fact checker configured. Enabling fact checking endpoints.');
-    router.get('/checks', (_req, res) => {
-      return res.send(factChecker.getChecks());
+    router.get('/checks', async (_req, res) => {
+      return res.send(await factChecker.getChecks());
     });
 
     router.get('/checks/:namespace/:kind/:name', async (req, res) => {
