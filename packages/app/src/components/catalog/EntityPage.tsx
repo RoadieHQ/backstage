@@ -126,6 +126,11 @@ import {
   EntityTravisCIOverviewCard,
   isTravisciAvailable,
 } from '@roadiehq/backstage-plugin-travis-ci';
+import {
+  BackstagePluginScorecardsPage,
+  ScorecardsWidget,
+} from '@roadiehq/backstage-plugin-scorecards';
+
 import React, { ReactNode, useMemo, useState } from 'react';
 
 const EntityLayoutWrapper = (props: { children?: ReactNode }) => {
@@ -346,6 +351,10 @@ const serviceEntityPage = (
           <EntityConsumedApisCard />
         </Grid>
       </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/scorecard" title="Scorecards">
+      <BackstagePluginScorecardsPage />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/dependencies" title="Dependencies">
