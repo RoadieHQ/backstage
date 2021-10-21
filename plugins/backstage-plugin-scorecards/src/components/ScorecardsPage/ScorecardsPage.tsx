@@ -49,7 +49,7 @@ export const ScorecardsPage = () => {
   }
 
   return isScorecardEnabled(entity) ? (
-    <ChecksOverview checks={value || []} />
+    <ChecksOverview checksValue={value || []} />
   ) : (
     <MissingAnnotationEmptyState annotation={SCORECARD_ANNOTATION} />
   );

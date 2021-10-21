@@ -16,7 +16,7 @@
 
 import { ScorecardsApi } from './ScorecardsApi';
 import {
-  BooleanCheckResult,
+  CheckResponse,
   CheckResult,
 } from '@backstage/plugin-tech-insights-common';
 import { DiscoveryApi } from '@backstage/core-plugin-api';
@@ -45,7 +45,7 @@ export class ScorecardsClient implements ScorecardsApi {
     const url = await this.getBaseUrl();
     const allChecks = await fetch(`${url}/checks`);
     const payload = await allChecks.json();
-    const checks = payload.map((check: any) => check.id);
+    const checks = payload.map((check: CheckResponse) => check.id);
     if (!allChecks.ok) {
       throw new Error(payload.errors[0]);
     }
@@ -60,11 +60,12 @@ export class ScorecardsClient implements ScorecardsApi {
     namespace: string;
     kind: string;
     name: string;
-  }): Promise<BooleanCheckResult[]> {
+  }): Promise<CheckResult[]> {
     const url = await this.getBaseUrl();
     const allChecks = await this.fetchAllChecks();
+    const checksString = allChecks.map(c => `checks[]=${c}`).join('&');
     const response = await fetch(
-      `${url}/checks/${namespace}/${kind}/${name}?checks[]=${allChecks}`,
+      `${url}/checks/${namespace}/${kind}/${name}?${checksString}`,
     );
     const result = await response.json();
     return result;

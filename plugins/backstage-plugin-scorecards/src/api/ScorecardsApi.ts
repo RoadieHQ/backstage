@@ -35,5 +35,5 @@ export interface ScorecardsApi {
     namespace: string;
     kind: string;
     name: string;
-  }): Promise<BooleanCheckResult[]>;
+  }): Promise<CheckResult[]>;
 }

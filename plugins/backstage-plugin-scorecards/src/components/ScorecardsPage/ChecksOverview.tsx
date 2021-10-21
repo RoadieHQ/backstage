@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   makeStyles,
   Grid,
@@ -28,53 +28,79 @@ import { useEntity } from '@backstage/plugin-catalog-react';
 import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
 import { useScorecardData } from '../../hooks/useScorecardData';
-import { BooleanCheckResult } from '@backstage/plugin-tech-insights-common';
+import {
+  CheckResponse,
+  FactResponse,
+} from '@backstage/plugin-tech-insights-common';
+import ArrowDownardRounded from '@material-ui/icons/ArrowDownwardRounded';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowUpwardOutlined from '@material-ui/icons/ArrowUpwardOutlined';
+import { BackstageTheme } from '@backstage/theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme: BackstageTheme) => ({
   listItem: {
-    paddingLeft: 0,
+    display: 'flex',
+    paddingLeft: '0',
+    flexWrap: 'wrap',
+  },
+  listItemText: {
+    paddingRight: '1rem',
+    flex: '0 1 auto',
   },
   contentScorecards: {
     paddingLeft: 0,
     paddingRight: 0,
   },
+  details: {
+    width: '100%',
+    padding: '1rem',
+    backgroundColor: theme.palette.background.default,
+  },
+  icon: {
+    marginLeft: 'auto',
+  },
 }));
 
-export const CheckName = (check: any) => {
-  const classes = useStyles();
-  return (
-    <ListItem className={classes.listItem}>
-      <ListItemText primary={check.name} />
-    </ListItem>
-  );
+type DataResult = {
+  check: CheckResponse;
+  facts: FactResponse;
+  result: boolean;
 };
 
-type Props = {
-  checks: BooleanCheckResult[];
+type DataResults = {
+  checksValue: DataResult[];
 };
 
-export const ChecksOverview = ({ checks }: Props) => {
+export const ChecksOverview = (checksValue: DataResults) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
   const { entity } = useEntity();
   const scorecardName = useScorecardData(entity);
 
-  const listItems = checks.map(check => (
-    <ListItem className={classes.listItem}>
-      <ListItemText primary={check.check.name} />
-    </ListItem>
-  ));
+  const handleArrowClick = () => {
+    setOpen(!open);
+  };
 
-  const statusItems = checks.map(check => (
+  const listItems = checksValue.checksValue.map(c => (
     <ListItem className={classes.listItem}>
-      <ListItemText
-        primary={
-          check.result ? (
-            <CheckCircleOutline color="primary" />
-          ) : (
-            <ErrorOutlineIcon color="error" />
-          )
-        }
-      />
+      <ListItemText primary={c.check.name} className={classes.listItemText} />
+      <IconButton onClick={handleArrowClick}>
+        {open ? (
+          <ArrowUpwardOutlined color="primary" />
+        ) : (
+          <ArrowDownardRounded color="primary" />
+        )}
+      </IconButton>
+      {c.result ? (
+        <CheckCircleOutline className={classes.icon} color="primary" />
+      ) : (
+        <ErrorOutlineIcon className={classes.icon} color="error" />
+      )}
+      {open && (
+        <div className={classes.details}>
+          <p>{c.check.description}</p>
+        </div>
+      )}
     </ListItem>
   ));
 
@@ -85,13 +111,13 @@ export const ChecksOverview = ({ checks }: Props) => {
           <Grid item xs={12}>
             <InfoCard title={scorecardName}>
               <Grid container direction="row">
-                <Grid item xs={8}>
+                <Grid item>
                   <Typography variant="h6">Check name</Typography>
-                  <List>{listItems}</List>
                 </Grid>
-                <Grid item xs={4}>
-                  <Typography variant="h6">Status</Typography>
-                  <List>{statusItems}</List>
+              </Grid>
+              <Grid container direction="row">
+                <Grid item xs={9}>
+                  {listItems}
                 </Grid>
               </Grid>
             </InfoCard>
