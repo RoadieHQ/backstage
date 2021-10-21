@@ -15,10 +15,7 @@
  */
 
 import { createApiRef } from '@backstage/core-plugin-api';
-import {
-  CheckResult,
-  BooleanCheckResult,
-} from '@backstage/plugin-tech-insights-common';
+import { CheckResult } from '@backstage/plugin-tech-insights-common';
 
 export const scorecardsApiRef = createApiRef<ScorecardsApi>({
   id: 'plugin.scorecards.service',

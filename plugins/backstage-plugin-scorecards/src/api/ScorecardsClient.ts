@@ -45,10 +45,10 @@ export class ScorecardsClient implements ScorecardsApi {
     const url = await this.getBaseUrl();
     const allChecks = await fetch(`${url}/checks`);
     const payload = await allChecks.json();
-    const checks = payload.map((check: CheckResponse) => check.id);
     if (!allChecks.ok) {
       throw new Error(payload.errors[0]);
     }
+    const checks = payload.map((check: CheckResponse) => check.id);
     return checks;
   }
 
@@ -63,9 +63,15 @@ export class ScorecardsClient implements ScorecardsApi {
   }): Promise<CheckResult[]> {
     const url = await this.getBaseUrl();
     const allChecks = await this.fetchAllChecks();
-    const checksString = allChecks.map(c => `checks[]=${c}`).join('&');
     const response = await fetch(
-      `${url}/checks/${namespace}/${kind}/${name}?${checksString}`,
+      `${url}/checks/run/${namespace}/${kind}/${name}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({ checks: allChecks }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
     );
     const result = await response.json();
     return result;

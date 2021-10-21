@@ -91,10 +91,16 @@ export const ChecksOverview = (checksValue: DataResults) => {
           <ArrowDownardRounded color="primary" />
         )}
       </IconButton>
-      {c.result ? (
-        <CheckCircleOutline className={classes.icon} color="primary" />
-      ) : (
-        <ErrorOutlineIcon className={classes.icon} color="error" />
+      {c.check.type === 'json-rules-engine' &&
+        (c.result ? (
+          <CheckCircleOutline className={classes.icon} color="primary" />
+        ) : (
+          <ErrorOutlineIcon className={classes.icon} color="error" />
+        ))}
+      {c.check.type !== 'json-rules-engine' && (
+        <p className={classes.icon} color="primary">
+          {c.result}
+        </p>
       )}
       {open && (
         <div className={classes.details}>
