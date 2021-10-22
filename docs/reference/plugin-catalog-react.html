@@ -14,6 +14,7 @@
 <tr><th>Class</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/plugin-catalog-react.defaultstarredentitiesapi">DefaultStarredEntitiesApi</a></td><td>Default implementation of the StarredEntitiesApi that is backed by the StorageApi.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitykindfilter">EntityKindFilter</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitylifecyclefilter">EntityLifecycleFilter</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityownerfilter">EntityOwnerFilter</a></td><td></td></tr>
@@ -46,6 +47,8 @@
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitytypefilter">useEntityTypeFilter()</a></td><td>A hook built on top of <code>useEntityListProvider</code> for enabling selection of valid <code>spec.type</code> values based on the selected EntityKindFilter.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useownuser">useOwnUser()</a></td><td>Get the catalog User entity (if any) that matches the logged-in user.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.userelatedentities">useRelatedEntities(entity, { type, kind })</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.usestarredentities">useStarredEntities()</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.usestarredentity">useStarredEntity(entityOrRef)</a></td><td></td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="interfaces"></a><a href="#interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interfaces</h2>
@@ -56,6 +59,7 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-react.asyncentityproviderprops">AsyncEntityProviderProps</a></td><td>Properties for the AsyncEntityProvider component.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityproviderprops">EntityProviderProps</a></td><td>Properties for the EntityProvider component.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.starredentitiesapi">StarredEntitiesApi</a></td><td>An API to store and retrieve starred entities</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="namespaces"></a><a href="#namespaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Namespaces</h2>
@@ -95,11 +99,11 @@
 <tr><td><a href="/docs/reference/plugin-catalog-react.favoriteentitytooltip">favoriteEntityTooltip</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.mockentitylistcontextprovider">MockEntityListContextProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.rootroute">rootRoute</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.starredentitiesapiref">starredEntitiesApiRef</a></td><td>An API to store starred entities</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.unregisterentitydialog">UnregisterEntityDialog</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitycompoundname">useEntityCompoundName</a></td><td>Grabs entity kind, namespace, and name from the location</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentityfromurl">useEntityFromUrl</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.userlistpicker">UserListPicker</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.usestarredentities">useStarredEntities</a></td><td></td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="type-aliases"></a><a href="#type-aliases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Aliases</h2>
