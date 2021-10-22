@@ -18,7 +18,6 @@ import React, { useState } from 'react';
 import {
   makeStyles,
   Grid,
-  List,
   Typography,
   ListItem,
   ListItemText,

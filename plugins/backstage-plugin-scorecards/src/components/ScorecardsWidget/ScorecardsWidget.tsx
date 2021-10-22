@@ -15,70 +15,53 @@
  */
 
 import React from 'react';
-import {
-  makeStyles,
-  Theme,
-  Grid,
-  List,
-  Typography,
-  ListItem,
-  ListItemText,
-} from '@material-ui/core';
-import { Content, Header, Page, InfoCard } from '@backstage/core-components';
+import { makeStyles, Theme, Grid, Typography } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import { useAsync } from 'react-use';
+import { useEntity } from '@backstage/plugin-catalog-react';
+import { useScorecardData } from '../../hooks/useScorecardData';
+import { InfoCard, Progress } from '@backstage/core-components';
+import { useApi } from '@backstage/core-plugin-api';
+import { scorecardsApiRef } from '../../api';
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme: Theme) => ({
-  title: {
-    padding: theme.spacing(1, 0),
-    textAlign: 'center',
-    marginBottom: '0px',
-  },
-  listItem: {
-    paddingLeft: 0,
-  },
-  contentScorecards: {
-    paddingLeft: 0,
-    paddingRight: 0,
-  },
-  tableClass: {
-    paddingTop: theme.spacing(1, 0),
-  },
   infoCardTitle: {
     padding: theme.spacing(1.2, 0, 0, 1),
-  },
-  trendStyle: {
-    height: '50vh',
-    display: 'flex',
-    justifyContent: 'end',
   },
 }));
 
 export const ScorecardsWidget = () => {
   const classes = useStyles();
+  const { entity } = useEntity();
+  const { namespace, kind, name } = useParams();
+  const scorecardName = useScorecardData(entity);
+  const api = useApi(scorecardsApiRef);
+
+  const { value, loading, error } = useAsync(
+    async () => await api.fetchChecks({ namespace, kind, name }),
+  );
+
+  if (loading) {
+    return <Progress />;
+  } else if (error) {
+    return <Alert severity="error">{error.message}</Alert>;
+  }
+
+  const passedChecks = value.filter(v => v.result).length;
 
   return (
     <InfoCard className={classes.infoCardTitle} title="Scorecards">
       <Grid container direction="row">
         <Grid item xs={8}>
           <Typography variant="h6">Scorecard name</Typography>
-          <List>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="Has an owner" />
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="Has a package.json" />
-            </ListItem>
-          </List>
+          <h3>{scorecardName}</h3>
         </Grid>
         <Grid item xs={4}>
-          <Typography variant="h6">Checks passing</Typography>
-          <List>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="2/3" />
-            </ListItem>
-            <ListItem className={classes.listItem}>
-              <ListItemText primary="2/2" />
-            </ListItem>
-          </List>
+          <Typography variant="h6">Score</Typography>
+          <h3>
+            {passedChecks || 0}/{value.length || 0}
+          </h3>
         </Grid>
       </Grid>
     </InfoCard>
