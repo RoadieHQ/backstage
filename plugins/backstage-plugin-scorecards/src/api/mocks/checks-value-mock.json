@@ -1,0 +1,66 @@
+[
+  {
+    "facts": {
+      "examplenumberfact": {
+        "value": 2,
+        "type": "integer",
+        "description": "",
+        "entityKinds": ["component"]
+      }
+    },
+    "result": true,
+    "check": {
+      "id": "simpleTestCheck",
+      "type": "json-rules-engine",
+      "name": "simpleTestCheck",
+      "description": "Simple Check For Testing",
+      "factRefs": ["demo.factretriever"],
+      "rule": {
+        "conditions": {
+          "priority": 1,
+          "all": [
+            {
+              "operator": "lessThan",
+              "value": 5,
+              "fact": "examplenumberfact",
+              "factResult": 2,
+              "result": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "facts": {
+      "examplenumberfact": {
+        "value": 2,
+        "type": "integer",
+        "description": "",
+        "entityKinds": ["component"]
+      }
+    },
+    "result": false,
+    "check": {
+      "id": "simpleTestCheck2",
+      "type": "json-rules-engine-string",
+      "name": "simpleTestCheck2",
+      "description": "A second fact check for demoing purposes",
+      "factRefs": ["demo.factretriever"],
+      "rule": {
+        "conditions": {
+          "priority": 1,
+          "all": [
+            {
+              "operator": "greaterThanInclusive",
+              "value": 6,
+              "fact": "examplenumberfact",
+              "factResult": 2,
+              "result": false
+            }
+          ]
+        }
+      }
+    }
+  }
+]
