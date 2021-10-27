@@ -22,7 +22,7 @@ import {
   ListItem,
   ListItemText,
 } from '@material-ui/core';
-import { Content, Page, InfoCard } from '@backstage/core-components';
+import { Content, Page, InfoCard, GaugeCard } from '@backstage/core-components';
 import { useEntity } from '@backstage/plugin-catalog-react';
 import CheckCircleOutline from '@material-ui/icons/CheckCircleOutline';
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
@@ -97,6 +97,33 @@ export const ChecksOverview = (checksValue: DataResults) => {
     }
   };
 
+  const renderAdditionalDetails = (c: DataResult) => {
+    switch (c.check.type) {
+      case 'json-rules-engine':
+        return (
+          open && (
+            <div className={classes.details}>
+              <p>{c.check.description}</p>
+              <p>{c.check.metadata}</p>
+            </div>
+          )
+        );
+      default:
+        return (
+          open &&
+          typeof c.result !== 'boolean' && (
+            <div className={classes.details}>
+              <p>{c.check.description}</p>
+              <Grid item>
+                <GaugeCard title={c.check.name} progress={c.result || 0} />
+              </Grid>
+              <p>{c.check.metadata}</p>
+            </div>
+          )
+        );
+    }
+  };
+
   const listItems = checksValue.checksValue.map(c => (
     <ListItem className={classes.listItem}>
       <ListItemText primary={c.check.name} className={classes.listItemText} />
@@ -108,11 +135,7 @@ export const ChecksOverview = (checksValue: DataResults) => {
         )}
       </IconButton>
       {renderSwitch(c)}
-      {open && (
-        <div className={classes.details}>
-          <p>{c.check.description}</p>
-        </div>
-      )}
+      {renderAdditionalDetails(c)}
     </ListItem>
   ));
 
