@@ -38,7 +38,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.57",
     "graphiql": "^1.0.0-alpha.10",
-    "graphql": "15.5.0",
+    "graphql": "15.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-use": "^17.2.4"
