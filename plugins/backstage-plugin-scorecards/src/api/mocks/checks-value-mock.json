@@ -33,19 +33,19 @@
   },
   {
     "facts": {
-      "examplenumberfact": {
-        "value": 2,
+      "examplepercentagefact": {
+        "value": 60,
         "type": "integer",
-        "description": "",
+        "description": "Percentage fact",
         "entityKinds": ["component"]
       }
     },
-    "result": false,
+    "result": 40,
     "check": {
       "id": "simpleTestCheck2",
-      "type": "json-rules-engine-string",
+      "type": "test-type-check-percentage",
       "name": "simpleTestCheck2",
-      "description": "A second fact check for demoing purposes",
+      "description": "A second fact check for demoing purposes for percentage value",
       "factRefs": ["demo.factretriever"],
       "rule": {
         "conditions": {
@@ -53,9 +53,9 @@
           "all": [
             {
               "operator": "greaterThanInclusive",
-              "value": 6,
-              "fact": "examplenumberfact",
-              "factResult": 2,
+              "value": 40,
+              "fact": "examplepercentagefact",
+              "factResult": 60,
               "result": false
             }
           ]

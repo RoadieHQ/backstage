@@ -80,6 +80,23 @@ export const ChecksOverview = (checksValue: DataResults) => {
     setOpen(!open);
   };
 
+  const renderSwitch = (c: DataResult) => {
+    switch (c.check.type) {
+      case 'json-rules-engine':
+        return c.result ? (
+          <CheckCircleOutline className={classes.icon} color="primary" />
+        ) : (
+          <ErrorOutlineIcon className={classes.icon} color="error" />
+        );
+      default:
+        return (
+          <p className={classes.icon} color="primary">
+            {c.result}
+          </p>
+        );
+    }
+  };
+
   const listItems = checksValue.checksValue.map(c => (
     <ListItem className={classes.listItem}>
       <ListItemText primary={c.check.name} className={classes.listItemText} />
@@ -90,17 +107,7 @@ export const ChecksOverview = (checksValue: DataResults) => {
           <ArrowDownardRounded color="primary" />
         )}
       </IconButton>
-      {c.check.type === 'json-rules-engine' &&
-        (c.result ? (
-          <CheckCircleOutline className={classes.icon} color="primary" />
-        ) : (
-          <ErrorOutlineIcon className={classes.icon} color="error" />
-        ))}
-      {c.check.type !== 'json-rules-engine' && (
-        <p className={classes.icon} color="primary">
-          {c.result}
-        </p>
-      )}
+      {renderSwitch(c)}
       {open && (
         <div className={classes.details}>
           <p>{c.check.description}</p>
