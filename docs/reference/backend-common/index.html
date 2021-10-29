@@ -86,16 +86,17 @@
 <tr><td><a href="/docs/reference/backend-common.cacheclientsetoptions">CacheClientSetOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.cachemanageroptions">CacheManagerOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.errorhandleroptions">ErrorHandlerOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.fromreadablearrayoptions">FromReadableArrayOptions</a></td><td>Options that control <a href="/docs/reference/backend-common.readtreeresponsefactory.fromreadablearray">ReadTreeResponseFactory.fromReadableArray()</a> execution.</td></tr>
 <tr><td><a href="/docs/reference/backend-common.plugincachemanager">PluginCacheManager</a></td><td>The PluginCacheManager manages access to cache stores that Plugins get.</td></tr>
 <tr><td><a href="/docs/reference/backend-common.pluginendpointdiscovery">PluginEndpointDiscovery</a></td><td>The PluginEndpointDiscovery is used to provide a mechanism for backend plugins to discover the endpoints for itself or other backend plugins.<!-- -->The purpose of the discovery API is to allow for many different deployment setups and routing methods through a central configuration, instead of letting each individual plugin manage that configuration.<!-- -->Implementations of the discovery API can be as simple as a URL pattern using the pluginId, but could also have overrides for individual plugins, or query a separate discovery service.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.readerfactory">ReaderFactory</a></td><td>A factory function that can read config to construct zero or more UrlReaders along with a predicate for when it should be used.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeoptions">ReadTreeOptions</a></td><td>An options object for readTree operations.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponse">ReadTreeResponse</a></td><td>A response object for readTree operations.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsediroptions">ReadTreeResponseDirOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactoryoptions">ReadTreeResponseFactoryOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsefile">ReadTreeResponseFile</a></td><td>Represents a single file in a readTree response.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readerfactory">ReaderFactory</a></td><td>A factory function that can read config to construct zero or more <a href="/docs/reference/backend-common.urlreader">UrlReader</a><!-- -->s along with a predicate for when it should be used.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeoptions">ReadTreeOptions</a></td><td>An options object for  operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponse">ReadTreeResponse</a></td><td>A response object for  operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsediroptions">ReadTreeResponseDirOptions</a></td><td>Options that control  execution.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactoryoptions">ReadTreeResponseFactoryOptions</a></td><td>Options that control execution of <a href="/docs/reference/backend-common.readtreeresponsefactory">ReadTreeResponseFactory</a> methods.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsefile">ReadTreeResponseFile</a></td><td>Represents a single file in a  response.</td></tr>
 <tr><td><a href="/docs/reference/backend-common.readurloptions">ReadUrlOptions</a></td><td>An options object for readUrl operations.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.readurlresponse">ReadUrlResponse</a></td><td>A response object for readUrl operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readurlresponse">ReadUrlResponse</a></td><td>A response object for  operations.</td></tr>
 <tr><td><a href="/docs/reference/backend-common.requestlogginghandlerfactory">RequestLoggingHandlerFactory</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.runcontaineroptions">RunContainerOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.searchoptions">SearchOptions</a></td><td>An options object for search operations.</td></tr>
@@ -104,7 +105,7 @@
 <tr><td><a href="/docs/reference/backend-common.servicebuilder">ServiceBuilder</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.statuscheck">StatusCheck</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-common.urlreader">UrlReader</a></td><td>A generic interface for fetching plain data from URLs.</td></tr>
-<tr><td><a href="/docs/reference/backend-common.urlreaderpredicatetuple">UrlReaderPredicateTuple</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.urlreaderpredicatetuple">UrlReaderPredicateTuple</a></td><td>A predicate that decides whether a specific <a href="/docs/reference/backend-common.urlreader">UrlReader</a> can handle a given URL.</td></tr>
 <tr><td><a href="/docs/reference/backend-common.urlreadersoptions">UrlReadersOptions</a></td><td></td></tr>
 </tbody>
 </table>

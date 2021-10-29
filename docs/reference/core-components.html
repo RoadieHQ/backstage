@@ -50,8 +50,8 @@
 <tr><td><a href="/docs/reference/core-components.infocard">InfoCard(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.introcard">IntroCard(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.itemcard">ItemCard(props)</a></td><td>This card type has been deprecated. Instead use plain MUI Card and helpers where appropriate.<code> &lt;<!-- -->!-- <Card> <CardMedia> <ItemCardHeader title="My Card" subtitle="neat!" /> </CardMedia> <CardContent> Some text </CardContent> <CardActions> <Button color="primary" to="https://backstage.io"> Get Started </Button> </CardActions> </Card> --<!-- -->&gt; </code></td></tr>
-<tr><td><a href="/docs/reference/core-components.itemcardgrid">ItemCardGrid(props)</a></td><td>A default grid to use when arranging &quot;item cards&quot; - cards that let users select among several options.<!-- -->The immediate children are expected to be MUI Card components.<!-- -->Styles for the grid can be overridden using the <code>classes</code> prop, e.g.:<code> &lt;<!-- -->ItemCardGrid title=&quot;Hello&quot; classes=<!-- -->{<!-- -->{ root: myClassName }<!-- -->} /<!-- -->&gt; </code>This can be useful for e.g. overriding gridTemplateColumns to adapt the minimum size of the cells to fit the content better.</td></tr>
-<tr><td><a href="/docs/reference/core-components.itemcardheader">ItemCardHeader(props)</a></td><td>A simple card header, rendering a default look for &quot;item cards&quot; - cards that are arranged in a grid for users to select among several options.<!-- -->This component expects to be placed within a MUI <CardMedia>.<!-- -->Styles for the header can be overridden using the <code>classes</code> prop, e.g.:<code> &lt;<!-- -->ItemCardHeader title=&quot;Hello&quot; classes=<!-- -->{<!-- -->{ root: myClassName }<!-- -->} /<!-- -->&gt; </code></td></tr>
+<tr><td><a href="/docs/reference/core-components.itemcardgrid">ItemCardGrid(props)</a></td><td>A default grid to use when arranging &quot;item cards&quot; - cards that let users select among several options.<!-- -->The immediate children are expected to be MUI Card components.<!-- -->Styles for the grid can be overridden using the <code>classes</code> prop, e.g.:<code>&lt;ItemCardGrid title=&quot;Hello&quot; classes={{ root: myClassName }} /&gt;</code>This can be useful for e.g. overriding gridTemplateColumns to adapt the minimum size of the cells to fit the content better.</td></tr>
+<tr><td><a href="/docs/reference/core-components.itemcardheader">ItemCardHeader(props)</a></td><td>A simple card header, rendering a default look for &quot;item cards&quot; - cards that are arranged in a grid for users to select among several options.<!-- -->This component expects to be placed within a MUI <CardMedia>.<!-- -->Styles for the header can be overridden using the <code>classes</code> prop, e.g.:<code>&lt;ItemCardHeader title=&quot;Hello&quot; classes={{ root: myClassName }} /&gt;</code></td></tr>
 <tr><td><a href="/docs/reference/core-components.lifecycle">Lifecycle(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.lineargauge">LinearGauge(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.link">Link(props)</a></td><td></td></tr>
@@ -99,7 +99,7 @@
 <tr><th>Interface</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/core-components.avatarprops">AvatarProps</a></td><td>Properties for <a href="/docs/reference/core-components.avatar">Avatar()</a></td></tr>
+<tr><td><a href="/docs/reference/core-components.avatarprops">AvatarProps</a></td><td>Properties for <a href="/docs/reference/core-components.avatar">Avatar()</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/core-components.codesnippetprops">CodeSnippetProps</a></td><td>Properties for <a href="/docs/reference/core-components.codesnippet">CodeSnippet()</a></td></tr>
 <tr><td><a href="/docs/reference/core-components.copytextbuttonprops">CopyTextButtonProps</a></td><td>Properties for <a href="/docs/reference/core-components.copytextbutton">CopyTextButton()</a></td></tr>
 <tr><td><a href="/docs/reference/core-components.dependencygraphprops">DependencyGraphProps</a></td><td>Properties of <a href="/docs/reference/core-components.dependencygraph">DependencyGraph()</a></td></tr>
@@ -161,6 +161,7 @@
 <tr><td><a href="/docs/reference/core-components.dependencygraphdefaultnodeclasskey">DependencyGraphDefaultNodeClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.dependencygraphedgeclasskey">DependencyGraphEdgeClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.dependencygraphnodeclasskey">DependencyGraphNodeClassKey</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/core-components.dismissablebannerclasskey">DismissableBannerClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.dismissblebannerclasskey">DismissbleBannerClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.emptystateclasskey">EmptyStateClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.emptystateimageclasskey">EmptyStateImageClassKey</a></td><td></td></tr>
