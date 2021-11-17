@@ -7,7 +7,6 @@
               ga('create', 'UA-163836834-5', 'auto');
               ga('send', 'pageview');
             </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="https://mailchi.mp/spotify/backstage-community" target="_self">Newsletter</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/backstage/backstage/edit/master/docs/reference/plugin-catalog-backend.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">@backstage/plugin-catalog-backend</h1></header><article><div><span><p><a href="/docs/reference/">Home</a> &gt; <a href="/docs/reference/plugin-catalog-backend">@backstage/plugin-catalog-backend</a></p>
-<p>The Backstage backend plugin that provides the Backstage catalog</p>
 <h2><a class="anchor" aria-hidden="true" id="classes"></a><a href="#classes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Classes</h2>
 <table>
 <thead>
@@ -16,29 +15,29 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.annotatelocationentityprocessor">AnnotateLocationEntityProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.annotatescmslugentityprocessor">AnnotateScmSlugEntityProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationcloudaccountprocessor">AwsOrganizationCloudAccountProcessor</a></td><td>A processor for ingesting AWS Accounts from AWS Organizations.<!-- -->If custom authentication is needed, it can be achieved by configuring the global AWS.credentials object.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationcloudaccountprocessor">AwsOrganizationCloudAccountProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.awss3discoveryprocessor">AwsS3DiscoveryProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.bitbucketdiscoveryprocessor">BitbucketDiscoveryProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.builtinkindsentityprocessor">BuiltinKindsEntityProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogbuilder">CatalogBuilder</a></td><td>A builder that helps wire up all of the component parts of the catalog.<!-- -->The touch points where you can replace or extend behavior are as follows:<!-- -->- Entity policies can be added or replaced. These are automatically run after the processors' pre-processing steps. All policies are given the chance to inspect the entity, and all of them have to pass in order for the entity to be considered valid from an overall point of view. - Placeholder resolvers can be replaced or added. These run on the raw structured data between the parsing and pre-processing steps, to replace dollar-prefixed entries with their actual values (like $file). - Field format validators can be replaced. These check the format of individual core fields such as metadata.name, to ensure that they adhere to certain rules. - Processors can be added or replaced. These implement the functionality of reading, parsing, validating, and processing the entity data before it is persisted in the catalog.<!-- -->NOTE(freben): Not actually marking the class as deprecated formally, since it would appear to end users that even using <code>create</code> is deprecated. We will instead hot-swap the entire exported class when we are ready.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogbuilder">CatalogBuilder</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.codeownersprocessor">CodeOwnersProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.commondatabase">CommonDatabase</a></td><td>The core database implementation..</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.commondatabase">CommonDatabase</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.databaseentitiescatalog">DatabaseEntitiesCatalog</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.databaselocationscatalog">DatabaseLocationsCatalog</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.databasemanager">DatabaseManager</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.defaultcatalogcollator">DefaultCatalogCollator</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.defaultcatalogprocessingorchestrator">DefaultCatalogProcessingOrchestrator</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.defaultcatalogrulesenforcer">DefaultCatalogRulesEnforcer</a></td><td>Implements the default catalog rule set, consuming the config keys <code>catalog.rules</code> and <code>catalog.locations.[].rules</code>.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.defaultcatalogrulesenforcer">DefaultCatalogRulesEnforcer</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.filereaderprocessor">FileReaderProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.githubdiscoveryprocessor">GithubDiscoveryProcessor</a></td><td>Extracts repositories out of a GitHub org.<!-- -->The following will create locations for all projects which have a catalog-info.yaml on the default branch. The first is shorthand for the second.<!-- -->target: &quot;<a href="https://github.com/backstage">https://github.com/backstage</a>&quot; or target: <a href="https://github.com/backstage/*">https://github.com/backstage/*</a><!-- -->/<!-- -->blob/-/catalog-info.yaml<!-- -->You may also explicitly specify the source branch:<!-- -->target: <a href="https://github.com/backstage/*">https://github.com/backstage/*</a><!-- -->/<!-- -->blob/main/catalog-info.yaml</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.githubdiscoveryprocessor">GithubDiscoveryProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.githuborgentityprovider">GitHubOrgEntityProvider</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.githuborgreaderprocessor">GithubOrgReaderProcessor</a></td><td>Extracts teams and users out of a GitHub org.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.gitlabdiscoveryprocessor">GitLabDiscoveryProcessor</a></td><td>Extracts repositories out of an GitLab instance.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.higherorderoperations">HigherOrderOperations</a></td><td>Placeholder for operations that span several catalogs and/or stretches out in time.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.githuborgreaderprocessor">GithubOrgReaderProcessor</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.gitlabdiscoveryprocessor">GitLabDiscoveryProcessor</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.higherorderoperations">HigherOrderOperations</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationentityprocessor">LocationEntityProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.locationreaders">LocationReaders</a></td><td>Implements the reading of a location through a series of processor tasks.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.nextcatalogbuilder">NextCatalogBuilder</a></td><td>A builder that helps wire up all of the component parts of the catalog.<!-- -->The touch points where you can replace or extend behavior are as follows:<!-- -->- Entity policies can be added or replaced. These are automatically run after the processors' pre-processing steps. All policies are given the chance to inspect the entity, and all of them have to pass in order for the entity to be considered valid from an overall point of view. - Placeholder resolvers can be replaced or added. These run on the raw structured data between the parsing and pre-processing steps, to replace dollar-prefixed entries with their actual values (like $file). - Field format validators can be replaced. These check the format of individual core fields such as metadata.name, to ensure that they adhere to certain rules. - Processors can be added or replaced. These implement the functionality of reading, parsing, validating, and processing the entity data before it is persisted in the catalog.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.placeholderprocessor">PlaceholderProcessor</a></td><td>Traverses raw entity JSON looking for occurrences of $-prefixed placeholders that it then fills in with actual data.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.locationreaders">LocationReaders</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.nextcatalogbuilder">NextCatalogBuilder</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.placeholderprocessor">PlaceholderProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.staticlocationprocessor">StaticLocationProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.urlreaderprocessor">UrlReaderProcessor</a></td><td></td></tr>
 </tbody>
@@ -58,12 +57,12 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.createnextrouter">createNextRouter(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.createrandomrefreshinterval">createRandomRefreshInterval(options)</a></td><td>Creates a function that returns a random refresh interval between minSeconds and maxSeconds.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.createrouter">createRouter(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.durationtext">durationText(startTimestamp)</a></td><td>Returns a string with the elapsed time since the start of an operation, with some human friendly precision, e.g. &quot;133ms&quot; or &quot;14.5s&quot;.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.parseentityyaml">parseEntityYaml(data, location)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.runperiodically">runPeriodically(fn, delayMs)</a></td><td>Runs a function repeatedly, with a fixed wait between invocations.<!-- -->Supports async functions, and silently ignores exceptions and rejections.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.createnextrouter">createNextRouter</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.createrandomrefreshinterval">createRandomRefreshInterval</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.createrouter">createRouter</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.durationtext">durationText</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.parseentityyaml">parseEntityYaml</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.runperiodically">runPeriodically</a></td><td></td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="interfaces"></a><a href="#interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interfaces</h2>
@@ -75,13 +74,13 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogentitydocument">CatalogEntityDocument</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingengine">CatalogProcessingEngine</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingorchestrator">CatalogProcessingOrchestrator</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorcache">CatalogProcessorCache</a></td><td>A cache for storing data during processing.<!-- -->The values stored in the cache are always local to each processor, meaning no processor can see cache values from other processors.<!-- -->The cache instance provided to the CatalogProcessor is also scoped to the entity being processed, meaning that each processor run can't see cache values from processing runs for other entities.<!-- -->Values that are set during a processing run will only be visible in the directly following run. The cache will be overwritten every run unless no new cache items are written, in which case the existing values remain in the cache.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorcache">CatalogProcessorCache</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovider">EntityProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityproviderconnection">EntityProviderConnection</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationservice">LocationService</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationstore">LocationStore</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.nextrouteroptions">NextRouterOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshservice">RefreshService</a></td><td>A service that manages refreshes of entities in the catalog.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshservice">RefreshService</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.routeroptions">RouterOptions</a></td><td></td></tr>
 </tbody>
 </table>
@@ -106,7 +105,7 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationgenerateentity">AnalyzeLocationGenerateEntity</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationrequest">AnalyzeLocationRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationresponse">AnalyzeLocationResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationproviderconfig">AwsOrganizationProviderConfig</a></td><td>The configuration parameters for a single AWS Organization Processor</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationproviderconfig">AwsOrganizationProviderConfig</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.bitbucketrepositoryparser">BitbucketRepositoryParser</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogenvironment">CatalogEnvironment</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessor">CatalogProcessor</a></td><td></td></tr>
@@ -114,13 +113,13 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorentityresult">CatalogProcessorEntityResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorerrorresult">CatalogProcessorErrorResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorlocationresult">CatalogProcessorLocationResult</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorparser">CatalogProcessorParser</a></td><td>A parser, that is able to take the raw catalog descriptor data and turn it into the actual result pieces. The default implementation performs a YAML document parsing.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorparser">CatalogProcessorParser</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorrelationresult">CatalogProcessorRelationResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorresult">CatalogProcessorResult</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrule">CatalogRule</a></td><td>Rules to apply to catalog entities.<!-- -->An undefined list of matchers means match all, an empty list of matchers means match none.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrulesenforcer">CatalogRulesEnforcer</a></td><td>Decides whether an entity from a given location is allowed to enter the catalog, according to some rule set.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrule">CatalogRule</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrulesenforcer">CatalogRulesEnforcer</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.createdatabaseoptions">CreateDatabaseOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.database">Database</a></td><td>An abstraction on top of the underlying database, wrapping the basic CRUD needs.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.database">Database</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.databaselocationupdatelogevent">DatabaseLocationUpdateLogEvent</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.dbentitiesrequest">DbEntitiesRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.dbentitiesresponse">DbEntitiesResponse</a></td><td></td></tr>
@@ -133,10 +132,10 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiescatalog">EntitiesCatalog</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesrequest">EntitiesRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesresponse">EntitiesResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entitiessearchfilter">EntitiesSearchFilter</a></td><td>Matches rows in the entities_search table.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entitiessearchfilter">EntitiesSearchFilter</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityancestryresponse">EntityAncestryResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityfilter">EntityFilter</a></td><td>A filter expression for entities.<!-- -->Any (at least one) of the outer sets must match, within which all of the individual filters must match.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entitypagination">EntityPagination</a></td><td>A pagination rule for entities.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityfilter">EntityFilter</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entitypagination">EntityPagination</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingrequest">EntityProcessingRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingresult">EntityProcessingResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovidermutation">EntityProviderMutation</a></td><td></td></tr>
@@ -159,10 +158,10 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.readlocationentity">ReadLocationEntity</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.readlocationerror">ReadLocationError</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.readlocationresult">ReadLocationResult</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.recursivepartial">RecursivePartial</a></td><td>Makes all keys of an entire hierarchy optional.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshintervalfunction">RefreshIntervalFunction</a></td><td>Function that returns the catalog refresh interval in seconds.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshoptions">RefreshOptions</a></td><td>Options for requesting a refresh of entities in the catalog.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.transaction">Transaction</a></td><td>An abstraction for transactions of the underlying database technology.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.recursivepartial">RecursivePartial</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshintervalfunction">RefreshIntervalFunction</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.refreshoptions">RefreshOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.transaction">Transaction</a></td><td></td></tr>
 </tbody>
 </table>
 </span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#classes">Classes</a></li><li><a href="#enumerations">Enumerations</a></li><li><a href="#functions">Functions</a></li><li><a href="#interfaces">Interfaces</a></li><li><a href="#namespaces">Namespaces</a></li><li><a href="#type-aliases">Type Aliases</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
