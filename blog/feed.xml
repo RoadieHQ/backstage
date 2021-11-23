@@ -42,7 +42,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[Announcing the Backstage Search platform: a customizable search tool built just for you]]></title>
+            <title><![CDATA['Announcing the Backstage Search platform: a customizable search tool built just for you']]></title>
             <link>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</link>
             <guid>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</guid>
             <pubDate>Thu, 24 Jun 2021 06:00:00 GMT</pubDate>
@@ -74,7 +74,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[New Backstage feature: Kubernetes for Service owners]]></title>
+            <title><![CDATA['New Backstage feature: Kubernetes for Service owners']]></title>
             <link>https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html</link>
             <guid>https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html</guid>
             <pubDate>Tue, 12 Jan 2021 06:00:00 GMT</pubDate>
@@ -93,7 +93,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[New Cost Insights plugin: The engineer’s solution to taming cloud costs]]></title>
+            <title><![CDATA['New Cost Insights plugin: The engineer’s solution to taming cloud costs']]></title>
             <link>https://backstage.io/blog/2020/10/22/cost-insights-plugin.html</link>
             <guid>https://backstage.io/blog/2020/10/22/cost-insights-plugin.html</guid>
             <pubDate>Thu, 22 Oct 2020 06:00:00 GMT</pubDate>
@@ -132,7 +132,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage]]></title>
+            <title><![CDATA['Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage']]></title>
             <link>https://backstage.io/blog/2020/09/08/announcing-tech-docs.html</link>
             <guid>https://backstage.io/blog/2020/09/08/announcing-tech-docs.html</guid>
             <pubDate>Tue, 08 Sep 2020 06:00:00 GMT</pubDate>
@@ -171,7 +171,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA[Starting Phase 2: The Service Catalog]]></title>
+            <title><![CDATA['Starting Phase 2: The Service Catalog']]></title>
             <link>https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html</link>
             <guid>https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html</guid>
             <pubDate>Fri, 22 May 2020 06:00:00 GMT</pubDate>

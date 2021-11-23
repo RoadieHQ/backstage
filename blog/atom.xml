@@ -49,7 +49,7 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Announcing the Backstage Search platform: a customizable search tool built just for you]]></title>
+        <title type="html"><![CDATA['Announcing the Backstage Search platform: a customizable search tool built just for you']]></title>
         <id>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</id>
         <link href="https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html"/>
         <updated>2021-06-24T06:00:00.000Z</updated>
@@ -93,7 +93,7 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[New Backstage feature: Kubernetes for Service owners]]></title>
+        <title type="html"><![CDATA['New Backstage feature: Kubernetes for Service owners']]></title>
         <id>https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html</id>
         <link href="https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html"/>
         <updated>2021-01-12T06:00:00.000Z</updated>
@@ -120,7 +120,7 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[New Cost Insights plugin: The engineer’s solution to taming cloud costs]]></title>
+        <title type="html"><![CDATA['New Cost Insights plugin: The engineer’s solution to taming cloud costs']]></title>
         <id>https://backstage.io/blog/2020/10/22/cost-insights-plugin.html</id>
         <link href="https://backstage.io/blog/2020/10/22/cost-insights-plugin.html"/>
         <updated>2020-10-22T06:00:00.000Z</updated>
@@ -175,7 +175,7 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage]]></title>
+        <title type="html"><![CDATA['Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage']]></title>
         <id>https://backstage.io/blog/2020/09/08/announcing-tech-docs.html</id>
         <link href="https://backstage.io/blog/2020/09/08/announcing-tech-docs.html"/>
         <updated>2020-09-08T06:00:00.000Z</updated>
@@ -230,7 +230,7 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Starting Phase 2: The Service Catalog]]></title>
+        <title type="html"><![CDATA['Starting Phase 2: The Service Catalog']]></title>
         <id>https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html</id>
         <link href="https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html"/>
         <updated>2020-05-22T06:00:00.000Z</updated>
