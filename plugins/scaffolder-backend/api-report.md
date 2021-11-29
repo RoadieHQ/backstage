@@ -394,7 +394,7 @@ export interface TaskContext {
 }
 
 // @public
-export type TaskEventType = 'completion' | 'log';
+export type TaskEventType = 'completion' | 'log' | 'connection';
 
 // @public
 export class TaskManager implements TaskContext {

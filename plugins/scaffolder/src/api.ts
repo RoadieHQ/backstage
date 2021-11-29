@@ -42,7 +42,7 @@ type TemplateParameterSchema = {
 };
 
 export type LogEvent = {
-  type: 'log' | 'completion';
+  type: 'log' | 'completion' | 'connection';
   body: {
     message: string;
     stepId?: string;

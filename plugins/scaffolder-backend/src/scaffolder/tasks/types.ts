@@ -54,7 +54,7 @@ export type SerializedTask = {
  *
  * @public
  */
-export type TaskEventType = 'completion' | 'log';
+export type TaskEventType = 'completion' | 'log' | 'connection';
 
 /**
  * SerializedTaskEvent

@@ -42,6 +42,8 @@ import {
 import { StorageTaskBroker } from '../scaffolder/tasks/StorageTaskBroker';
 import { getEntityBaseUrl, getWorkingDirectory } from './helpers';
 
+const DEFAULT_HEARTBEAT_POLL = 2_000;
+
 /**
  * RouterOptions
  *
@@ -89,6 +91,9 @@ export async function createRouter(
   const workingDirectory = await getWorkingDirectory(config, logger);
   const entityClient = new CatalogEntityClient(catalogClient);
   const integrations = ScmIntegrations.fromConfig(config);
+  const heartBeatPollInterval =
+    config.getOptionalNumber('scaffolder.heartBeatPoll') ||
+    DEFAULT_HEARTBEAT_POLL;
   let taskBroker: TaskBroker;
 
   if (!options.taskBroker) {
@@ -260,6 +265,20 @@ export async function createRouter(
         'Cache-Control': 'no-cache',
         'Content-Type': 'text/event-stream',
       });
+      let shouldUnsubscribe = false;
+
+      // Send heartbeat every 2 seconds so the frontend/proxy knows the connection is still alive
+      const timeout = setTimeout(() => {
+        if (!shouldUnsubscribe) {
+          res.write(
+            `event: connection\ndata: ${JSON.stringify({
+              type: 'connection',
+              taskId: taskId,
+              body: {},
+            })}\n\n`,
+          );
+        }
+      }, heartBeatPollInterval);
 
       // After client opens connection send all events as string
       const { unsubscribe } = taskBroker.observe(
@@ -271,7 +290,6 @@ export async function createRouter(
             );
           }
 
-          let shouldUnsubscribe = false;
           for (const event of events) {
             res.write(
               `event: ${event.type}\ndata: ${JSON.stringify(event)}\n\n`,
@@ -284,7 +302,10 @@ export async function createRouter(
           }
           // res.flush() is only available with the compression middleware
           res.flush?.();
-          if (shouldUnsubscribe) unsubscribe();
+          if (shouldUnsubscribe) {
+            clearTimeout(timeout);
+            unsubscribe();
+          }
         },
       );
       // When client closes connection we update the clients list

@@ -53,5 +53,6 @@ export interface Config {
        */
       visibility?: 'public' | 'private';
     };
+    heartBeatPoll?: number;
   };
 }

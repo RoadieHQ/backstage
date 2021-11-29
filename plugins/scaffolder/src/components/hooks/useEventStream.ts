@@ -172,6 +172,8 @@ export const useTaskEventStream = (taskId: string): TaskStream => {
             switch (event.type) {
               case 'log':
                 return collectedLogEvents.push(event);
+              case 'connection':
+                return undefined;
               case 'completion':
                 emitLogs();
                 dispatch({ type: 'COMPLETED', data: event });
