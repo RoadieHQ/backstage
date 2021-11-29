@@ -191,13 +191,17 @@ code:</p>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPlugin</span>(<span class="hljs-params">{
   logger,
   discovery,
+  tokenManager,
 }: PluginEnvironment</span>) </span>{
   <span class="hljs-keyword">const</span> searchEngine = <span class="hljs-keyword">new</span> LunrSearchEngine({ logger });
   <span class="hljs-keyword">const</span> indexBuilder = <span class="hljs-keyword">new</span> IndexBuilder({ logger, searchEngine });
 
   indexBuilder.addCollator({
     defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-    collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({ discovery }),
+    collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+      discovery,
+      tokenManager,
+    }),
   });
 
   <span class="hljs-keyword">const</span> { scheduler } = <span class="hljs-keyword">await</span> indexBuilder.build();
@@ -296,7 +300,10 @@ number of collators with the <code>IndexBuilder</code> like this:</p>
 
 indexBuilder.addCollator({
   defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({ discovery }),
+  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+    discovery,
+    tokenManager,
+  }),
 });
 
 indexBuilder.addCollator({
@@ -311,10 +318,13 @@ your documents are updated more or less frequently. You can do so by modifying
 its <code>defaultRefreshIntervalSeconds</code> value, like this:</p>
 <pre><code class="hljs css language-typescript {3}">indexBuilder.addCollator({
   defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({ discovery }),
+  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+    discovery,
+    tokenManager,
+  }),
 });
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/26/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/search/concepts"><span>Search Concepts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-search-to-the-frontend">Adding Search to the Frontend</a><ul class="toc-headings"><li><a href="#using-the-search-modal">Using the Search Modal</a></li></ul></li><li><a href="#adding-search-to-the-backend">Adding Search to the Backend</a></li><li><a href="#customizing-search">Customizing Search</a><ul class="toc-headings"><li><a href="#frontend">Frontend</a></li><li><a href="#backend">Backend</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/29/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/search/concepts"><span>Search Concepts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-search-to-the-frontend">Adding Search to the Frontend</a><ul class="toc-headings"><li><a href="#using-the-search-modal">Using the Search Modal</a></li></ul></li><li><a href="#adding-search-to-the-backend">Adding Search to the Backend</a></li><li><a href="#customizing-search">Customizing Search</a><ul class="toc-headings"><li><a href="#frontend">Frontend</a></li><li><a href="#backend">Backend</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
