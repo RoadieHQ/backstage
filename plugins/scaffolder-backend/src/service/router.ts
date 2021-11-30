@@ -268,7 +268,7 @@ export async function createRouter(
       let shouldUnsubscribe = false;
 
       // Send heartbeat every 2 seconds so the frontend/proxy knows the connection is still alive
-      const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
         if (!shouldUnsubscribe) {
           res.write(
             `event: connection\ndata: ${JSON.stringify({
@@ -303,7 +303,7 @@ export async function createRouter(
           // res.flush() is only available with the compression middleware
           res.flush?.();
           if (shouldUnsubscribe) {
-            clearTimeout(timeout);
+            clearTimeout(interval);
             unsubscribe();
           }
         },
