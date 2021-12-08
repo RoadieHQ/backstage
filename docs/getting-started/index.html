@@ -79,7 +79,7 @@ guide to do a repository-based installation.</p>
 <ul>
 <li>Access to a Linux-based operating system, such as Linux, MacOS or
 <a href="https://docs.microsoft.com/en-us/windows/wsl/">Windows Subsystem for Linux</a></li>
-<li>An account with elevated rights</li>
+<li>An account with elevated rights to install the dependencies</li>
 <li><code>curl</code> or <code>wget</code> installed</li>
 <li>Node.js Active LTS Release installed (currently v14) using one of these
 methods:
@@ -96,14 +96,15 @@ methods:
 <li><code>yarn</code> <a href="https://classic.yarnpkg.com/en/docs/install">Installation</a></li>
 <li><code>docker</code> <a href="https://docs.docker.com/engine/install/">installation</a></li>
 <li><code>git</code> <a href="https://github.com/git-guides/install-git">installation</a></li>
-<li>If the system is not directly accessible over your network, the following
-ports need to be opened: 3000, 7007</li>
+<li>If the system is not directly accessible over your network the following ports
+need to be opened: 3000, 7007. This is quite uncommon, unless when you're
+installing in a container, VM or remote system.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="create-your-backstage-app"></a><a href="#create-your-backstage-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create your Backstage App</h3>
 <p>To install the Backstage Standalone app, we make use of <code>npx</code>, a tool to run
-Node executables straight from the registry. Running the command below will
-install Backstage. The wizard will create a subdirectory inside your current
-working directory.</p>
+Node executables straight from the registry. This tool is part of your Node.js
+installation. Running the command below will install Backstage. The wizard will
+create a subdirectory inside your current working directory.</p>
 <pre><code class="hljs css language-bash">npx @backstage/create-app
 </code></pre>
 <p>The wizard will ask you</p>
@@ -113,7 +114,7 @@ working directory.</p>
 SQLite option.</li>
 </ul>
 <p align='center'>
-  <img src='../assets/getting-started/wizard.png' alt='Screenshot of the wizard asking for a name for the app, and a selection menu for the database.'>
+  <img src='../assets/getting-started/wizard.png' alt='Screenshot of the wizard asking for a name for the app, and a selection menu for the database.' />
 </p>
 <h3><a class="anchor" aria-hidden="true" id="run-the-backstage-app"></a><a href="#run-the-backstage-app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Run the Backstage app</h3>
 <p>When the installation is complete you can go to the application directory and
@@ -123,15 +124,24 @@ separate processes (named <code>[0]</code> and <code>[1]</code>) in the same win
 yarn dev
 </code></pre>
 <p align='center'>
-  <img src='../assets/getting-started/startup.png' alt='Screenshot of the command output, with the message web pack compiled successfully.'>
+  <img src='../assets/getting-started/startup.png' alt='Screenshot of the command output, with the message web pack compiled successfully.'/>
 </p>
 <p>It might take a little while, but as soon as the message
 <code>[0] webpack compiled successfully</code> appears, you can open a browser and directly
 navigate to your freshly installed Backstage portal at <code>http://localhost:3000</code>.
-You can start exploring the demo immediately.</p>
+You can start exploring the demo immediately. Please note that the in-memory
+database will be cleared when you restart the app, so you'll most likely want to
+carry on with the database steps.</p>
 <p align='center'>
-  <img src='../assets/getting-started/portal.png' alt='Screenshot of the Backstage portal.'>
+  <img src='../assets/getting-started/portal.png' alt='Screenshot of the Backstage portal.'/>
 </p>
+<p>The most common next steps are to move to a persistent database, configure
+authentication, and add a plugin:</p>
+<ul>
+<li><a href="https://backstage.io/docs/tutorials/switching-sqlite-postgres">Switching from SQLite to PostgresQL</a></li>
+<li><a href="https://backstage.io/docs/auth/">Setting up Authentication</a></li>
+<li><a href="https://backstage.io/docs/getting-started/configure-app-with-plugins">Adding a plugin</a></li>
+</ul>
 <p>Congratulations! That should be it. Let us know how it went:
 <a href="https://discord.gg/EBHEGzX">on discord</a>, file issues for any
 <a href="https://github.com/backstage/backstage/issues/new?labels=help+wanted&amp;template=feature_template.md">feature</a>
@@ -141,14 +151,7 @@ or
 <a href="https://github.com/backstage/backstage/issues/new?labels=bug&amp;template=bug_template.md">bugs</a>
 you have, and feel free to
 <a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">contribute</a>!</p>
-<p>The most common next steps are to configure Backstage, add a plugin and moving
-to a more persistent database:</p>
-<ul>
-<li><a href="https://backstage.io/docs/auth/">Setting up Authentication</a></li>
-<li><a href="https://backstage.io/docs/tutorials/switching-sqlite-postgres">Switching from SQLite to PostgresQL</a></li>
-<li><a href="https://backstage.io/docs/getting-started/configure-app-with-plugins">Adding a plugin</a></li>
-</ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/29/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/overview/logos"><span class="arrow-prev">← </span><span>Logo assets</span></a><a class="docs-next button" href="/docs/getting-started/create-an-app"><span>Create an App</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 12/8/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/overview/logos"><span class="arrow-prev">← </span><span>Logo assets</span></a><a class="docs-next button" href="/docs/getting-started/create-an-app"><span>Create an App</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
