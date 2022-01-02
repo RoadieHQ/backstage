@@ -2,12 +2,28 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2021-09-30T06:00:00.000Z</updated>
+    <updated>2021-12-20T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
-    <rights>Copyright © 2021 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Backstage Wrapped 2021]]></title>
+        <id>https://backstage.io/blog/2021/12/20/backstage-wrapped-2021.html</id>
+        <link href="https://backstage.io/blog/2021/12/20/backstage-wrapped-2021.html"/>
+        <updated>2021-12-20T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/21-12-20/backstage-wrapped-2021.png" alt="Backstage in 2021: 75+ public adopters, 500+ contributors, almost 2,000 forks, 9,000+ contributions, 4,000+ Discord members"></p>
+<p>What a year 2021 has been for the Backstage project and community. As the year comes to a close, we can look back at some of the happenings, the successes, and welcome all the newcomers to our growing community.</p>
+<p>In a year that has had its fair share of ups and downs, this community has been something that has brought me so much in the support you provide each other, your eagerness, passion, and willingness to share. Thank you to all of you for creating such a great community, and welcome to everyone joining us. I can’t wait to meet you all and see what great things we can create together in the new year.</p>
+<p>In 2021 we’ve seen the project and community grow in every dimension, reaching over 75 public adopters, over 500 contributors from around the world all bringing new ideas and perspectives. We’ve had so many of you sharing and demoing your hard work in our monthly community sessions, added new plugins, built new features and really started to see Backstage have an impact for engineering teams across so many of our users.</p>
+<p>Now let’s hear from the maintainers and look at the stats!</p>
+]]></summary>
+        <author>
+            <name>Lee Mills, Spotify</name>
+            <uri>https://github.com/leemills83</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Big 5-0]]></title>
         <id>https://backstage.io/blog/2021/09/30/50-public-adopters.html</id>
