@@ -13,11 +13,11 @@
     offset?: <span class="hljs-built_in">number</span>;
     limit?: <span class="hljs-built_in">number</span>;
     orderBy?: {
-        field: Fields;
+        field: <span class="hljs-string">'text'</span> | <span class="hljs-string">'tag'</span> | <span class="hljs-string">'author'</span> | <span class="hljs-string">'viewUrl'</span> | <span class="hljs-string">'repoFilePath'</span>;
         direction: <span class="hljs-string">'asc'</span> | <span class="hljs-string">'desc'</span>;
     };
     filters?: {
-        field: Fields;
+        field: <span class="hljs-string">'text'</span> | <span class="hljs-string">'tag'</span> | <span class="hljs-string">'author'</span> | <span class="hljs-string">'viewUrl'</span> | <span class="hljs-string">'repoFilePath'</span>;
         value: <span class="hljs-built_in">string</span>;
     }[];
 };

@@ -34,7 +34,6 @@
 <tr><td><a href="/docs/reference/errors.asserterror">assertError(value)</a></td><td>Asserts that an unknown value is an <a href="/docs/reference/errors.errorlike">ErrorLike</a> object, which guarantees that it's an object that has at least two string properties: a non-empty <code>name</code> and <code>message</code>.<!-- -->If the value is not an <a href="/docs/reference/errors.errorlike">ErrorLike</a> object, an error is thrown.</td></tr>
 <tr><td><a href="/docs/reference/errors.deserializeerror">deserializeError(data)</a></td><td>Deserializes a serialized error object back to an Error.</td></tr>
 <tr><td><a href="/docs/reference/errors.iserror">isError(value)</a></td><td>Checks whether an unknown value is an <a href="/docs/reference/errors.errorlike">ErrorLike</a> object, which guarantees that it's an object that has at least two string properties: a non-empty <code>name</code> and <code>message</code>.</td></tr>
-<tr><td><a href="/docs/reference/errors.parseerrorresponse">parseErrorResponse(response)</a></td><td>Attempts to construct an ErrorResponse out of a failed server request. Assumes that the response has already been checked to be not ok. This function consumes the body of the response, and assumes that it hasn't been consumed before.<!-- -->The code is forgiving, and constructs a useful synthetic body as best it can if the response body wasn't on the expected form.</td></tr>
 <tr><td><a href="/docs/reference/errors.parseerrorresponsebody">parseErrorResponseBody(response)</a></td><td>Attempts to construct an ErrorResponseBody out of a failed server request. Assumes that the response has already been checked to be not ok. This function consumes the body of the response, and assumes that it hasn't been consumed before.<!-- -->The code is forgiving, and constructs a useful synthetic body as best it can if the response body wasn't on the expected form.</td></tr>
 <tr><td><a href="/docs/reference/errors.serializeerror">serializeError(error, options)</a></td><td>Serializes an error object to a JSON friendly form.</td></tr>
 <tr><td><a href="/docs/reference/errors.stringifyerror">stringifyError(error)</a></td><td>Stringifies an error, including its name and message where available.</td></tr>
@@ -47,7 +46,6 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/errors.errorlike">ErrorLike</a></td><td>An object that is shaped like an <code>Error</code>.</td></tr>
-<tr><td><a href="/docs/reference/errors.errorresponse">ErrorResponse</a></td><td>A standard shape of JSON data returned as the body of backend errors.</td></tr>
 <tr><td><a href="/docs/reference/errors.errorresponsebody">ErrorResponseBody</a></td><td>A standard shape of JSON data returned as the body of backend errors.</td></tr>
 <tr><td><a href="/docs/reference/errors.serializederror">SerializedError</a></td><td>The serialized form of an Error.</td></tr>
 </tbody>
