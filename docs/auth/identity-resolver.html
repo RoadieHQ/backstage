@@ -143,7 +143,7 @@ resolver, which will search the catalog for a single user entity that has a
 matching <code>google.com/email</code> annotation.</p>
 <p>It can be enabled like this</p>
 <pre><code class="hljs css language-tsx"><span class="hljs-comment">// File: packages/backend/src/plugins/auth.ts</span>
-<span class="hljs-keyword">import</span> { googleEmailSignInResolver } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-auth-backend'</span>;
+<span class="hljs-keyword">import</span> { googleEmailSignInResolver, createGoogleProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-auth-backend'</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPlugin</span>(<span class="hljs-params">{
   ...
