@@ -24,7 +24,7 @@
     "@backstage/search-common": "^0.2.0",
     "@backstage/plugin-search-backend-node": "^0.4.4",
     "lodash": "^4.17.21",
-    "knex": "^0.95.1"
+    "knex": "^1.0.1"
   },
   "devDependencies": {
     "@backstage/backend-test-utils": "^0.1.14",
