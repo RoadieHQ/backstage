@@ -7,24 +7,25 @@
               ga('create', 'UA-163836834-5', 'auto');
               ga('send', 'pageview');
             </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="https://mailchi.mp/spotify/backstage-community" target="_self">Newsletter</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/backstage/backstage/edit/master/docs/reference/backend-common.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">@backstage/backend-common</h1></header><article><div><span><p><a href="/docs/reference/">Home</a> &gt; <a href="/docs/reference/backend-common">@backstage/backend-common</a></p>
+<p>Common functionality library for Backstage backends</p>
 <h2><a class="anchor" aria-hidden="true" id="classes"></a><a href="#classes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Classes</h2>
 <table>
 <thead>
 <tr><th>Class</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-common.awss3urlreader">AwsS3UrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.azureurlreader">AzureUrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.bitbucketurlreader">BitbucketUrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.cachemanager">CacheManager</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.databasemanager">DatabaseManager</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.dockercontainerrunner">DockerContainerRunner</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.git">Git</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.githuburlreader">GithubUrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.gitlaburlreader">GitlabUrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.servertokenmanager">ServerTokenManager</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.singlehostdiscovery">SingleHostDiscovery</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.urlreaders">UrlReaders</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.awss3urlreader">AwsS3UrlReader</a></td><td>Implements a <a href="/docs/reference/backend-common.urlreader">UrlReader</a> for AWS S3 buckets.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.azureurlreader">AzureUrlReader</a></td><td>Implements a <a href="/docs/reference/backend-common.urlreader">UrlReader</a> for Azure repos.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.bitbucketurlreader">BitbucketUrlReader</a></td><td>Implements a <a href="/docs/reference/backend-common.urlreader">UrlReader</a> for files from Bitbucket v1 and v2 APIs, such as the one exposed by Bitbucket Cloud itself.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.cachemanager">CacheManager</a></td><td>Implements a Cache Manager which will automatically create new cache clients for plugins when requested. All requested cache clients are created with the connection details provided.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.databasemanager">DatabaseManager</a></td><td>Manages database connections for Backstage backend plugins.<!-- -->The database manager allows the user to set connection and client settings on a per pluginId basis by defining a database config block under <code>plugin.&lt;pluginId&gt;</code> in addition to top level defaults. Optionally, a user may set <code>prefix</code> which is used to prefix generated database names if config is not provided.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.dockercontainerrunner">DockerContainerRunner</a></td><td>A <a href="/docs/reference/backend-common.containerrunner">ContainerRunner</a> for Docker containers.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.git">Git</a></td><td>A convenience wrapper around the <code>isomorphic-git</code> library.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.githuburlreader">GithubUrlReader</a></td><td>Implements a <a href="/docs/reference/backend-common.urlreader">UrlReader</a> for files through the GitHub v3 APIs, such as the one exposed by GitHub itself.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.gitlaburlreader">GitlabUrlReader</a></td><td>Implements a <a href="/docs/reference/backend-common.urlreader">UrlReader</a> for files on GitLab.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.servertokenmanager">ServerTokenManager</a></td><td>Creates and validates tokens for use during backend-to-backend authentication.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.singlehostdiscovery">SingleHostDiscovery</a></td><td>SingleHostDiscovery is a basic PluginEndpointDiscovery implementation that assumes that all plugins are hosted in a single deployment.<!-- -->The deployment may be scaled horizontally, as long as the external URL is the same for all instances. However, internal URLs will always be resolved to the same host, so there won't be any balancing of internal traffic.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.urlreaders">UrlReaders</a></td><td>Helps construct <a href="/docs/reference/backend-common.urlreader">UrlReader</a><!-- -->s.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="functions"></a><a href="#functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions</h2>
@@ -33,24 +34,24 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-common.createdatabaseclient">createDatabaseClient</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.createrootlogger">createRootLogger</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.createservicebuilder">createServiceBuilder</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.createstatuscheckrouter">createStatusCheckRouter</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.ensuredatabaseexists">ensureDatabaseExists</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.errorhandler">errorHandler</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.getrootlogger">getRootLogger</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.getvoidlogger">getVoidLogger</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.isdatabaseconflicterror">isDatabaseConflictError</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.loadbackendconfig">loadBackendConfig</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.notfoundhandler">notFoundHandler</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.requestlogginghandler">requestLoggingHandler</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.resolvepackagepath">resolvePackagePath</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.resolvesafechildpath">resolveSafeChildPath</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.setrootlogger">setRootLogger</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.statuscheckhandler">statusCheckHandler</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.usehotcleanup">useHotCleanup</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.usehotmemoize">useHotMemoize</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.createdatabaseclient">createDatabaseClient(dbConfig, overrides)</a></td><td>Creates a knex database connection</td></tr>
+<tr><td><a href="/docs/reference/backend-common.createrootlogger">createRootLogger(options, env)</a></td><td>Creates a default &quot;root&quot; logger. This also calls <a href="/docs/reference/backend-common.setrootlogger">setRootLogger()</a> under the hood.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.createservicebuilder">createServiceBuilder(_module)</a></td><td>Creates a new service builder.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.createstatuscheckrouter">createStatusCheckRouter(options)</a></td><td>Creates a default status checking router, that you can add to your express app.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.ensuredatabaseexists">ensureDatabaseExists(dbConfig, databases)</a></td><td>Ensures that the given databases all exist, creating them if they do not.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.errorhandler">errorHandler(options)</a></td><td>Express middleware to handle errors during request processing.<!-- -->This is commonly the very last middleware in the chain.<!-- -->Its primary purpose is not to do translation of business logic exceptions, but rather to be a global catch-all for uncaught &quot;fatal&quot; errors that are expected to result in a 500 error. However, it also does handle some common error types (such as http-error exceptions) and returns the enclosed status code accordingly.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.getrootlogger">getRootLogger()</a></td><td>Gets the current root logger.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.getvoidlogger">getVoidLogger()</a></td><td>A logger that just throws away all messages.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.isdatabaseconflicterror">isDatabaseConflictError(e)</a></td><td>Tries to deduce whether a thrown error is a database conflict.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.loadbackendconfig">loadBackendConfig(options)</a></td><td>Load configuration for a Backend.<!-- -->This function should only be called once, during the initialization of the backend.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.notfoundhandler">notFoundHandler()</a></td><td>Express middleware to handle requests for missing routes.<!-- -->Should be used as the very last handler in the chain, as it unconditionally returns a 404 status.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.requestlogginghandler">requestLoggingHandler(logger)</a></td><td>Logs incoming requests.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.resolvepackagepath">resolvePackagePath(name, paths)</a></td><td>Resolve a path relative to the root of a package directory. Additional path arguments are resolved relative to the package dir.<!-- -->This is particularly useful when you want to access assets shipped with your backend plugin package. When doing so, do not forget to include the assets in your published package by adding them to <code>files</code> in your <code>package.json</code>.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.resolvesafechildpath">resolveSafeChildPath(base, path)</a></td><td>Resolves a target path from a base path while guaranteeing that the result is a path that point to or within the base path. This is useful for resolving paths from user input, as it otherwise opens up for vulnerabilities.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.setrootlogger">setRootLogger(newLogger)</a></td><td>Sets a completely custom default &quot;root&quot; logger.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.statuscheckhandler">statusCheckHandler(options)</a></td><td>Express middleware for status checks.<!-- -->This is commonly used to implement healthcheck and readiness routes.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.usehotcleanup">useHotCleanup(_module, cancelEffect)</a></td><td>useHotCleanup allows cleanup of ongoing effects when a module is hot-reloaded during development. The cleanup function will be called whenever the module itself or any of its parent modules is hot-reloaded.<!-- -->Useful for cleaning intervals, timers, requests etc</td></tr>
+<tr><td><a href="/docs/reference/backend-common.usehotmemoize">useHotMemoize(_module, valueFactory)</a></td><td>Memoizes a generated value across hot-module reloads. This is useful for stateful parts of the backend, e.g. to retain a database.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="interfaces"></a><a href="#interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interfaces</h2>
@@ -59,12 +60,12 @@
 <tr><th>Interface</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-common.cacheclient">CacheClient</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.containerrunner">ContainerRunner</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.plugindatabasemanager">PluginDatabaseManager</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactory">ReadTreeResponseFactory</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.statuscheckhandleroptions">StatusCheckHandlerOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.tokenmanager">TokenManager</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.cacheclient">CacheClient</a></td><td>A pre-configured, storage agnostic cache client suitable for use by Backstage plugins.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.containerrunner">ContainerRunner</a></td><td>Handles the running of containers, on behalf of others.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.plugindatabasemanager">PluginDatabaseManager</a></td><td>The PluginDatabaseManager manages access to databases that Plugins get.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactory">ReadTreeResponseFactory</a></td><td>A factory for response factories that handle the unpacking and inspection of complex responses such as archive data.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.statuscheckhandleroptions">StatusCheckHandlerOptions</a></td><td>Options passed to <a href="/docs/reference/backend-common.statuscheckhandler">statusCheckHandler()</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.tokenmanager">TokenManager</a></td><td>Interface for creating and validating tokens.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables</h2>
@@ -73,9 +74,9 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-common.coloredformat">coloredFormat</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.createdatabase">createDatabase</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.singleconnectiondatabasemanager">SingleConnectionDatabaseManager</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.coloredformat">coloredFormat</a></td><td>A logging format that adds coloring to console output.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.createdatabase">createDatabase</a></td><td>Alias for <a href="/docs/reference/backend-common.createdatabaseclient">createDatabaseClient()</a></td></tr>
+<tr><td><a href="/docs/reference/backend-common.singleconnectiondatabasemanager">SingleConnectionDatabaseManager</a></td><td>Implements a Database Manager which will automatically create new databases for plugins when requested. All requested databases are created with the credentials provided; if the database already exists no attempt to create the database will be made.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="type-aliases"></a><a href="#type-aliases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Aliases</h2>
@@ -84,32 +85,32 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-common.cacheclientoptions">CacheClientOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.cacheclientsetoptions">CacheClientSetOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.cachemanageroptions">CacheManagerOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.databasemanageroptions">DatabaseManagerOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.errorhandleroptions">ErrorHandlerOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.fromreadablearrayoptions">FromReadableArrayOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.plugincachemanager">PluginCacheManager</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.pluginendpointdiscovery">PluginEndpointDiscovery</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readerfactory">ReaderFactory</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeoptions">ReadTreeOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponse">ReadTreeResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsediroptions">ReadTreeResponseDirOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactoryoptions">ReadTreeResponseFactoryOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readtreeresponsefile">ReadTreeResponseFile</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readurloptions">ReadUrlOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.readurlresponse">ReadUrlResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.requestlogginghandlerfactory">RequestLoggingHandlerFactory</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.runcontaineroptions">RunContainerOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.searchoptions">SearchOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.searchresponse">SearchResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.searchresponsefile">SearchResponseFile</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.servicebuilder">ServiceBuilder</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.statuscheck">StatusCheck</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.urlreader">UrlReader</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.urlreaderpredicatetuple">UrlReaderPredicateTuple</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/backend-common.urlreadersoptions">UrlReadersOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-common.cacheclientoptions">CacheClientOptions</a></td><td>Options given when constructing a <a href="/docs/reference/backend-common.cacheclient">CacheClient</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.cacheclientsetoptions">CacheClientSetOptions</a></td><td>Options passed to <a href="/docs/reference/backend-common.cacheclient.set">CacheClient.set()</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.cachemanageroptions">CacheManagerOptions</a></td><td>Options given when constructing a <a href="/docs/reference/backend-common.cachemanager">CacheManager</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.databasemanageroptions">DatabaseManagerOptions</a></td><td>Creation options for <a href="/docs/reference/backend-common.databasemanager">DatabaseManager</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.errorhandleroptions">ErrorHandlerOptions</a></td><td>Options passed to the <a href="/docs/reference/backend-common.errorhandler">errorHandler()</a> middleware.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.fromreadablearrayoptions">FromReadableArrayOptions</a></td><td>Options that control <a href="/docs/reference/backend-common.readtreeresponsefactory.fromreadablearray">ReadTreeResponseFactory.fromReadableArray()</a> execution.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.plugincachemanager">PluginCacheManager</a></td><td>Manages access to cache stores that plugins get.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.pluginendpointdiscovery">PluginEndpointDiscovery</a></td><td>The PluginEndpointDiscovery is used to provide a mechanism for backend plugins to discover the endpoints for itself or other backend plugins.<!-- -->The purpose of the discovery API is to allow for many different deployment setups and routing methods through a central configuration, instead of letting each individual plugin manage that configuration.<!-- -->Implementations of the discovery API can be as simple as a URL pattern using the pluginId, but could also have overrides for individual plugins, or query a separate discovery service.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readerfactory">ReaderFactory</a></td><td>A factory function that can read config to construct zero or more <a href="/docs/reference/backend-common.urlreader">UrlReader</a><!-- -->s along with a predicate for when it should be used.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeoptions">ReadTreeOptions</a></td><td>An options object for  operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponse">ReadTreeResponse</a></td><td>A response object for  operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsediroptions">ReadTreeResponseDirOptions</a></td><td>Options that control  execution.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsefactoryoptions">ReadTreeResponseFactoryOptions</a></td><td>Options that control execution of <a href="/docs/reference/backend-common.readtreeresponsefactory">ReadTreeResponseFactory</a> methods.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readtreeresponsefile">ReadTreeResponseFile</a></td><td>Represents a single file in a  response.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readurloptions">ReadUrlOptions</a></td><td>An options object for readUrl operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.readurlresponse">ReadUrlResponse</a></td><td>A response object for  operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.requestlogginghandlerfactory">RequestLoggingHandlerFactory</a></td><td>A factory for request loggers.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.runcontaineroptions">RunContainerOptions</a></td><td>Options passed to the <a href="/docs/reference/backend-common.containerrunner.runcontainer">ContainerRunner.runContainer()</a> method.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.searchoptions">SearchOptions</a></td><td>An options object for search operations.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.searchresponse">SearchResponse</a></td><td>The output of a search operation.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.searchresponsefile">SearchResponseFile</a></td><td>Represents a single file in a search response.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.servicebuilder">ServiceBuilder</a></td><td>A helper for building backend service instances.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.statuscheck">StatusCheck</a></td><td>A custom status checking function, passed to <a href="/docs/reference/backend-common.statuscheckhandler">statusCheckHandler()</a> and <a href="/docs/reference/backend-common.createstatuscheckrouter">createStatusCheckRouter()</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.urlreader">UrlReader</a></td><td>A generic interface for fetching plain data from URLs.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.urlreaderpredicatetuple">UrlReaderPredicateTuple</a></td><td>A predicate that decides whether a specific <a href="/docs/reference/backend-common.urlreader">UrlReader</a> can handle a given URL.</td></tr>
+<tr><td><a href="/docs/reference/backend-common.urlreadersoptions">UrlReadersOptions</a></td><td>Creation options for <a href="/docs/reference/backend-common.urlreaders">UrlReaders</a><!-- -->.</td></tr>
 </tbody>
 </table>
 </span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#classes">Classes</a></li><li><a href="#functions">Functions</a></li><li><a href="#interfaces">Interfaces</a></li><li><a href="#variables">Variables</a></li><li><a href="#type-aliases">Type Aliases</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>

@@ -392,14 +392,14 @@ following content:</li>
 file in it.</li>
 </ol>
 <p>The <code>docs/index.md</code> can for example have the following content:</p>
-<pre><code class="hljs css language-md"><span class="hljs-section"># ${{ values.component_id }}</span>
+<pre><code class="hljs"><span class="hljs-comment"># ${{ values.component_id }}</span>
 
 ${{ values.description }}
 
-<span class="hljs-section">## Getting started</span>
+<span class="hljs-comment">## Getting started</span>
 
-Start writing your documentation by adding more markdown (.md) files to this
-folder (/docs) or replace the content in this file.
+Start writing your documentation <span class="hljs-keyword">by</span> adding more markdown (.md) files <span class="hljs-keyword">to</span> <span class="hljs-keyword">this</span>
+folder (/docs) <span class="hljs-keyword">or</span> replace the content <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span> file.
 </code></pre>
 <blockquote>
 <p>Note: The values of <code>site_name</code>, <code>component_id</code> and <code>site_description</code> depends
@@ -419,8 +419,87 @@ configuration of your <code>app-config.yaml</code></p>
       <span class="hljs-bullet">-</span> <span class="hljs-string">drive.google.com</span>
 </code></pre>
 <p>This way, all iframes where the host of src attribute is in the
-<code>sanitizer.allowedIframeHosts</code> list will be displayed</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/18/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/techdocs/cli"><span class="arrow-prev">← </span><span class="function-name-prevnext">TechDocs CLI</span></a><a class="docs-next button" href="/docs/features/techdocs/troubleshooting"><span>Troubleshooting</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach">How to migrate from TechDocs Basic to Recommended deployment approach?</a><ul class="toc-headings"><li><a href="#1-prepare-a-cloud-storage">1. Prepare a cloud storage</a></li><li><a href="#2-publish-to-storage-from-cicd">2. Publish to storage from CI/CD</a></li><li><a href="#3-switch-techdocs-to-read-only-mode">3. Switch TechDocs to read-only mode</a></li></ul></li><li><a href="#how-to-understand-techdocs-ref-annotation-values">How to understand techdocs-ref annotation values</a><ul class="toc-headings"><li><a href="#why-is-url-reader-faster-than-a-git-clone">Why is URL Reader faster than a git clone?</a></li></ul></li><li><a href="#how-to-customize-the-techdocs-home-page">How to customize the TechDocs home page?</a></li><li><a href="#how-to-customize-the-techdocs-reader-page">How to customize the TechDocs reader page?</a></li><li><a href="#how-to-migrate-from-techdocs-alpha-to-beta">How to migrate from TechDocs Alpha to Beta</a></li><li><a href="#how-to-implement-your-own-techdocs-apis">How to implement your own TechDocs APIs</a></li><li><a href="#how-to-add-the-documentation-setup-to-your-software-templates">How to add the documentation setup to your software templates</a></li><li><a href="#how-to-enable-iframes-in-techdocs">how to enable iframes in TechDocs</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<code>sanitizer.allowedIframeHosts</code> list will be displayed.</p>
+<h2><a class="anchor" aria-hidden="true" id="how-to-add-mermaid-support-in-techdocs"></a><a href="#how-to-add-mermaid-support-in-techdocs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How to add Mermaid support in TechDocs</h2>
+<p>To add <code>Mermaid</code> support in Techdocs, you can use <a href="https://kroki.io"><code>kroki</code></a>
+that creates diagrams from Textual descriptions. It is a single rendering
+gateway for all popular diagrams-as-a-code tools. It supports an enormous number
+of diagram types.</p>
+<ol>
+<li><strong>Create and Publish docker image:</strong> Create the docker image from the
+following Dockerfile and publish it to DockerHub.</li>
+</ol>
+<pre><code class="hljs css language-docker"><span class="hljs-keyword">FROM</span> python:<span class="hljs-number">3.8</span>-alpine
+
+<span class="hljs-keyword">RUN</span><span class="bash"> apk update &amp;&amp; apk --no-cache add gcc musl-dev openjdk11-jdk curl graphviz ttf-dejavu fontconfig</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pip install --upgrade pip &amp;&amp; pip install mkdocs-techdocs-core==0.2.1</span>
+
+<span class="hljs-keyword">RUN</span><span class="bash"> pip install mkdocs-kroki-plugin</span>
+
+<span class="hljs-keyword">ENTRYPOINT</span><span class="bash"> [ <span class="hljs-string">"mkdocs"</span> ]</span>
+</code></pre>
+<p>Create a repository in your DockerHub and run the below command in the same
+folder where your Dockerfile is present:</p>
+<pre><code class="hljs css language-shell">docker build . -t dockerHub_Username/repositoryName:tagName
+</code></pre>
+<p>Once the docker image is ready, push it to DockerHub.</p>
+<ol start="2">
+<li><strong>Update app-config.yaml:</strong> So that when your app generates techdocs, it will
+pull your docker image from DockerHub.</li>
+</ol>
+<pre><code class="hljs css language-python">techdocs:
+  builder: <span class="hljs-string">'local'</span> <span class="hljs-comment"># Alternatives - 'external'</span>
+  generator:
+    runIn: <span class="hljs-string">'docker'</span> <span class="hljs-comment"># Alternatives - 'local'</span>
+    dockerImage: dockerHub_Username/repositoryName:tagName
+    pullImage: true
+  publisher:
+    type: <span class="hljs-string">'local'</span> <span class="hljs-comment"># Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.</span>
+</code></pre>
+<ol start="3">
+<li><strong>Add the <code>kroki</code> plugin in mkdocs.yml:</strong></li>
+</ol>
+<pre><code class="hljs css language-yml"><span class="hljs-attr">plugins:</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">techdocs-core</span>
+  <span class="hljs-bullet">-</span> <span class="hljs-string">kroki</span>
+</code></pre>
+<ol start="4">
+<li><strong>Add mermaid code into techdocs:</strong></li>
+</ol>
+<pre><code class="hljs css language-md"><span class="hljs-code">```</span>kroki-mermaid
+sequenceDiagram
+GitLab-&gt;&gt;Kroki: Request rendering
+Kroki-&gt;&gt;Mermaid: Request rendering
+Mermaid--&gt;&gt;Kroki: Image
+Kroki--&gt;&gt;GitLab: Image
+<span class="hljs-code">```
+</span></code></pre>
+<p>Done! Now you have a support of the following diagrams along with mermaid:</p>
+<ul>
+<li><code>PlantUML</code></li>
+<li><code>BlockDiag</code></li>
+<li><code>BPMN</code></li>
+<li><code>ByteField</code></li>
+<li><code>SeqDiag</code></li>
+<li><code>ActDiag</code></li>
+<li><code>NwDiag</code></li>
+<li><code>PacketDiag</code></li>
+<li><code>RackDiag</code></li>
+<li><code>C4 with PlantUML</code></li>
+<li><code>Ditaa</code></li>
+<li><code>Erd</code></li>
+<li><code>Excalidraw</code></li>
+<li><code>GraphViz</code></li>
+<li><code>Nomnoml</code></li>
+<li><code>Pikchr</code></li>
+<li><code>Svgbob</code></li>
+<li><code>UMlet</code></li>
+<li><code>Vega</code></li>
+<li><code>Vega-Lite</code></li>
+<li><code>WaveDrom</code></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/21/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/techdocs/cli"><span class="arrow-prev">← </span><span class="function-name-prevnext">TechDocs CLI</span></a><a class="docs-next button" href="/docs/features/techdocs/troubleshooting"><span>Troubleshooting</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#how-to-migrate-from-techdocs-basic-to-recommended-deployment-approach">How to migrate from TechDocs Basic to Recommended deployment approach?</a><ul class="toc-headings"><li><a href="#1-prepare-a-cloud-storage">1. Prepare a cloud storage</a></li><li><a href="#2-publish-to-storage-from-cicd">2. Publish to storage from CI/CD</a></li><li><a href="#3-switch-techdocs-to-read-only-mode">3. Switch TechDocs to read-only mode</a></li></ul></li><li><a href="#how-to-understand-techdocs-ref-annotation-values">How to understand techdocs-ref annotation values</a><ul class="toc-headings"><li><a href="#why-is-url-reader-faster-than-a-git-clone">Why is URL Reader faster than a git clone?</a></li></ul></li><li><a href="#how-to-customize-the-techdocs-home-page">How to customize the TechDocs home page?</a></li><li><a href="#how-to-customize-the-techdocs-reader-page">How to customize the TechDocs reader page?</a></li><li><a href="#how-to-migrate-from-techdocs-alpha-to-beta">How to migrate from TechDocs Alpha to Beta</a></li><li><a href="#how-to-implement-your-own-techdocs-apis">How to implement your own TechDocs APIs</a></li><li><a href="#how-to-add-the-documentation-setup-to-your-software-templates">How to add the documentation setup to your software templates</a></li><li><a href="#how-to-enable-iframes-in-techdocs">how to enable iframes in TechDocs</a></li><li><a href="#how-to-add-mermaid-support-in-techdocs">How to add Mermaid support in TechDocs</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
