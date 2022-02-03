@@ -164,7 +164,7 @@ export const TechDocsSearch = (props: TechDocsSearchProps) => {
     term: '',
     types: ['techdocs'],
     pageCursor: '',
-    filters: props.entityId,
+    filters: { name: props.entityId.name },
   };
   return (
     <SearchContextProvider initialState={initialState}>
