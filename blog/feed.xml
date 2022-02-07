@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Mon, 20 Dec 2021 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 25 Jan 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,16 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[Say Hi to Backstage homepage templates!]]></title>
+            <link>https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html</link>
+            <guid>https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html</guid>
+            <pubDate>Tue, 25 Jan 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><em>This blog post is co-authored by Emma Indal (<a href="https://github.com/emmaindal">@emmaindal</a>), Spotify.</em></p>
+<p><img src="/blog/assets/22-01-25/homepage-template-blog-post-header.png" alt="homepage template"></p>
+<p><em>TLDR;</em> We’re excited to announce the arrival of homepage templates for Backstage. It can be intimidating to build up your own instance of Backstage, so we decided to make your life a bit easier by giving you an out-of-the-box homepage to hit the ground running. This template can be found in our <a href="https://backstage.io/storybook/?path=/story/plugins-home-templates--default-template">Backstage Storybook</a>, as well as future templates that we build.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Backstage Wrapped 2021]]></title>
             <link>https://backstage.io/blog/2021/12/20/backstage-wrapped-2021.html</link>

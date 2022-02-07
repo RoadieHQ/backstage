@@ -2,12 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2021-12-20T06:00:00.000Z</updated>
+    <updated>2022-01-25T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Say Hi to Backstage homepage templates!]]></title>
+        <id>https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html</id>
+        <link href="https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html"/>
+        <updated>2022-01-25T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><em>This blog post is co-authored by Emma Indal (<a href="https://github.com/emmaindal">@emmaindal</a>), Spotify.</em></p>
+<p><img src="/blog/assets/22-01-25/homepage-template-blog-post-header.png" alt="homepage template"></p>
+<p><em>TLDR;</em> We’re excited to announce the arrival of homepage templates for Backstage. It can be intimidating to build up your own instance of Backstage, so we decided to make your life a bit easier by giving you an out-of-the-box homepage to hit the ground running. This template can be found in our <a href="https://backstage.io/storybook/?path=/story/plugins-home-templates--default-template">Backstage Storybook</a>, as well as future templates that we build.</p>
+]]></summary>
+        <author>
+            <name>Kat Zhou, Spotify</name>
+            <uri>https://github.com/KatherineZhou</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Backstage Wrapped 2021]]></title>
         <id>https://backstage.io/blog/2021/12/20/backstage-wrapped-2021.html</id>

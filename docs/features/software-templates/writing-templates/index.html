@@ -319,6 +319,71 @@ config in <code>app-config.yaml</code>.</p>
 <p>The <code>RepoUrlPicker</code> is a custom field that we provide part of the
 <code>plugin-scaffolder</code>. You can provide your own custom fields by
 <a href="/docs/features/software-templates/writing-custom-field-extensions">writing your own Custom Field Extensions</a></p>
+<h5><a class="anchor" aria-hidden="true" id="using-the-users-oauth-token"></a><a href="#using-the-users-oauth-token" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using the Users <code>oauth</code> token</h5>
+<p>There's a little bit of extra magic that you get out of the box when using the
+<code>RepoUrlPicker</code> as a field input. You can provide some additional options under
+<code>ui:options</code> to allow the <code>RepoUrlPicker</code> to grab an <code>oauth</code> token for the user
+for the required <code>repository</code>.</p>
+<p>This is great for when you are wanting to create a new repository, or wanting to
+perform operations on top of an existing repository.</p>
+<p>A sample template that takes advantage of this is like so:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">scaffolder.backstage.io/v1beta3</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Template</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">v1beta3-demo</span>
+  <span class="hljs-attr">title:</span> <span class="hljs-string">Test</span> <span class="hljs-string">Action</span> <span class="hljs-string">template</span>
+  <span class="hljs-attr">description:</span> <span class="hljs-string">scaffolder</span> <span class="hljs-string">v1beta3</span> <span class="hljs-string">template</span> <span class="hljs-string">demo</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">owner:</span> <span class="hljs-string">backstage/techdocs-core</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">service</span>
+
+  <span class="hljs-attr">parameters:</span>
+    <span class="hljs-string">...</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">Choose</span> <span class="hljs-string">a</span> <span class="hljs-string">location</span>
+      <span class="hljs-attr">required:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">repoUrl</span>
+      <span class="hljs-attr">properties:</span>
+        <span class="hljs-attr">repoUrl:</span>
+          <span class="hljs-attr">title:</span> <span class="hljs-string">Repository</span> <span class="hljs-string">Location</span>
+          <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+          <span class="hljs-attr">ui:field:</span> <span class="hljs-string">RepoUrlPicker</span>
+          <span class="hljs-attr">ui:options:</span>
+            <span class="hljs-comment"># Here's the option you can pass to the RepoUrlPicker</span>
+            <span class="hljs-attr">requestUserCredentials:</span>
+              <span class="hljs-attr">secretsKey:</span> <span class="hljs-string">USER_OAUTH_TOKEN</span>
+              <span class="hljs-attr">additionalScopes:</span>
+                <span class="hljs-attr">github:</span>
+                  <span class="hljs-bullet">-</span> <span class="hljs-string">workflow:write</span>
+            <span class="hljs-attr">allowedHosts:</span>
+              <span class="hljs-bullet">-</span> <span class="hljs-string">github.com</span>
+    <span class="hljs-string">...</span>
+
+  <span class="hljs-attr">steps:</span>
+    <span class="hljs-string">...</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">publish</span>
+      <span class="hljs-attr">name:</span> <span class="hljs-string">Publish</span>
+      <span class="hljs-attr">action:</span> <span class="hljs-string">publish:github</span>
+      <span class="hljs-attr">input:</span>
+        <span class="hljs-attr">allowedHosts:</span> <span class="hljs-string">['github.com']</span>
+        <span class="hljs-attr">description:</span> <span class="hljs-string">This</span> <span class="hljs-string">is</span> <span class="hljs-string">${{</span> <span class="hljs-string">parameters.name</span> <span class="hljs-string">}}</span>
+        <span class="hljs-attr">repoUrl:</span> <span class="hljs-string">${{</span> <span class="hljs-string">parameters.repoUrl</span> <span class="hljs-string">}}</span>
+        <span class="hljs-comment"># here's where the secret can be used</span>
+        <span class="hljs-attr">token:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.USER_OAUTH_TOKEN</span> <span class="hljs-string">}}</span>
+
+    <span class="hljs-string">...</span>
+</code></pre>
+<p>You will see from above that there is an additional <code>requestUserCredentials</code>
+object that is passed to the <code>RepoUrlPicker</code>. This object defines what the
+returned <code>secret</code> should be stored as when accessing using
+<code>${{ secrets.secretName }}</code>, in this case it is <code>USER_OAUTH_TOKEN</code>. And then you
+will see that there is an additional <code>input</code> field into the <code>publish:github</code>
+action called <code>token</code>, in which you can use the <code>secret</code> like so:
+<code>token: ${{ secrets.USER_OAUTH_TOKEN }}</code>.</p>
+<p>There's also the ability to pass additional scopes when requesting the <code>oauth</code>
+token from the user, which you can do on a per-provider basis, in case your
+template can be published to multiple providers.</p>
 <h4><a class="anchor" aria-hidden="true" id="the-owner-picker"></a><a href="#the-owner-picker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>The Owner Picker</h4>
 <p>When the scaffolder needs to add new components to the catalog, it needs to have
 an owner for them. Ideally, users should be able to select an owner when they go
@@ -373,7 +438,7 @@ output things. You can grab that output using <code>steps.$stepId.output.$proper
 <p>You can read more about all the <code>inputs</code> and <code>outputs</code> defined in the actions in
 code part of the <code>JSONSchema</code>, or you can read more about our
 <a href="/docs/features/software-templates/builtin-actions">built in actions</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/25/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/adding-templates"><span class="arrow-prev">← </span><span>Adding your own Templates</span></a><a class="docs-next button" href="/docs/features/software-templates/builtin-actions"><span>Builtin actions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/7/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/adding-templates"><span class="arrow-prev">← </span><span>Adding your own Templates</span></a><a class="docs-next button" href="/docs/features/software-templates/builtin-actions"><span>Builtin actions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

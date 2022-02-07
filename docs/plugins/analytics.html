@@ -179,6 +179,59 @@ tool), consider contributing your API implementation as a plugin!</p>
 <p>By convention, such packages should be named
 <code>@backstage/analytics-module-[name]</code>, and any configuration should be keyed
 under <code>app.analytics.[name]</code>.</p>
+<h3><a class="anchor" aria-hidden="true" id="handling-user-identity"></a><a href="#handling-user-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Handling User Identity</h3>
+<p>If the analytics platform you are integrating with has a first-class concept of
+user identity, you can (optionally) choose to support this by the following this
+convention:</p>
+<ul>
+<li>Allow your implementation to be instantiated with the <code>identityApi</code> as one of
+its options in a <code>fromConfig</code> static method.</li>
+<li>Use the <code>userEntityRef</code> resolved by <code>identityApi</code>'s <code>getBackstageIdentity()</code>
+method as the basis for the user ID you send to your analytics platform.</li>
+</ul>
+<p>For example:</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> {
+  AnalyticsApi,
+  analyticsApiRef,
+  AnyApiFactory,
+  configApiRef,
+  createApiFactory,
+  identityApiRef,
+  IdentityApi,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/core-plugin-api'</span>;
+
+<span class="hljs-comment">// Implementation that optionally initializes with a userId.</span>
+<span class="hljs-keyword">class</span> AcmeAnalytics <span class="hljs-keyword">implements</span> AnalyticsApi {
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params">accountId: <span class="hljs-built_in">number</span>, identityApi?: IdentityApi</span>) {
+    <span class="hljs-keyword">if</span> (identityApi) {
+      identityApi.getBackstageIdentity().then(<span class="hljs-function"><span class="hljs-params">identity</span> =&gt;</span> {
+        AcmeAnalytics.init(accountId, {
+          userId: identity.userEntityRef,
+        });
+      });
+    } <span class="hljs-keyword">else</span> {
+      AcmeAnalytics.init(accountId);
+    }
+  }
+
+  <span class="hljs-keyword">static</span> fromConfig(config, options) {
+    <span class="hljs-keyword">const</span> accountId = config.getString(<span class="hljs-string">'app.analytics.acme.id'</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> AcmeAnalytics(accountId, options.identityApi);
+  }
+}
+
+<span class="hljs-comment">// Your implementation should be instantiated like this:</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> apis: AnyApiFactory[] = [
+  createApiFactory({
+    api: analyticsApiRef,
+    deps: { configApi: configApiRef, identityApi: identityApiRef },
+    factory: <span class="hljs-function">(<span class="hljs-params">{ configApi, identityApi }</span>) =&gt;</span>
+      AcmeAnalytics.fromConfig(configApi, {
+        identityApi,
+      }),
+  }),
+];
+</code></pre>
 <h2><a class="anchor" aria-hidden="true" id="capturing-events"></a><a href="#capturing-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Capturing Events</h2>
 <p>To instrument an event in a component, start by retrieving an analytics tracker
 using the <code>useAnalytics()</code> hook provided by <code>@backstage/core-plugin-api</code>. The
@@ -309,7 +362,7 @@ describe(<span class="hljs-string">'SomeComponent'</span>, () =&gt; {
   });
 });
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/25/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/composability"><span class="arrow-prev">← </span><span>Composability System</span></a><a class="docs-next button" href="/docs/plugins/proxying"><span>Proxying</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#concepts">Concepts</a></li><li><a href="#supported-analytics-tools">Supported Analytics Tools</a></li><li><a href="#key-events">Key Events</a></li><li><a href="#writing-integrations">Writing Integrations</a></li><li><a href="#capturing-events">Capturing Events</a><ul class="toc-headings"><li><a href="#providing-extra-attributes">Providing Extra Attributes</a></li><li><a href="#providing-context-for-events">Providing Context for Events</a></li><li><a href="#event-naming-considerations">Event Naming Considerations</a></li><li><a href="#unit-testing-event-capture">Unit Testing Event Capture</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/7/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/composability"><span class="arrow-prev">← </span><span>Composability System</span></a><a class="docs-next button" href="/docs/plugins/proxying"><span>Proxying</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#concepts">Concepts</a></li><li><a href="#supported-analytics-tools">Supported Analytics Tools</a></li><li><a href="#key-events">Key Events</a></li><li><a href="#writing-integrations">Writing Integrations</a><ul class="toc-headings"><li><a href="#handling-user-identity">Handling User Identity</a></li></ul></li><li><a href="#capturing-events">Capturing Events</a><ul class="toc-headings"><li><a href="#providing-extra-attributes">Providing Extra Attributes</a></li><li><a href="#providing-context-for-events">Providing Context for Events</a></li><li><a href="#event-naming-considerations">Event Naming Considerations</a></li><li><a href="#unit-testing-event-capture">Unit Testing Event Capture</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

@@ -97,9 +97,9 @@ it has passed through the last process and landed among the final entities.</p>
 <p><img src="../../assets/features/catalog/life-of-an-entity_overview.svg" alt="General overview"></p>
 <p>The details of these processes are described below.</p>
 <h2><a class="anchor" aria-hidden="true" id="ingestion"></a><a href="#ingestion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ingestion</h2>
-<p>Each catalog deployment has a number of entity providers installed. They are
+<p>Each catalog deployment has a number of <em>entity providers</em> installed. They are
 responsible for fetching data from external authoritative sources in any way
-that they see fit, to translate those into entity objects, and to notify the
+that they see fit, translating those into entity objects, and notifying the
 database when those entities are added or removed. These are the <em>unprocessed
 entities</em> that will be subject to later processing (see below), and they form
 the very basis of existence for entities. If there were no entity providers, no
@@ -149,7 +149,7 @@ that the more precise validation rules that you put in place on entities are
 the processing loop should next try to process it. When the entity first
 appears, this timestamp is set to &quot;now&quot; - asking for it to be picked up as soon
 as possible.</p>
-<p>Each catalog deployment has a number of processors installed. They are
+<p>Each catalog deployment has a number of <em>processors</em> installed. They are
 responsible for receiving unprocessed entities that the catalog decided are due
 for processing, and then running that data through a number of processing
 stages, mutating the entity and emitting auxiliary data about it. When all of
@@ -216,9 +216,24 @@ the relation edges, both incoming and outgoing, no matter who produced them.</p>
 This means that any modifications you want to make on the final result, has to
 happen during ingestion or processing.</p>
 <h2><a class="anchor" aria-hidden="true" id="errors"></a><a href="#errors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Errors</h2>
-<blockquote>
-<p>TODO: Describe how errors are exposed through entities</p>
-</blockquote>
+<p>Errors during the ingestion and processing of entities can happen in a variety
+of ways, and they may happen at a far later point in time than when they were
+registered. For example, a registered file may get deleted in the remote system,
+or the user may accidentally change the file contents in such a way that they
+cannot be parsed successfully, etc.</p>
+<p>There are two main ways that these errors are surfaced.</p>
+<p>First, the catalog backend will produce detailed logs that should contain
+sufficient information for a reader to find the causes for errors. Since these
+logs are typically not easily found by end users, this can mainly be a useful
+tool for Backstage operators who want to debug problems either with statically
+registered entities that are under their control, or to help end users find
+problems.</p>
+<p>Second, for most classes of errors, the entity itself will contain a status
+field that describes the problem. The contents of this field is shown at the top
+of your entity page in Backstage, if you have placed the corresponding error
+callout component (<code>EntityProcessingErrorsPanel</code>) there.</p>
+<p>We are still working to improve the surfacing and observability around
+processing loop errors.</p>
 <h2><a class="anchor" aria-hidden="true" id="orphaning"></a><a href="#orphaning" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Orphaning</h2>
 <p>As mentioned earlier, entities internally form a graph. The edges go from
 processed parent entities, to child entities emitted while processing the
@@ -236,17 +251,23 @@ or another parent starting to reference it.</li>
 <li>The catalog page in Backstage for the child entity detects the new annotation
 and informs users about the orphan status.</li>
 </ul>
-<p>Orphaning can occur in several different scenarios. One common cause is that the
-end user edited a corresponding catalog catalog-info YAML file removing the
-entity's entry. In the case of a <code>Location</code> parent entity, orphaning can happen
-if removing the target line pointing to the file containing the child entity.
-Another common cause is large batch processors such as the ones that crawl
-through remote systems looking for entities, no longer finding something that it
-used to find before. Maybe the data was moved, or deleted, in the remote system.
-So for example when a person leaves the company an LDAP org discovery processor
-might leave an orphaned <code>User</code> entity behind. Note that this only applies to
-processors - ingestion that happens using entity providers work differently,
-described below.</p>
+<p>Orphaning can occur in several different scenarios.</p>
+<ul>
+<li>If a catalog-info YAML file is moved from one place to another in the version
+control system without updating the registration in the catalog, it will
+effectively become orphaned &quot;by&quot; that registered location</li>
+<li>If the user edits a corresponding parent catalog-info YAML file removing the
+entity's entry - for example in the case of a <code>Location</code> parent entity,
+orphaning can happen if editing or removing the <code>target</code>/<code>targets</code> lines
+pointing to the file containing the child entity.</li>
+<li>Another common cause is large batch processors such as the ones that crawl
+through remote systems looking for entities, no longer finding something that
+it used to find before. Maybe the data was moved, or deleted, in the remote
+system. So for example when a person leaves the company an LDAP org discovery
+processor might leave an orphaned <code>User</code> entity behind. Note that this only
+applies to processors - ingestion that happens using entity providers work
+differently, described below.</li>
+</ul>
 <blockquote>
 <p>Note that removing a file, or accidentally corrupting a file so that it cannot
 be read successfully, does <em>not</em> lead to orphaning. Hard errors, including the
@@ -266,14 +287,70 @@ only by direct user action.</p>
 finally delete entities that are orphaned. This is however not something that's
 provided out of the box.</p>
 <h2><a class="anchor" aria-hidden="true" id="implicit-deletion"></a><a href="#implicit-deletion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implicit Deletion</h2>
-<blockquote>
-<p>TODO: Describe the process of entity providers eagerly deleting entities</p>
-</blockquote>
+<p>Entity providers - not processors - are subject to <em>eager</em> deletion of entities,
+which may trigger the implicit deletion of more than just the entity you thought
+you were deleting. This concept is explained here.</p>
+<p>Recall that all entity providers manage a private &quot;bucket&quot; of entities, as
+described in the <a href="/docs/features/software-catalog/external-integrations">External integrations</a> article. They
+can perform some operations on those entities, including additions, updates, and
+deletions. Entity additions/updates are subject to the regular processing loops,
+which means that bucket entities may end up forming roots of an entire graph of
+entities that are emitted by those processors as they recursively work they way
+through the bucket contents and its descendants.</p>
+<p>When a provider issues a deletion of an entity in its bucket, that entity as
+well as <em>the entire tree of entities processed out of it</em>, if any, are
+considered for immediate deletion. Note &quot;considered&quot; - they are deleted if and
+only if they would otherwise have become orphaned (no other parent entities
+emitting them). Since the graph of entities is not strictly a tree, multiple
+roots may actually end up indirectly referencing a node farther down in the
+graph. If that's the case, that node won't go away until all such roots go away.</p>
+<p>URLs to yaml files that you register using either the Create button or add to
+your app-config, are both handled by entity providers. That means that this
+implicit deletion mechanism comes into play in some everyday circumstances.
+Let's illustrate.</p>
+<p>Imagine that you have a monorepo, with a single <code>Location</code> entity in a
+catalog-info file at the root, and that entity points to three other
+catalog-info files in the repo with a <code>Component</code> entity in each one.</p>
+<pre><code class="hljs css language-text">/
+  feature_one/
+    catalog-info.yaml     <- kind: Component
+  feature_two/
+    catalog-info.yaml     <- kind: Component
+  feature_three/
+    catalog-info.yaml     <- kind: Component
+  catalog-info.yaml       <- kind: Location
+</code></pre>
+<p>If you register the root <code>Location</code> entity, the actual effect is that <em>five</em>
+entities appear in the catalog. First, one that is named <code>generated-</code>-something,
+which corresponds to the registered URL itself. That's the one that the provider
+has put in its &quot;bucket&quot;. Then, as processing loops chug along, the <code>Location</code>
+entity you pointed to appears as a child of that, and then the three <code>Component</code>
+entities appear in turn as children of the <code>Location</code>.</p>
+<p>As an end user of the Backstage interface, you may now want to delete one of the
+three <code>Component</code> entities. You do that by visiting the three-dots menu in the
+top right of an entity view. The popup dialog that appears will inform you that
+actually this entity belongs to a certain root, and that you may want to remove
+that root instead (which corresponds to unregistering the originally registered
+URL). If you choose to do so, <em>all</em> of the aforementioned five entities will
+actually be deleted in the same operation.</p>
+<p>If you did not want to perform this aggressive pruning, you might have instead
+chosen to remove one of the <code>target</code> rows of your <code>Location</code> catalog-info file,
+and then deleted the catalog-info file that contained the <code>Component</code> you wanted
+to get rid of. Now the catalog would be left with an orphaned component, and you
+would instead be able to use the explicit deletion (see below) to delete that
+single component.</p>
 <h2><a class="anchor" aria-hidden="true" id="explicit-deletion"></a><a href="#explicit-deletion" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Explicit Deletion</h2>
-<blockquote>
-<p>TODO: Describe direct deletion via the catalog API</p>
-</blockquote>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/25/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/software-catalog-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/software-catalog/configuration"><span>Catalog Configuration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#key-concepts">Key Concepts</a></li><li><a href="#ingestion">Ingestion</a></li><li><a href="#processing">Processing</a></li><li><a href="#stitching">Stitching</a></li><li><a href="#errors">Errors</a></li><li><a href="#orphaning">Orphaning</a></li><li><a href="#implicit-deletion">Implicit Deletion</a></li><li><a href="#explicit-deletion">Explicit Deletion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<p>The catalog and its REST API also permits direct deletion of individual
+entities. This makes sense to do on orphaned entities; entities that aren't
+being actively kept up to date by any parent entities. The popup interface under
+the three-dots menu option of entity views does offer this option, and the
+orphaned status can be seen in an info box at the top of the entity's overview
+page.</p>
+<p>However, if you were to try to do an explicit depletion on an entity that's
+being kept actively updated by a parent entity, it would just reappear again
+shortly thereafter when the processing loops reconsider the parent entity that's
+still in there.</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/7/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-catalog/software-catalog-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/software-catalog/configuration"><span>Catalog Configuration</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#key-concepts">Key Concepts</a></li><li><a href="#ingestion">Ingestion</a></li><li><a href="#processing">Processing</a></li><li><a href="#stitching">Stitching</a></li><li><a href="#errors">Errors</a></li><li><a href="#orphaning">Orphaning</a></li><li><a href="#implicit-deletion">Implicit Deletion</a></li><li><a href="#explicit-deletion">Explicit Deletion</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
