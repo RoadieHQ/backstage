@@ -43,9 +43,10 @@
 <tr><td><a href="/docs/reference/catalog-model.parseentityref">parseEntityRef(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and returns a structure with a name, and optional kind and namespace.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityref_1">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Kind.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityref_2">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Namespace.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.parselocationref">parseLocationRef(ref)</a></td><td>Parses a string form location reference.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parselocationreference">parseLocationReference(ref)</a></td><td>Parses a string form location reference.<!-- -->Note that the return type is not <code>LocationSpec</code>, because we do not want to conflate the string form with the additional properties of that type.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.serializeentityref">serializeEntityRef(ref)</a></td><td>Takes an entity reference or name, and outputs an entity reference on the most compact form possible. I.e. if the parts do not contain any special/reserved characters, it outputs the string form, otherwise it outputs the compound form.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifyentityref">stringifyEntityRef(ref)</a></td><td>Takes an entity or entity name/reference, and returns the string form of an entity ref.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.stringifylocationref">stringifyLocationRef(ref)</a></td><td>Turns a location ref into its string form.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifylocationreference">stringifyLocationReference(ref)</a></td><td>Turns a location reference into its string form.</td></tr>
 </tbody>
 </table>
@@ -72,7 +73,6 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/catalog-model.analyzelocationschema">analyzeLocationSchema</a></td><td>Deprecated.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.apientityv1alpha1validator">apiEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.apientityv1alpha1">ApiEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.componententityv1alpha1validator">componentEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.componententityv1alpha1">ComponentEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.domainentityv1alpha1validator">domainEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.domainentityv1alpha1">DomainEntityV1alpha1</a><!-- -->.</td></tr>
@@ -83,8 +83,6 @@
 <tr><td><a href="/docs/reference/catalog-model.groupentityv1alpha1validator">groupEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.groupentityv1alpha1">GroupEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.location_annotation">LOCATION_ANNOTATION</a></td><td>Constant storing location annotation.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.locationentityv1alpha1validator">locationEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.locationentityv1alpha1">LocationEntityV1alpha1</a><!-- -->.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.locationschema">locationSchema</a></td><td>Deprecated.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.locationspecschema">locationSpecSchema</a></td><td>Deprecated.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.origin_location_annotation">ORIGIN_LOCATION_ANNOTATION</a></td><td>Constant storing origin location annotation</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.relation_api_consumed_by">RELATION_API_CONSUMED_BY</a></td><td>A relation of an API being consumed, typically by a component. Reversed direction of <a href="/docs/reference/catalog-model.relation_consumes_api">RELATION_CONSUMES_API</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.relation_api_provided_by">RELATION_API_PROVIDED_BY</a></td><td>A relation from an API to its provider entity (typically a component). Reversed direction of <a href="/docs/reference/catalog-model.relation_provides_api">RELATION_PROVIDES_API</a><!-- -->.</td></tr>

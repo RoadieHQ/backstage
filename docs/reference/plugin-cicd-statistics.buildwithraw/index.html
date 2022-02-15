@@ -10,7 +10,7 @@
 <p>Helper type which is a Build with a certain typed 'raw' field.</p>
 <p>This can be useful in an Api to use while mapping internal data structures (raw) into generic builds.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> BuildWithRaw&lt;T = <span class="hljs-built_in">any</span>&gt; = Build &amp; {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> BuildWithRaw&lt;T = <span class="hljs-built_in">any</span>&gt; = Build &amp; {
     raw: T;
 };
 </code></pre>

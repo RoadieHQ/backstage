@@ -10,7 +10,7 @@
 <p>Generic CheckResult</p>
 <p>Contains information about the facts used to calculate the check result and information about the check itself. Both may include metadata to be able to display additional information. A collection of these should be parseable by the frontend to display scorecards</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> CheckResult = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> CheckResult = {
     facts: FactResponse;
     check: CheckResponse;
     result: JsonValue;

@@ -11,7 +11,7 @@
 <p><a href="https://github.com/tc39/proposal-observable">https://github.com/tc39/proposal-observable</a></p>
 <p>This is used as a common return type for observable values and can be created using many different observable implementations, such as zen-observable or RxJS 5.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> Observable&lt;T&gt; = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> Observable&lt;T&gt; = {
     [Symbol.observable](): Observable&lt;T&gt;;
     subscribe(observer: Observer&lt;T&gt;): Subscription;
     subscribe(onNext?: <span class="hljs-function">(<span class="hljs-params">value: T</span>) =&gt;</span> <span class="hljs-built_in">void</span>, onError?: <span class="hljs-function">(<span class="hljs-params">error: <span class="hljs-built_in">Error</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>, onComplete?: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">void</span>): Subscription;

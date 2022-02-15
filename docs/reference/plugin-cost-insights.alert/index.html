@@ -12,7 +12,7 @@
 <p>Each default form can be overridden with a custom component. It must be implemented using React.forwardRef. See <a href="https://reactjs.org/docs/forwarding-refs">https://reactjs.org/docs/forwarding-refs</a></p>
 <p>Errors thrown within hooks will generate a snackbar error notification.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> Alert = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> Alert = {
     title: <span class="hljs-built_in">string</span> | JSX.Element;
     subtitle: <span class="hljs-built_in">string</span> | JSX.Element;
     element?: JSX.Element;

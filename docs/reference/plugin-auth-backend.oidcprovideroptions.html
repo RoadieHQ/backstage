@@ -11,7 +11,7 @@
 <p>authHandler : called after sign in was successful, a new object must be returned which includes a profile signInResolver: called after sign in was successful, expects to return a new <a href="/docs/reference/plugin-auth-node.backstagesigninresult">BackstageSignInResult</a></p>
 <p>Both options are optional. There is fallback for authHandler where the default handler expect an e-mail explicitly otherwise it throws an error</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> OidcProviderOptions = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> OidcProviderOptions = {
     authHandler?: AuthHandler&lt;OidcAuthResult&gt;;
     signIn?: {
         resolver?: SignInResolver&lt;OidcAuthResult&gt;;

@@ -10,7 +10,7 @@
 <p>A container for facts. The shape of the fact records needs to correspond to the FactSchema with same <code>ref</code> value. Each container contains a reference to an entity which can be a Backstage entity or a generic construct outside of backstage with same shape.</p>
 <p>Container may contain multiple individual facts and their values</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> TechInsightFact = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> TechInsightFact = {
     entity: {
         <span class="hljs-keyword">namespace</span>: <span class="hljs-built_in">string</span>;
         kind: <span class="hljs-built_in">string</span>;

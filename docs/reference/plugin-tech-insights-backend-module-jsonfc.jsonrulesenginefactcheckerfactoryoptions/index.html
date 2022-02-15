@@ -10,7 +10,7 @@
 <p>Constructor options for JsonRulesEngineFactCheckerFactory</p>
 <p>Implementation of checkRegistry is optional. If there is a need to use persistent storage for checks, it is recommended to inject a storage implementation here. Otherwise an in-memory option is instantiated and used.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> JsonRulesEngineFactCheckerFactoryOptions = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> JsonRulesEngineFactCheckerFactoryOptions = {
     checks: TechInsightJsonRuleCheck[];
     logger: Logger;
     checkRegistry?: TechInsightCheckRegistry&lt;TechInsightJsonRuleCheck&gt;;

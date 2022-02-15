@@ -10,7 +10,7 @@
 <p>A condition returned with a CONDITIONAL authorization response.</p>
 <p>Conditions are a reference to a rule defined by a plugin, and parameters to apply the rule. For example, a rule might be <code>isOwner</code> from the catalog-backend, and params may be a list of entity claims from a identity token.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> PermissionCondition&lt;TParams <span class="hljs-keyword">extends</span> unknown[] = unknown[]&gt; = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> PermissionCondition&lt;TParams <span class="hljs-keyword">extends</span> unknown[] = unknown[]&gt; = {
     rule: <span class="hljs-built_in">string</span>;
     params: TParams;
 };

@@ -11,7 +11,7 @@
 <p>Permissions are the &quot;what&quot; part of authorization, the action to be performed. This may be reading an entity from the catalog, executing a software template, or any other action a plugin author may wish to protect.</p>
 <p>To evaluate authorization, a permission is paired with a Backstage identity (the &quot;who&quot;) and evaluated using an authorization policy.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> Permission = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> Permission = {
     name: <span class="hljs-built_in">string</span>;
     attributes: PermissionAttributes;
     resourceType?: <span class="hljs-built_in">string</span>;

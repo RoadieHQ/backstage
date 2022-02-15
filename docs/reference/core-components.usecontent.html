@@ -10,7 +10,7 @@
 <p>This hook provides a react ref to the main content. Allows to set an element as the main content and focus on that component.</p>
 <p>*Note: If <code>contentRef</code> is not set <code>focusContent</code> is noop. <code>Content</code> component sets this ref automaticaly*</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useContent</span>(<span class="hljs-params"></span>): </span>{
+<pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useContent</span>(<span class="hljs-params"></span>): </span>{
     focusContent: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-built_in">void</span>;
     contentRef: React.MutableRefObject&lt;HTMLElement | <span class="hljs-literal">null</span>&gt; | <span class="hljs-literal">undefined</span>;
 };

@@ -10,7 +10,7 @@
 <p>A filter expression for entities.</p>
 <p>Any (at least one) of the outer sets must match, within which all of the individual filters must match.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">type</span> EntityFilter = {
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> EntityFilter = {
     allOf: EntityFilter[];
 } | {
     anyOf: EntityFilter[];

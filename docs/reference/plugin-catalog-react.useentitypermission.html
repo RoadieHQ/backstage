@@ -10,7 +10,7 @@
 <p>A thin wrapper around the <a href="/docs/reference/plugin-permission-react.usepermission">usePermission</a> hook which uses the current entity in context to make an authorization request for the given permission.</p>
 <p>Note: this hook blocks the permission request until the entity has loaded in context. If you have the entityRef and need concurrent requests, use the <code>usePermission</code> hook directly.</p>
 <p><b>Signature:</b></p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useEntityPermission</span>(<span class="hljs-params">permission: Permission</span>): </span>{
+<pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useEntityPermission</span>(<span class="hljs-params">permission: Permission</span>): </span>{
     loading: <span class="hljs-built_in">boolean</span>;
     allowed: <span class="hljs-built_in">boolean</span>;
     error?: <span class="hljs-built_in">Error</span>;

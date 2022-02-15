@@ -28,6 +28,7 @@
 <tr><td><a href="/docs/reference/core-components.bottomlink">BottomLink(props)</a></td><td>Footer with link used in <a href="/docs/reference/core-components.infocard">InfoCard()</a> and <a href="/docs/reference/core-components.tabbedcard">TabbedCard()</a></td></tr>
 <tr><td><a href="/docs/reference/core-components.breadcrumbs">Breadcrumbs(props)</a></td><td>Breadcrumbs component to show navigation hierarchical structure</td></tr>
 <tr><td><a href="/docs/reference/core-components.brokenimageicon">BrokenImageIcon(props)</a></td><td>Broken Image Icon</td></tr>
+<tr><td><a href="/docs/reference/core-components.button">Button(props)</a></td><td>Thin wrapper on top of material-ui's <a href="https://v4.mui.com/components/buttons/">Button</a> component</td></tr>
 <tr><td><a href="/docs/reference/core-components.cardtab">CardTab(props)</a></td><td>Card tab component used in <a href="/docs/reference/core-components.tabbedcard">TabbedCard()</a></td></tr>
 <tr><td><a href="/docs/reference/core-components.catalogicon">CatalogIcon(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.chaticon">ChatIcon(props)</a></td><td></td></tr>
@@ -38,6 +39,7 @@
 <tr><td><a href="/docs/reference/core-components.createbutton">CreateButton(props)</a></td><td>Responsive Button giving consistent UX for creation of different things</td></tr>
 <tr><td><a href="/docs/reference/core-components.dashboardicon">DashboardIcon(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.dependencygraph">DependencyGraph(props)</a></td><td>Graph component used to visualize relations between entities</td></tr>
+<tr><td><a href="/docs/reference/core-components.dismissablebanner">DismissableBanner(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.docsicon">DocsIcon(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.emailicon">EmailIcon(props)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.emptystate">EmptyState(props)</a></td><td>Various placeholder views for empty state pages</td></tr>
@@ -79,20 +81,29 @@
 |  <a href="/docs/reference/core-components.itemcardheader">ItemCardHeader(props)</a> | A simple card header, rendering a default look for &quot;item cards&quot; - cards that are arranged in a grid for users to select among several options.<!-- -->This component expects to be placed within a MUI <CardMedia>.<!-- -->Styles for the header can be overridden using the <code>classes</code> prop, e.g.:<code>&lt;ItemCardHeader title=&quot;Hello&quot; classes={{ root: myClassName }} /&gt;</code> |
 |  <a href="/docs/reference/core-components.lifecycle">Lifecycle(props)</a> |  |
 |  <a href="/docs/reference/core-components.lineargauge">LinearGauge(props)</a> |  |
+|  <a href="/docs/reference/core-components.link">Link(props)</a> | Thin wrapper on top of material-ui's Link component, which... - Makes the Link use react-router - Captures Link clicks as analytics events. |
 |  <a href="/docs/reference/core-components.logviewer">LogViewer(props)</a> | A component that displays logs in a scrollable text area.<!-- -->The LogViewer has support for search and filtering, as well as displaying text content with ANSI color escape codes.<!-- -->Since the LogViewer uses windowing to avoid rendering all contents at once, the log is sized automatically to fill the available vertical space. This means it may often be needed to wrap the LogViewer in a container that provides it with a fixed amount of space. |
 |  <a href="/docs/reference/core-components.markdowncontent">MarkdownContent(props)</a> | MarkdownContent -- Renders markdown with the default dialect [gfm - GitHub flavored Markdown](<a href="https://github.github.com/gfm/">https://github.github.com/gfm/</a>) to backstage theme styled HTML. If you just want to render to plain [CommonMark](<a href="https://commonmark.org/">https://commonmark.org/</a>), set the dialect to <code>'common-mark'</code> |
 |  <a href="/docs/reference/core-components.missingannotationemptystate">MissingAnnotationEmptyState(props)</a> |  |
+|  <a href="/docs/reference/core-components.mobilesidebar">MobileSidebar(props)</a> | A navigation component for mobile screens, which sticks to the bottom.<!-- -->It alternates the normal sidebar by grouping the <code>SidebarItems</code> based on provided <code>SidebarGroup</code>s either rendering them as a link or an overlay menu. If no <code>SidebarGroup</code>s are provided the sidebar content is wrapped in an default overlay menu. |
 |  <a href="/docs/reference/core-components.oauthrequestdialog">OAuthRequestDialog(_props)</a> |  |
 |  <a href="/docs/reference/core-components.overflowtooltip">OverflowTooltip(props)</a> |  |
 |  <a href="/docs/reference/core-components.page">Page(props)</a> |  |
 |  <a href="/docs/reference/core-components.pagewithheader">PageWithHeader(props)</a> |  |
 |  <a href="/docs/reference/core-components.progress">Progress(props)</a> |  |
+|  <a href="/docs/reference/core-components.proxiedsigninpage">ProxiedSignInPage(props)</a> | A sign-in page that has no user interface of its own. Instead, it relies on sign-in being performed by a reverse authenticating proxy that Backstage is deployed behind, and leverages its session handling. |
 |  <a href="/docs/reference/core-components.responseerrorpanel">ResponseErrorPanel(props)</a> | Renders a warning panel as the effect of a failed server request.<!-- -->Has special treatment for ResponseError errors, to display rich server-provided information about what happened. |
 |  <a href="/docs/reference/core-components.routedtabs">RoutedTabs(props)</a> |  |
 |  <a href="/docs/reference/core-components.select">Select(props)</a> |  |
+|  <a href="/docs/reference/core-components.sidebar">Sidebar(props)</a> | Passing children into the desktop or mobile sidebar depending on the context |
+|  <a href="/docs/reference/core-components.sidebarexpandbutton">SidebarExpandButton()</a> | A button which allows you to expand the sidebar when clicked. Use optionally to replace sidebar's expand-on-hover feature with expand-on-click.<!-- -->If you are using this you might want to set the <code>disableExpandOnHover</code> of the <code>Sidebar</code> to <code>true</code>. |
+|  <a href="/docs/reference/core-components.sidebargroup">SidebarGroup(props)</a> | Groups items of the <code>Sidebar</code> together.<!-- -->On bigger screens, this won't have any effect at the moment. On small screens, it will add an action to the bottom navigation - either triggering an overlay menu or acting as a link |
 |  <a href="/docs/reference/core-components.sidebarintro">SidebarIntro(_props)</a> |  |
+|  <a href="/docs/reference/core-components.sidebaritem">SidebarItem(props)</a> | Creates a <code>SidebarItem</code>If children contain a <code>SidebarSubmenu</code> component the <code>SidebarItem</code> will have a expandable submenu |
 |  <a href="/docs/reference/core-components.sidebarpage">SidebarPage(props)</a> |  |
 |  <a href="/docs/reference/core-components.sidebarsearchfield">SidebarSearchField(props)</a> |  |
+|  <a href="/docs/reference/core-components.sidebarsubmenu">SidebarSubmenu(props)</a> | Used inside SidebarItem to display an expandable Submenu |
+|  <a href="/docs/reference/core-components.sidebarsubmenuitem">SidebarSubmenuItem(props)</a> | Item used inside a submenu within the sidebar. |
 |  <a href="/docs/reference/core-components.signinpage">SignInPage(props)</a> |  |
 |  <a href="/docs/reference/core-components.simplestepper">SimpleStepper(props)</a> |  |
 |  <a href="/docs/reference/core-components.simplestepperstep">SimpleStepperStep(props)</a> |  |
@@ -148,26 +159,15 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/core-components.button">Button</a></td><td>Thin wrapper on top of material-ui's <a href="https://v4.mui.com/components/buttons/">Button</a> component</td></tr>
-<tr><td><a href="/docs/reference/core-components.dismissablebanner">DismissableBanner</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.errorboundary">ErrorBoundary</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.link">Link</a></td><td>Thin wrapper on top of material-ui's Link component, which... - Makes the Link use react-router - Captures Link clicks as analytics events.</td></tr>
-<tr><td><a href="/docs/reference/core-components.mobilesidebar">MobileSidebar</a></td><td>A navigation component for mobile screens, which sticks to the bottom.<!-- -->It alternates the normal sidebar by grouping the <code>SidebarItems</code> based on provided <code>SidebarGroup</code>s either rendering them as a link or an overlay menu. If no <code>SidebarGroup</code>s are provided the sidebar content is wrapped in an default overlay menu.</td></tr>
-<tr><td><a href="/docs/reference/core-components.proxiedsigninpage">ProxiedSignInPage</a></td><td>A sign-in page that has no user interface of its own. Instead, it relies on sign-in being performed by a reverse authenticating proxy that Backstage is deployed behind, and leverages its session handling.</td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebar_intro_local_storage">SIDEBAR_INTRO_LOCAL_STORAGE</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebar">Sidebar</a></td><td>Passing children into the desktop or mobile sidebar depending on the context</td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarconfig">sidebarConfig</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarcontext">SidebarContext</a></td><td>Context wether the <code>Sidebar</code> is open</td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebardivider">SidebarDivider</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebarexpandbutton">SidebarExpandButton</a></td><td>A button which allows you to expand the sidebar when clicked. Use optionally to replace sidebar's expand-on-hover feature with expand-on-click.<!-- -->If you are using this you might want to set the <code>disableExpandOnHover</code> of the <code>Sidebar</code> to <code>true</code>.</td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebargroup">SidebarGroup</a></td><td>Groups items of the <code>Sidebar</code> together.<!-- -->On bigger screens, this won't have any effect at the moment. On small screens, it will add an action to the bottom navigation - either triggering an overlay menu or acting as a link</td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebaritem">SidebarItem</a></td><td>Creates a <code>SidebarItem</code>If children contain a <code>SidebarSubmenu</code> component the <code>SidebarItem</code> will have a expandable submenu</td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarpinstatecontext">SidebarPinStateContext</a></td><td>Contains the state on how the <code>Sidebar</code> is rendered</td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarscrollwrapper">SidebarScrollWrapper</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarspace">SidebarSpace</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.sidebarspacer">SidebarSpacer</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebarsubmenu">SidebarSubmenu</a></td><td>Used inside SidebarItem to display an expandable Submenu</td></tr>
-<tr><td><a href="/docs/reference/core-components.sidebarsubmenuitem">SidebarSubmenuItem</a></td><td>Item used inside a submenu within the sidebar.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="type-aliases"></a><a href="#type-aliases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Aliases</h2>
@@ -184,7 +184,7 @@
 <tr><td><a href="/docs/reference/core-components.bottomlinkprops">BottomLinkProps</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.breadcrumbsclickabletextclasskey">BreadcrumbsClickableTextClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.breadcrumbsstyledboxclasskey">BreadcrumbsStyledBoxClassKey</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.buttonprops">ButtonProps</a></td><td>Properties for <a href="/docs/reference/core-components.button">Button</a></td></tr>
+<tr><td><a href="/docs/reference/core-components.buttonprops">ButtonProps</a></td><td>Properties for <a href="/docs/reference/core-components.button">Button()</a></td></tr>
 <tr><td><a href="/docs/reference/core-components.cardactionstoprightclasskey">CardActionsTopRightClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.cardtabclasskey">CardTabClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.closeddropdownclasskey">ClosedDropdownClassKey</a></td><td></td></tr>
@@ -239,7 +239,7 @@
 <tr><td><a href="/docs/reference/core-components.openeddropdownclasskey">OpenedDropdownClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.overflowtooltipclasskey">OverflowTooltipClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.pageclasskey">PageClassKey</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/core-components.proxiedsigninpageprops">ProxiedSignInPageProps</a></td><td>Props for <a href="/docs/reference/core-components.proxiedsigninpage">ProxiedSignInPage</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/core-components.proxiedsigninpageprops">ProxiedSignInPageProps</a></td><td>Props for <a href="/docs/reference/core-components.proxiedsigninpage">ProxiedSignInPage()</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/core-components.responseerrorpanelclasskey">ResponseErrorPanelClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.selectclasskey">SelectClassKey</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/core-components.selecteditems">SelectedItems</a></td><td></td></tr>
