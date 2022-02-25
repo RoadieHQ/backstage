@@ -41,10 +41,8 @@
 <tr><td><a href="/docs/reference/catalog-model.makevalidator">makeValidator(overrides)</a></td><td>Creates a <a href="/docs/reference/catalog-model.validators">Validators</a> object from <code>overrides</code>, with default values taken from <a href="/docs/reference/catalog-model.kubernetesvalidatorfunctions">KubernetesValidatorFunctions</a></td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityname">parseEntityName(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and always returns a complete entity name including kind, namespace and name.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityref">parseEntityRef(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and returns a structure with a name, and optional kind and namespace.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parseentityref_1">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Kind.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parseentityref_2">parseEntityRef(ref, context)</a></td><td>parseEntityRef with optional Namespace.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parselocationref">parseLocationRef(ref)</a></td><td>Parses a string form location reference.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.parselocationreference">parseLocationReference(ref)</a></td><td>Parses a string form location reference.<!-- -->Note that the return type is not <code>LocationSpec</code>, because we do not want to conflate the string form with the additional properties of that type.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.parselocationreference">parseLocationReference(ref)</a></td><td>Parses a string form location reference.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifyentityref">stringifyEntityRef(ref)</a></td><td>Takes an entity or entity name/reference, and returns the string form of an entity ref.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifylocationref">stringifyLocationRef(ref)</a></td><td>Turns a location ref into its string form.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.stringifylocationreference">stringifyLocationReference(ref)</a></td><td>Turns a location reference into its string form.</td></tr>
@@ -63,7 +61,6 @@
 <tr><td><a href="/docs/reference/catalog-model.locationentityv1alpha1">LocationEntityV1alpha1</a></td><td>Backstage catalog Location kind Entity.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.resourceentityv1alpha1">ResourceEntityV1alpha1</a></td><td>Backstage catalog Resource kind Entity. Represents infrastructure required to operate Components.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.systementityv1alpha1">SystemEntityV1alpha1</a></td><td>Backstage catalog System kind Entity. Systems group Comopnents, Resources and APIs together.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.templateentityv1beta2">TemplateEntityV1beta2</a></td><td>Backstage catalog Template kind Entity. Templates are used by the Scaffolder plugin to create new Components.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.userentityv1alpha1">UserEntityV1alpha1</a></td><td>Backstage catalog User kind Entity.</td></tr>
 </tbody>
 </table>
@@ -73,8 +70,14 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/catalog-model.annotation_edit_url">ANNOTATION_EDIT_URL</a></td><td>Annotation for linking to entity edit page from catalog pages.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.annotation_location">ANNOTATION_LOCATION</a></td><td>Constant storing location annotation.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.annotation_origin_location">ANNOTATION_ORIGIN_LOCATION</a></td><td>Constant storing origin location annotation</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.annotation_source_location">ANNOTATION_SOURCE_LOCATION</a></td><td>Contant storing source location annotation</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.annotation_view_url">ANNOTATION_VIEW_URL</a></td><td>Annotation for linking to entity page from catalog pages.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.apientityv1alpha1validator">apiEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.apientityv1alpha1">ApiEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.componententityv1alpha1validator">componentEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.componententityv1alpha1">ComponentEntityV1alpha1</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.default_namespace">DEFAULT_NAMESPACE</a></td><td>The namespace that entities without an explicit namespace fall into.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.domainentityv1alpha1validator">domainEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.domainentityv1alpha1">DomainEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.edit_url_annotation">EDIT_URL_ANNOTATION</a></td><td>Annotation for linking to entity edit page from catalog pages.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.entity_default_namespace">ENTITY_DEFAULT_NAMESPACE</a></td><td>The namespace that entities without an explicit namespace fall into.</td></tr>
@@ -101,7 +104,6 @@
 <tr><td><a href="/docs/reference/catalog-model.resourceentityv1alpha1validator">resourceEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.resourceentityv1alpha1">ResourceEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.source_location_annotation">SOURCE_LOCATION_ANNOTATION</a></td><td>Contant storing source location annotation</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.systementityv1alpha1validator">systemEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.systementityv1alpha1">SystemEntityV1alpha1</a><!-- -->.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.templateentityv1beta2validator">templateEntityV1beta2Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.templateentityv1beta2">TemplateEntityV1beta2</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.userentityv1alpha1validator">userEntityV1alpha1Validator</a></td><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a> for <a href="/docs/reference/catalog-model.userentityv1alpha1">UserEntityV1alpha1</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.view_url_annotation">VIEW_URL_ANNOTATION</a></td><td>Annotation for linking to entity page from catalog pages.</td></tr>
 </tbody>
@@ -121,7 +123,6 @@
 <tr><td><a href="/docs/reference/catalog-model.entityref">EntityRef</a></td><td>A reference by name to an entity, either as a compact string representation, or as a compound reference structure.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.entityrefcontext">EntityRefContext</a></td><td>The context of defaults that entity reference parsing happens within.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.entityrelation">EntityRelation</a></td><td>A relation of a specific type to another entity in the catalog.</td></tr>
-<tr><td><a href="/docs/reference/catalog-model.entityrelationspec">EntityRelationSpec</a></td><td>Holds the relation data for entities.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.jsonschema">JSONSchema</a></td><td>JSONSchema extendable by arbitrary JSON attributes</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.kindvalidator">KindValidator</a></td><td>Validates entities of a certain kind.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.location_2">Location_2</a></td><td>Entity location for a specific entity.</td></tr>

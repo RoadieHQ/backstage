@@ -16,7 +16,6 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.annotatelocationentityprocessor">AnnotateLocationEntityProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.annotatescmslugentityprocessor">AnnotateScmSlugEntityProcessor</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationcloudaccountprocessor">AwsOrganizationCloudAccountProcessor</a></td><td>A processor for ingesting AWS Accounts from AWS Organizations.<!-- -->If custom authentication is needed, it can be achieved by configuring the global AWS.credentials object.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.awss3discoveryprocessor">AwsS3DiscoveryProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.azuredevopsdiscoveryprocessor">AzureDevOpsDiscoveryProcessor</a></td><td>Extracts repositories out of an Azure DevOps org.<!-- -->The following will create locations for all projects which have a catalog-info.yaml on the default branch. The first is shorthand for the second.<!-- -->target: &quot;<a href="https://dev.azure.com/org/project">https://dev.azure.com/org/project</a>&quot; or target: <a href="https://dev.azure.com/org/project?path=/catalog-info.yaml">https://dev.azure.com/org/project?path=/catalog-info.yaml</a><!-- -->You may also explicitly specify a single repo:<!-- -->target: <a href="https://dev.azure.com/org/project/_git/repo">https://dev.azure.com/org/project/_git/repo</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.bitbucketdiscoveryprocessor">BitbucketDiscoveryProcessor</a></td><td></td></tr>
@@ -45,7 +44,6 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.createrandomrefreshinterval">createRandomRefreshInterval(options)</a></td><td>Creates a function that returns a random refresh interval between minSeconds and maxSeconds.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.createrouter">createRouter(options)</a></td><td>Creates a catalog router.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.durationtext">durationText(startTimestamp)</a></td><td>Returns a string with the elapsed time since the start of an operation, with some human friendly precision, e.g. &quot;133ms&quot; or &quot;14.5s&quot;.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.parseentityyaml">parseEntityYaml(data, location)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.runperiodically">runPeriodically(fn, delayMs)</a></td><td>Runs a function repeatedly, with a fixed wait between invocations.<!-- -->Supports async functions, and silently ignores exceptions and rejections.</td></tr>
 </tbody>
@@ -58,12 +56,15 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogentitydocument">CatalogEntityDocument</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingengine">CatalogProcessingEngine</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingorchestrator">CatalogProcessingOrchestrator</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessingorchestrator">CatalogProcessingOrchestrator</a></td><td>Responsible for executing the individual processing steps in order to fully process an entity.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorcache">CatalogProcessorCache</a></td><td>A cache for storing data during processing.<!-- -->The values stored in the cache are always local to each processor, meaning no processor can see cache values from other processors.<!-- -->The cache instance provided to the CatalogProcessor is also scoped to the entity being processed, meaning that each processor run can't see cache values from processing runs for other entities.<!-- -->Values that are set during a processing run will only be visible in the directly following run. The cache will be overwritten every run unless no new cache items are written, in which case the existing values remain in the cache.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovider">EntityProvider</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityproviderconnection">EntityProviderConnection</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.locationservice">LocationService</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.locationstore">LocationStore</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityfacetsrequest">EntityFacetsRequest</a></td><td>The request shape for .</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityfacetsresponse">EntityFacetsResponse</a></td><td>The response shape for .</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovider">EntityProvider</a></td><td>An EntityProvider is able to provide entities to the catalog. See <a href="https://backstage.io/docs/features/software-catalog/life-of-an-entity">https://backstage.io/docs/features/software-catalog/life-of-an-entity</a> for more details.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityproviderconnection">EntityProviderConnection</a></td><td>The EntityProviderConnection is the connection between the catalog and the entity provider. The EntityProvider use this connection to add and remove entities from the catalog.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.locationinput">LocationInput</a></td><td>Holds the information required to create a new location in the catalog location store.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.locationservice">LocationService</a></td><td>The location service manages entity locations.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.locationstore">LocationStore</a></td><td>Interacts with the database to manage locations.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.refreshservice">RefreshService</a></td><td>A service that manages refreshes of entities in the catalog.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.routeroptions">RouterOptions</a></td><td>Options used by <a href="/docs/reference/plugin-catalog-backend.createrouter">createRouter()</a><!-- -->.</td></tr>
 </tbody>
@@ -111,11 +112,10 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationentityfield">AnalyzeLocationEntityField</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationexistingentity">AnalyzeLocationExistingEntity</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationgenerateentity">AnalyzeLocationGenerateEntity</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationexistingentity">AnalyzeLocationExistingEntity</a></td><td>If the folder pointed to already contained catalog info yaml files, they are read and emitted like this so that the frontend can inform the user that it located them and can make sure to register them as well if they weren't already</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationgenerateentity">AnalyzeLocationGenerateEntity</a></td><td>This is some form of representation of what the analyzer could deduce. We should probably have a chat about how this can best be conveyed to the frontend. It'll probably contain a (possibly incomplete) entity, plus enough info for the frontend to know what form data to show to the user for overriding/completing the info.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationrequest">AnalyzeLocationRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.analyzelocationresponse">AnalyzeLocationResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.awsorganizationproviderconfig">AwsOrganizationProviderConfig</a></td><td>The configuration parameters for a single AWS Organization Processor</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.bitbucketrepositoryparser">BitbucketRepositoryParser</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogenvironment">CatalogEnvironment</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessor">CatalogProcessor</a></td><td></td></tr>
@@ -128,19 +128,22 @@
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogprocessorresult">CatalogProcessorResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrule">CatalogRule</a></td><td>Rules to apply to catalog entities.<!-- -->An undefined list of matchers means match all, an empty list of matchers means match none.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.catalogrulesenforcer">CatalogRulesEnforcer</a></td><td>Decides whether an entity from a given location is allowed to enter the catalog, according to some rule set.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.deferredentity">DeferredEntity</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.deferredentity">DeferredEntity</a></td><td>Entities that are not yet processed.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiescatalog">EntitiesCatalog</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesrequest">EntitiesRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitiesresponse">EntitiesResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entitiessearchfilter">EntitiesSearchFilter</a></td><td>Matches rows in the entities_search table.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entitiessearchfilter">EntitiesSearchFilter</a></td><td>Matches rows in the search table.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityancestryresponse">EntityAncestryResponse</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entityfilter">EntityFilter</a></td><td>A filter expression for entities.<!-- -->Any (at least one) of the outer sets must match, within which all of the individual filters must match.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.entitypagination">EntityPagination</a></td><td>A pagination rule for entities.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingrequest">EntityProcessingRequest</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingresult">EntityProcessingResult</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovidermutation">EntityProviderMutation</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingrequest">EntityProcessingRequest</a></td><td>The request to process an entity.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprocessingresult">EntityProcessingResult</a></td><td>The result of processing an entity.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityprovidermutation">EntityProviderMutation</a></td><td>A 'full' mutation replaces all existing entities created by this entity provider with new ones. A 'delta' mutation can both add and remove entities provided by this provider. Previously provided entities from a 'full' mutation are not removed.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.entityrelationspec">EntityRelationSpec</a></td><td>Holds the relation data for entities.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.githubmultiorgconfig">GithubMultiOrgConfig</a></td><td>The configuration parameters for a multi-org GitHub processor.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationanalyzer">LocationAnalyzer</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.locationentityprocessoroptions">LocationEntityProcessorOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-backend.locationspec">LocationSpec</a></td><td>Holds the entity location information.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.pageinfo">PageInfo</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.placeholderprocessoroptions">PlaceholderProcessorOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-backend.placeholderresolver">PlaceholderResolver</a></td><td></td></tr>

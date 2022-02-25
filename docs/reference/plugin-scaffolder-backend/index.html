@@ -14,13 +14,12 @@
 <tr><th>Class</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.catalogentityclient">CatalogEntityClient</a></td><td>A catalog client tailored for reading out entity data from the catalog.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.databasetaskstore">DatabaseTaskStore</a></td><td>DatabaseTaskStore</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.octokitprovider">OctokitProvider</a></td><td>OctokitProvider provides Octokit client based on ScmIntegrationsRegistry configuration. OctokitProvider supports GitHub credentials caching out of the box.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.scaffolderentitiesprocessor">ScaffolderEntitiesProcessor</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskmanager">TaskManager</a></td><td>TaskManager</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskworker">TaskWorker</a></td><td>TaskWorker</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.templateactionregistry">TemplateActionRegistry</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.templateactionregistry">TemplateActionRegistry</a></td><td>Registry of all registered template actions.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="functions"></a><a href="#functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions</h2>
@@ -29,20 +28,20 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createcatalogregisteraction">createCatalogRegisterAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createcatalogwriteaction">createCatalogWriteAction()</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createdebuglogaction">createDebugLogAction()</a></td><td>This task is useful for local development and testing of both the scaffolder and scaffolder templates.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfetchplainaction">createFetchPlainAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfetchtemplateaction">createFetchTemplateAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubactionsdispatchaction">createGithubActionsDispatchAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubwebhookaction">createGithubWebhookAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishazureaction">createPublishAzureAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishbitbucketaction">createPublishBitbucketAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishfileaction">createPublishFileAction()</a></td><td>This task is useful for local development and testing of both the scaffolder and scaffolder templates.<!-- -->This action is not installed by default and should not be installed in production, as it writes the files to the local filesystem of the scaffolder.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubaction">createPublishGithubAction(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgitlabaction">createPublishGitlabAction(options)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createcatalogregisteraction">createCatalogRegisterAction(options)</a></td><td>Registers entities from a catalog descriptor file in the workspace into the software catalog.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createcatalogwriteaction">createCatalogWriteAction()</a></td><td>Writes a catalog descriptor file containing the provided entity to a path in the workspace.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createdebuglogaction">createDebugLogAction()</a></td><td>Writes a message into the log or lists all files in the workspace</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfetchplainaction">createFetchPlainAction(options)</a></td><td>Downloads content and places it in the workspace, or optionally in a subdirectory specified by the 'targetPath' input option.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfetchtemplateaction">createFetchTemplateAction(options)</a></td><td>Downloads a skeleton, templates variables into file and directory names and content. Then places the result in the workspace, or optionally in a subdirectory specified by the 'targetPath' input option.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubactionsdispatchaction">createGithubActionsDispatchAction(options)</a></td><td>Creates a new action that dispatches a GitHub Action workflow for a given branch or tag.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubwebhookaction">createGithubWebhookAction(options)</a></td><td>Creates new action that creates a webhook for a repository on GitHub.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishazureaction">createPublishAzureAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to Azure.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishbitbucketaction">createPublishBitbucketAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to Bitbucket.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishfileaction">createPublishFileAction()</a></td><td>This task is useful for local development and testing of both the scaffolder and scaffolder templates.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubaction">createPublishGithubAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to GitHub.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgitlabaction">createPublishGitlabAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to GitLab.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createrouter">createRouter(options)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.fetchcontents">fetchContents({ reader, integrations, baseUrl, fetchUrl, outputPath, })</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.fetchcontents">fetchContents({ reader, integrations, baseUrl, fetchUrl, outputPath, })</a></td><td>A helper function that reads the contents of a directory from the given URL. Can be used in your own actions, and also used behind fetch:template and fetch:plain</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="interfaces"></a><a href="#interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interfaces</h2>
@@ -51,10 +50,13 @@
 <tr><th>Interface</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactionsoptions">CreateBuiltInActionsOptions</a></td><td>The options passed to <a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactions">createBuiltinActions</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestactionoptions">CreateGithubPullRequestActionOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.currentclaimedtask">CurrentClaimedTask</a></td><td>Stores the state of the current claimed task passed to the TaskContext</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.octokitwithpullrequestpluginclient">OctokitWithPullRequestPluginClient</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.routeroptions">RouterOptions</a></td><td>RouterOptions</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskbroker">TaskBroker</a></td><td>TaskBroker</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskcontext">TaskContext</a></td><td>Task</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstate">TaskState</a></td><td>TaskState</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstore">TaskStore</a></td><td>TaskStore</td></tr>
 </tbody>
 </table>
@@ -64,12 +66,13 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactions">createBuiltinActions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfilesystemdeleteaction">createFilesystemDeleteAction</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfilesystemrenameaction">createFilesystemRenameAction</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubpullrequestaction">createPublishGithubPullRequestAction</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgitlabmergerequestaction">createPublishGitlabMergeRequestAction</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createtemplateaction">createTemplateAction</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactions">createBuiltinActions</a></td><td>A function to generate create a list of default actions that the scaffolder provides. Is called internally in the default setup, but can be used when adding your own actions or overriding the default ones</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfilesystemdeleteaction">createFilesystemDeleteAction</a></td><td>Creates new action that enables deletion of files and directories in the workspace.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createfilesystemrenameaction">createFilesystemRenameAction</a></td><td>Creates a new action that allows renames of files and directories in the workspace.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubpullrequestaction">createPublishGithubPullRequestAction</a></td><td>Creates a Github Pull Request action.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgitlabmergerequestaction">createPublishGitlabMergeRequestAction</a></td><td>Create a new action that creates a gitlab merge request.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createtemplateaction">createTemplateAction</a></td><td>This function is used to create new template actions to get type safety.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.executeshellcommand">executeShellCommand</a></td><td>Run a command in a sub-process, normally a shell command.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.runcommand">runCommand</a></td><td>Run a command in a sub-process, normally a shell command.</td></tr>
 </tbody>
 </table>
@@ -79,15 +82,25 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.actioncontext">ActionContext</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.completedtaskstate">CompletedTaskState</a></td><td>CompletedTaskState</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.actioncontext">ActionContext</a></td><td>ActionContext is passed into scaffolder actions.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.completedtaskstate">CompletedTaskState</a></td><td>The state of a completed task.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestclientfactoryinput">CreateGithubPullRequestClientFactoryInput</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createworkeroptions">CreateWorkerOptions</a></td><td>CreateWorkerOptions</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.databasetaskstoreoptions">DatabaseTaskStoreOptions</a></td><td>DatabaseTaskStore</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.dispatchresult">DispatchResult</a></td><td>DispatchResult</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.runcommandoptions">RunCommandOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.serializedtask">SerializedTask</a></td><td>SerializedTask</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.serializedtaskevent">SerializedTaskEvent</a></td><td>SerializedTaskEvent</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.status">Status</a></td><td>Status</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.status">Status</a></td><td>The status of each step of the Task</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskbrokerdispatchoptions">TaskBrokerDispatchOptions</a></td><td>The options passed to <a href="/docs/reference/plugin-scaffolder-backend.taskbroker.dispatch">TaskBroker.dispatch()</a> Currently a spec and optional secrets</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskbrokerdispatchresult">TaskBrokerDispatchResult</a></td><td>The result of <a href="/docs/reference/plugin-scaffolder-backend.taskbroker.dispatch">TaskBroker.dispatch()</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskcompletionstate">TaskCompletionState</a></td><td>The state of a completed task.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskeventtype">TaskEventType</a></td><td>TaskEventType</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.tasksecrets">TaskSecrets</a></td><td>TaskSecrets</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstate">TaskState</a></td><td>TaskState</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstatus">TaskStatus</a></td><td>The status of each step of the Task</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstorecreatetaskoptions">TaskStoreCreateTaskOptions</a></td><td>The options passed to <a href="/docs/reference/plugin-scaffolder-backend.taskstore.createtask">TaskStore.createTask()</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstorecreatetaskresult">TaskStoreCreateTaskResult</a></td><td>The response from <a href="/docs/reference/plugin-scaffolder-backend.taskstore.createtask">TaskStore.createTask()</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstoreemitoptions">TaskStoreEmitOptions</a></td><td>TaskStoreEmitOptions</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.taskstorelisteventsoptions">TaskStoreListEventsOptions</a></td><td>TaskStoreListEventsOptions</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.templateaction">TemplateAction</a></td><td></td></tr>

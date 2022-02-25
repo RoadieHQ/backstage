@@ -14,12 +14,12 @@
 <tr><th>Class</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/techdocs-common.directorypreparer">DirectoryPreparer</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.generators">Generators</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.preparers">Preparers</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.directorypreparer">DirectoryPreparer</a></td><td>Preparer used to retrieve documentation files from a local directory</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.generators">Generators</a></td><td>Collection of docs generators</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.preparers">Preparers</a></td><td>Collection of docs preparers (dir and url)</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.publisher">Publisher</a></td><td>Factory class to create a TechDocs publisher based on defined publisher type in app config. Uses <code>techdocs.publisher.type</code>.</td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.techdocsgenerator">TechdocsGenerator</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.urlpreparer">UrlPreparer</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.techdocsgenerator">TechdocsGenerator</a></td><td>Generates documentation files</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.urlpreparer">UrlPreparer</a></td><td>Preparer used to retrieve documentation files from a remote repository</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="interfaces"></a><a href="#interfaces" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Interfaces</h2>
@@ -29,7 +29,7 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/techdocs-common.publisherbase">PublisherBase</a></td><td>Base class for a TechDocs publisher (e.g. Local, Google GCS Bucket, AWS S3, etc.) The publisher handles publishing of the generated static files after the prepare and generate steps of TechDocs. It also provides APIs to communicate with the storage service.</td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.techdocsdocument">TechDocsDocument</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.techdocsdocument">TechDocsDocument</a></td><td>TechDocs indexable document interface</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables</h2>
@@ -38,9 +38,9 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/techdocs-common.getdocfilesfromrepository">getDocFilesFromRepository</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.getlocationforentity">getLocationForEntity</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.parsereferenceannotation">parseReferenceAnnotation</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.getdocfilesfromrepository">getDocFilesFromRepository</a></td><td>Returns a preparer response <a href="/docs/reference/techdocs-common.preparerresponse">PreparerResponse</a></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.getlocationforentity">getLocationForEntity</a></td><td>Returns a entity reference based on the TechDocs annotation type</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.parsereferenceannotation">parseReferenceAnnotation</a></td><td>Returns a parset locations annotation</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.transformdirlocation">transformDirLocation</a></td><td>TechDocs references of type <code>dir</code> are relative the source location of the entity. This function transforms relative references to absolute ones, based on the location the entity was ingested from. If the entity was registered by a <code>url</code> location, it returns a <code>url</code> location with a resolved target that points to the targeted subfolder. If the entity was registered by a <code>file</code> location, it returns an absolute <code>dir</code> location.</td></tr>
 </tbody>
 </table>
@@ -50,15 +50,25 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/techdocs-common.generatorbase">GeneratorBase</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.etag">ETag</a></td><td>A unique identifier of the tree blob, usually the commit SHA or etag from the target.</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.generatorbase">GeneratorBase</a></td><td>Generates documentation files</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.generatorbuilder">GeneratorBuilder</a></td><td>The generator builder holds the generator ready for run time</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.generatoroptions">GeneratorOptions</a></td><td>Options for building generators</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.generatorrunoptions">GeneratorRunOptions</a></td><td>The values that the generator will receive.</td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.parsedlocationannotation">ParsedLocationAnnotation</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.preparerbase">PreparerBase</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.preparerbuilder">PreparerBuilder</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.migraterequest">MigrateRequest</a></td><td>TechDocs entity triplet migration request</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.parsedlocationannotation">ParsedLocationAnnotation</a></td><td>Parsed location annotation</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.preparerbase">PreparerBase</a></td><td>Definition of a TechDocs preparer</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.preparerbuilder">PreparerBuilder</a></td><td>Definition for a TechDocs preparer builder</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.preparerconfig">PreparerConfig</a></td><td>Options for building preparers</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.prepareroptions">PreparerOptions</a></td><td>Options for configuring the content preparation process.</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.preparerresponse">PreparerResponse</a></td><td>Result of the preparation step.</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.publisherfactory">PublisherFactory</a></td><td>Options for building publishers</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.publishertype">PublisherType</a></td><td>Key for all the different types of TechDocs publishers that are supported.</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.publishrequest">PublishRequest</a></td><td>Request publish definition</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.publishresponse">PublishResponse</a></td><td>Response containing metadata about where files were published and what may have been published or updated.</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.readinessresponse">ReadinessResponse</a></td><td>Result for the validation check.</td></tr>
-<tr><td><a href="/docs/reference/techdocs-common.remoteprotocol">RemoteProtocol</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.remoteprotocol">RemoteProtocol</a></td><td>Location where documentation files are stored</td></tr>
+<tr><td><a href="/docs/reference/techdocs-common.supportedgeneratorkey">SupportedGeneratorKey</a></td><td>List of supported generator options</td></tr>
 <tr><td><a href="/docs/reference/techdocs-common.techdocsmetadata">TechDocsMetadata</a></td><td>Type to hold metadata found in techdocs_metadata.json and associated with each site</td></tr>
 </tbody>
 </table>

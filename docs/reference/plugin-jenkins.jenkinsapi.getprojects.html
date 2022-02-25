@@ -12,7 +12,7 @@
 <p>Typically, a folder job will be identified and the backend plugin will recursively look for projects (jobs with builds) within that folder.</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript">getProjects(options: {
-        entity: EntityRef;
+        entity: EntityName;
         filter: {
             branch?: <span class="hljs-built_in">string</span>;
         };
@@ -24,7 +24,7 @@
 <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>options</td><td>{ entity: <a href="/docs/reference/catalog-model.entityref">EntityRef</a><!-- -->; filter: { branch?: string; }; }</td><td></td></tr>
+<tr><td>options</td><td>{ entity: <a href="/docs/reference/catalog-model.entityname">EntityName</a><!-- -->; filter: { branch?: string; }; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>
