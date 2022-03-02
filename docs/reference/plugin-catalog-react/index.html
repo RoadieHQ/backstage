@@ -14,13 +14,13 @@
 <tr><th>Class</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-catalog-react.defaultstarredentitiesapi">DefaultStarredEntitiesApi</a></td><td>Default implementation of the StarredEntitiesApi that is backed by the StorageApi.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitykindfilter">EntityKindFilter</a></td><td>Filter entities based on Kind.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitylifecyclefilter">EntityLifecycleFilter</a></td><td>Filters entities on lifecycle.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityownerfilter">EntityOwnerFilter</a></td><td>Filter matching entities that are owned by group.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytagfilter">EntityTagFilter</a></td><td>Filters entities based on tag.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytextfilter">EntityTextFilter</a></td><td>Filters entities where the text matches spec, title or tags.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytypefilter">EntityTypeFilter</a></td><td>Filters entities based on type</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.mockstarredentitiesapi">MockStarredEntitiesApi</a></td><td>An in-memory mock implementation of the StarredEntitiesApi.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.userlistfilter">UserListFilter</a></td><td>Filters entities based on whatever the user has starred or owns them.</td></tr>
 </tbody>
 </table>
@@ -50,12 +50,12 @@
 <tr><td><a href="/docs/reference/plugin-catalog-react.reducecatalogfilters">reduceCatalogFilters(filters)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.reduceentityfilters">reduceEntityFilters(filters)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.unregisterentitydialog">UnregisterEntityDialog(props)</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.useentity">useEntity()</a></td><td>Grab the current entity from the context and its current loading state.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.useasyncentity">useAsyncEntity()</a></td><td>Grab the current entity from the context, provides loading state and errors, and the ability to refresh.</td></tr>
+<tr><td><a href="/docs/reference/plugin-catalog-react.useentity">useEntity()</a></td><td>Grab the current entity from the context, throws if the entity has not yet been loaded or is not available.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitykinds">useEntityKinds()</a></td><td>Retrieve a list of unique entity kinds present in the catalog</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitylist">useEntityList()</a></td><td>Hook for interacting with the entity list context provided by the <a href="/docs/reference/plugin-catalog-react.entitylistprovider">EntityListProvider</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitylistprovider">useEntityListProvider()</a></td><td>Hook for interacting with the entity list context provided by the <a href="/docs/reference/plugin-catalog-react.entitylistprovider">EntityListProvider</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentityownership">useEntityOwnership()</a></td><td>Returns a function that checks whether the currently signed-in user is an owner of a given entity. When the hook is initially mounted, the loading flag will be true and the results returned from the function will always be false.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.useentitypermission">useEntityPermission(permission)</a></td><td>A thin wrapper around the <a href="/docs/reference/plugin-permission-react.usepermission">usePermission</a> hook which uses the current entity in context to make an authorization request for the given permission.<!-- -->Note: this hook blocks the permission request until the entity has loaded in context. If you have the entityRef and need concurrent requests, use the <code>usePermission</code> hook directly.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitytypefilter">useEntityTypeFilter()</a></td><td>A hook built on top of <code>useEntityList</code> for enabling selection of valid <code>spec.type</code> values based on the selected EntityKindFilter.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useownedentities">useOwnedEntities(allowedKinds)</a></td><td>Takes the relevant parts of the Backstage identity, and translates them into a list of entities which are owned by the user. Takes an optional parameter to filter the entities based on allowedKinds</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useownuser">useOwnUser()</a></td><td>Get the catalog User entity (if any) that matches the logged-in user.</td></tr>
@@ -87,19 +87,16 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-catalog-react.asyncentityprovider">AsyncEntityProvider</a></td><td>Provides a loaded entity to be picked up by the <code>useEntity</code> hook.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.catalogapiref">catalogApiRef</a></td><td>The API reference for the <a href="/docs/reference/catalog-client.catalogapi">CatalogApi</a><!-- -->.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.catalogrouteref">catalogRouteRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.columnfactories">columnFactories</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitylistcontext">EntityListContext</a></td><td>Creates new context for entity listing and filtering.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitylistprovider">EntityListProvider</a></td><td>Provides entities and filters for a catalog listing.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityprovider">EntityProvider</a></td><td>Provides an entity to be picked up by the <code>useEntity</code> hook.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityreflinks">EntityRefLinks</a></td><td>Shows a list of clickable links to entities.</td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.entityroute">entityRoute</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entityrouteref">entityRouteRef</a></td><td>A stable route ref that points to the catalog page for an individual entity.<!-- -->This <code>RouteRef</code> can be imported and used directly, and does not need to be referenced via an <code>ExternalRouteRef</code>.<!-- -->If you want to replace the <code>EntityPage</code> from <code>@backstage/catalog-plugin</code> in your app, you need to use the <code>entityRouteRef</code> as the mount point instead of your own.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.entitytable">EntityTable</a></td><td>A general entity table component, that can be used for composing more specific entity tables.</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.favoriteentityicon">favoriteEntityIcon</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.favoriteentitytooltip">favoriteEntityTooltip</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.mockentitylistcontextprovider">MockEntityListContextProvider</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-catalog-react.rootroute">rootRoute</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.starredentitiesapiref">starredEntitiesApiRef</a></td><td>An API to store starred entities</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentitycompoundname">useEntityCompoundName</a></td><td>Grabs entity kind, namespace, and name from the location</td></tr>
 <tr><td><a href="/docs/reference/plugin-catalog-react.useentityfromurl">useEntityFromUrl</a></td><td></td></tr>

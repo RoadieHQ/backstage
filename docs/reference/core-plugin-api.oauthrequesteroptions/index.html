@@ -10,9 +10,7 @@
 <p>Describes how to handle auth requests. Both how to show them to the user, and what to do when the user accesses the auth request.</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> OAuthRequesterOptions&lt;TOAuthResponse&gt; = {
-    provider: Omit&lt;AuthProviderInfo, <span class="hljs-string">'id'</span>&gt; &amp; {
-        id?: <span class="hljs-built_in">string</span>;
-    };
+    provider: AuthProviderInfo;
     onAuthRequest(scopes: Set&lt;<span class="hljs-built_in">string</span>&gt;): <span class="hljs-built_in">Promise</span>&lt;TOAuthResponse&gt;;
 };
 </code></pre>

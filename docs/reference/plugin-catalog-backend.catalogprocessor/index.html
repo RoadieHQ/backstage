@@ -14,7 +14,6 @@
     preProcessEntity?(entity: Entity, location: LocationSpec, emit: CatalogProcessorEmit, originLocation: LocationSpec, cache: CatalogProcessorCache): <span class="hljs-built_in">Promise</span>&lt;Entity&gt;;
     validateEntityKind?(entity: Entity): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">boolean</span>&gt;;
     postProcessEntity?(entity: Entity, location: LocationSpec, emit: CatalogProcessorEmit, cache: CatalogProcessorCache): <span class="hljs-built_in">Promise</span>&lt;Entity&gt;;
-    handleError?(error: <span class="hljs-built_in">Error</span>, location: LocationSpec, emit: CatalogProcessorEmit): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt;;
 };
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/plugin-catalog-backend.locationspec">LocationSpec</a><!-- -->, <a href="/docs/reference/plugin-catalog-backend.catalogprocessoremit">CatalogProcessorEmit</a><!-- -->, <a href="/docs/reference/plugin-catalog-backend.catalogprocessorparser">CatalogProcessorParser</a><!-- -->, <a href="/docs/reference/plugin-catalog-backend.catalogprocessorcache">CatalogProcessorCache</a><!-- -->, <a href="/docs/reference/catalog-model.entity">Entity</a></p>
