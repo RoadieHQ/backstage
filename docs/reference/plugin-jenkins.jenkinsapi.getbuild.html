@@ -12,7 +12,7 @@
 <p>TODO: abstract jobFullName (so we could support differentiating between the same named job on multiple instances).</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript">getBuild(options: {
-        entity: EntityName;
+        entity: CompoundEntityRef;
         jobFullName: <span class="hljs-built_in">string</span>;
         buildNumber: <span class="hljs-built_in">string</span>;
     }): <span class="hljs-built_in">Promise</span>&lt;Build&gt;;
@@ -23,7 +23,7 @@
 <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>options</td><td>{ entity: <a href="/docs/reference/catalog-model.entityname">EntityName</a><!-- -->; jobFullName: string; buildNumber: string; }</td><td></td></tr>
+<tr><td>options</td><td>{ entity: <a href="/docs/reference/catalog-model.compoundentityref">CompoundEntityRef</a><!-- -->; jobFullName: string; buildNumber: string; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>

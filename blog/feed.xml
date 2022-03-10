@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Tue, 25 Jan 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 04 Mar 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,15 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[Avoid upgrade surprises with Backstage Upgrade Helper]]></title>
+            <link>https://backstage.io/blog/2022/03/04/backstage-upgrade-helper.html</link>
+            <guid>https://backstage.io/blog/2022/03/04/backstage-upgrade-helper.html</guid>
+            <pubDate>Fri, 04 Mar 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><img src="/blog/assets/22-03-04/backstage-upgrade-helper-post-header.png" alt="backstage header"></p>
+<p><em>TLDR;</em> The Spotify team recently announced <a href="https://backstage.github.io/upgrade-helper">Backstage Upgrade Helper</a>: a tool that helps adopters keep their Backstage application up-to-date. <strong>Spoiler alert</strong>: this is also a hidden and heartwarming tale about the beauty of open source innovation.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Say Hi to Backstage homepage templates!]]></title>
             <link>https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html</link>

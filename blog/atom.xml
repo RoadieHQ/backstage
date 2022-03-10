@@ -2,12 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2022-01-25T06:00:00.000Z</updated>
+    <updated>2022-03-04T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Avoid upgrade surprises with Backstage Upgrade Helper]]></title>
+        <id>https://backstage.io/blog/2022/03/04/backstage-upgrade-helper.html</id>
+        <link href="https://backstage.io/blog/2022/03/04/backstage-upgrade-helper.html"/>
+        <updated>2022-03-04T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/22-03-04/backstage-upgrade-helper-post-header.png" alt="backstage header"></p>
+<p><em>TLDR;</em> The Spotify team recently announced <a href="https://backstage.github.io/upgrade-helper">Backstage Upgrade Helper</a>: a tool that helps adopters keep their Backstage application up-to-date. <strong>Spoiler alert</strong>: this is also a hidden and heartwarming tale about the beauty of open source innovation.</p>
+]]></summary>
+        <author>
+            <name>Vincenzo Scamporlino, Spotify</name>
+            <uri>https://github.com/vinzscam</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Say Hi to Backstage homepage templates!]]></title>
         <id>https://backstage.io/blog/2022/01/25/backstage-homepage-templates.html</id>
