@@ -39,7 +39,7 @@
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishfileaction">createPublishFileAction()</a></td><td>This task is useful for local development and testing of both the scaffolder and scaffolder templates.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubaction">createPublishGithubAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to GitHub.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createpublishgitlabaction">createPublishGitlabAction(options)</a></td><td>Creates a new action that initializes a git repository of the content in the workspace and publishes it to GitLab.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createrouter">createRouter(options)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.createrouter">createRouter(options)</a></td><td>A method to create a router for the scaffolder backend plugin.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.fetchcontents">fetchContents({ reader, integrations, baseUrl, fetchUrl, outputPath, })</a></td><td>A helper function that reads the contents of a directory from the given URL. Can be used in your own actions, and also used behind fetch:template and fetch:plain</td></tr>
 </tbody>
 </table>
@@ -50,7 +50,7 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactionsoptions">CreateBuiltInActionsOptions</a></td><td>The options passed to <a href="/docs/reference/plugin-scaffolder-backend.createbuiltinactions">createBuiltinActions</a></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestactionoptions">CreateGithubPullRequestActionOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestactionoptions">CreateGithubPullRequestActionOptions</a></td><td>The options passed to <a href="/docs/reference/plugin-scaffolder-backend.createpublishgithubpullrequestaction">createPublishGithubPullRequestAction</a> method</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.currentclaimedtask">CurrentClaimedTask</a></td><td>Stores the state of the current claimed task passed to the TaskContext</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.octokitwithpullrequestpluginclient">OctokitWithPullRequestPluginClient</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.routeroptions">RouterOptions</a></td><td>RouterOptions</td></tr>
@@ -81,7 +81,7 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.actioncontext">ActionContext</a></td><td>ActionContext is passed into scaffolder actions.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestclientfactoryinput">CreateGithubPullRequestClientFactoryInput</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder-backend.creategithubpullrequestclientfactoryinput">CreateGithubPullRequestClientFactoryInput</a></td><td>The options passed to the client factory function.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.createworkeroptions">CreateWorkerOptions</a></td><td>CreateWorkerOptions</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.databasetaskstoreoptions">DatabaseTaskStoreOptions</a></td><td>DatabaseTaskStore</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder-backend.runcommandoptions">RunCommandOptions</a></td><td></td></tr>
