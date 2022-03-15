@@ -3778,13 +3778,14 @@
     semver "^7.3.4"
     tar "^6.1.0"
 
-"@material-table/core@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/@material-table/core/-/core-3.1.0.tgz#4fc3bd1553359e628413437a4102d8469852c253"
-  integrity sha512-46vpm1q9v2B5t/VgaEq2JmnftTBYle1yNAX3cfdQsTRZ1iWkpG34qBkNHx/hbOauQPsm5hmeUo1KJJZdwtGL1g==
+"@material-table/core@^4.3.36":
+  version "4.3.36"
+  resolved "https://registry.npmjs.org/@material-table/core/-/core-4.3.36.tgz#1de0305efe62a4cb449e1defb3842bff7c1d93aa"
+  integrity sha512-9OBJLSENU4e8KpR3ErGHr1NPIiUF+/fAbMrr3uKjaguADkNQAQ37yNaFvOotq2EkkB/nxH0XMOZ4z4JAHb56UA==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@date-io/date-fns" "^1.3.13"
+    "@material-ui/icons" "^4.11.2"
     "@material-ui/pickers" "^3.2.10"
     "@material-ui/styles" "^4.11.4"
     classnames "^2.2.6"
@@ -3794,6 +3795,7 @@
     prop-types "^15.7.2"
     react-beautiful-dnd "^13.0.0"
     react-double-scrollbar "0.0.15"
+    uuid "^3.4.0"
 
 "@material-ui/core@^4.11.0", "@material-ui/core@^4.11.3", "@material-ui/core@^4.12.1", "@material-ui/core@^4.12.2", "@material-ui/core@^4.9.13":
   version "4.12.3"
