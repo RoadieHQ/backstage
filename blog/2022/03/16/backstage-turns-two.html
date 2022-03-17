@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Backstage Turns Two! · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="**TLDR:** Backstage has turned two. Of course, this is software, so we expect things to move fast. But when you have a passionate, worldwide community building together, we’ve now seen firsthand just how fast that can be. We’re marking our second year as a community by becoming a CNCF incubating project, reaching 100 public adopters, releasing version 1.0 of the core app, and other very nice birthday gifts. Rather than a toddler finding their feet, Backstage today is beginning to look awfully grown-up for a two-year-old."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Backstage Turns Two! · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/blog/2022/03/16/backstage-turns-two"/><meta property="og:description" content="**TLDR:** Backstage has turned two. Of course, this is software, so we expect things to move fast. But when you have a passionate, worldwide community building together, we’ve now seen firsthand just how fast that can be. We’re marking our second year as a community by becoming a CNCF incubating project, reaching 100 public adopters, releasing version 1.0 of the core app, and other very nice birthday gifts. Rather than a toddler finding their feet, Backstage today is beginning to look awfully grown-up for a two-year-old."/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-163836834-5', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class="siteNavGroupActive"><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/docs/releases/v1.0.0" target="_self">Releases</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem"><a class="navItem" href="/blog/2022/03/17/backstage-1.0">New release: Backstage 1.0</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2022/03/16/backstage-turns-two">Backstage Turns Two!</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/03/04/backstage-upgrade-helper">Avoid upgrade surprises with Backstage Upgrade Helper</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/01/25/backstage-homepage-templates">Say Hi to Backstage homepage templates!</a></li><li class="navListItem"><a class="navItem" href="/blog/2021/12/20/backstage-wrapped-2021">Backstage Wrapped 2021</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2022/03/16/backstage-turns-two">Backstage Turns Two!</a></h1><p class="post-meta">March 16, 2022</p><div class="authorBlock"><p class="post-authorName"><a href="https://github.com/leemills83" target="_blank" rel="noreferrer noopener">Lee Mills, Spotify</a></p><div class="authorPhoto"><a href="https://github.com/leemills83" target="_blank" rel="noreferrer noopener"><img src="https://avatars1.githubusercontent.com/u/1236238?s=460&amp;v=4" alt="Lee Mills, Spotify"/></a></div></div></header><div><span><p><img src="/blog/assets/22-03-16/backstage-2nd-birthday.gif" alt="A cake celebrating Backstage’s second birthday"></p>
+<p><strong>TLDR:</strong> Backstage has turned two. Of course, this is software, so we expect things to move fast. But when you have a passionate, worldwide community building together, we’ve now seen firsthand just how fast that can be. We’re marking our second year as a community by becoming a CNCF incubating project, reaching 100 public adopters, releasing version 1.0 of the core app, and other very nice birthday gifts. Rather than a toddler finding their feet, Backstage today is beginning to look awfully grown-up for a two-year-old.</p>
+<!--truncate-->
+<h2><a class="anchor" aria-hidden="true" id="out-of-the-sandbox-and-into-incubation"></a><a href="#out-of-the-sandbox-and-into-incubation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Out of the Sandbox and into Incubation</h2>
+<p>Two years ago, a small team at Spotify launched Backstage into open source during our internal Hack Week. We knew we had something special on our hands and that Backstage could potentially be the most ambitious open source project in Spotify’s history (you can listen to me wax philosophical on this topic more in <a href="https://open.spotify.com/episode/332yTwGiILGKTS7dsHCj2P?si=pX9xTzB2SgmsROdlLLr24A">Episode 2 of the new NerdOut@Spotify podcast</a>.)</p>
+<p>When Spotify donated the project to the CNCF, we saw it as the first promising step toward making Backstage an industry standard. As the home to Kubernetes, Envoy, and so many other game-changing open technologies, the CNCF and its community has had a wide-ranging impact on the daily lives of developers everywhere. And that’s what we hoped for Backstage, even back then.</p>
+<p>But we couldn't have envisioned where we’d be two years later — part of an ever-growing community of people that feel as passionate as we do about unlocking better developer experience for every engineering organization.</p>
+<p>Yesterday, the CNCF announced that its <a href="https://github.com/cncf/toc">Technical Oversight Committee</a> (TOC) voted to accept Backstage as a <a href="https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/">CNCF incubating project</a>. The move from the CNCF Sandbox to Incubation is an important step forward for the project’s technical governance.</p>
+<p>It’s also recognition for all the work the Backstage open source community has done to advance and grow this project since we launched the repo on GitHub just a few weeks after that Hack Week. We still have a long way to go to becoming the standard, but moving out of the CNCF Sandbox and beginning the Incubation phase is further validation of those aspirations.</p>
+<h2><a class="anchor" aria-hidden="true" id="what-do-retailers-gaming-studios-banks-airlines-streamers-startups-and-enterprise-software-makers-all-have-in-common"></a><a href="#what-do-retailers-gaming-studios-banks-airlines-streamers-startups-and-enterprise-software-makers-all-have-in-common" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What do retailers, gaming studios, banks, airlines, streamers, startups, and enterprise software makers all have in common?</h2>
+<p>Developers, developers, developers — that’s what all companies have in common. Developers dealing with <a href="https://youtu.be/85TQEpNCaU0">more complexity</a> than they’ve ever had to deal with before. Developers who want to be able to go from idea to bug fix or feature faster.</p>
+<p>Two years in, the Backstage ecosystem has grown by leaps and bounds. More than 5,000 contributors have joined the project and are submitting bugs, adding new features, and building valuable plugins that benefit the greater community. From <a href="https://backstage.spotify.com/blog/measuring-backstage-proof-of-value-at-expedia/">Expedia Group</a> (adopter No.18) to Unity (adopter No.67), Backstage now has <a href="https://github.com/backstage/backstage/blob/master/ADOPTERS.md">100 publicly listed adopters</a> across a variety of industries, including retail, gaming, financial services, manufacturing, and government.</p>
+<p>We have companies like <a href="http://roadie.io">Roadie</a> providing hosting solutions and ThoughtWorks <a href="https://www.thoughtworks.com/en-us/about-us/news/2021/thoughtworks-is-collaborating-with-spotify-to-deliver-better-dev">providing technology and consulting services</a> to teams looking to stand up Backstage in their own orgs. We’re starting to see more and more job listings for Backstage developers which tells us that companies of all shapes and sizes are going all-in on Backstage and developer effectiveness.</p>
+<p>Also, I’ll pause now to give a special shoutout to our early adopters. They stuck with us through all the bumps and breaking changes. But because of their early commitment, we now see instances of Backstage up and running in so many different kinds of engineering organizations. From <a href="https://youtu.be/6sg5uMCLxTA">Zalando</a> to <a href="https://backstage.spotify.com/blog/adopter-spotlight/american-airlines-runway/">American Airlines</a> and <a href="https://backstage.spotify.com/blog/community-session/11-brex-backstage-upgrade-helper/">Brex</a>, the growing pains of our earliest adopters helped pave the way for smoother adoptions for all who follow them.</p>
+<p>A few more numbers that make us proud:</p>
+<ul>
+<li>2,000+ project forks</li>
+<li>20,000+ commits</li>
+<li>10,000+ PRs &amp; issues</li>
+<li>15,000+ stars on GitHub</li>
+<li>60+ open source plugins in the <a href="https://backstage.io/plugins">Backstage Plugin Marketplace</a></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="a-global-community-of-friendly-helpful-contributors"></a><a href="#a-global-community-of-friendly-helpful-contributors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A global community of friendly, helpful contributors</h2>
+<p>We open sourced Backstage in March 2020 and then almost immediately went into lockdown. When you think about this project in the context of the pandemic, it's really remarkable how much this community has been able to achieve.</p>
+<p>The Backstage community is truly global with adopters and contributors from almost every continent (sorry, Antarctica!) coming together to share what they’ve worked on and demo cool stuff in our monthly Community Sessions. The repo and the Discord server truly never sleep as a growing group of dedicated Backstage experts outside Spotify support one another and offer help 24/7.</p>
+<p>We asked a few contributors and maintainers to share their thoughts around this two-year milestone.</p>
+<iframe width="780" height="440" src="https://www.youtube.com/embed/-j-waaybcH0" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<p>Warms the heart, doesn’t it? Thanks again to all our contributors for making this possible. Seriously. We’re proud of what the community has accomplished and how we’ve accomplished it. All along, it’s your enthusiasm and warm/collaborative/positive vibes that have carried us and this project through.</p>
+<h2><a class="anchor" aria-hidden="true" id="version-10-and-beyond"></a><a href="#version-10-and-beyond" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Version 1.0 and beyond</h2>
+<p>Tomorrow, we’ll be releasing version 1.0 of the Backstage core framework, including Software Catalog, Software Templates, TechDocs, and API Reference. With Backstage 1.0, the project’s core components are coming out of beta and into production with regular versioning and release cycle commitments (check back on this blog for more details!).</p>
+<p>v1.0 paves the way for more adoption, a bigger community, more contributions — and with this continued growth in the ecosystem, we expect even greater innovation on the platform just on the horizon with exchange of features and plugins.</p>
+<p>What comes next for Backstage is — in many ways — entirely up to you. We are looking to this community to <a href="https://backstage.io/docs/overview/roadmap">help us shape the next year</a>.</p>
+<p>If you’re already a part of this community, thank you for your hard work and dedication. Backstage wouldn’t be where it is today without you. We’ve come a long way together, but there’s still so much to do.</p>
+<p>And if you haven’t signed up yet, there’s plenty of room on this party boat! And there’s never been a better time to hop on board. As Irma (<a href="https://github.com/Irma12">@Irma12</a>) said so beautifully: where else is there an opportunity to have so many people look at your code, hear you out, and help you out?</p>
+<p>Take a look at how to <a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">start contributing</a> and <a href="https://github.com/backstage/community">join the community</a>!</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#out-of-the-sandbox-and-into-incubation">Out of the Sandbox and into Incubation</a></li><li><a href="#what-do-retailers-gaming-studios-banks-airlines-streamers-startups-and-enterprise-software-makers-all-have-in-common">What do retailers, gaming studios, banks, airlines, streamers, startups, and enterprise software makers all have in common?</a></li><li><a href="#a-global-community-of-friendly-helpful-contributors">A global community of friendly, helpful contributors</a></li><li><a href="#version-10-and-beyond">Version 1.0 and beyond</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/sandbox-projects/">CNCF Sandbox</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

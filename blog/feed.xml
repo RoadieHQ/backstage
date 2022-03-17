@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Fri, 04 Mar 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Mar 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,24 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[New release: Backstage 1.0]]></title>
+            <link>https://backstage.io/blog/2022/03/17/backstage-1.0.html</link>
+            <guid>https://backstage.io/blog/2022/03/17/backstage-1.0.html</guid>
+            <pubDate>Thu, 17 Mar 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><img src="/blog/assets/22-03-16/release.1.0.gif" alt="backstage header"></p>
+<p><em>TL;DR:</em> If you’ve been waiting for Backstage to come out of beta, we’re excited to announce that Backstage 1.0 is here!</p>
+]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Backstage Turns Two!]]></title>
+            <link>https://backstage.io/blog/2022/03/16/backstage-turns-two.html</link>
+            <guid>https://backstage.io/blog/2022/03/16/backstage-turns-two.html</guid>
+            <pubDate>Wed, 16 Mar 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><img src="/blog/assets/22-03-16/backstage-2nd-birthday.gif" alt="A cake celebrating Backstage’s second birthday"></p>
+<p><strong>TLDR:</strong> Backstage has turned two. Of course, this is software, so we expect things to move fast. But when you have a passionate, worldwide community building together, we’ve now seen firsthand just how fast that can be. We’re marking our second year as a community by becoming a CNCF incubating project, reaching 100 public adopters, releasing version 1.0 of the core app, and other very nice birthday gifts. Rather than a toddler finding their feet, Backstage today is beginning to look awfully grown-up for a two-year-old.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Avoid upgrade surprises with Backstage Upgrade Helper]]></title>
             <link>https://backstage.io/blog/2022/03/04/backstage-upgrade-helper.html</link>
@@ -73,7 +91,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA['Announcing the Backstage Search platform: a customizable search tool built just for you']]></title>
+            <title><![CDATA[Announcing the Backstage Search platform: a customizable search tool built just for you]]></title>
             <link>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</link>
             <guid>https://backstage.io/blog/2021/06/24/announcing-backstage-search-platform.html</guid>
             <pubDate>Thu, 24 Jun 2021 06:00:00 GMT</pubDate>
@@ -105,7 +123,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA['New Backstage feature: Kubernetes for Service owners']]></title>
+            <title><![CDATA[New Backstage feature: Kubernetes for Service owners]]></title>
             <link>https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html</link>
             <guid>https://backstage.io/blog/2021/01/12/new-backstage-feature-kubernetes-for-service-owners.html</guid>
             <pubDate>Tue, 12 Jan 2021 06:00:00 GMT</pubDate>
@@ -125,7 +143,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA['New Cost Insights plugin: The engineer’s solution to taming cloud costs']]></title>
+            <title><![CDATA[New Cost Insights plugin: The engineer’s solution to taming cloud costs]]></title>
             <link>https://backstage.io/blog/2020/10/22/cost-insights-plugin.html</link>
             <guid>https://backstage.io/blog/2020/10/22/cost-insights-plugin.html</guid>
             <pubDate>Thu, 22 Oct 2020 06:00:00 GMT</pubDate>
@@ -164,7 +182,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA['Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage']]></title>
+            <title><![CDATA[Announcing TechDocs: Spotify’s docs-like-code plugin for Backstage]]></title>
             <link>https://backstage.io/blog/2020/09/08/announcing-tech-docs.html</link>
             <guid>https://backstage.io/blog/2020/09/08/announcing-tech-docs.html</guid>
             <pubDate>Tue, 08 Sep 2020 06:00:00 GMT</pubDate>
@@ -203,7 +221,7 @@
 ]]></description>
         </item>
         <item>
-            <title><![CDATA['Starting Phase 2: The Service Catalog']]></title>
+            <title><![CDATA[Starting Phase 2: The Service Catalog]]></title>
             <link>https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html</link>
             <guid>https://backstage.io/blog/2020/05/22/phase-2-service-catalog.html</guid>
             <pubDate>Fri, 22 May 2020 06:00:00 GMT</pubDate>
