@@ -17,6 +17,7 @@
     groupExpand?: <span class="hljs-built_in">string</span>;
     groupSearch?: <span class="hljs-built_in">string</span>;
     groupFilter?: <span class="hljs-built_in">string</span>;
+    groupSelect?: <span class="hljs-built_in">string</span>[];
     queryMode?: 'basic' | 'advanced';
     userTransformer?: UserTransformer;
     groupTransformer?: GroupTransformer;
@@ -35,7 +36,7 @@
 <tbody>
 <tr><td>client</td><td><a href="/docs/reference/plugin-catalog-backend-module-msgraph.microsoftgraphclient">MicrosoftGraphClient</a></td><td></td></tr>
 <tr><td>tenantId</td><td>string</td><td></td></tr>
-<tr><td>options</td><td>{ userExpand?: string; userFilter?: string; userGroupMemberSearch?: string; userGroupMemberFilter?: string; groupExpand?: string; groupSearch?: string; groupFilter?: string; queryMode?: 'basic' | 'advanced'; userTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.usertransformer">UserTransformer</a><!-- -->; groupTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.grouptransformer">GroupTransformer</a><!-- -->; organizationTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.organizationtransformer">OrganizationTransformer</a><!-- -->; logger: Logger; }</td><td></td></tr>
+<tr><td>options</td><td>{ userExpand?: string; userFilter?: string; userGroupMemberSearch?: string; userGroupMemberFilter?: string; groupExpand?: string; groupSearch?: string; groupFilter?: string; groupSelect?: string[]; queryMode?: 'basic' | 'advanced'; userTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.usertransformer">UserTransformer</a><!-- -->; groupTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.grouptransformer">GroupTransformer</a><!-- -->; organizationTransformer?: <a href="/docs/reference/plugin-catalog-backend-module-msgraph.organizationtransformer">OrganizationTransformer</a><!-- -->; logger: Logger; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>

@@ -186,6 +186,7 @@ code:</p>
 <span class="hljs-keyword">import</span> { PluginEnvironment } <span class="hljs-keyword">from</span> <span class="hljs-string">'../types'</span>;
 <span class="hljs-keyword">import</span> { DefaultCatalogCollator } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-catalog-backend'</span>;
 <span class="hljs-keyword">import</span> { Router } <span class="hljs-keyword">from</span> <span class="hljs-string">'express'</span>;
+<span class="hljs-keyword">import</span> { Duration } <span class="hljs-keyword">from</span> <span class="hljs-string">'luxon'</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createPlugin</span>(<span class="hljs-params">
   env: PluginEnvironment,
@@ -198,9 +199,15 @@ code:</p>
     searchEngine,
   });
 
+  <span class="hljs-keyword">const</span> every10MinutesSchedule = env.scheduler.createScheduledTaskRunner({
+    frequency: Duration.fromObject({ seconds: <span class="hljs-number">600</span> }),
+    timeout: Duration.fromObject({ seconds: <span class="hljs-number">900</span> }),
+    initialDelay: Duration.fromObject({ seconds: <span class="hljs-number">3</span> }),
+  });
+
   indexBuilder.addCollator({
-    defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-    collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+    schedule: every10MinutesSchedule,
+    factory: DefaultCatalogCollatorFactory.fromConfig(env.config, {
       discovery: env.discovery,
       tokenManager: env.tokenManager,
     }),
@@ -298,35 +305,87 @@ Catalog offer default <a href="/docs/features/search/concepts#collators">collato
 which are responsible for providing documents
 <a href="/docs/features/search/concepts#documents-and-indices">to be indexed</a>. You can register any
 number of collators with the <code>IndexBuilder</code> like this:</p>
-<pre><code class="hljs css language-typescript"><span class="hljs-keyword">const</span> indexBuilder = <span class="hljs-keyword">new</span> IndexBuilder({ logger: env.logger, searchEngine });
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { Duration } <span class="hljs-keyword">from</span> <span class="hljs-string">'luxon'</span>;
+
+<span class="hljs-keyword">const</span> indexBuilder = <span class="hljs-keyword">new</span> IndexBuilder({ logger: env.logger, searchEngine });
+
+<span class="hljs-keyword">const</span> every10MinutesSchedule = env.scheduler.createScheduledTaskRunner({
+  frequency: Duration.fromObject({ seconds: <span class="hljs-number">600</span> }),
+  timeout: Duration.fromObject({ seconds: <span class="hljs-number">900</span> }),
+  initialDelay: Duration.fromObject({ seconds: <span class="hljs-number">3</span> }),
+});
+
+<span class="hljs-keyword">const</span> everyHourSchedule = env.scheduler.createScheduledTaskRunner({
+  frequency: Duration.fromObject({ seconds: <span class="hljs-number">3600</span> }),
+  timeout: Duration.fromObject({ seconds: <span class="hljs-number">5400</span> }),
+  initialDelay: Duration.fromObject({ seconds: <span class="hljs-number">3</span> }),
+});
 
 indexBuilder.addCollator({
-  defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+  schedule: every10MinutesSchedule,
+  factory: DefaultCatalogCollatorFactory.fromConfig(env.config, {
     discovery: env.discovery,
     tokenManager: env.tokenManager,
   }),
 });
 
 indexBuilder.addCollator({
-  defaultRefreshIntervalSeconds: <span class="hljs-number">3600</span>,
-  collator: <span class="hljs-keyword">new</span> MyCustomCollator(),
+  schedule: everyHourSchedule,
+  factory: <span class="hljs-keyword">new</span> MyCustomCollatorFactory(),
 });
 </code></pre>
 <p>Backstage Search builds and maintains its index
 <a href="/docs/features/search/concepts#the-scheduler">on a schedule</a>. You can change how often the
 indexes are rebuilt for a given type of document. You may want to do this if
-your documents are updated more or less frequently. You can do so by modifying
-its <code>defaultRefreshIntervalSeconds</code> value, like this:</p>
-<pre><code class="hljs css language-typescript {3}">indexBuilder.addCollator({
-  defaultRefreshIntervalSeconds: <span class="hljs-number">600</span>,
-  collator: <span class="hljs-keyword">new</span> DefaultCatalogCollator({
+your documents are updated more or less frequently. You can do so by configuring
+a scheduled <code>TaskRunner</code> to pass into the <code>schedule</code> value, like this:</p>
+<pre><code class="hljs css language-typescript {3}"><span class="hljs-keyword">const</span> every10MinutesSchedule = env.scheduler.createScheduledTaskRunner({
+  frequency: Duration.fromObject({ seconds: <span class="hljs-number">600</span> }),
+  timeout: Duration.fromObject({ seconds: <span class="hljs-number">900</span> }),
+  initialDelay: Duration.fromObject({ seconds: <span class="hljs-number">3</span> }),
+});
+
+indexBuilder.addCollator({
+  schedule: every10MinutesSchedule,
+  factory: DefaultCatalogCollatorFactory.fromConfig(env.config, {
     discovery: env.discovery,
     tokenManager: env.tokenManager,
   }),
 });
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/7/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/search/concepts"><span>Search Concepts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-search-to-the-frontend">Adding Search to the Frontend</a><ul class="toc-headings"><li><a href="#using-the-search-modal">Using the Search Modal</a></li></ul></li><li><a href="#adding-search-to-the-backend">Adding Search to the Backend</a></li><li><a href="#customizing-search">Customizing Search</a><ul class="toc-headings"><li><a href="#frontend">Frontend</a></li><li><a href="#backend">Backend</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<p>Note: if you are using the in-memory Lunr search engine, you probably want to
+implement a non-distributed <code>TaskRunner</code> like the following to ensure consistency
+if you're running multiple search backend nodes (alternatively, you can configure
+the search plugin to use a non-distributed database such as
+<a href="/docs/tutorials/configuring-plugin-databases#postgresql-and-sqlite-3">SQLite</a>):</p>
+<pre><code class="hljs css language-typescript"><span class="hljs-keyword">import</span> { TaskInvocationDefinition, TaskRunner } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/backend-tasks'</span>;
+
+<span class="hljs-keyword">const</span> schedule: TaskRunner = {
+  run: <span class="hljs-keyword">async</span> (task: TaskInvocationDefinition) =&gt; {
+    <span class="hljs-keyword">const</span> startRefresh = <span class="hljs-keyword">async</span> () =&gt; {
+      <span class="hljs-keyword">while</span> (!task.signal?.aborted) {
+        <span class="hljs-keyword">try</span> {
+          <span class="hljs-keyword">await</span> task.fn(task.signal);
+        } <span class="hljs-keyword">catch</span> {
+          <span class="hljs-comment">// ignore intentionally</span>
+        }
+
+        <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">resolve</span> =&gt;</span> setTimeout(resolve, <span class="hljs-number">600</span> * <span class="hljs-number">1000</span>));
+      }
+    };
+    startRefresh();
+  },
+};
+
+indexBuilder.addCollator({
+  schedule,
+  factory: DefaultCatalogCollatorFactory.fromConfig(env.config, {
+    discovery: env.discovery,
+    tokenManager: env.tokenManager,
+  }),
+});
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 4/8/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/search/search-overview"><span class="arrow-prev">← </span><span>Overview</span></a><a class="docs-next button" href="/docs/features/search/concepts"><span>Search Concepts</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#adding-search-to-the-frontend">Adding Search to the Frontend</a><ul class="toc-headings"><li><a href="#using-the-search-modal">Using the Search Modal</a></li></ul></li><li><a href="#adding-search-to-the-backend">Adding Search to the Backend</a></li><li><a href="#customizing-search">Customizing Search</a><ul class="toc-headings"><li><a href="#frontend">Frontend</a></li><li><a href="#backend">Backend</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
