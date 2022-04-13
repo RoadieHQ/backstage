@@ -17,6 +17,7 @@
 import { Entity } from '@backstage/catalog-model';
 import { JsonObject } from '@backstage/types';
 import { EntityRelationSpec } from '../api';
+import { RefreshStateItem } from '../database/types';
 
 /**
  * The request to process an entity.
@@ -66,4 +67,5 @@ export type DeferredEntity = {
 export interface CatalogProcessingEngine {
   start(): Promise<void>;
   stop(): Promise<void>;
+  processTask(options: RefreshStateItem): Promise<void>;
 }

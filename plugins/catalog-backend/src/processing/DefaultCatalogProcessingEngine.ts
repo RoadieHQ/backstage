@@ -223,6 +223,151 @@ export class DefaultCatalogProcessingEngine implements CatalogProcessingEngine {
       this.stopFunc = undefined;
     }
   }
+
+  async processTask(item: RefreshStateItem) {
+    const track = this.tracker.processStart(item, this.logger);
+
+    try {
+      const {
+        id,
+        state,
+        unprocessedEntity,
+        entityRef,
+        locationKey,
+        resultHash: previousResultHash,
+      } = item;
+      const result = await this.orchestrator.process({
+        entity: unprocessedEntity,
+        state,
+      });
+
+      track.markProcessorsCompleted(result);
+
+      if (result.ok) {
+        if (stableStringify(state) !== stableStringify(result.state)) {
+          await this.processingDatabase.transaction(async tx => {
+            await this.processingDatabase.updateEntityCache(tx, {
+              id,
+              state: {
+                ttl: CACHE_TTL,
+                ...result.state,
+              },
+            });
+          });
+        }
+      } else {
+        const maybeTtl = state?.ttl;
+        const ttl = Number.isInteger(maybeTtl) ? (maybeTtl as number) : 0;
+        await this.processingDatabase.transaction(async tx => {
+          await this.processingDatabase.updateEntityCache(tx, {
+            id,
+            state: ttl > 0 ? { ...state, ttl: ttl - 1 } : {},
+          });
+        });
+      }
+
+      for (const error of result.errors) {
+        // TODO(freben): Try to extract the location out of the unprocessed
+        // entity and add as meta to the log lines
+        this.logger.warn(error.message, {
+          entity: entityRef,
+        });
+      }
+      const errorsString = JSON.stringify(
+        result.errors.map(e => serializeError(e)),
+      );
+
+      let hashBuilder = this.createHash().update(errorsString);
+      if (result.ok) {
+        const { entityRefs: parents } =
+          await this.processingDatabase.transaction(tx =>
+            this.processingDatabase.listParents(tx, {
+              entityRef,
+            }),
+          );
+
+        hashBuilder = hashBuilder
+          .update(stableStringify({ ...result.completedEntity }))
+          .update(stableStringify([...result.deferredEntities]))
+          .update(stableStringify([...result.relations]))
+          .update(stableStringify([...parents]));
+      }
+
+      const resultHash = hashBuilder.digest('hex');
+      if (resultHash === previousResultHash) {
+        // If nothing changed in our produced outputs, we cannot have any
+        // significant effect on our surroundings; therefore, we just abort
+        // without any updates / stitching.
+        track.markSuccessfulWithNoChanges();
+        return;
+      }
+
+      // If the result was marked as not OK, it signals that some part of the
+      // processing pipeline threw an exception. This can happen both as part of
+      // non-catastrophic things such as due to validation errors, as well as if
+      // something fatal happens inside the processing for other reasons. In any
+      // case, this means we can't trust that anything in the output is okay. So
+      // just store the errors and trigger a stich so that they become visible to
+      // the outside.
+      if (!result.ok) {
+        await this.processingDatabase.transaction(async tx => {
+          await this.processingDatabase.updateProcessedEntityErrors(tx, {
+            id,
+            errors: errorsString,
+            resultHash,
+          });
+        });
+        await this.stitcher.stitch(
+          new Set([stringifyEntityRef(unprocessedEntity)]),
+        );
+        track.markSuccessfulWithErrors();
+        return;
+      }
+
+      result.completedEntity.metadata.uid = id;
+      let oldRelationSources: Set<string>;
+      await this.processingDatabase.transaction(async tx => {
+        const { previous } =
+          await this.processingDatabase.updateProcessedEntity(tx, {
+            id,
+            processedEntity: result.completedEntity,
+            resultHash,
+            errors: errorsString,
+            relations: result.relations,
+            deferredEntities: result.deferredEntities,
+            locationKey,
+          });
+        oldRelationSources = new Set(
+          previous.relations.map(r => r.source_entity_ref),
+        );
+      });
+
+      const newRelationSources = new Set<string>(
+        result.relations.map(relation => stringifyEntityRef(relation.source)),
+      );
+
+      const setOfThingsToStitch = new Set<string>([
+        stringifyEntityRef(result.completedEntity),
+      ]);
+      newRelationSources.forEach(r => {
+        if (!oldRelationSources.has(r)) {
+          setOfThingsToStitch.add(r);
+        }
+      });
+      oldRelationSources!.forEach(r => {
+        if (!newRelationSources.has(r)) {
+          setOfThingsToStitch.add(r);
+        }
+      });
+
+      await this.stitcher.stitch(setOfThingsToStitch);
+
+      track.markSuccessfulWithChanges(setOfThingsToStitch.size);
+    } catch (error) {
+      assertError(error);
+      track.markFailed(error);
+    }
+  }
 }
 
 // Helps wrap the timing and logging behaviors

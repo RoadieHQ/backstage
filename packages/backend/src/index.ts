@@ -57,8 +57,11 @@ import app from './plugins/app';
 import badges from './plugins/badges';
 import jenkins from './plugins/jenkins';
 import permission from './plugins/permission';
+import webhooks from './plugins/webhooks';
 import { PluginEnvironment } from './types';
 import { ServerPermissionClient } from '@backstage/plugin-permission-node';
+
+import { EventEmitter } from 'events';
 
 function makeCreateEnv(config: Config) {
   const root = getRootLogger();
@@ -72,6 +75,7 @@ function makeCreateEnv(config: Config) {
   const databaseManager = DatabaseManager.fromConfig(config);
   const cacheManager = CacheManager.fromConfig(config);
   const taskScheduler = TaskScheduler.fromConfig(config);
+  const eventEmitter = new EventEmitter();
 
   root.info(`Created UrlReader ${reader}`);
 
@@ -90,6 +94,7 @@ function makeCreateEnv(config: Config) {
       tokenManager,
       permissions,
       scheduler,
+      eventEmitter,
     };
   };
 }
@@ -129,6 +134,7 @@ async function main() {
   const appEnv = useHotMemoize(module, () => createEnv('app'));
   const badgesEnv = useHotMemoize(module, () => createEnv('badges'));
   const jenkinsEnv = useHotMemoize(module, () => createEnv('jenkins'));
+  const webhooksEnv = useHotMemoize(module, () => createEnv('webhooks'));
   const techInsightsEnv = useHotMemoize(module, () =>
     createEnv('tech-insights'),
   );
@@ -152,6 +158,7 @@ async function main() {
   apiRouter.use('/badges', await badges(badgesEnv));
   apiRouter.use('/jenkins', await jenkins(jenkinsEnv));
   apiRouter.use('/permission', await permission(permissionEnv));
+  apiRouter.use('/webhooks', await webhooks(webhooksEnv));
   apiRouter.use(notFoundHandler());
 
   const service = createServiceBuilder(module)

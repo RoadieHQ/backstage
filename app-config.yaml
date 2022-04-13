@@ -315,26 +315,26 @@ auth:
         clientId: ${AUTH_GITHUB_CLIENT_ID}
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
         enterpriseInstanceUrl: ${AUTH_GITHUB_ENTERPRISE_INSTANCE_URL}
-    gitlab:
-      development:
-        clientId: ${AUTH_GITLAB_CLIENT_ID}
-        clientSecret: ${AUTH_GITLAB_CLIENT_SECRET}
-        audience: ${GITLAB_BASE_URL}
-    saml:
-      entryPoint: 'http://localhost:7001/'
-      issuer: 'passport-saml'
-      cert: 'fake-cert-base64'
-    okta:
-      development:
-        clientId: ${AUTH_OKTA_CLIENT_ID}
-        clientSecret: ${AUTH_OKTA_CLIENT_SECRET}
-        audience: ${AUTH_OKTA_AUDIENCE}
-    oauth2:
-      development:
-        clientId: ${AUTH_OAUTH2_CLIENT_ID}
-        clientSecret: ${AUTH_OAUTH2_CLIENT_SECRET}
-        authorizationUrl: ${AUTH_OAUTH2_AUTH_URL}
-        tokenUrl: ${AUTH_OAUTH2_TOKEN_URL}
+    # gitlab:
+    #   development:
+    #     clientId: ${AUTH_GITLAB_CLIENT_ID}
+    #     clientSecret: ${AUTH_GITLAB_CLIENT_SECRET}
+    #     audience: ${GITLAB_BASE_URL}
+    # saml:
+    #   entryPoint: 'http://localhost:7001/'
+    #   issuer: 'passport-saml'
+    #   cert: 'fake-cert-base64'
+    # okta:
+    #   development:
+    #     clientId: ${AUTH_OKTA_CLIENT_ID}
+    #     clientSecret: ${AUTH_OKTA_CLIENT_SECRET}
+    #     audience: ${AUTH_OKTA_AUDIENCE}
+    # oauth2:
+    #   development:
+    #     clientId: ${AUTH_OAUTH2_CLIENT_ID}
+    #     clientSecret: ${AUTH_OAUTH2_CLIENT_SECRET}
+    #     authorizationUrl: ${AUTH_OAUTH2_AUTH_URL}
+    #     tokenUrl: ${AUTH_OAUTH2_TOKEN_URL}
         ###
         # provide a list of scopes as needed for your OAuth2 Server:
         #

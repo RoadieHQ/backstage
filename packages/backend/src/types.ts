@@ -28,6 +28,7 @@ import {
   PermissionAuthorizer,
   PermissionEvaluator,
 } from '@backstage/plugin-permission-common';
+import EventEmitter from 'events';
 
 export type PluginEnvironment = {
   logger: Logger;
@@ -39,4 +40,5 @@ export type PluginEnvironment = {
   tokenManager: TokenManager;
   permissions: PermissionEvaluator | PermissionAuthorizer;
   scheduler: PluginTaskScheduler;
+  eventEmitter: EventEmitter;
 };

@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
-import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
-import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
-import { Router } from 'express';
-import { PluginEnvironment } from '../types';
+import { errorHandler } from '@backstage/backend-common';
+import express from 'express';
+import Router from 'express-promise-router';
+import { createRouter as createGithubRouter } from '../github-handler/router';
+// import { EventStoreClient } from '../events-backend/event-store-client';
 
-export default async function createPlugin(
-  env: PluginEnvironment,
-): Promise<Router> {
-  const builder = await CatalogBuilder.create(env);
-  builder.addProcessor(new ScaffolderEntitiesProcessor());
-  const { processingEngine, router } = await builder.build();
+export async function createRouter({ eventEmitter }): Promise<express.Router> {
+  const router = Router();
+  router.use(express.json());
 
-  await processingEngine.start();
+  router.get('/health', (_, response) => {
+    response.send({ status: 'ok' });
+  });
+  router.use('/', await createGithubRouter({ eventEmitter }));
 
+  router.use(errorHandler());
   return router;
 }

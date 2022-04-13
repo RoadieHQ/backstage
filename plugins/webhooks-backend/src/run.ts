@@ -14,19 +14,20 @@
  * limitations under the License.
  */
 
-import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
-import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
-import { Router } from 'express';
-import { PluginEnvironment } from '../types';
+import { getRootLogger } from '@backstage/backend-common';
+import yn from 'yn';
+import { startStandaloneServer } from './service/standaloneServer';
 
-export default async function createPlugin(
-  env: PluginEnvironment,
-): Promise<Router> {
-  const builder = await CatalogBuilder.create(env);
-  builder.addProcessor(new ScaffolderEntitiesProcessor());
-  const { processingEngine, router } = await builder.build();
+const port = process.env.PLUGIN_PORT ? Number(process.env.PLUGIN_PORT) : 7007;
+const enableCors = yn(process.env.PLUGIN_CORS, { default: false });
+const logger = getRootLogger();
 
-  await processingEngine.start();
+startStandaloneServer({ port, enableCors, logger }).catch(err => {
+  logger.error(err);
+  process.exit(1);
+});
 
-  return router;
-}
+process.on('SIGINT', () => {
+  logger.info('CTRL+C pressed; exiting.');
+  process.exit(0);
+});

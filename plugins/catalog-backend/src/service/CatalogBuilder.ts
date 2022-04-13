@@ -93,6 +93,8 @@ import { basicEntityFilter } from './request/basicEntityFilter';
 import { RESOURCE_TYPE_CATALOG_ENTITY } from '@backstage/plugin-catalog-common';
 import { AuthorizedLocationService } from './AuthorizedLocationService';
 
+import { DateTime } from 'luxon';
+
 /** @public */
 export type CatalogEnvironment = {
   logger: Logger;
@@ -461,6 +463,33 @@ export class CatalogBuilder {
     });
 
     await connectEntityProviders(processingDatabase, entityProviders);
+
+    this.env.eventEmitter.on('github', async function listener(msg) {
+      console.log(msg);
+      const locations = await locationService.listLocations();
+      const location = locations.find(
+        l =>
+          l.target ===
+          'https://github.com/RoadieHQ/roadie/blob/main/catalog-info.yaml',
+      );
+      console.log(location, '@@@@');
+
+      if (msg.type === 'added') {
+        locationService.createLocation(
+          {
+            target:
+              'https://github.com/RoadieHQ/roadie/blob/main/catalog-info.yaml',
+            type: 'url',
+          },
+          false,
+        );
+      } else if (msg.type === 'modified') {
+        refreshService.refresh({ entityRef: 'location:default/' });
+      } else if (msg.type === 'deleted') {
+        // const location = locations.filter(l => l.target === msg.target);
+        locationService.deleteLocation(location.id);
+      }
+    });
 
     return {
       processingEngine,
