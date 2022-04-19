@@ -26,9 +26,9 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-auth-backend.creategcpiapprovider">createGcpIapProvider(options)</a></td><td>Creates an auth provider for Google Identity-Aware Proxy.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoriginfilter">createOriginFilter(config)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createrouter">createRouter(options)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.getdefaultownershipentityrefs">getDefaultOwnershipEntityRefs(entity)</a></td><td>Uses the default ownership resolution logic to return an array of entity refs that the provided entity claims ownership through.<!-- -->A reference to the entity itself will also be included in the returned array.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.getentityclaims">getEntityClaims(entity)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.preparebackstageidentityresponse">prepareBackstageIdentityResponse(result)</a></td><td>Parses a Backstage-issued token and decorates the <a href="/docs/reference/plugin-auth-node.backstageidentityresponse">BackstageIdentityResponse</a> with identity information sourced from the token.</td></tr>
 </tbody>
@@ -56,12 +56,13 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.createauth0provider">createAuth0Provider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createawsalbprovider">createAwsAlbProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createbitbucketprovider">createBitbucketProvider</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.creategcpiapprovider">createGcpIapProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.creategithubprovider">createGithubProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.creategitlabprovider">createGitlabProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.creategoogleprovider">createGoogleProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createmicrosoftprovider">createMicrosoftProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoauth2provider">createOAuth2Provider</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-auth-backend.createoauth2proxyprovider">createOauth2ProxyProvider</a></td><td>Factory function for oauth2-proxy auth provider</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.createoauth2proxyprovider">createOauth2ProxyProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoidcprovider">createOidcProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoktaprovider">createOktaProvider</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.createoneloginprovider">createOneLoginProvider</a></td><td></td></tr>
@@ -73,7 +74,9 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.microsoftemailsigninresolver">microsoftEmailSignInResolver</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oktaemailsigninresolver">oktaEmailSignInResolver</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.postmessageresponse">postMessageResponse</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.providers">providers</a></td><td>All built-in auth provider integrations.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.readstate">readState</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.samlnameidentitynamesigninresolver">samlNameIdEntityNameSignInResolver</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.verifynonce">verifyNonce</a></td><td></td></tr>
 </tbody>
 </table>
@@ -87,16 +90,19 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.auth0provideroptions">Auth0ProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authhandler">AuthHandler</a></td><td>The AuthHandler function is called every time the user authenticates using the provider.<!-- -->The handler should return a profile that represents the session for the user in the frontend.<!-- -->Throwing an error in the function will cause the authentication to fail, making it possible to use this function as a way to limit access to a certain group of users.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authhandlerresult">AuthHandlerResult</a></td><td>The return type of an authentication handler. Must contain valid profile information.</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.authproviderconfig">AuthProviderConfig</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authproviderfactory">AuthProviderFactory</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authproviderfactoryoptions">AuthProviderFactoryOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.authresolvercataloguserquery">AuthResolverCatalogUserQuery</a></td><td>A query for a single user in the catalog.<!-- -->If <code>entityRef</code> is used, the default kind is <code>'User'</code>.<!-- -->If <code>annotations</code> are used, all annotations must be present and match the provided value exactly. Only entities of kind <code>'User'</code> will be considered.<!-- -->If <code>filter</code> are used they are passed on as they are to the <code>CatalogApi</code>.<!-- -->Regardless of the query method, the query must match exactly one entity in the catalog, or an error will be thrown.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authresolvercontext">AuthResolverContext</a></td><td>The context that is used for auth processing.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.authresponse">AuthResponse</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.awsalbprovideroptions">AwsAlbProviderOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.awsalbresult">AwsAlbResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.bitbucketoauthresult">BitbucketOAuthResult</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.bitbucketpassportprofile">BitbucketPassportProfile</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.bitbucketprovideroptions">BitbucketProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.cookieconfigurer">CookieConfigurer</a></td><td>The callback used to resolve the cookie configuration for auth providers that use cookies.</td></tr>
-<tr><td><a href="/docs/reference/plugin-auth-backend.gcpiapprovideroptions">GcpIapProviderOptions</a></td><td>Options for <a href="/docs/reference/plugin-auth-backend.creategcpiapprovider">createGcpIapProvider()</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.gcpiapprovideroptions">GcpIapProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.gcpiapresult">GcpIapResult</a></td><td>The result of the initial auth challenge. This is the input to the auth callbacks.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.gcpiaptokeninfo">GcpIapTokenInfo</a></td><td>The data extracted from an IAP token.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.githuboauthresult">GithubOAuthResult</a></td><td></td></tr>
@@ -105,7 +111,7 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.googleprovideroptions">GoogleProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.microsoftprovideroptions">MicrosoftProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauth2provideroptions">OAuth2ProviderOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-auth-backend.oauth2proxyprovideroptions">Oauth2ProxyProviderOptions</a></td><td>Options for the oauth2-proxy provider factory</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.oauth2proxyprovideroptions">Oauth2ProxyProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauth2proxyresult">OAuth2ProxyResult</a></td><td>JWT header extraction result, containing the raw value and the parsed JWT payload.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthproviderinfo">OAuthProviderInfo</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthprovideroptions">OAuthProviderOptions</a></td><td>Common options for passport.js-based OAuth providers</td></tr>
@@ -115,7 +121,7 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthstartrequest">OAuthStartRequest</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oauthstate">OAuthState</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oidcauthresult">OidcAuthResult</a></td><td>authentication result for the OIDC which includes the token set and user information (a profile response sent by OIDC server)</td></tr>
-<tr><td><a href="/docs/reference/plugin-auth-backend.oidcprovideroptions">OidcProviderOptions</a></td><td>OIDC provider callback options. An auth handler and a sign in resolver can be passed while creating a OIDC provider.<!-- -->authHandler : called after sign in was successful, a new object must be returned which includes a profile signInResolver: called after sign in was successful, expects to return a new <a href="/docs/reference/plugin-auth-node.backstagesigninresult">BackstageSignInResult</a><!-- -->Both options are optional. There is fallback for authHandler where the default handler expect an e-mail explicitly otherwise it throws an error</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.oidcprovideroptions">OidcProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oktaprovideroptions">OktaProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.oneloginprovideroptions">OneLoginProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.profileinfo">ProfileInfo</a></td><td>Used to display login information to user, i.e. sidebar popup.<!-- -->It is also temporarily used as the profile of the signed-in user's Backstage identity, but we want to replace that with data from identity and/org catalog service</td></tr>
@@ -123,7 +129,9 @@
 <tr><td><a href="/docs/reference/plugin-auth-backend.samlprovideroptions">SamlProviderOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.signininfo">SignInInfo</a></td><td>Type of sign in information context. Includes the profile information and authentication result which contains auth related information.</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.signinresolver">SignInResolver</a></td><td>Describes the function which handles the result of a successful authentication. Must return a valid <a href="/docs/reference/plugin-auth-node.backstagesigninresult">BackstageSignInResult</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.stateencoder">StateEncoder</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.tokenissuer">TokenIssuer</a></td><td>A TokenIssuer is able to issue verifiable ID Tokens on demand.</td></tr>
+<tr><td><a href="/docs/reference/plugin-auth-backend.tokenparams">TokenParams</a></td><td>Parameters used to issue new ID Tokens</td></tr>
 <tr><td><a href="/docs/reference/plugin-auth-backend.webmessageresponse">WebMessageResponse</a></td><td>Payload sent as a post message after the auth request is complete. If successful then has a valid payload with Auth information else contains an error.</td></tr>
 </tbody>
 </table>

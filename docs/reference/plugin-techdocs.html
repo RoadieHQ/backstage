@@ -26,15 +26,14 @@
 <tbody>
 <tr><td><a href="/docs/reference/plugin-techdocs.defaulttechdocshome">DefaultTechDocsHome(props)</a></td><td>Component which renders a default documentation landing page.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.docscardgrid">DocsCardGrid(props)</a></td><td>Component which accepts a list of entities and renders a item card for each entity</td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.embeddeddocsrouter">EmbeddedDocsRouter()</a></td><td>Responsible for registering route to view docs on Entity page</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.entitylistdocsgrid">EntityListDocsGrid()</a></td><td>Component responsible to get entities from entity list context and pass down to DocsCardGrid</td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.entitytechdocscontent">EntityTechdocsContent()</a></td><td>Routable extension used to render docs on Entity page</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.reader">Reader(props)</a></td><td>Component responsible for rendering TechDocs documentation</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.router">Router()</a></td><td>Responsible for registering routes for TechDocs, TechDocs Homepage and separate TechDocs page</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsindexpage">TechDocsIndexPage()</a></td><td>Responsible for rendering the provided router element</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocspage">TechdocsPage()</a></td><td>Routable extension used to render docs</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocspagewrapper">TechDocsPageWrapper(props)</a></td><td>Component wrapping a techdocs page with Page and Header components</td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpageheader">TechDocsReaderPageHeader(props)</a></td><td>Component responsible for rendering a Header with metadata on TechDocs reader page.</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpagecontent">TechDocsReaderPageContent(props)</a></td><td>Renders the reader page content</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpageheader">TechDocsReaderPageHeader(props)</a></td><td>Renders the reader page header. This component does not accept props, please use the Tech Docs add-ons to customize it</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocssearch">TechDocsSearch(props)</a></td><td>Component used to render search bar on TechDocs page, scoped to</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocssearchresultlistitem">TechDocsSearchResultListItem(props)</a></td><td>Component which renders documentation and related metadata.</td></tr>
 </tbody>
@@ -58,13 +57,18 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/plugin-techdocs.docstable">DocsTable</a></td><td>Component which renders a table documents</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.embeddeddocsrouter">EmbeddedDocsRouter</a></td><td>Responsible for registering route to view docs on Entity page</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.entitylistdocstable">EntityListDocsTable</a></td><td>Component which renders a table with entities from catalog.</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.entitytechdocscontent">EntityTechdocsContent</a></td><td>Routable extension used to render docs on Entity page</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.istechdocsavailable">isTechDocsAvailable</a></td><td>Helper that takes in entity and returns true/false if TechDocs is available for the entity</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsapiref">techdocsApiRef</a></td><td>Utility API reference for the <a href="/docs/reference/plugin-techdocs.techdocsapi">TechDocsApi</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocscustomhome">TechDocsCustomHome</a></td><td>Component which takes a custom tabs config object and renders a documentation landing page.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocspicker">TechDocsPicker</a></td><td>Component responsible for updating TechDocs filters</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsplugin">techdocsPlugin</a></td><td>The Backstage plugin that renders technical documentation for your components</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderlayout">TechDocsReaderLayout</a></td><td>Default TechDocs reader page structure composed with a header and content</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpage">TechDocsReaderPage</a></td><td>Component responsible for composing a TechDocs reader page experience</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpagesubheader">TechDocsReaderPageSubheader</a></td><td>Renders the reader page subheader. Please use the Tech Docs add-ons to customize it</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderprovider">TechDocsReaderProvider</a></td><td>Provides shared building process state to the reader page components.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsstorageapiref">techdocsStorageApiRef</a></td><td>Utility API reference for the <a href="/docs/reference/plugin-techdocs.techdocsstorageapi">TechDocsStorageApi</a><!-- -->.</td></tr>
 </tbody>
 </table>
@@ -74,22 +78,27 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/plugin-techdocs.contentstatetypes">ContentStateTypes</a></td><td>A state representation that is used to configure the UI of <Reader /></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.defaulttechdocshomeprops">DefaultTechDocsHomeProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.defaulttechdocshome">DefaultTechDocsHome()</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.docscardgridprops">DocsCardGridProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.docscardgrid">DocsCardGrid()</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.docstableprops">DocsTableProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.docstable">DocsTable</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.docstablerow">DocsTableRow</a></td><td>Generic representing the metadata structure for a docs table row.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.entitylistdocstableprops">EntityListDocsTableProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.entitylistdocstable">EntityListDocsTable</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.paneltype">PanelType</a></td><td>Available panel types</td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.readerprops">ReaderProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.reader">Reader()</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.readerstate">ReaderState</a></td><td>shared reader state</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.syncresult">SyncResult</a></td><td>The outcome of a docs sync operation.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.tabsconfig">TabsConfig</a></td><td>Type representing a list of TechDocsCustomHome tabs.</td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocscustomhomeprops">TechDocsCustomHomeProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocscustomhome">TechDocsCustomHome</a></td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.techdocsentitymetadata">TechDocsEntityMetadata</a></td><td>Metadata for TechDocs Entity</td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.techdocsmetadata">TechDocsMetadata</a></td><td>Metadata for TechDocs page</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsentitymetadata">TechDocsEntityMetadata</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsmetadata">TechDocsMetadata</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocspagewrapperprops">TechDocsPageWrapperProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocspagewrapper">TechDocsPageWrapper()</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderlayoutprops">TechDocsReaderLayoutProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocsreaderlayout">TechDocsReaderLayout</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpagecontentprops">TechDocsReaderPageContentProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocsreaderpagecontent">TechDocsReaderPageContent()</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpageheaderprops">TechDocsReaderPageHeaderProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocsreaderpageheader">TechDocsReaderPageHeader()</a></td></tr>
-<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpageprops">TechDocsReaderPageProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocsreaderpage">TechDocsReaderPage</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpageprops">TechDocsReaderPageProps</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderpagerenderfunction">TechDocsReaderPageRenderFunction</a></td><td>Helper function that gives the children of <a href="/docs/reference/plugin-techdocs.techdocsreaderpage">TechDocsReaderPage</a> access to techdocs and entity metadata</td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderproviderprops">TechDocsReaderProviderProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocsreaderprovider">TechDocsReaderProvider</a></td></tr>
+<tr><td><a href="/docs/reference/plugin-techdocs.techdocsreaderproviderrenderfunction">TechDocsReaderProviderRenderFunction</a></td><td>Render function for <a href="/docs/reference/plugin-techdocs.techdocsreaderprovider">TechDocsReaderProvider</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocssearchprops">TechDocsSearchProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocssearch">TechDocsSearch()</a></td></tr>
 <tr><td><a href="/docs/reference/plugin-techdocs.techdocssearchresultlistitemprops">TechDocsSearchResultListItemProps</a></td><td>Props for <a href="/docs/reference/plugin-techdocs.techdocssearchresultlistitem">TechDocsSearchResultListItem()</a><!-- -->.</td></tr>
 </tbody>
