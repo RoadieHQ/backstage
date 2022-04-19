@@ -38,8 +38,13 @@ export async function createRouter({ eventEmitter }): Promise<express.Router> {
   router.post('/github', (req, response) => {
     // console.log(req);
     eventEmitter.emit('github', {
-      type: 'added',
-      ref: 'some awesome repo that got modified',
+      type: 'modified',
+      payload: {
+        type: 'url',
+        target:
+          //   'https://github.com/RoadieHQ/roadie/tree/main/catalog-info.yaml',
+          'https://github.com/RoadieHQ/test-github-webhooks/blob/main/catalog-info.yaml',
+      },
     });
     // // filter the event with github specific processor -> publish the outcome message
     // if (req.body.ref.contains(req.body.repository.default_branch)) {

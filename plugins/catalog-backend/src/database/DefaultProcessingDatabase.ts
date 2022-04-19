@@ -812,4 +812,23 @@ export class DefaultProcessingDatabase implements ProcessingDatabase {
       BATCH_SIZE,
     );
   }
+
+  async refreshByLocation(
+    txOpaque: Transaction,
+    options: { location: string },
+  ) {
+    const tx = txOpaque as Knex.Transaction;
+    console.log(options.location, 'location: @@@');
+    const entities = await tx('final_entities')
+      .select('final_entity')
+      .whereRaw(
+        `final_entity::json -> 'metadata' -> 'annotations' ->> 'backstage.io/managed-by-location' = '${options.location}'`,
+      );
+    await Promise.all(
+      entities.map(async e => {
+        const entityRef = stringifyEntityRef(JSON.parse(e.final_entity));
+        await this.refresh(tx, { entityRef: entityRef });
+      }),
+    );
+  }
 }

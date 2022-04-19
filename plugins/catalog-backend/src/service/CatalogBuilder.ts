@@ -466,27 +466,19 @@ export class CatalogBuilder {
 
     this.env.eventEmitter.on('github', async function listener(msg) {
       console.log(msg);
-      const locations = await locationService.listLocations();
-      const location = locations.find(
-        l =>
-          l.target ===
-          'https://github.com/RoadieHQ/roadie/blob/main/catalog-info.yaml',
-      );
-      console.log(location, '@@@@');
 
       if (msg.type === 'added') {
-        locationService.createLocation(
-          {
-            target:
-              'https://github.com/RoadieHQ/roadie/blob/main/catalog-info.yaml',
-            type: 'url',
-          },
-          false,
-        );
+        locationService.createLocation(msg.payload, false);
       } else if (msg.type === 'modified') {
-        refreshService.refresh({ entityRef: 'location:default/' });
+        // refreshService.refresh({ entityRef: 'location:default/' });
+        refreshService.refreshByLocation({
+          location: `${msg.payload.type}:${msg.payload.target}`,
+        });
       } else if (msg.type === 'deleted') {
         // const location = locations.filter(l => l.target === msg.target);
+
+        const locations = await locationService.listLocations();
+        const location = locations.find(l => l.target === msg.payload.target);
         locationService.deleteLocation(location.id);
       }
     });

@@ -24,6 +24,7 @@ import {
   EntityProviderConnection,
   EntityProviderMutation,
 } from '../api';
+import { LocationInput } from '../service/types';
 
 class Connection implements EntityProviderConnection {
   readonly validateEntityEnvelope = entityEnvelopeSchemaValidator();
@@ -59,6 +60,14 @@ class Connection implements EntityProviderConnection {
         });
       });
     }
+  }
+  async refreshByLocation(locationInput: LocationInput) {
+    const db = this.config.processingDatabase;
+    await db.transaction(async tx => {
+      await db.refreshByLocation(tx, {
+        location: `${locationInput.type}:${locationInput.target}`,
+      });
+    });
   }
 
   private check(entities: Entity[]) {

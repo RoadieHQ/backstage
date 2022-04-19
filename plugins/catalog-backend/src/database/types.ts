@@ -163,4 +163,9 @@ export interface ProcessingDatabase {
     txOpaque: Transaction,
     options: ListParentsOptions,
   ): Promise<ListParentsResult>;
+
+  refreshByLocation(
+    txOpaque: Transaction,
+    options: { location: string },
+  ): Promise<void>;
 }

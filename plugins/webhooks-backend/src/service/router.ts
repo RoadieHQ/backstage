@@ -27,7 +27,7 @@ export async function createRouter({ eventEmitter }): Promise<express.Router> {
   router.get('/health', (_, response) => {
     response.send({ status: 'ok' });
   });
-  router.use('/', await createGithubRouter({ eventEmitter }));
+  router.use(await createGithubRouter({ eventEmitter }));
 
   router.use(errorHandler());
   return router;

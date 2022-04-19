@@ -16,6 +16,8 @@
 
 import { DefaultProcessingDatabase } from '../database/DefaultProcessingDatabase';
 import { RefreshOptions, RefreshService } from './types';
+import { Knex } from 'knex';
+import { stringifyEntityRef } from '@backstage/catalog-model';
 
 export class DefaultRefreshService implements RefreshService {
   private database: DefaultProcessingDatabase;
@@ -42,6 +44,13 @@ export class DefaultRefreshService implements RefreshService {
       }
       await this.database.refresh(tx, {
         entityRef: options.entityRef,
+      });
+    });
+  }
+  async refreshByLocation(options: { location: string }) {
+    await this.database.transaction(async tx => {
+      await this.database.refreshByLocation(tx, {
+        location: options.location,
       });
     });
   }

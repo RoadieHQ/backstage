@@ -45,4 +45,7 @@ export class AuthorizedRefreshService implements RefreshService {
     }
     await this.service.refresh(options);
   }
+  async refreshByLocation(options: { location: string }) {
+    await this.service.refreshByLocation(options);
+  }
 }

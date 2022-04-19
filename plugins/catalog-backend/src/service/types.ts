@@ -71,6 +71,7 @@ export interface RefreshService {
    * Request a refresh of entities in the catalog.
    */
   refresh(options: RefreshOptions): Promise<void>;
+  refreshByLocation(options: { location: string }): Promise<void>;
 }
 
 /**
