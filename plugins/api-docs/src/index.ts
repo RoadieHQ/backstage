@@ -32,4 +32,5 @@ export {
   EntityHasApisCard,
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
+  EntityGroupApiDefinitionCard,
 } from './plugin';

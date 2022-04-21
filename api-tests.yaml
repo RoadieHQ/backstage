@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: auth-api-versions
+spec:
+  targets:
+    - ./auth-v1.yaml
+    - ./auth-v2.yaml
+    - ./auth.yaml

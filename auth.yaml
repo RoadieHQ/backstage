@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  namespace: default
+  annotations:
+    backstage.io/managed-by-location: file:/Users/kissmiklos/roadie/backstage/packages/catalog-model/examples/apis/streetlights-api.yaml
+    backstage.io/managed-by-origin-location: file:/Users/kissmiklos/roadie/backstage/packages/catalog-model/examples/all-apis.yaml
+  name: auth
+  description: The Smartylighting Streetlights API allows you to remotely manage
+    the city lights.
+  tags:
+    - mqtt
+  links:
+    - url: https://github.com/asyncapi/asyncapi/blob/master/examples/1.2.0/streetlights.yml
+      title: Source Code
+      icon: code
+
+spec:
+  type: asyncapi
+  lifecycle: production
+  owner: user:guest
+  definition: alma

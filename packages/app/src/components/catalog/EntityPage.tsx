@@ -33,6 +33,7 @@ import {
   EntityHasApisCard,
   EntityProvidedApisCard,
   EntityProvidingComponentsCard,
+  EntityGroupApiDefinitionCard,
 } from '@backstage/plugin-api-docs';
 import {
   EntityAzurePipelinesContent,
@@ -553,7 +554,7 @@ const apiPage = (
     <EntityLayout.Route path="/definition" title="Definition">
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <EntityApiDefinitionCard />
+          <EntityGroupApiDefinitionCard />
         </Grid>
       </Grid>
     </EntityLayout.Route>

@@ -15,6 +15,7 @@
  */
 
 export { ApiDefinitionCard } from './ApiDefinitionCard';
+export { GroupApiDefinitionCard } from './GroupApiDefinitionCard';
 export { defaultDefinitionWidgets } from './ApiDefinitionWidget';
 export type { ApiDefinitionWidget } from './ApiDefinitionWidget';
 export { ApiTypeTitle } from './ApiTypeTitle';

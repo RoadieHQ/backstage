@@ -68,6 +68,18 @@ export const EntityApiDefinitionCard = apiDocsPlugin.provide(
   }),
 );
 
+export const EntityGroupApiDefinitionCard = apiDocsPlugin.provide(
+  createComponentExtension({
+    name: 'EntityGroupApiDefinitionCard',
+    component: {
+      lazy: () =>
+        import('./components/ApiDefinitionCard').then(
+          m => m.GroupApiDefinitionCard,
+        ),
+    },
+  }),
+);
+
 export const EntityConsumedApisCard = apiDocsPlugin.provide(
   createComponentExtension({
     name: 'EntityConsumedApisCard',
