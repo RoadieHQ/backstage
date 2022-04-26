@@ -70,7 +70,6 @@ export class DefaultCatalogProcessingEngine implements CatalogProcessingEngine {
       },
       processTask: async item => {
         const track = this.tracker.processStart(item, this.logger);
-
         try {
           const {
             id,

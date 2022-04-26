@@ -818,7 +818,6 @@ export class DefaultProcessingDatabase implements ProcessingDatabase {
     options: { location: string },
   ) {
     const tx = txOpaque as Knex.Transaction;
-    console.log(options.location, 'location: @@@');
     const entities = await tx('final_entities')
       .select('final_entity')
       .whereRaw(
@@ -827,6 +826,22 @@ export class DefaultProcessingDatabase implements ProcessingDatabase {
     await Promise.all(
       entities.map(async e => {
         const entityRef = stringifyEntityRef(JSON.parse(e.final_entity));
+
+        const { entityRefs } = await this.listAncestors(tx, {
+          entityRef: entityRef,
+        });
+        const locationAncestor = entityRefs.find(ref =>
+          ref.startsWith('location:'),
+        );
+
+        // TODO: Refreshes are currently scheduled(as soon as possible) for execution and will therefore happen in the future.
+        // There's room for improvements here where the refresh could potentially hang or return an ID so that the user can check progress.
+        if (locationAncestor) {
+          await this.refresh(tx, {
+            entityRef: locationAncestor,
+          });
+        }
+
         await this.refresh(tx, { entityRef: entityRef });
       }),
     );

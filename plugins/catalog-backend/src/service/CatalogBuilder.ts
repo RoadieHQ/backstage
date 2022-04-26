@@ -140,6 +140,11 @@ export class CatalogBuilder {
       minSeconds: 100,
       maxSeconds: 150,
     });
+  private refreshInterval: ProcessingIntervalFunction =
+    createRandomProcessingInterval({
+      minSeconds: 100,
+      maxSeconds: 150,
+    });
   private locationAnalyzer: LocationAnalyzer | undefined = undefined;
   private permissionRules: CatalogPermissionRule[];
 
@@ -187,6 +192,14 @@ export class CatalogBuilder {
    */
   setProcessingIntervalSeconds(seconds: number): CatalogBuilder {
     this.processingInterval = createRandomProcessingInterval({
+      minSeconds: seconds,
+      maxSeconds: seconds * 1.5,
+    });
+    return this;
+  }
+
+  setRefreshIntervalSeconds(seconds: number): CatalogBuilder {
+    this.refreshInterval = createRandomProcessingInterval({
       minSeconds: seconds,
       maxSeconds: seconds * 1.5,
     });
@@ -369,7 +382,7 @@ export class CatalogBuilder {
     const processingDatabase = new DefaultProcessingDatabase({
       database: dbClient,
       logger,
-      refreshInterval: this.processingInterval,
+      refreshInterval: this.refreshInterval,
     });
     const integrations = ScmIntegrations.fromConfig(config);
     const rulesEnforcer = DefaultCatalogRulesEnforcer.fromConfig(config);

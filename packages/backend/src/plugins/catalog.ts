@@ -23,7 +23,10 @@ export default async function createPlugin(
   env: PluginEnvironment,
 ): Promise<Router> {
   const builder = await CatalogBuilder.create(env);
+
   builder.addProcessor(new ScaffolderEntitiesProcessor());
+  builder.setRefreshIntervalSeconds(3600);
+
   const { processingEngine, router } = await builder.build();
 
   await processingEngine.start();

@@ -17,14 +17,11 @@
 import { errorHandler } from '@backstage/backend-common';
 import express from 'express';
 import Router from 'express-promise-router';
-import { EventStoreClient } from '../events-backend/event-store-client';
 
 export interface RouterOptions {}
 
 export async function createRouter({ eventEmitter }): Promise<express.Router> {
   const router = Router();
-
-  const eventStoreClient = new EventStoreClient({ topic: 'github' });
 
   router.use(express.json());
 
@@ -43,7 +40,8 @@ export async function createRouter({ eventEmitter }): Promise<express.Router> {
         type: 'url',
         target:
           //   'https://github.com/RoadieHQ/roadie/tree/main/catalog-info.yaml',
-          'https://github.com/RoadieHQ/test-github-webhooks/blob/main/catalog-info.yaml',
+          // 'https://github.com/RoadieHQ/test-github-webhooks/blob/main/catalog-info.yaml',
+          'https://github.com/RoadieHQ/test-github-webhooks/tree/main/entities/test-1.yaml',
       },
     });
     // // filter the event with github specific processor -> publish the outcome message
