@@ -2,12 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2022-03-17T06:00:00.000Z</updated>
+    <updated>2022-05-13T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Introducing the TechDocs Addon Framework]]></title>
+        <id>https://backstage.io/blog/2022/05/13/techdocs-addon-framework.html</id>
+        <link href="https://backstage.io/blog/2022/05/13/techdocs-addon-framework.html"/>
+        <updated>2022-05-13T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><em>This blog post is co-authored by Eric Peterson (<a href="https://github.com/iamEAP">@iamEAP</a>), Spotify.</em></p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon-header.gif" alt="backstage header"></p>
+<p><em>TL;DR:</em> Introducing the TechDocs Addon Framework — a way for us all to contribute and share additional features, TechDocs Addons, on top of the base docs-like-code experience.</p>
+]]></summary>
+        <author>
+            <name>Gary Niemen, Spotify</name>
+            <uri>https://github.com/garyniemen/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[New release: Backstage 1.0]]></title>
         <id>https://backstage.io/blog/2022/03/17/backstage-1.0.html</id>

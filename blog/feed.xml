@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Thu, 17 Mar 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 May 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,16 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[Introducing the TechDocs Addon Framework]]></title>
+            <link>https://backstage.io/blog/2022/05/13/techdocs-addon-framework.html</link>
+            <guid>https://backstage.io/blog/2022/05/13/techdocs-addon-framework.html</guid>
+            <pubDate>Fri, 13 May 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><em>This blog post is co-authored by Eric Peterson (<a href="https://github.com/iamEAP">@iamEAP</a>), Spotify.</em></p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon-header.gif" alt="backstage header"></p>
+<p><em>TL;DR:</em> Introducing the TechDocs Addon Framework — a way for us all to contribute and share additional features, TechDocs Addons, on top of the base docs-like-code experience.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[New release: Backstage 1.0]]></title>
             <link>https://backstage.io/blog/2022/03/17/backstage-1.0.html</link>

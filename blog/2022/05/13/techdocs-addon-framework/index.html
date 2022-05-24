@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introducing the TechDocs Addon Framework · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="_This blog post is co-authored by Eric Peterson ([@iamEAP](https://github.com/iamEAP)), Spotify._"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Introducing the TechDocs Addon Framework · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/blog/2022/05/13/techdocs-addon-framework"/><meta property="og:description" content="_This blog post is co-authored by Eric Peterson ([@iamEAP](https://github.com/iamEAP)), Spotify._"/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-163836834-5', 'auto');
+              ga('send', 'pageview');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class="siteNavGroupActive"><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/docs/releases/v1.2.0" target="_self">Releases</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="/community" target="_self">Community</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2022/05/13/techdocs-addon-framework">Introducing the TechDocs Addon Framework</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/03/17/backstage-1.0">New release: Backstage 1.0</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/03/16/backstage-turns-two">Backstage Turns Two!</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/03/04/backstage-upgrade-helper">Avoid upgrade surprises with Backstage Upgrade Helper</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/01/25/backstage-homepage-templates">Say Hi to Backstage homepage templates!</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2022/05/13/techdocs-addon-framework">Introducing the TechDocs Addon Framework</a></h1><p class="post-meta">May 13, 2022</p><div class="authorBlock"><p class="post-authorName"><a href="https://github.com/garyniemen/" target="_blank" rel="noreferrer noopener">Gary Niemen, Spotify</a></p><div class="authorPhoto"><a href="https://github.com/garyniemen/" target="_blank" rel="noreferrer noopener"><img src="https://avatars.githubusercontent.com/u/65337273?v=4" alt="Gary Niemen, Spotify"/></a></div></div></header><div><span><p><em>This blog post is co-authored by Eric Peterson (<a href="https://github.com/iamEAP">@iamEAP</a>), Spotify.</em></p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon-header.gif" alt="backstage header"></p>
+<p><em>TL;DR:</em> Introducing the TechDocs Addon Framework — a way for us all to contribute and share additional features, TechDocs Addons, on top of the base docs-like-code experience.</p>
+<!--truncate-->
+<p><a href="https://backstage.io/docs/features/techdocs/techdocs-overview">TechDocs</a> is a centralized platform for publishing, viewing, and discovering technical documentation across an entire organization. It's a solid foundation! But TechDocs doesn't solve higher order documentation needs on its own such as: How do you create and reinforce a culture of documentation? How do you build trust in the quality of technical documentation?</p>
+<p>To address this need, we’re proud to introduce the <a href="https://github.com/backstage/backstage/issues/9636">TechDocs Addon Framework</a> — a way for us all to contribute and share additional features, TechDocs Addons, on top of the base docs-like-code experience. Using TechDocs Addons, you can customize the TechDocs experience to address some of these higher order needs.</p>
+<h1><a class="anchor" aria-hidden="true" id="open-source-addons-from-spotify"></a><a href="#open-source-addons-from-spotify" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Open source Addons from Spotify</h1>
+<p>We plan to open source many of the TechDocs Addons that we use at Spotify. The first Addon we open sourced is ReportIssue, which you can start using today. ReportIssue enables you to highlight text on a page and quickly raise a templated issue for that text, in your version control system (currently supports GitHub and GitLab). The following images depict this Addon in practice.</p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon1.png" alt="techdocs-addon1"></p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon2.png" alt="techdocs-addon2"></p>
+<p>Other Addons coming soon include a Stack Overflow card to surface relevant questions and answers and an Issue Counter.</p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon3.png" alt="techdocs-addon3"></p>
+<p>We encourage you to use Addons that we open source and contribute Addons of your own as you solve technical documentation problems arising in your company. We can’t wait to see what you come up with!</p>
+<p>Here are some resources to help you get started with new TechDocs Addons:</p>
+<ul>
+<li><a href="https://backstage.io/docs/features/techdocs/addons#installing-and-using-addons">Installing and using Addons</a>: add an existing TechDocs Addon to your Backstage App</li>
+<li><a href="https://backstage.io/docs/features/techdocs/addons#creating-an-addon">Creating an Addon</a>: contribute a new Addon for others to use</li>
+<li><a href="https://backstage.io/docs/features/techdocs/addons">TechDocs Addon page</a>: read everything you need to know about TechDocs Addons</li>
+</ul>
+<h1><a class="anchor" aria-hidden="true" id="next-steps"></a><a href="#next-steps" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Next steps</h1>
+<p>At present, the TechDocs Addon Framework is focused on frontend experiences only. We know what’s available now is a solid foundation, but based on our experience developing and maintaining Addons over several years, we know there’s more to be done.</p>
+<p>One such pattern is the occasional need for Addons to retrieve or compute data that is not easily accessible. Examples of these at Spotify are Last Updated and Top Contributors. Seemingly simple, these Addons require the ability to run non-trivial git commands to determine when documentation itself was last updated, and by whom.</p>
+<p><img src="/blog/assets/22-05-13/techdocs-addon5.png" alt="techdocs-addon5"></p>
+<p>This next step is a bit more tricky and we would like to work with you all to make it happen. Take a look at <a href="https://github.com/backstage/backstage/issues/11110">this issue</a> in the GitHub repo, let us know what you think, and feel free to get involved.</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
