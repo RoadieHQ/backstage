@@ -16,7 +16,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     auth0: Readonly&lt;{
@@ -25,16 +25,16 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     awsAlb: Readonly&lt;{
         create: (options?: {
-            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./aws-alb/provider"</span>).AwsAlbResult&gt; | <span class="hljs-literal">undefined</span>;
+            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./aws-alb"</span>).AwsAlbResult&gt; | <span class="hljs-literal">undefined</span>;
             signIn: {
-                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./aws-alb/provider"</span>).AwsAlbResult&gt;;
+                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./aws-alb"</span>).AwsAlbResult&gt;;
             };
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     bitbucket: Readonly&lt;{
@@ -43,7 +43,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
             usernameMatchingUserEntityAnnotation(): <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             userIdMatchingUserEntityAnnotation(): <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
@@ -55,19 +55,19 @@
             signIn: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./gcp-iap"</span>).GcpIapResult&gt;;
             };
-        }) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        }) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     github: Readonly&lt;{
         create: (options?: {
-            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github/provider"</span>).GithubOAuthResult&gt; | <span class="hljs-literal">undefined</span>;
+            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github"</span>).GithubOAuthResult&gt; | <span class="hljs-literal">undefined</span>;
             signIn?: {
-                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github/provider"</span>).GithubOAuthResult&gt;;
+                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github"</span>).GithubOAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
             stateEncoder?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).StateEncoder | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
-            usernameMatchingUserEntityName: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github/provider"</span>).GithubOAuthResult&gt;;
+            usernameMatchingUserEntityName: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./github"</span>).GithubOAuthResult&gt;;
         }&gt;;
     }&gt;;
     gitlab: Readonly&lt;{
@@ -76,7 +76,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     google: Readonly&lt;{
@@ -85,7 +85,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
             emailLocalPartMatchingUserEntityName: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
             emailMatchingUserEntityProfileEmail: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
@@ -98,7 +98,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
             emailLocalPartMatchingUserEntityName: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
             emailMatchingUserEntityProfileEmail: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
@@ -111,25 +111,25 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     oauth2Proxy: Readonly&lt;{
         create: (options: {
-            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oauth2-proxy/provider"</span>).OAuth2ProxyResult&lt;unknown&gt;&gt; | <span class="hljs-literal">undefined</span>;
+            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oauth2-proxy"</span>).OAuth2ProxyResult&lt;unknown&gt;&gt; | <span class="hljs-literal">undefined</span>;
             signIn: {
-                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oauth2-proxy/provider"</span>).OAuth2ProxyResult&lt;unknown&gt;&gt;;
+                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oauth2-proxy"</span>).OAuth2ProxyResult&lt;unknown&gt;&gt;;
             };
-        }) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        }) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     oidc: Readonly&lt;{
         create: (options?: {
-            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oidc/provider"</span>).OidcAuthResult&gt; | <span class="hljs-literal">undefined</span>;
+            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oidc"</span>).OidcAuthResult&gt; | <span class="hljs-literal">undefined</span>;
             signIn?: {
-                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oidc/provider"</span>).OidcAuthResult&gt;;
+                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./oidc"</span>).OidcAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     okta: Readonly&lt;{
@@ -138,7 +138,7 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
             emailLocalPartMatchingUserEntityName: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
             emailMatchingUserEntityProfileEmail: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;unknown&gt;;
@@ -151,18 +151,18 @@
             signIn?: {
                 resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">".."</span>).OAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: never;
     }&gt;;
     saml: Readonly&lt;{
         create: (options?: {
-            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml/provider"</span>).SamlAuthResult&gt; | <span class="hljs-literal">undefined</span>;
+            authHandler?: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthHandler&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml"</span>).SamlAuthResult&gt; | <span class="hljs-literal">undefined</span>;
             signIn?: {
-                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml/provider"</span>).SamlAuthResult&gt;;
+                resolver: <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml"</span>).SamlAuthResult&gt;;
             } | <span class="hljs-literal">undefined</span>;
-        } | <span class="hljs-literal">undefined</span>) =&gt; <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).AuthProviderFactory;
+        } | <span class="hljs-literal">undefined</span>) =&gt; AuthProviderFactory;
         resolvers: Readonly&lt;{
-            nameIdMatchingUserEntityName(): <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml/provider"</span>).SamlAuthResult&gt;;
+            nameIdMatchingUserEntityName(): <span class="hljs-keyword">import</span>(<span class="hljs-string">"./types"</span>).SignInResolver&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"./saml"</span>).SamlAuthResult&gt;;
         }&gt;;
     }&gt;;
 }&gt;

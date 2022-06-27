@@ -33,6 +33,14 @@
 <tr><td><a href="/docs/reference/catalog-model.entityschemavalidator">entitySchemaValidator(schema)</a></td><td>Creates a validation function that takes some arbitrary data, and either returns that data cast to an <a href="/docs/reference/catalog-model.entity">Entity</a> (or the given subtype) if it matches that schema, or throws a  describing the errors.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.getcompoundentityref">getCompoundEntityRef(entity)</a></td><td>Extracts the kind, namespace and name that form the compound entity ref triplet of the given entity.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.getentitysourcelocation">getEntitySourceLocation(entity)</a></td><td>Returns the source code location of the Entity, to the extent that one exists.</td></tr>
+<tr><td><a href="/docs/reference/catalog-model.isapientity">isApiEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.iscomponententity">isComponentEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.isdomainentity">isDomainEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.isgroupentity">isGroupEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.islocationentity">isLocationEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.isresourceentity">isResourceEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.issystementity">isSystemEntity(entity)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/catalog-model.isuserentity">isUserEntity(entity)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/catalog-model.makevalidator">makeValidator(overrides)</a></td><td>Creates a <a href="/docs/reference/catalog-model.validators">Validators</a> object from <code>overrides</code>, with default values taken from <a href="/docs/reference/catalog-model.kubernetesvalidatorfunctions">KubernetesValidatorFunctions</a></td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parseentityref">parseEntityRef(ref, context)</a></td><td>Parses an entity reference, either on string or compound form, and returns a structure with a name, and optional kind and namespace.</td></tr>
 <tr><td><a href="/docs/reference/catalog-model.parselocationref">parseLocationRef(ref)</a></td><td>Parses a string form location reference.</td></tr>
