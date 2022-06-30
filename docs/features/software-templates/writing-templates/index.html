@@ -348,6 +348,27 @@ little like this:</p>
 <p>The <code>allowedHosts</code> part should be set to where you wish to enable this template
 to publish to. And it can be any host that is listed in your <code>integrations</code>
 config in <code>app-config.yaml</code>.</p>
+<p>Besides specifying <code>allowedHosts</code> you can also restrict the template to publish to
+repositories owned by specific users/groups/namespaces by setting the <code>allowedOwners</code>
+option. With the <code>allowedRepos</code> option you are able to narrow it down further to a
+specific set of repository names. A full example could look like this:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">Choose</span> <span class="hljs-string">a</span> <span class="hljs-string">location</span>
+  <span class="hljs-attr">required:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-string">repoUrl</span>
+  <span class="hljs-attr">properties:</span>
+    <span class="hljs-attr">repoUrl:</span>
+      <span class="hljs-attr">title:</span> <span class="hljs-string">Repository</span> <span class="hljs-string">Location</span>
+      <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+      <span class="hljs-attr">ui:field:</span> <span class="hljs-string">RepoUrlPicker</span>
+      <span class="hljs-attr">ui:options:</span>
+        <span class="hljs-attr">allowedHosts:</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-string">github.com</span>
+        <span class="hljs-attr">allowedOwners:</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-string">backstage</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-string">someGithubUser</span>
+        <span class="hljs-attr">allowedRepos:</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-string">backstage</span>
+</code></pre>
 <p>The <code>RepoUrlPicker</code> is a custom field that we provide part of the
 <code>plugin-scaffolder</code>. You can provide your own custom fields by
 <a href="/docs/features/software-templates/writing-custom-field-extensions">writing your own Custom Field Extensions</a></p>
@@ -480,12 +501,64 @@ using this template syntax (for example, <code>${{ parameters.firstName }}</code
 the value of <code>firstName</code> from the parameters). This is great for passing the
 values from the form into different steps and reusing these input variables.
 These template strings preserve the type of the parameter.</p>
+<p>The <code>${{ parameters.firstName }}</code> pattern will work only in the template file.
+If you want to start using values provided from the UI in your code, you will have to use
+the <code>${{ values.firstName }}</code> pattern. Additionally, you have to pass
+the parameters from the UI to the input of the <code>fetch:template</code> step.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">scaffolder.backstage.io/v1beta3</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">Template</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">v1beta3-demo</span>
+  <span class="hljs-attr">title:</span> <span class="hljs-string">Test</span> <span class="hljs-string">Action</span>
+  <span class="hljs-attr">description:</span> <span class="hljs-string">scaffolder</span> <span class="hljs-string">v1beta3</span> <span class="hljs-string">template</span> <span class="hljs-string">demo</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">owner:</span> <span class="hljs-string">backstage/techdocs-core</span>
+  <span class="hljs-attr">type:</span> <span class="hljs-string">service</span>
+  <span class="hljs-attr">parameters:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">Fill</span> <span class="hljs-string">in</span> <span class="hljs-string">some</span> <span class="hljs-string">steps</span>
+      <span class="hljs-attr">required:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">name</span>
+      <span class="hljs-attr">properties:</span>
+        <span class="hljs-attr">name:</span>
+          <span class="hljs-attr">title:</span> <span class="hljs-string">Name</span>
+          <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+          <span class="hljs-attr">description:</span> <span class="hljs-string">Unique</span> <span class="hljs-string">name</span> <span class="hljs-string">of</span> <span class="hljs-string">your</span> <span class="hljs-string">project</span>
+        <span class="hljs-attr">urlParameter:</span>
+          <span class="hljs-attr">title:</span> <span class="hljs-string">URL</span> <span class="hljs-string">endpoint</span>
+          <span class="hljs-attr">type:</span> <span class="hljs-string">string</span>
+          <span class="hljs-attr">description:</span> <span class="hljs-string">URL</span> <span class="hljs-string">endpoint</span> <span class="hljs-string">at</span> <span class="hljs-string">which</span> <span class="hljs-string">the</span> <span class="hljs-string">component</span> <span class="hljs-string">can</span> <span class="hljs-string">be</span> <span class="hljs-string">reached</span>
+          <span class="hljs-attr">default:</span> <span class="hljs-string">'https://www.example.com'</span>
+        <span class="hljs-attr">enabledDB:</span>
+          <span class="hljs-attr">title:</span> <span class="hljs-string">Enable</span> <span class="hljs-string">Database</span>
+          <span class="hljs-attr">type:</span> <span class="hljs-string">boolean</span>
+          <span class="hljs-attr">default:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-string">...</span>
+  <span class="hljs-attr">steps:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">fetch-base</span>
+      <span class="hljs-attr">name:</span> <span class="hljs-string">Fetch</span> <span class="hljs-string">Base</span>
+      <span class="hljs-attr">action:</span> <span class="hljs-string">fetch:template</span>
+      <span class="hljs-attr">input:</span>
+        <span class="hljs-attr">url:</span> <span class="hljs-string">./template</span>
+        <span class="hljs-attr">values:</span>
+          <span class="hljs-attr">name:</span> <span class="hljs-string">${{</span> <span class="hljs-string">parameters.name</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">url:</span> <span class="hljs-string">${{</span> <span class="hljs-string">parameters.urlParameter</span> <span class="hljs-string">}}</span>
+          <span class="hljs-attr">enabledDB:</span> <span class="hljs-string">${{</span> <span class="hljs-string">parameters.enabledDB</span> <span class="hljs-string">}}</span>
+</code></pre>
+<p>Afterwards, if you are using the builtin templating action, you can start using
+the variables in your code. You can use also any other templating functions from
+<a href="https://mozilla.github.io/nunjucks/templating.html#tags">Nunjucks</a> as well.</p>
+<pre><code class="hljs css language-bash"><span class="hljs-meta">#!/bin/bash</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"Hi my name is <span class="hljs-variable">${{ values.name }</span>}, and you can fine me at <span class="hljs-variable">${{ values.url }</span>}!"</span>
+{% <span class="hljs-keyword">if</span> values.enabledDB %}
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"You have enabled your database!"</span>
+{% endif %}
+</code></pre>
 <p>As you can see above in the <code>Outputs</code> section, <code>actions</code> and <code>steps</code> can also
 output things. You can grab that output using <code>steps.$stepId.output.$property</code>.</p>
 <p>You can read more about all the <code>inputs</code> and <code>outputs</code> defined in the actions in
 code part of the <code>JSONSchema</code>, or you can read more about our
 <a href="/docs/features/software-templates/builtin-actions">built in actions</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/27/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/adding-templates"><span class="arrow-prev">← </span><span>Adding your own Templates</span></a><a class="docs-next button" href="/docs/features/software-templates/builtin-actions"><span>Builtin actions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#specparameters---formstep--formstep"><code>spec.parameters</code> - <code>FormStep | FormStep[]</code></a><ul class="toc-headings"><li><a href="#hide-or-mask-sensitive-data-on-review-step">Hide or mask sensitive data on Review step</a></li><li><a href="#remove-sections-or-fields-based-on-feature-flags">Remove sections or fields based on feature flags</a></li><li><a href="#the-repository-picker">The Repository Picker</a></li><li><a href="#accessing-the-signed-in-users-details">Accessing the signed-in users details</a></li><li><a href="#the-owner-picker">The Owner Picker</a></li></ul></li><li><a href="#specsteps---action"><code>spec.steps</code> - <code>Action[]</code></a></li><li><a href="#outputs">Outputs</a></li><li><a href="#the-templating-syntax">The templating syntax</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/30/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/adding-templates"><span class="arrow-prev">← </span><span>Adding your own Templates</span></a><a class="docs-next button" href="/docs/features/software-templates/builtin-actions"><span>Builtin actions</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#specparameters---formstep--formstep"><code>spec.parameters</code> - <code>FormStep | FormStep[]</code></a><ul class="toc-headings"><li><a href="#hide-or-mask-sensitive-data-on-review-step">Hide or mask sensitive data on Review step</a></li><li><a href="#remove-sections-or-fields-based-on-feature-flags">Remove sections or fields based on feature flags</a></li><li><a href="#the-repository-picker">The Repository Picker</a></li><li><a href="#accessing-the-signed-in-users-details">Accessing the signed-in users details</a></li><li><a href="#the-owner-picker">The Owner Picker</a></li></ul></li><li><a href="#specsteps---action"><code>spec.steps</code> - <code>Action[]</code></a></li><li><a href="#outputs">Outputs</a></li><li><a href="#the-templating-syntax">The templating syntax</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
