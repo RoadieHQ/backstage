@@ -36,6 +36,7 @@
 <tr><td><a href="/docs/reference/core-plugin-api.createrouteref">createRouteRef(config)</a></td><td>Create a <a href="/docs/reference/core-plugin-api.routeref">RouteRef</a> from a route descriptor.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.createsubrouteref">createSubRouteRef(config)</a></td><td>Create a <a href="/docs/reference/core-plugin-api.subrouteref">SubRouteRef</a> from a route descriptor.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.getcomponentdata">getComponentData(node, type)</a></td><td>Retrieves data attached to a component.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.useanalytics">useAnalytics()</a></td><td>Gets a pre-configured analytics tracker.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useapi">useApi(apiRef)</a></td><td>React hook for retrieving APIs.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useapiholder">useApiHolder()</a></td><td>React hook for retrieving <a href="/docs/reference/core-plugin-api.apiholder">ApiHolder</a><!-- -->, an API catalog.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.useelementfilter">useElementFilter(node, filterFn, dependencies)</a></td><td>useElementFilter is a utility that helps you narrow down and retrieve data from a React element tree, typically operating on the <code>children</code> property passed in to a component.</td></tr>
@@ -63,6 +64,8 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/core-plugin-api.alertapiref">alertApiRef</a></td><td>The <a href="/docs/reference/core-plugin-api.apiref">ApiRef</a> of <a href="/docs/reference/core-plugin-api.alertapi">AlertApi</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsapiref">analyticsApiRef</a></td><td>The <a href="/docs/reference/core-plugin-api.apiref">ApiRef</a> of <a href="/docs/reference/core-plugin-api.analyticsapi">AnalyticsApi</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticscontext">AnalyticsContext</a></td><td>Provides components in the child react tree an Analytics Context, ensuring all analytics events captured within the context have relevant attributes.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.appthemeapiref">appThemeApiRef</a></td><td>The <a href="/docs/reference/core-plugin-api.apiref">ApiRef</a> of <a href="/docs/reference/core-plugin-api.appthemeapi">AppThemeApi</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.atlassianauthapiref">atlassianAuthApiRef</a></td><td>Provides authentication towards Atlassian APIs.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.bitbucketauthapiref">bitbucketAuthApiRef</a></td><td>Provides authentication towards Bitbucket APIs.</td></tr>
@@ -91,6 +94,11 @@
 <tbody>
 <tr><td><a href="/docs/reference/core-plugin-api.alertapi">AlertApi</a></td><td>The alert API is used to report alerts to the app, and display them to the user.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.alertmessage">AlertMessage</a></td><td>Message handled by the <a href="/docs/reference/core-plugin-api.alertapi">AlertApi</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsapi">AnalyticsApi</a></td><td>The Analytics API is used to track user behavior in a Backstage instance.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticscontextvalue">AnalyticsContextValue</a></td><td>Analytics context envelope.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticsevent">AnalyticsEvent</a></td><td>Represents an event worth tracking in an analytics system that could inform how users of a Backstage instance are using its features.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticseventattributes">AnalyticsEventAttributes</a></td><td>A structure allowing other arbitrary metadata to be provided by analytics event emitters.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.analyticstracker">AnalyticsTracker</a></td><td>Represents a tracker with methods that can be called to track events in a configured analytics service.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.anyapifactory">AnyApiFactory</a></td><td>Catch-all <a href="/docs/reference/core-plugin-api.apifactory">ApiFactory</a> type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.anyapiref">AnyApiRef</a></td><td>Catch-all <a href="/docs/reference/core-plugin-api.apiref">ApiRef</a> type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.anyexternalroutes">AnyExternalRoutes</a></td><td>Catch-all type for <a href="/docs/reference/core-plugin-api.externalrouteref">ExternalRouteRef</a><!-- -->s.</td></tr>
@@ -111,6 +119,7 @@
 <tr><td><a href="/docs/reference/core-plugin-api.backstageplugin">BackstagePlugin</a></td><td>Plugin type.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.backstageuseridentity">BackstageUserIdentity</a></td><td>User identity information within Backstage.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.booterrorpageprops">BootErrorPageProps</a></td><td>Props for the <code>BootErrorPage</code> component of <a href="/docs/reference/core-plugin-api.appcomponents">AppComponents</a><!-- -->.</td></tr>
+<tr><td><a href="/docs/reference/core-plugin-api.commonanalyticscontext">CommonAnalyticsContext</a></td><td>Common analytics context attributes.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.componentloader">ComponentLoader</a></td><td>Lazy or synchronous retrieving of extension components.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.configapi">ConfigApi</a></td><td>The Config API is used to provide a mechanism to access the runtime configuration of the system.</td></tr>
 <tr><td><a href="/docs/reference/core-plugin-api.discoveryapi">DiscoveryApi</a></td><td>The discovery API is used to provide a mechanism for plugins to discover the endpoint to use to talk to their backend counterpart.</td></tr>

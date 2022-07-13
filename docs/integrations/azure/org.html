@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Microsoft Azure Active Directory Organizational Data · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Importing users and groups from a Microsoft Azure Active Directory into Backstage"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Microsoft Azure Active Directory Organizational Data · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/"/><meta property="og:description" content="Importing users and groups from a Microsoft Azure Active Directory into Backstage"/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Microsoft Azure Active Directory Organizational Data · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Importing users and groups from Microsoft Azure Active Directory into Backstage"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Microsoft Azure Active Directory Organizational Data · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/"/><meta property="og:description" content="Importing users and groups from Microsoft Azure Active Directory into Backstage"/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
               (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
               m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -65,9 +65,187 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/backstage/backstage/edit/master/docs/integrations/azure/org.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Microsoft Azure Active Directory Organizational Data</h1></header><article><div><span><p>The Backstage catalog can be set up to ingest organizational data - users and
 teams - directly from a tenant in Microsoft Azure Active Directory via the
 Microsoft Graph API.</p>
-<p>More details on this are available in the
-<a href="https://github.com/backstage/backstage/blob/master/plugins/catalog-backend-module-msgraph/README.md">README of the <code>@backstage/plugin-catalog-backend-module-msgraph</code> package</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/30/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/integrations/azure/discovery"><span class="arrow-prev">← </span><span>Discovery</span></a><a class="docs-next button" href="/docs/integrations/bitbucket/locations"><span>Locations</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+<h2><a class="anchor" aria-hidden="true" id="installation"></a><a href="#installation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation</h2>
+<p>The package is not installed by default, therefore you have to add <code>@backstage/plugin-catalog-backend-module-msgraph</code> to your backend package.</p>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># From your Backstage root directory</span>
+yarn add --cwd packages/backend @backstage/plugin-catalog-backend-module-msgraph
+</code></pre>
+<p>Next add the basic configuration to <code>app-config.yaml</code></p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">providers:</span>
+    <span class="hljs-attr">microsoftGraphOrg:</span>
+      <span class="hljs-attr">default:</span>
+        <span class="hljs-attr">tenantId:</span> <span class="hljs-string">${AZURE_TENANT_ID}</span>
+        <span class="hljs-attr">user:</span>
+          <span class="hljs-attr">filter:</span> <span class="hljs-string">accountEnabled</span> <span class="hljs-string">eq</span> <span class="hljs-literal">true</span> <span class="hljs-string">and</span> <span class="hljs-string">userType</span> <span class="hljs-string">eq</span> <span class="hljs-string">'member'</span>
+        <span class="hljs-attr">group:</span>
+          <span class="hljs-attr">filter:</span> <span class="hljs-string">&gt;
+            securityEnabled eq false
+            and mailEnabled eq true
+            and groupTypes/any(c:c+eq+'Unified')
+</span></code></pre>
+<p>Finally, register the plugin in <code>catalog.ts</code>.
+For large organizations, this plugin can take a long time, so be careful setting low frequency / timeouts.</p>
+<pre><code class="hljs css language-diff"> // packages/backend/src/plugins/catalog.ts
+<span class="hljs-addition">+import { MicrosoftGraphOrgEntityProvider } from '@backstage/plugin-catalog-backend-module-msgraph';</span>
+
+ export default async function createPlugin(
+   env: PluginEnvironment,
+ ): Promise&lt;Router&gt; {
+   const builder = await CatalogBuilder.create(env);
+
+<span class="hljs-addition">+  builder.addEntityProvider(</span>
+<span class="hljs-addition">+    MicrosoftGraphOrgEntityProvider.fromConfig(env.config, {</span>
+<span class="hljs-addition">+      logger: env.logger,</span>
+<span class="hljs-addition">+      schedule: env.scheduler.createScheduledTaskRunner({</span>
+<span class="hljs-addition">+        frequency: { hours: 1 },</span>
+<span class="hljs-addition">+        timeout: { minutes: 50 },</span>
+<span class="hljs-addition">+        initialDelay: { seconds: 15}</span>
+<span class="hljs-addition">+      }),</span>
+<span class="hljs-addition">+    }),</span>
+<span class="hljs-addition">+  );</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="authenticating-with-microsoft-graph"></a><a href="#authenticating-with-microsoft-graph" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authenticating with Microsoft Graph</h2>
+<h3><a class="anchor" aria-hidden="true" id="local-development"></a><a href="#local-development" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Local Development</h3>
+<p>For a local dev environment, it's recommended you have the Azure CLI or Azure PowerShell installed, and are logged in to those.
+Alternatively you can use VSCode with the Azure extension if you install <code>@azure/identity-vscode</code>.
+When these are set up, the plugin will authenticate with the Microsoft Graph API without you needing to configure any credentials, or granting any special permissions.
+If you can't do this, you'll have to create an App Registration.</p>
+<h2><a class="anchor" aria-hidden="true" id="app-registration"></a><a href="#app-registration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App Registration</h2>
+<p>If none of the other authentication methods work, you can create an app registration in the azure portal.<br>
+By default the graph plugin requires the following Application permissions (not Delegated) for Microsoft Graph:</p>
+<ul>
+<li><code>GroupMember.Read.All</code></li>
+<li><code>User.Read.All</code></li>
+</ul>
+<p>If your organization required Admin Consent for these permissions, that will need to be granted.</p>
+<p>When authenticating with a ClientId/ClientSecret, you can either set the <code>AZURE_TENANT_ID</code>, <code>AZURE_CLIENT_ID</code> and <code>AZURE_CLIENT_SECRET</code> environment variables, or specify the values in configuration</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">microsoftGraphOrg:</span>
+  <span class="hljs-attr">default:</span>
+    <span class="hljs-comment">##...</span>
+    <span class="hljs-attr">clientId:</span> <span class="hljs-string">9ef1aac6-b454-4e69-9cf5-7199df049281</span>
+    <span class="hljs-attr">clientSecret:</span> <span class="hljs-string">REDACTED</span>
+</code></pre>
+<p>To authenticate with a certificate rather than a client secret, you can set the <code>AZURE_TENANT_ID</code>, <code>AZURE_CLIENT_ID</code> and <code>AZURE_CLIENT_CERTIFICATE_PATH</code> environments</p>
+<h3><a class="anchor" aria-hidden="true" id="managed-identity"></a><a href="#managed-identity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Managed Identity</h3>
+<p>If deploying to resources that supports Managed Identity, and has identities configured (e.g. Azure App Services, Azure Container Apps), Managed Identity should be picked up without any additional configuration.
+If your app has multiple managed identities, you may need to set the <code>AZURE_CLIENT_ID</code> environment variable to tell Azure Identity which identity to use.</p>
+<p>You will need to grant the same permissions to your identity as described for App Registrations above.</p>
+<h2><a class="anchor" aria-hidden="true" id="filtering-imported-users-and-groups"></a><a href="#filtering-imported-users-and-groups" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Filtering imported Users and Groups</h2>
+<p>By default, the plugin will import all users and groups from your directory.
+This can be customized through filters and search queries.</p>
+<h3><a class="anchor" aria-hidden="true" id="groups"></a><a href="#groups" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Groups</h3>
+<p>A smaller set of groups can be obtained by configuring a search query or a filter.
+If both <code>filter</code> and <code>search</code> are provided, then groups must match both to be ingested.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">microsoftGraphOrg:</span>
+  <span class="hljs-attr">providerId:</span>
+    <span class="hljs-attr">group:</span>
+      <span class="hljs-attr">filter:</span> <span class="hljs-string">securityEnabled</span> <span class="hljs-string">eq</span> <span class="hljs-literal">false</span> <span class="hljs-string">and</span> <span class="hljs-string">mailEnabled</span> <span class="hljs-string">eq</span> <span class="hljs-literal">true</span> <span class="hljs-string">and</span> <span class="hljs-string">groupTypes/any(c:c+eq+'Unified')</span>
+      <span class="hljs-attr">search:</span> <span class="hljs-string">'"description:One" AND ("displayName:Video" OR "displayName:Drive")'</span>
+</code></pre>
+<p>In addition to these groups, one additional group will be created for your organization.
+All imported groups will be a child of this group.</p>
+<h3><a class="anchor" aria-hidden="true" id="users"></a><a href="#users" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Users</h3>
+<p>There are two modes for importing users - You can import all user objects matching a <code>filter</code>.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">microsoftGraphOrg:</span>
+  <span class="hljs-attr">providerId:</span>
+    <span class="hljs-attr">user:</span>
+      <span class="hljs-attr">filter:</span> <span class="hljs-string">accountEnabled</span> <span class="hljs-string">eq</span> <span class="hljs-literal">true</span> <span class="hljs-string">and</span> <span class="hljs-string">userType</span> <span class="hljs-string">eq</span> <span class="hljs-string">'member'</span>
+</code></pre>
+<p>Alternatively you can import users that are members of specific groups.
+For each group matching the <code>search</code> and <code>filter</code> query, each group member will be imported.
+Only direct group members will be imported, not transient users.</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">microsoftGraphOrg:</span>
+  <span class="hljs-attr">providerId:</span>
+    <span class="hljs-attr">userGroupMember:</span>
+      <span class="hljs-attr">filter:</span> <span class="hljs-string">"displayName eq 'Backstage Users'"</span>
+      <span class="hljs-attr">search:</span> <span class="hljs-string">'"description:One" AND ("displayName:Video" OR "displayName:Drive")'</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="customizing-transformation"></a><a href="#customizing-transformation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Customizing Transformation</h2>
+<p>Ingested entities can be customized by providing custom transformers.
+These can be used to completely replace the built in logic, or used to tweak it by using the default transformers (<code>defaultGroupTransformer</code>, <code>defaultUserTransformer</code> and <code>defaultOrganizationTransformer</code>
+Entities can also be excluded from backstage by returning <code>undefined</code>.</p>
+<p>These Transformers are be registered when configuring <code>MicrosoftGraphOrgEntityProvider</code></p>
+<pre><code class="hljs css language-diff"> builder.addEntityProvider(
+   MicrosoftGraphOrgEntityProvider.fromConfig(env.config, {
+     // ...
+<span class="hljs-addition">+    groupTransformer: myGroupTransformer,</span>
+<span class="hljs-addition">+    userTransformer: myUserTransformer,</span>
+<span class="hljs-addition">+    organizationTransformer: myOrganizationTransformer,</span>
+   }),
+ );
+</code></pre>
+<p>When using custom transformers, you may want to customize the data returned.
+Several configuration options can be provided to tweak the Microsoft Graph query to get the data you need</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">microsoftGraphOrg:</span>
+  <span class="hljs-attr">providerId:</span>
+    <span class="hljs-attr">user:</span>
+      <span class="hljs-attr">expand:</span> <span class="hljs-string">manager</span>
+    <span class="hljs-attr">group:</span>
+      <span class="hljs-attr">expand:</span> <span class="hljs-string">member</span>
+      <span class="hljs-attr">select:</span> <span class="hljs-string">['id',</span> <span class="hljs-string">'displayName'</span><span class="hljs-string">,</span> <span class="hljs-string">'description'</span><span class="hljs-string">]</span>
+</code></pre>
+<p>The following provides an example of each kind of transformer</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> MicrosoftGraph <span class="hljs-keyword">from</span> <span class="hljs-string">'@microsoft/microsoft-graph-types'</span>;
+<span class="hljs-keyword">import</span> {
+  defaultGroupTransformer,
+  defaultUserTransformer,
+  defaultOrganizationTransformer,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-catalog-backend-module-msgraph'</span>;
+<span class="hljs-keyword">import</span> { GroupEntity, UserEntity } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/catalog-model'</span>;
+
+<span class="hljs-comment">// This group transformer completely replaces the built in logic with custom logic.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myGroupTransformer</span>(<span class="hljs-params">
+  group: MicrosoftGraph.Group,
+  groupPhoto?: <span class="hljs-built_in">string</span>,
+</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">GroupEntity</span> | <span class="hljs-title">undefined</span>&gt; </span>{
+  <span class="hljs-keyword">return</span> {
+    apiVersion: <span class="hljs-string">'backstage.io/v1alpha1'</span>,
+    kind: <span class="hljs-string">'Group'</span>,
+    metadata: {
+      name: group.id!,
+      annotations: {},
+    },
+    spec: {
+      <span class="hljs-keyword">type</span>: <span class="hljs-string">'aad'</span>,
+      children: [],
+    },
+  };
+}
+
+<span class="hljs-comment">// This user transformer makes use of the built in logic, but also sets the description field</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myUserTransformer</span>(<span class="hljs-params">
+  graphUser: MicrosoftGraph.User,
+  userPhoto?: <span class="hljs-built_in">string</span>,
+</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">UserEntity</span> | <span class="hljs-title">undefined</span>&gt; </span>{
+  <span class="hljs-keyword">const</span> backstageUser = <span class="hljs-keyword">await</span> defaultUserTransformer(graphUser, userPhoto);
+
+  <span class="hljs-keyword">if</span> (backstageUser) {
+    backstageUser.metadata.description = <span class="hljs-string">'Loaded from Azure Active Directory'</span>;
+  }
+
+  <span class="hljs-keyword">return</span> backstageUser;
+}
+
+<span class="hljs-comment">// Example organization transformer that removes the organization group completely</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myOrganizationTransformer</span>(<span class="hljs-params">
+  graphOrganization: MicrosoftGraph.Organization,
+</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">GroupEntity</span> | <span class="hljs-title">undefined</span>&gt; </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">undefined</span>;
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="troubleshooting"></a><a href="#troubleshooting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Troubleshooting</h2>
+<h3><a class="anchor" aria-hidden="true" id="authentication--token-errors"></a><a href="#authentication--token-errors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication / Token Errors</h3>
+<p>See <a href="https://aka.ms/azsdk/js/identity/troubleshoot">Troubleshooting Azure Identity Authentication Issues</a></p>
+<h3><a class="anchor" aria-hidden="true" id="error-while-reading-users-from-microsoft-graph-authorization_requestdenied---insufficient-privileges-to-complete-the-operation"></a><a href="#error-while-reading-users-from-microsoft-graph-authorization_requestdenied---insufficient-privileges-to-complete-the-operation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Error while reading users from Microsoft Graph: Authorization_RequestDenied - Insufficient privileges to complete the operation.</h3>
+<ul>
+<li>Make sure you've granted all the required permissions to your application registration or managed identity</li>
+<li>Make sure the permissions are <code>Application</code> permissions rather than <code>Delegated</code></li>
+<li>If your organization has configured &quot;Admin consent&quot; to be required, make sure this has been granted for your application permissions</li>
+<li>If your group queries are returning Microsoft Teams groups, you may need to grant addition permissions (e.g. <code>Team.ReadBasic.All</code>, <code>TeamMember.Read.All</code>)</li>
+<li>If you've added additional <code>select</code> or <code>expand</code> fields, those may need additional permissions granted</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/13/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/integrations/azure/discovery"><span class="arrow-prev">← </span><span>Discovery</span></a><a class="docs-next button" href="/docs/integrations/bitbucket/locations"><span>Locations</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#installation">Installation</a></li><li><a href="#authenticating-with-microsoft-graph">Authenticating with Microsoft Graph</a><ul class="toc-headings"><li><a href="#local-development">Local Development</a></li></ul></li><li><a href="#app-registration">App Registration</a><ul class="toc-headings"><li><a href="#managed-identity">Managed Identity</a></li></ul></li><li><a href="#filtering-imported-users-and-groups">Filtering imported Users and Groups</a><ul class="toc-headings"><li><a href="#groups">Groups</a></li><li><a href="#users">Users</a></li></ul></li><li><a href="#customizing-transformation">Customizing Transformation</a></li><li><a href="#troubleshooting">Troubleshooting</a><ul class="toc-headings"><li><a href="#authentication--token-errors">Authentication / Token Errors</a></li><li><a href="#error-while-reading-users-from-microsoft-graph-authorization_requestdenied---insufficient-privileges-to-complete-the-operation">Error while reading users from Microsoft Graph: Authorization_RequestDenied - Insufficient privileges to complete the operation.</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

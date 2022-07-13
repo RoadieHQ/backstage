@@ -69,9 +69,114 @@ specific underlying search technologies.</p>
 <p>On this page, you'll find concepts and tutorials for leveraging the Backstage
 Search Platform in your plugin.</p>
 <h2><a class="anchor" aria-hidden="true" id="providing-data-to-the-search-platform"></a><a href="#providing-data-to-the-search-platform" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Providing data to the search platform</h2>
+<h3><a class="anchor" aria-hidden="true" id="create-a-collator"></a><a href="#create-a-collator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create a collator</h3>
 <blockquote>
-<p>A guide on how to create collators is coming soon!</p>
+<p>Knowing what a <a href="/docs/features/search/concepts#collators">collator</a> is will help you as you build it out.</p>
 </blockquote>
+<p>Imagine you have a plugin that is responsible for storing FAQ snippets in a database. You want other engineers to be able to easily find your questions and answers. So that means you want them to be indexed by the search platform. Lets say the FAQ snippets can be viewed at a URL like <code>backstage.example.biz/faq-snippets</code>.</p>
+<p>The search platform provides an interface (<code>DocumentCollatorFactory</code> from package <code>@backstage/plugin-search-common</code>) that allows you to do exactly that. It works by registering each of your entries as a &quot;document&quot; that later represents one search result each.</p>
+<blockquote>
+<p>You can always look at a working example, e.g. <a href="https://github.com/backstage/backstage/blob/master/plugins/stack-overflow-backend/src/search/StackOverflowQuestionsCollatorFactory.ts">StackOverflowQuestionsCollatorFactory</a>, if you are unsure or want to follow best practices.</p>
+</blockquote>
+<h4><a class="anchor" aria-hidden="true" id="1-install-collator-interface-dependencies"></a><a href="#1-install-collator-interface-dependencies" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. Install collator interface dependencies</h4>
+<p>We will need the interface <code>DocumentCollatorFactory</code> from package <code>@backstage/plugin-search-common</code>, so let's add it to your plugins dependencies:</p>
+<pre><code class="hljs css language-sh"><span class="hljs-comment"># navigate to the plugin directory</span>
+<span class="hljs-comment"># (for this tutorial our plugin lives in the backstage repo, if your plugin lives in a separate repo you need to clone that first)</span>
+<span class="hljs-built_in">cd</span> plugins/faq-snippets
+
+<span class="hljs-comment"># Create a new branch using Git command-line</span>
+git checkout -b tutorials/new-faq-snippets-collator
+
+<span class="hljs-comment"># Install the package containing the interface</span>
+yarn add @backstage/plugin-search-common
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="2-define-your-document-type"></a><a href="#2-define-your-document-type" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Define your document type</h4>
+<p>Before we can start generating documents from our FAQ entries, we first have to define a document type containing all necessary information we need to later display our entry as search result. The package <code>@backstage/plugin-search-common</code> we installed earlier contains a type <code>IndexableDocument</code> that we can extend.</p>
+<p>Create a new file <code>plugins/faq-snippets/src/search/collators/FaqSnippetDocument.ts</code> and paste the following below:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> { IndexableDocument } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-common'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> FaqSnippetDocument <span class="hljs-keyword">extends</span> IndexableDocument {
+  answered_by: <span class="hljs-built_in">string</span>;
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="3-use-backstage-app-configuration"></a><a href="#3-use-backstage-app-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Use Backstage App configuration</h4>
+<p>Your new collator could benefit from using configuration directly from the Backstage <code>app-config.yaml</code> file which is located on the project's root folder:</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">faq:</span>
+  <span class="hljs-attr">baseUrl:</span> <span class="hljs-string">https://backstage.example.biz/faq-snippets</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="4-implement-your-collator"></a><a href="#4-implement-your-collator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. Implement your collator</h4>
+<p>Imagine your FAQs can be retrieved at the URL <code>https://backstage.example.biz/faq-snippets</code> with following JSON response format:</p>
+<pre><code class="hljs css language-json">{
+  <span class="hljs-attr">"items"</span>: [
+    {
+      <span class="hljs-attr">"id"</span>: <span class="hljs-number">42</span>,
+      <span class="hljs-attr">"question"</span>: <span class="hljs-string">"What is The Answer to the Ultimate Question of Life, the Universe, and Everything?"</span>,
+      <span class="hljs-attr">"answer"</span>: <span class="hljs-string">"Forty-two"</span>,
+      <span class="hljs-attr">"user"</span>: <span class="hljs-string">"Deep Thought"</span>
+    }
+  ]
+}
+</code></pre>
+<p>Below we provide an example implementation of how the FAQ collator factory could look like using our new document type, placed in the <code>plugins/faq-snippets/src/search/collators/FaqCollatorFactory.ts</code> file:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">'cross-fetch'</span>;
+<span class="hljs-keyword">import</span> { Logger } <span class="hljs-keyword">from</span> <span class="hljs-string">'winston'</span>;
+<span class="hljs-keyword">import</span> { Config } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/config'</span>;
+<span class="hljs-keyword">import</span> { Readable } <span class="hljs-keyword">from</span> <span class="hljs-string">'stream'</span>;
+<span class="hljs-keyword">import</span> { DocumentCollatorFactory } <span class="hljs-keyword">from</span> <span class="hljs-string">'@backstage/plugin-search-common'</span>;
+
+<span class="hljs-keyword">import</span> { FaqDocument } <span class="hljs-keyword">from</span> <span class="hljs-string">'./FaqDocument'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> FaqCollatorFactoryOptions = {
+  baseUrl?: <span class="hljs-built_in">string</span>;
+  logger: Logger;
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">class</span> FaqCollatorFactory <span class="hljs-keyword">implements</span> DocumentCollatorFactory {
+  <span class="hljs-keyword">private</span> readonly baseUrl: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>;
+  <span class="hljs-keyword">private</span> readonly logger: Logger;
+  <span class="hljs-keyword">public</span> readonly <span class="hljs-keyword">type</span>: <span class="hljs-built_in">string</span> = <span class="hljs-string">'faq-snippets'</span>;
+
+  <span class="hljs-keyword">private</span> <span class="hljs-keyword">constructor</span>(<span class="hljs-params">options: FaqCollatorFactoryOptions</span>) {
+    <span class="hljs-keyword">this</span>.baseUrl = options.baseUrl;
+    <span class="hljs-keyword">this</span>.logger = options.logger;
+  }
+
+  <span class="hljs-keyword">static</span> fromConfig(config: Config, options: FaqCollatorFactoryOptions) {
+    <span class="hljs-keyword">const</span> baseUrl =
+      config.getOptionalString(<span class="hljs-string">'faq.baseUrl'</span>) ||
+      <span class="hljs-string">'https://backstage.example.biz/faq-snippets'</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> FaqCollatorFactory({ ...options, baseUrl });
+  }
+
+  <span class="hljs-keyword">async</span> getCollator() {
+    <span class="hljs-keyword">return</span> Readable.from(<span class="hljs-keyword">this</span>.execute());
+  }
+
+  <span class="hljs-keyword">async</span> *execute(): AsyncGenerator&lt;FaqDocument&gt; {
+    <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.baseUrl) {
+      <span class="hljs-keyword">this</span>.logger.error(<span class="hljs-string">`No faq.baseUrl configured in your app-config.yaml`</span>);
+      <span class="hljs-keyword">return</span>;
+    }
+
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-keyword">this</span>.baseUrl);
+    <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> response.json();
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> faq of data.items) {
+      <span class="hljs-keyword">yield</span> {
+        title: faq.question,
+        location: <span class="hljs-string">`/faq-snippets/<span class="hljs-subst">${faq.id}</span>`</span>,
+        text: faq.answer,
+        answered_by: faq.user,
+      };
+    }
+  }
+}
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="5-test-your-collator"></a><a href="#5-test-your-collator" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. Test your collator</h4>
+<p>To verify your implementation works as expected make sure to add tests for it. For your convenience, there is the <a href="https://backstage.io/docs/reference/plugin-search-backend-node.testpipeline"><code>TestPipeline</code></a> utility that emulates a pipeline into which you can integrate your custom collator.</p>
+<p>Look at <a href="https://github.com/backstage/backstage/blob/master/plugins/techdocs-backend/src/search/DefaultTechDocsCollatorFactory.test.ts">DefaultTechDocsCollatorFactory test</a>, for an example.</p>
+<h4><a class="anchor" aria-hidden="true" id="6-make-your-plugins-collator-discoverable-for-others"></a><a href="#6-make-your-plugins-collator-discoverable-for-others" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. Make your plugins collator discoverable for others</h4>
+<p>If you want to make your collator discoverable for other adopters, add it to the list of <a href="https://backstage.io/docs/features/search/search-overview#plugins-integrated-with-backstage-search">plugins integrated to search</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="building-a-search-experience-into-your-plugin"></a><a href="#building-a-search-experience-into-your-plugin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building a search experience into your plugin</h2>
 <p>While the core Search plugin offers components and extensions that empower app
 integrators to compose a global search experience, you may find that you want a
@@ -238,7 +343,7 @@ reading the search context.</p>
 <p>If you produce something generic and reusable, consider contributing your
 component upstream so that all users of the Backstage Search Platform can
 benefit. Issues and pull requests welcome.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 6/30/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/integrating-plugin-into-software-catalog"><span class="arrow-prev">← </span><span>Integrate into the Software Catalog</span></a><a class="docs-next button" href="/docs/plugins/composability"><span>Composability System</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#providing-data-to-the-search-platform">Providing data to the search platform</a></li><li><a href="#building-a-search-experience-into-your-plugin">Building a search experience into your plugin</a><ul class="toc-headings"><li><a href="#search-experience-concepts">Search Experience Concepts</a></li><li><a href="#search-experience-tutorials">Search Experience Tutorials</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 7/13/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/plugins/integrating-plugin-into-software-catalog"><span class="arrow-prev">← </span><span>Integrate into the Software Catalog</span></a><a class="docs-next button" href="/docs/plugins/composability"><span>Composability System</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#providing-data-to-the-search-platform">Providing data to the search platform</a><ul class="toc-headings"><li><a href="#create-a-collator">Create a collator</a></li></ul></li><li><a href="#building-a-search-experience-into-your-plugin">Building a search experience into your plugin</a><ul class="toc-headings"><li><a href="#search-experience-concepts">Search Experience Concepts</a></li><li><a href="#search-experience-tutorials">Search Experience Tutorials</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://mailchi.mp/spotify/backstage-community">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;

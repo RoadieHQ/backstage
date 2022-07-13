@@ -17,10 +17,12 @@
 <tr><th>Property</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.description">description?</a></td><td>string</td><td><i>(Optional)</i> A short display description for the fact retriever to be used in the interface.</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.entityfilter">entityFilter?</a></td><td>Record&lt;string, string | symbol | (string | symbol)[]&gt;[] | Record&lt;string, string | symbol | (string | symbol)[]&gt;</td><td><i>(Optional)</i> An optional object/array of objects of entity filters to indicate if this fact retriever is valid for an entity type. If omitted, the retriever should apply to all entities.<!-- -->Should be defined for example: { field: 'kind', values: ['component'<!-- -->] } { field: 'metadata.name', values: ['component-1', 'component-2'<!-- -->] }</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.handler">handler</a></td><td>(ctx: <a href="/docs/reference/plugin-tech-insights-node.factretrievercontext">FactRetrieverContext</a><!-- -->) =&gt; Promise&lt;<a href="/docs/reference/plugin-tech-insights-node.techinsightfact">TechInsightFact</a><!-- -->[]&gt;</td><td>Handler function that needs to be implemented to retrieve fact values for entities.</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.id">id</a></td><td>string</td><td>A unique identifier of the retriever. Used to identify and store individual facts returned from this retriever and schemas defined by this retriever.</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.schema">schema</a></td><td><a href="/docs/reference/plugin-tech-insights-node.factschema">FactSchema</a></td><td>A fact schema defining the shape of data returned from the handler method for each entity</td></tr>
+<tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.title">title?</a></td><td>string</td><td><i>(Optional)</i> A short display title for the fact retriever to be used in the interface</td></tr>
 <tr><td><a href="/docs/reference/plugin-tech-insights-node.factretriever.version">version</a></td><td>string</td><td>Semver string indicating the version of this fact retriever This version is used to determine if the schema this fact retriever matches the data this fact retriever provides.<!-- -->Should be incremented on changes to returned data from the handler or if the schema changes.</td></tr>
 </tbody>
 </table>
