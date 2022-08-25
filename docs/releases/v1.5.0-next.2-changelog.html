@@ -1,0 +1,865 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>releases/v1.5.0-next.2-changelog · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Release v1.5.0-next.2"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="releases/v1.5.0-next.2-changelog · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/"/><meta property="og:description" content="# Release v1.5.0-next.2"/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSEVGGNCJW"></script><script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments); }
+              gtag('js', new Date());
+              gtag('config', 'G-KSEVGGNCJW');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class=""><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/docs/releases/v1.5.0" target="_self">Releases</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="/community" target="_self">Community</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/backstage/backstage/edit/master/docs/releases/v1.5.0-next.2-changelog.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">releases/v1.5.0-next.2-changelog</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="release-v150-next2"></a><a href="#release-v150-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Release v1.5.0-next.2</h1>
+<h2><a class="anchor" aria-hidden="true" id="backstagecore-components0110-next2"></a><a href="#backstagecore-components0110-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/core-components@0.11.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="minor-changes"></a><a href="#minor-changes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minor Changes</h3>
+<ul>
+<li>d0eefc499a: Made the <code>to</code> prop of <code>Button</code> and <code>Link</code> more strict, only supporting plain strings. It used to be the case that this prop was unexpectedly too liberal, making it look like we supported the complex <code>react-router-dom</code> object form of the parameter as well, which led to unexpected results at runtime.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="techdocscli120-next2"></a><a href="#techdocscli120-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@techdocs/cli@1.2.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="minor-changes-1"></a><a href="#minor-changes-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minor Changes</h3>
+<ul>
+<li>855952db53: Added CLI option <code>--docker-option</code> to allow passing additional options to the <code>docker run</code> command executed my <code>serve</code> and <code>serve:mkdocs</code>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-backend-module-bitbucket-server010-next0"></a><a href="#backstageplugin-catalog-backend-module-bitbucket-server010-next0" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-backend-module-bitbucket-server@0.1.0-next.0</h2>
+<h3><a class="anchor" aria-hidden="true" id="minor-changes-2"></a><a href="#minor-changes-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minor Changes</h3>
+<ul>
+<li><p>f7607f9d85: Add new plugin catalog-backend-module-bitbucket-server which adds the <code>BitbucketServerEntityProvider</code>.</p>
+<p>The entity provider is meant as a replacement for the <code>BitbucketDiscoveryProcessor</code> to be used with Bitbucket Server (Bitbucket Cloud already has a replacement).</p>
+<p><strong>Before:</strong></p>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// packages/backend/src/plugins/catalog.ts</span>
+builder.addProcessor(
+  BitbucketDiscoveryProcessor.fromConfig(env.config, { logger: env.logger }),
+);
+</code></pre>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># app-config.yaml</span>
+<span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">locations:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">bitbucket-discovery</span>
+      <span class="hljs-attr">target:</span> <span class="hljs-string">'https://bitbucket.mycompany.com/projects/*/repos/*/catalog-info.yaml
+</span></code></pre>
+<p><strong>After:</strong></p>
+<pre><code class="hljs css language-typescript"><span class="hljs-comment">// packages/backend/src/plugins/catalog.ts</span>
+builder.addEntityProvider(
+  BitbucketServerEntityProvider.fromConfig(env.config, {
+    logger: env.logger,
+    schedule: env.scheduler.createScheduledTaskRunner({
+      frequency: { minutes: <span class="hljs-number">30</span> },
+      timeout: { minutes: <span class="hljs-number">3</span> },
+    }),
+  }),
+);
+</code></pre>
+<pre><code class="hljs css language-yaml"><span class="hljs-comment"># app-config.yaml</span>
+<span class="hljs-attr">catalog:</span>
+  <span class="hljs-attr">providers:</span>
+    <span class="hljs-attr">bitbucketServer:</span>
+      <span class="hljs-attr">yourProviderId:</span> <span class="hljs-comment"># identifies your ingested dataset</span>
+        <span class="hljs-attr">catalogPath:</span> <span class="hljs-string">/catalog-info.yaml</span> <span class="hljs-comment"># default value</span>
+        <span class="hljs-attr">filters:</span> <span class="hljs-comment"># optional</span>
+          <span class="hljs-attr">projectKey:</span> <span class="hljs-string">'.*'</span> <span class="hljs-comment"># optional; RegExp</span>
+          <span class="hljs-attr">repoSlug:</span> <span class="hljs-string">'.*'</span> <span class="hljs-comment"># optional; RegExp</span>
+</code></pre></li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes"></a><a href="#patch-changes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-backend@1.3.1-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-github-issues010-next0"></a><a href="#backstageplugin-github-issues010-next0" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-github-issues@0.1.0-next.0</h2>
+<h3><a class="anchor" aria-hidden="true" id="minor-changes-3"></a><a href="#minor-changes-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minor Changes</h3>
+<ul>
+<li>ffd5e47fb5: New plugin for displaying GitHub Issues added</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-1"></a><a href="#patch-changes-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>b522f49403: Updated dependency <code>@spotify/prettier-config</code> to <code>^14.0.0</code>.</li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-scaffolder-backend150-next2"></a><a href="#backstageplugin-scaffolder-backend150-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-scaffolder-backend@1.5.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="minor-changes-4"></a><a href="#minor-changes-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Minor Changes</h3>
+<ul>
+<li>692d5d3405: Added <code>reviewers</code> and <code>teamReviewers</code> parameters to <code>publish:github:pull-request</code> action to add reviewers on the pull request created by the action</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-2"></a><a href="#patch-changes-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-backend@1.3.1-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageapp-defaults105-next1"></a><a href="#backstageapp-defaults105-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/app-defaults@1.0.5-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-3"></a><a href="#patch-changes-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstagecli0181-next1"></a><a href="#backstagecli0181-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/cli@0.18.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-4"></a><a href="#patch-changes-4" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>fd68d6f138: Added resolution of <code>.json</code> and <code>.wasm</code> files to the Webpack configuration in order to match defaults.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstagecreate-app0430-next2"></a><a href="#backstagecreate-app0430-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/create-app@0.4.30-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-5"></a><a href="#patch-changes-5" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li><p>0174a0a022: Add <code>PATCH</code> and <code>HEAD</code> to the <code>Access-Control-Allow-Methods</code>.</p>
+<p>To apply this change to your Backstage installation make the following change to your <code>app-config.yaml</code></p>
+<pre><code class="hljs css language-diff">   cors:
+     origin: http://localhost:3000
+<span class="hljs-deletion">-    methods: [GET, POST, PUT, DELETE]</span>
+<span class="hljs-addition">+    methods: [GET, POST, PUT, DELETE, PATCH, HEAD]</span>
+</code></pre></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstagedev-utils105-next1"></a><a href="#backstagedev-utils105-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/dev-utils@1.0.5-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-6"></a><a href="#patch-changes-6" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/app-defaults@1.0.5-next.1</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageintegration-react113-next1"></a><a href="#backstageintegration-react113-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/integration-react@1.1.3-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-7"></a><a href="#patch-changes-7" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-adr013-next1"></a><a href="#backstageplugin-adr013-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-adr@0.1.3-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-8"></a><a href="#patch-changes-8" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-airbrake038-next1"></a><a href="#backstageplugin-airbrake038-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-airbrake@0.3.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-9"></a><a href="#patch-changes-9" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/dev-utils@1.0.5-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-allure0124-next1"></a><a href="#backstageplugin-allure0124-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-allure@0.1.24-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-10"></a><a href="#patch-changes-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-analytics-module-ga0119-next1"></a><a href="#backstageplugin-analytics-module-ga0119-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-analytics-module-ga@0.1.19-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-11"></a><a href="#patch-changes-11" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-apache-airflow021-next1"></a><a href="#backstageplugin-apache-airflow021-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-apache-airflow@0.2.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-12"></a><a href="#patch-changes-12" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-api-docs088-next2"></a><a href="#backstageplugin-api-docs088-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-api-docs@0.8.8-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-13"></a><a href="#patch-changes-13" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/plugin-catalog@1.5.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-apollo-explorer011-next1"></a><a href="#backstageplugin-apollo-explorer011-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-apollo-explorer@0.1.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-14"></a><a href="#patch-changes-14" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-auth-backend0151-next1"></a><a href="#backstageplugin-auth-backend0151-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-auth-backend@0.15.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-15"></a><a href="#patch-changes-15" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>2d7d6028e1: Updated dependency <code>@google-cloud/firestore</code> to <code>^6.0.0</code>.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-azure-devops0124-next1"></a><a href="#backstageplugin-azure-devops0124-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-azure-devops@0.1.24-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-16"></a><a href="#patch-changes-16" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-badges0232-next1"></a><a href="#backstageplugin-badges0232-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-badges@0.2.32-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-17"></a><a href="#patch-changes-17" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-bazaar0123-next1"></a><a href="#backstageplugin-bazaar0123-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-bazaar@0.1.23-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-18"></a><a href="#patch-changes-18" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/cli@0.18.1-next.1</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/plugin-catalog@1.5.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-bitrise0135-next1"></a><a href="#backstageplugin-bitrise0135-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-bitrise@0.1.35-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-19"></a><a href="#patch-changes-19" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog150-next2"></a><a href="#backstageplugin-catalog150-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog@1.5.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-20"></a><a href="#patch-changes-20" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-backend131-next2"></a><a href="#backstageplugin-catalog-backend131-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-backend@1.3.1-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-21"></a><a href="#patch-changes-21" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>059ae348b4: Use the non-deprecated form of table.unique in knex</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-backend-module-github016-next2"></a><a href="#backstageplugin-catalog-backend-module-github016-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-backend-module-github@0.1.6-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-22"></a><a href="#patch-changes-22" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>97f0a37378: Improved support for wildcards in <code>catalogPath</code></li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-backend@1.3.1-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-backend-module-gitlab016-next1"></a><a href="#backstageplugin-catalog-backend-module-gitlab016-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-backend-module-gitlab@0.1.6-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-23"></a><a href="#patch-changes-23" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li><p>24979413a4: Enhancing GitLab provider with filtering projects by pattern RegExp</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">providers:</span>
+  <span class="hljs-attr">gitlab:</span>
+    <span class="hljs-attr">stg:</span>
+      <span class="hljs-attr">host:</span> <span class="hljs-string">gitlab.stg.company.io</span>
+      <span class="hljs-attr">branch:</span> <span class="hljs-string">main</span>
+      <span class="hljs-attr">projectPattern:</span> <span class="hljs-string">'john/'</span> <span class="hljs-comment"># new option</span>
+      <span class="hljs-attr">entityFilename:</span> <span class="hljs-string">template.yaml</span>
+</code></pre>
+<p>With the aforementioned parameter you can filter projects, and keep only who belongs to the namespace &quot;john&quot;.</p></li>
+<li><p>Updated dependencies</p>
+<ul>
+<li>@backstage/plugin-catalog-backend@1.3.1-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-graph0220-next1"></a><a href="#backstageplugin-catalog-graph0220-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-graph@0.2.20-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-24"></a><a href="#patch-changes-24" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-import0811-next1"></a><a href="#backstageplugin-catalog-import0811-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-import@0.8.11-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-25"></a><a href="#patch-changes-25" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-catalog-react113-next2"></a><a href="#backstageplugin-catalog-react113-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-catalog-react@1.1.3-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-26"></a><a href="#patch-changes-26" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>44e691a7f9: Modify description column to not use auto width.</li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-circleci038-next1"></a><a href="#backstageplugin-circleci038-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-circleci@0.3.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-27"></a><a href="#patch-changes-27" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-cloudbuild038-next1"></a><a href="#backstageplugin-cloudbuild038-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-cloudbuild@0.3.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-28"></a><a href="#patch-changes-28" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-code-climate018-next1"></a><a href="#backstageplugin-code-climate018-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-code-climate@0.1.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-29"></a><a href="#patch-changes-29" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-code-coverage021-next1"></a><a href="#backstageplugin-code-coverage021-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-code-coverage@0.2.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-30"></a><a href="#patch-changes-30" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-codescene013-next1"></a><a href="#backstageplugin-codescene013-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-codescene@0.1.3-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-31"></a><a href="#patch-changes-31" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-config-schema0131-next1"></a><a href="#backstageplugin-config-schema0131-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-config-schema@0.1.31-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-32"></a><a href="#patch-changes-32" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-cost-insights01130-next1"></a><a href="#backstageplugin-cost-insights01130-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-cost-insights@0.11.30-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-33"></a><a href="#patch-changes-33" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>b746eca638: Make <code>products</code> field optional in the config</li>
+<li>daf4b33e34: Add name property to Group</li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-cost-insights-common@0.1.1-next.0</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-cost-insights-common011-next0"></a><a href="#backstageplugin-cost-insights-common011-next0" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-cost-insights-common@0.1.1-next.0</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-34"></a><a href="#patch-changes-34" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>daf4b33e34: Add name property to Group</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-dynatrace012-next1"></a><a href="#backstageplugin-dynatrace012-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-dynatrace@0.1.2-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-35"></a><a href="#patch-changes-35" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-explore0339-next1"></a><a href="#backstageplugin-explore0339-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-explore@0.3.39-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-36"></a><a href="#patch-changes-36" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-firehydrant0125-next1"></a><a href="#backstageplugin-firehydrant0125-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-firehydrant@0.1.25-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-37"></a><a href="#patch-changes-37" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-fossa0240-next1"></a><a href="#backstageplugin-fossa0240-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-fossa@0.2.40-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-38"></a><a href="#patch-changes-38" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-gcalendar034-next1"></a><a href="#backstageplugin-gcalendar034-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-gcalendar@0.3.4-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-39"></a><a href="#patch-changes-39" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-gcp-projects0327-next1"></a><a href="#backstageplugin-gcp-projects0327-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-gcp-projects@0.3.27-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-40"></a><a href="#patch-changes-40" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-git-release-manager0321-next1"></a><a href="#backstageplugin-git-release-manager0321-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-git-release-manager@0.3.21-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-41"></a><a href="#patch-changes-41" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-github-actions058-next1"></a><a href="#backstageplugin-github-actions058-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-github-actions@0.5.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-42"></a><a href="#patch-changes-42" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-github-deployments0139-next1"></a><a href="#backstageplugin-github-deployments0139-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-github-deployments@0.1.39-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-43"></a><a href="#patch-changes-43" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-github-pull-requests-board012-next1"></a><a href="#backstageplugin-github-pull-requests-board012-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-github-pull-requests-board@0.1.2-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-44"></a><a href="#patch-changes-44" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-gitops-profiles0326-next1"></a><a href="#backstageplugin-gitops-profiles0326-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-gitops-profiles@0.3.26-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-45"></a><a href="#patch-changes-45" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-gocd0114-next1"></a><a href="#backstageplugin-gocd0114-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-gocd@0.1.14-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-46"></a><a href="#patch-changes-46" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-graphiql0240-next1"></a><a href="#backstageplugin-graphiql0240-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-graphiql@0.2.40-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-47"></a><a href="#patch-changes-47" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-home0424-next2"></a><a href="#backstageplugin-home0424-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-home@0.4.24-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-48"></a><a href="#patch-changes-48" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/plugin-stack-overflow@0.1.4-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-ilert0134-next1"></a><a href="#backstageplugin-ilert0134-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-ilert@0.1.34-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-49"></a><a href="#patch-changes-49" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-jenkins077-next2"></a><a href="#backstageplugin-jenkins077-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-jenkins@0.7.7-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-50"></a><a href="#patch-changes-50" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-kafka038-next1"></a><a href="#backstageplugin-kafka038-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-kafka@0.3.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-51"></a><a href="#patch-changes-51" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-kubernetes071-next2"></a><a href="#backstageplugin-kubernetes071-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-kubernetes@0.7.1-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-52"></a><a href="#patch-changes-52" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>f563b86a5b: Adds namespace column to Kubernetes error reporting table</li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-kubernetes-backend071-next1"></a><a href="#backstageplugin-kubernetes-backend071-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-kubernetes-backend@0.7.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-53"></a><a href="#patch-changes-53" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>0cd87cf30d: Added a new <code>customResources</code> field to the ClusterDetails interface, in order to specify (override) custom resources per cluster</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-lighthouse038-next1"></a><a href="#backstageplugin-lighthouse038-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-lighthouse@0.3.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-54"></a><a href="#patch-changes-54" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-newrelic0326-next1"></a><a href="#backstageplugin-newrelic0326-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-newrelic@0.3.26-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-55"></a><a href="#patch-changes-55" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-newrelic-dashboard021-next1"></a><a href="#backstageplugin-newrelic-dashboard021-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-newrelic-dashboard@0.2.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-56"></a><a href="#patch-changes-56" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-org058-next1"></a><a href="#backstageplugin-org058-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-org@0.5.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-57"></a><a href="#patch-changes-57" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-pagerduty051-next1"></a><a href="#backstageplugin-pagerduty051-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-pagerduty@0.5.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-58"></a><a href="#patch-changes-58" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-periskop016-next1"></a><a href="#backstageplugin-periskop016-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-periskop@0.1.6-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-59"></a><a href="#patch-changes-59" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-rollbar048-next1"></a><a href="#backstageplugin-rollbar048-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-rollbar@0.4.8-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-60"></a><a href="#patch-changes-60" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-scaffolder150-next2"></a><a href="#backstageplugin-scaffolder150-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-scaffolder@1.5.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-61"></a><a href="#patch-changes-61" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-search101-next1"></a><a href="#backstageplugin-search101-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-search@1.0.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-62"></a><a href="#patch-changes-62" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-search-react101-next1"></a><a href="#backstageplugin-search-react101-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-search-react@1.0.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-63"></a><a href="#patch-changes-63" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-sentry041-next1"></a><a href="#backstageplugin-sentry041-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-sentry@0.4.1-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-64"></a><a href="#patch-changes-64" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-shortcuts030-next1"></a><a href="#backstageplugin-shortcuts030-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-shortcuts@0.3.0-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-65"></a><a href="#patch-changes-65" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-sonarqube040-next2"></a><a href="#backstageplugin-sonarqube040-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-sonarqube@0.4.0-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-66"></a><a href="#patch-changes-66" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-splunk-on-call0332-next1"></a><a href="#backstageplugin-splunk-on-call0332-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-splunk-on-call@0.3.32-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-67"></a><a href="#patch-changes-67" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-stack-overflow014-next1"></a><a href="#backstageplugin-stack-overflow014-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-stack-overflow@0.1.4-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-68"></a><a href="#patch-changes-68" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/plugin-home@0.4.24-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-tech-insights024-next1"></a><a href="#backstageplugin-tech-insights024-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-tech-insights@0.2.4-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-69"></a><a href="#patch-changes-69" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-tech-radar0515-next1"></a><a href="#backstageplugin-tech-radar0515-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-tech-radar@0.5.15-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-70"></a><a href="#patch-changes-70" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-techdocs131-next2"></a><a href="#backstageplugin-techdocs131-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-techdocs@1.3.1-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-71"></a><a href="#patch-changes-71" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>8acb22205c: Scroll techdocs navigation into focus and expand any nested navigation items.</li>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+<li>@backstage/plugin-techdocs-react@1.0.3-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-techdocs-addons-test-utils103-next1"></a><a href="#backstageplugin-techdocs-addons-test-utils103-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-techdocs-addons-test-utils@1.0.3-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-72"></a><a href="#patch-changes-72" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-techdocs@1.3.1-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-catalog@1.5.0-next.2</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+<li>@backstage/plugin-techdocs-react@1.0.3-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-techdocs-module-addons-contrib103-next2"></a><a href="#backstageplugin-techdocs-module-addons-contrib103-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-techdocs-module-addons-contrib@1.0.3-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-73"></a><a href="#patch-changes-73" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-techdocs-react@1.0.3-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-techdocs-react103-next2"></a><a href="#backstageplugin-techdocs-react103-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-techdocs-react@1.0.3-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-74"></a><a href="#patch-changes-74" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-todo0210-next1"></a><a href="#backstageplugin-todo0210-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-todo@0.2.10-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-75"></a><a href="#patch-changes-75" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-user-settings047-next1"></a><a href="#backstageplugin-user-settings047-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-user-settings@0.4.7-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-76"></a><a href="#patch-changes-76" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-vault012-next1"></a><a href="#backstageplugin-vault012-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-vault@0.1.2-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-77"></a><a href="#patch-changes-77" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="backstageplugin-xcmetrics0228-next1"></a><a href="#backstageplugin-xcmetrics0228-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@backstage/plugin-xcmetrics@0.2.28-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-78"></a><a href="#patch-changes-78" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="example-app0274-next2"></a><a href="#example-app0274-next2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>example-app@0.2.74-next.2</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-79"></a><a href="#patch-changes-79" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/plugin-kubernetes@0.7.1-next.2</li>
+<li>@backstage/plugin-catalog-react@1.1.3-next.2</li>
+<li>@backstage/plugin-cost-insights@0.11.30-next.1</li>
+<li>@backstage/cli@0.18.1-next.1</li>
+<li>@backstage/plugin-techdocs@1.3.1-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/app-defaults@1.0.5-next.1</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-airbrake@0.3.8-next.1</li>
+<li>@backstage/plugin-apache-airflow@0.2.1-next.1</li>
+<li>@backstage/plugin-api-docs@0.8.8-next.2</li>
+<li>@backstage/plugin-azure-devops@0.1.24-next.1</li>
+<li>@backstage/plugin-badges@0.2.32-next.1</li>
+<li>@backstage/plugin-catalog-graph@0.2.20-next.1</li>
+<li>@backstage/plugin-catalog-import@0.8.11-next.1</li>
+<li>@backstage/plugin-circleci@0.3.8-next.1</li>
+<li>@backstage/plugin-cloudbuild@0.3.8-next.1</li>
+<li>@backstage/plugin-code-coverage@0.2.1-next.1</li>
+<li>@backstage/plugin-dynatrace@0.1.2-next.1</li>
+<li>@backstage/plugin-explore@0.3.39-next.1</li>
+<li>@backstage/plugin-gcalendar@0.3.4-next.1</li>
+<li>@backstage/plugin-gcp-projects@0.3.27-next.1</li>
+<li>@backstage/plugin-github-actions@0.5.8-next.1</li>
+<li>@backstage/plugin-gocd@0.1.14-next.1</li>
+<li>@backstage/plugin-graphiql@0.2.40-next.1</li>
+<li>@backstage/plugin-home@0.4.24-next.2</li>
+<li>@backstage/plugin-jenkins@0.7.7-next.2</li>
+<li>@backstage/plugin-kafka@0.3.8-next.1</li>
+<li>@backstage/plugin-lighthouse@0.3.8-next.1</li>
+<li>@backstage/plugin-newrelic@0.3.26-next.1</li>
+<li>@backstage/plugin-newrelic-dashboard@0.2.1-next.1</li>
+<li>@backstage/plugin-org@0.5.8-next.1</li>
+<li>@backstage/plugin-pagerduty@0.5.1-next.1</li>
+<li>@backstage/plugin-rollbar@0.4.8-next.1</li>
+<li>@backstage/plugin-scaffolder@1.5.0-next.2</li>
+<li>@backstage/plugin-search@1.0.1-next.1</li>
+<li>@backstage/plugin-search-react@1.0.1-next.1</li>
+<li>@backstage/plugin-sentry@0.4.1-next.1</li>
+<li>@backstage/plugin-shortcuts@0.3.0-next.1</li>
+<li>@backstage/plugin-stack-overflow@0.1.4-next.1</li>
+<li>@backstage/plugin-tech-insights@0.2.4-next.1</li>
+<li>@backstage/plugin-tech-radar@0.5.15-next.1</li>
+<li>@backstage/plugin-techdocs-module-addons-contrib@1.0.3-next.2</li>
+<li>@backstage/plugin-techdocs-react@1.0.3-next.2</li>
+<li>@backstage/plugin-todo@0.2.10-next.1</li>
+<li>@backstage/plugin-user-settings@0.4.7-next.1</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="techdocs-cli-embedded-app0273-next1"></a><a href="#techdocs-cli-embedded-app0273-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>techdocs-cli-embedded-app@0.2.73-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-80"></a><a href="#patch-changes-80" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/cli@0.18.1-next.1</li>
+<li>@backstage/plugin-techdocs@1.3.1-next.2</li>
+<li>@backstage/core-components@0.11.0-next.2</li>
+<li>@backstage/app-defaults@1.0.5-next.1</li>
+<li>@backstage/integration-react@1.1.3-next.1</li>
+<li>@backstage/plugin-catalog@1.5.0-next.2</li>
+<li>@backstage/plugin-techdocs-react@1.0.3-next.2</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="internalplugin-todo-list104-next1"></a><a href="#internalplugin-todo-list104-next1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@internal/plugin-todo-list@1.0.4-next.1</h2>
+<h3><a class="anchor" aria-hidden="true" id="patch-changes-81"></a><a href="#patch-changes-81" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Patch Changes</h3>
+<ul>
+<li>Updated dependencies
+<ul>
+<li>@backstage/core-components@0.11.0-next.2</li>
+</ul></li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 8/25/2022</em></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#backstagecore-components0110-next2">@backstage/core-components@0.11.0-next.2</a><ul class="toc-headings"><li><a href="#minor-changes">Minor Changes</a></li></ul></li><li><a href="#techdocscli120-next2">@techdocs/cli@1.2.0-next.2</a><ul class="toc-headings"><li><a href="#minor-changes-1">Minor Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-backend-module-bitbucket-server010-next0">@backstage/plugin-catalog-backend-module-bitbucket-server@0.1.0-next.0</a><ul class="toc-headings"><li><a href="#minor-changes-2">Minor Changes</a></li><li><a href="#patch-changes">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-github-issues010-next0">@backstage/plugin-github-issues@0.1.0-next.0</a><ul class="toc-headings"><li><a href="#minor-changes-3">Minor Changes</a></li><li><a href="#patch-changes-1">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-scaffolder-backend150-next2">@backstage/plugin-scaffolder-backend@1.5.0-next.2</a><ul class="toc-headings"><li><a href="#minor-changes-4">Minor Changes</a></li><li><a href="#patch-changes-2">Patch Changes</a></li></ul></li><li><a href="#backstageapp-defaults105-next1">@backstage/app-defaults@1.0.5-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-3">Patch Changes</a></li></ul></li><li><a href="#backstagecli0181-next1">@backstage/cli@0.18.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-4">Patch Changes</a></li></ul></li><li><a href="#backstagecreate-app0430-next2">@backstage/create-app@0.4.30-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-5">Patch Changes</a></li></ul></li><li><a href="#backstagedev-utils105-next1">@backstage/dev-utils@1.0.5-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-6">Patch Changes</a></li></ul></li><li><a href="#backstageintegration-react113-next1">@backstage/integration-react@1.1.3-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-7">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-adr013-next1">@backstage/plugin-adr@0.1.3-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-8">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-airbrake038-next1">@backstage/plugin-airbrake@0.3.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-9">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-allure0124-next1">@backstage/plugin-allure@0.1.24-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-10">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-analytics-module-ga0119-next1">@backstage/plugin-analytics-module-ga@0.1.19-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-11">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-apache-airflow021-next1">@backstage/plugin-apache-airflow@0.2.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-12">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-api-docs088-next2">@backstage/plugin-api-docs@0.8.8-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-13">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-apollo-explorer011-next1">@backstage/plugin-apollo-explorer@0.1.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-14">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-auth-backend0151-next1">@backstage/plugin-auth-backend@0.15.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-15">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-azure-devops0124-next1">@backstage/plugin-azure-devops@0.1.24-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-16">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-badges0232-next1">@backstage/plugin-badges@0.2.32-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-17">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-bazaar0123-next1">@backstage/plugin-bazaar@0.1.23-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-18">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-bitrise0135-next1">@backstage/plugin-bitrise@0.1.35-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-19">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog150-next2">@backstage/plugin-catalog@1.5.0-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-20">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-backend131-next2">@backstage/plugin-catalog-backend@1.3.1-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-21">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-backend-module-github016-next2">@backstage/plugin-catalog-backend-module-github@0.1.6-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-22">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-backend-module-gitlab016-next1">@backstage/plugin-catalog-backend-module-gitlab@0.1.6-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-23">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-graph0220-next1">@backstage/plugin-catalog-graph@0.2.20-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-24">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-import0811-next1">@backstage/plugin-catalog-import@0.8.11-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-25">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-catalog-react113-next2">@backstage/plugin-catalog-react@1.1.3-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-26">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-circleci038-next1">@backstage/plugin-circleci@0.3.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-27">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-cloudbuild038-next1">@backstage/plugin-cloudbuild@0.3.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-28">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-code-climate018-next1">@backstage/plugin-code-climate@0.1.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-29">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-code-coverage021-next1">@backstage/plugin-code-coverage@0.2.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-30">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-codescene013-next1">@backstage/plugin-codescene@0.1.3-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-31">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-config-schema0131-next1">@backstage/plugin-config-schema@0.1.31-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-32">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-cost-insights01130-next1">@backstage/plugin-cost-insights@0.11.30-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-33">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-cost-insights-common011-next0">@backstage/plugin-cost-insights-common@0.1.1-next.0</a><ul class="toc-headings"><li><a href="#patch-changes-34">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-dynatrace012-next1">@backstage/plugin-dynatrace@0.1.2-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-35">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-explore0339-next1">@backstage/plugin-explore@0.3.39-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-36">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-firehydrant0125-next1">@backstage/plugin-firehydrant@0.1.25-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-37">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-fossa0240-next1">@backstage/plugin-fossa@0.2.40-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-38">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-gcalendar034-next1">@backstage/plugin-gcalendar@0.3.4-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-39">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-gcp-projects0327-next1">@backstage/plugin-gcp-projects@0.3.27-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-40">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-git-release-manager0321-next1">@backstage/plugin-git-release-manager@0.3.21-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-41">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-github-actions058-next1">@backstage/plugin-github-actions@0.5.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-42">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-github-deployments0139-next1">@backstage/plugin-github-deployments@0.1.39-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-43">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-github-pull-requests-board012-next1">@backstage/plugin-github-pull-requests-board@0.1.2-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-44">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-gitops-profiles0326-next1">@backstage/plugin-gitops-profiles@0.3.26-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-45">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-gocd0114-next1">@backstage/plugin-gocd@0.1.14-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-46">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-graphiql0240-next1">@backstage/plugin-graphiql@0.2.40-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-47">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-home0424-next2">@backstage/plugin-home@0.4.24-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-48">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-ilert0134-next1">@backstage/plugin-ilert@0.1.34-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-49">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-jenkins077-next2">@backstage/plugin-jenkins@0.7.7-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-50">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-kafka038-next1">@backstage/plugin-kafka@0.3.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-51">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-kubernetes071-next2">@backstage/plugin-kubernetes@0.7.1-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-52">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-kubernetes-backend071-next1">@backstage/plugin-kubernetes-backend@0.7.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-53">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-lighthouse038-next1">@backstage/plugin-lighthouse@0.3.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-54">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-newrelic0326-next1">@backstage/plugin-newrelic@0.3.26-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-55">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-newrelic-dashboard021-next1">@backstage/plugin-newrelic-dashboard@0.2.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-56">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-org058-next1">@backstage/plugin-org@0.5.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-57">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-pagerduty051-next1">@backstage/plugin-pagerduty@0.5.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-58">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-periskop016-next1">@backstage/plugin-periskop@0.1.6-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-59">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-rollbar048-next1">@backstage/plugin-rollbar@0.4.8-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-60">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-scaffolder150-next2">@backstage/plugin-scaffolder@1.5.0-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-61">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-search101-next1">@backstage/plugin-search@1.0.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-62">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-search-react101-next1">@backstage/plugin-search-react@1.0.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-63">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-sentry041-next1">@backstage/plugin-sentry@0.4.1-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-64">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-shortcuts030-next1">@backstage/plugin-shortcuts@0.3.0-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-65">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-sonarqube040-next2">@backstage/plugin-sonarqube@0.4.0-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-66">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-splunk-on-call0332-next1">@backstage/plugin-splunk-on-call@0.3.32-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-67">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-stack-overflow014-next1">@backstage/plugin-stack-overflow@0.1.4-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-68">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-tech-insights024-next1">@backstage/plugin-tech-insights@0.2.4-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-69">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-tech-radar0515-next1">@backstage/plugin-tech-radar@0.5.15-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-70">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-techdocs131-next2">@backstage/plugin-techdocs@1.3.1-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-71">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-techdocs-addons-test-utils103-next1">@backstage/plugin-techdocs-addons-test-utils@1.0.3-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-72">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-techdocs-module-addons-contrib103-next2">@backstage/plugin-techdocs-module-addons-contrib@1.0.3-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-73">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-techdocs-react103-next2">@backstage/plugin-techdocs-react@1.0.3-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-74">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-todo0210-next1">@backstage/plugin-todo@0.2.10-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-75">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-user-settings047-next1">@backstage/plugin-user-settings@0.4.7-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-76">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-vault012-next1">@backstage/plugin-vault@0.1.2-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-77">Patch Changes</a></li></ul></li><li><a href="#backstageplugin-xcmetrics0228-next1">@backstage/plugin-xcmetrics@0.2.28-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-78">Patch Changes</a></li></ul></li><li><a href="#example-app0274-next2">example-app@0.2.74-next.2</a><ul class="toc-headings"><li><a href="#patch-changes-79">Patch Changes</a></li></ul></li><li><a href="#techdocs-cli-embedded-app0273-next1">techdocs-cli-embedded-app@0.2.73-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-80">Patch Changes</a></li></ul></li><li><a href="#internalplugin-todo-list104-next1">@internal/plugin-todo-list@1.0.4-next.1</a><ul class="toc-headings"><li><a href="#patch-changes-81">Patch Changes</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>
