@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Tue, 19 Jul 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 23 Aug 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,16 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[Backstage Security Audit & Updates]]></title>
+            <link>https://backstage.io/blog/2022/08/23/backstage-security-audit.html</link>
+            <guid>https://backstage.io/blog/2022/08/23/backstage-security-audit.html</guid>
+            <pubDate>Tue, 23 Aug 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><strong>TL;DR</strong> Backstage’s security posture continues to mature! Today, we’re releasing a report from an independent security audit and the first version of the Backstage Threat Model.</p>
+<p><img src="/blog/assets/22-08-23/backstage-security-audit.png" alt="Backstage Security Audit &amp; Updates"></p>
+<p>As an <a href="https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/">Incubating project</a> within the <a href="https://www.cncf.io/">Cloud Native Computing Foundation (CNCF)</a>, Backstage was fortunate enough to take advantage of a sponsored security audit. The <a href="https://ostif.org/">Open Source Technology Improvement Fund (OSTIF)</a> sponsored the audit as part of its ongoing efforts to secure the open source software ecosystem, and the audit itself was performed by <a href="https://x41-dsec.de/">X41 D-Sec</a>. Our goal with the audit was to evaluate and improve Backstage’s security posture, focusing on the core Backstage framework and plugins.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Releasing Backstage Search 1.0]]></title>
             <link>https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0.html</link>
