@@ -8,6 +8,10 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> SearchContextProviderProps = PropsWithChildren&lt;{
     initialState?: SearchContextState;
+    inheritParentContextIfAvailable?: never;
+}&gt; | PropsWithChildren&lt;{
+    initialState?: never;
+    inheritParentContextIfAvailable?: <span class="hljs-built_in">boolean</span>;
 }&gt;;
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/plugin-search-react.searchcontextstate">SearchContextState</a></p>
