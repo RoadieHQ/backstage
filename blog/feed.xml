@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Tue, 23 Aug 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Sep 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,15 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[FYI 📣 The Plugin Analytics API]]></title>
+            <link>https://backstage.io/blog/2022/09/08/fyi-plugin-analytics-api.html</link>
+            <guid>https://backstage.io/blog/2022/09/08/fyi-plugin-analytics-api.html</guid>
+            <pubDate>Thu, 08 Sep 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p><strong>TL;DR</strong> If you didn't know, now you know: the Backstage plugin analytics API is here to help you understand how developers in your organization are using Backstage.</p>
+<p><img src="/blog/assets/22-09-08/analytics-api-fyi.png" alt="The Plugin Analytics API"></p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[Backstage Security Audit & Updates]]></title>
             <link>https://backstage.io/blog/2022/08/23/backstage-security-audit.html</link>

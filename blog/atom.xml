@@ -2,12 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2022-08-23T06:00:00.000Z</updated>
+    <updated>2022-09-08T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[FYI 📣 The Plugin Analytics API]]></title>
+        <id>https://backstage.io/blog/2022/09/08/fyi-plugin-analytics-api.html</id>
+        <link href="https://backstage.io/blog/2022/09/08/fyi-plugin-analytics-api.html"/>
+        <updated>2022-09-08T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><strong>TL;DR</strong> If you didn't know, now you know: the Backstage plugin analytics API is here to help you understand how developers in your organization are using Backstage.</p>
+<p><img src="/blog/assets/22-09-08/analytics-api-fyi.png" alt="The Plugin Analytics API"></p>
+]]></summary>
+        <author>
+            <name>Eric Peterson, Spotify</name>
+            <uri>https://github.com/iamEAP</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Backstage Security Audit & Updates]]></title>
         <id>https://backstage.io/blog/2022/08/23/backstage-security-audit.html</id>
