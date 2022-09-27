@@ -7,9 +7,7 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createServiceFactory</span>&lt;<span class="hljs-title">TService</span>, <span class="hljs-title">TScope</span> <span class="hljs-title">extends</span> '<span class="hljs-title">root</span>' | '<span class="hljs-title">plugin</span>', <span class="hljs-title">TImpl</span> <span class="hljs-title">extends</span> <span class="hljs-title">TService</span>, <span class="hljs-title">TDeps</span> <span class="hljs-title">extends</span> </span>{
     [name <span class="hljs-keyword">in</span> <span class="hljs-built_in">string</span>]: ServiceRef&lt;unknown&gt;;
-}, TOpts <span class="hljs-keyword">extends</span> {
-    [name <span class="hljs-keyword">in</span> <span class="hljs-built_in">string</span>]: unknown;
-} | <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span>&gt;(config: {
+}, TOpts <span class="hljs-keyword">extends</span> object | <span class="hljs-literal">undefined</span> = <span class="hljs-literal">undefined</span>&gt;(config: {
     service: ServiceRef&lt;TService, TScope&gt;;
     deps: TDeps;
     factory(deps: ServiceRefsToInstances&lt;TDeps, <span class="hljs-string">'root'</span>&gt;, options: TOpts): TScope <span class="hljs-keyword">extends</span> <span class="hljs-string">'root'</span> ? <span class="hljs-built_in">Promise</span>&lt;TImpl&gt; : <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-function">(<span class="hljs-params">deps: ServiceRefsToInstances&lt;TDeps&gt;</span>) =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;TImpl&gt;&gt;;

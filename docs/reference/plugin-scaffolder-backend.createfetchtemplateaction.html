@@ -10,6 +10,7 @@
     reader: UrlReader;
     integrations: ScmIntegrations;
     additionalTemplateFilters?: Record&lt;<span class="hljs-built_in">string</span>, TemplateFilter&gt;;
+    additionalTemplateGlobals?: Record&lt;<span class="hljs-built_in">string</span>, TemplateGlobal&gt;;
 }</span>): <span class="hljs-title">import</span>(<span class="hljs-params">"../.."</span>).<span class="hljs-title">TemplateAction</span>&lt;</span>{
     url: <span class="hljs-built_in">string</span>;
     targetPath?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>;
@@ -26,7 +27,7 @@
 <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>options</td><td>{ reader: <a href="/docs/reference/backend-common.urlreader">UrlReader</a><!-- -->; integrations: <a href="/docs/reference/integration.scmintegrations">ScmIntegrations</a><!-- -->; additionalTemplateFilters?: Record&lt;string, <a href="/docs/reference/plugin-scaffolder-backend.templatefilter">TemplateFilter</a><!-- -->&gt;; }</td><td></td></tr>
+<tr><td>options</td><td>{ reader: <a href="/docs/reference/backend-common.urlreader">UrlReader</a><!-- -->; integrations: <a href="/docs/reference/integration.scmintegrations">ScmIntegrations</a><!-- -->; additionalTemplateFilters?: Record&lt;string, <a href="/docs/reference/plugin-scaffolder-backend.templatefilter">TemplateFilter</a><!-- -->&gt;; additionalTemplateGlobals?: Record&lt;string, <a href="/docs/reference/plugin-scaffolder-backend.templateglobal">TemplateGlobal</a><!-- -->&gt;; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>
