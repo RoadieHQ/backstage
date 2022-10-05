@@ -8,9 +8,10 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> SearchResultListLayoutProps = ListProps &amp; {
     resultItems?: SearchResult[];
-    renderResultItem?: <span class="hljs-function">(<span class="hljs-params">resultItem: SearchResult</span>) =&gt;</span> JSX.Element;
+    renderResultItem?: <span class="hljs-function">(<span class="hljs-params">value: SearchResult, index: <span class="hljs-built_in">number</span>, array: SearchResult[]</span>) =&gt;</span> JSX.Element | <span class="hljs-literal">null</span>;
     error?: <span class="hljs-built_in">Error</span>;
     loading?: <span class="hljs-built_in">boolean</span>;
+    noResultsComponent?: ReactNode;
 };
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/plugin-search-common.searchresult">SearchResult</a></p>

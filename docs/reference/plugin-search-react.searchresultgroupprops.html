@@ -8,6 +8,7 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> SearchResultGroupProps&lt;FilterOption&gt; = Omit&lt;SearchResultGroupLayoutProps&lt;FilterOption&gt;, <span class="hljs-string">'loading'</span> | <span class="hljs-string">'error'</span> | <span class="hljs-string">'resultItems'</span> | <span class="hljs-string">'filterFields'</span>&gt; &amp; {
     query: Partial&lt;SearchQuery&gt;;
+    disableRenderingWithNoResults?: <span class="hljs-built_in">boolean</span>;
 };
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/plugin-search-react.searchresultgrouplayoutprops">SearchResultGroupLayoutProps</a><!-- -->, <a href="/docs/reference/plugin-search-common.searchquery">SearchQuery</a></p>

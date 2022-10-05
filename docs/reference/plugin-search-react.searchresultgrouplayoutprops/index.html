@@ -13,13 +13,14 @@
     link?: ReactNode;
     linkProps?: Partial&lt;LinkProps&gt;;
     filterOptions?: FilterOption[];
-    renderFilterOption?: <span class="hljs-function">(<span class="hljs-params">filterOption: FilterOption</span>) =&gt;</span> JSX.Element;
+    renderFilterOption?: <span class="hljs-function">(<span class="hljs-params">value: FilterOption, index: <span class="hljs-built_in">number</span>, array: FilterOption[]</span>) =&gt;</span> JSX.Element | <span class="hljs-literal">null</span>;
     filterFields?: <span class="hljs-built_in">string</span>[];
     renderFilterField?: <span class="hljs-function">(<span class="hljs-params">key: <span class="hljs-built_in">string</span></span>) =&gt;</span> JSX.Element | <span class="hljs-literal">null</span>;
     resultItems?: SearchResult[];
-    renderResultItem?: <span class="hljs-function">(<span class="hljs-params">resultItem: SearchResult</span>) =&gt;</span> JSX.Element;
+    renderResultItem?: <span class="hljs-function">(<span class="hljs-params">value: SearchResult, index: <span class="hljs-built_in">number</span>, array: SearchResult[]</span>) =&gt;</span> JSX.Element | <span class="hljs-literal">null</span>;
     error?: <span class="hljs-built_in">Error</span>;
     loading?: <span class="hljs-built_in">boolean</span>;
+    noResultsComponent?: ReactNode;
 };
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/core-components.linkprops">LinkProps</a><!-- -->, <a href="/docs/reference/plugin-search-common.searchresult">SearchResult</a></p>
