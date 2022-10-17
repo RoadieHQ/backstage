@@ -9,7 +9,7 @@
 <pre><code class="hljs css language-typescript">createPermissionIntegrationRouter: &lt;TResourceType <span class="hljs-keyword">extends</span> <span class="hljs-built_in">string</span>, TResource&gt;(options: {
     resourceType: TResourceType;
     permissions?: Permission[] | <span class="hljs-literal">undefined</span>;
-    rules: PermissionRule&lt;TResource, <span class="hljs-built_in">any</span>, NoInfer&lt;TResourceType&gt;, unknown[]&gt;[];
+    rules: PermissionRule&lt;TResource, <span class="hljs-built_in">any</span>, NoInfer&lt;TResourceType&gt;, <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/plugin-permission-common"</span>).PermissionRuleParams&gt;[];
     getResources: <span class="hljs-function">(<span class="hljs-params">resourceRefs: <span class="hljs-built_in">string</span>[]</span>) =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;(TResource | <span class="hljs-literal">undefined</span>)[]&gt;;
 }) =&gt; express.Router
 </code></pre>
