@@ -9,6 +9,7 @@
     getLastCompleteBillingDate(): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">string</span>&gt;;
     getUserGroups(userId: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Group[]&gt;;
     getGroupProjects(group: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Project[]&gt;;
+    getCatalogEntityDailyCost?(catalogEntityRef: <span class="hljs-built_in">string</span>, intervals: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Cost&gt;;
     getGroupDailyCost(group: <span class="hljs-built_in">string</span>, intervals: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Cost&gt;;
     getProjectDailyCost(project: <span class="hljs-built_in">string</span>, intervals: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;Cost&gt;;
     getDailyMetricData(metric: <span class="hljs-built_in">string</span>, intervals: <span class="hljs-built_in">string</span>): <span class="hljs-built_in">Promise</span>&lt;MetricData&gt;;
