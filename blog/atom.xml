@@ -2,12 +2,25 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2022-10-28T06:00:00.000Z</updated>
+    <updated>2022-11-15T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
     <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[The Linux Foundation launches its Introduction to Backstage course]]></title>
+        <id>https://backstage.io/blog/2022/11/15/linux-foundation-introduction-to-backstage-course.html</id>
+        <link href="https://backstage.io/blog/2022/11/15/linux-foundation-introduction-to-backstage-course.html"/>
+        <updated>2022-11-15T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>Backstage continues to grow in <a href="https://roadie.io/blog/backstage-consolidating-its-role-in-the-cloud-native-ecosystem/">popularity and maturity</a>, with industry leaders not only adopting the framework but actively participating in the community through contributions and commercial offerings. One of the most recent contributions comes from the Linux Foundation, <a href="https://training.linuxfoundation.org/blog/23107/">launching an introductory course</a> aimed at DevOps engineers or professionals working on Developer Productivity or Developer Experience. The course is available for free on edX, with a paid option for the certified track.</p>
+<p><a href="https://www.edx.org/course/introduction-to-backstage-developer-portals-made-easy"><img src="/blog/assets/22-11-15/Introduction-to-Backstage-Developer-Portals-Made-Easy-2-768x432.png" alt="Introduction to Backstage: Developer Portals Made Easy (LFS142x): Enroll!"></a></p>
+]]></summary>
+        <author>
+            <name>Jorge Lainfiesta, Roadie</name>
+            <uri>https://www.linkedin.com/in/jrlainfiesta/</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA['ICYMI: BackstageCon & KubeCon NA 2022 Recap']]></title>
         <id>https://backstage.io/blog/2022/10/28/backstagecon-kubecon-2022.html</id>

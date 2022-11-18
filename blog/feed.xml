@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Fri, 28 Oct 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 15 Nov 2022 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,15 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[The Linux Foundation launches its Introduction to Backstage course]]></title>
+            <link>https://backstage.io/blog/2022/11/15/linux-foundation-introduction-to-backstage-course.html</link>
+            <guid>https://backstage.io/blog/2022/11/15/linux-foundation-introduction-to-backstage-course.html</guid>
+            <pubDate>Tue, 15 Nov 2022 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>Backstage continues to grow in <a href="https://roadie.io/blog/backstage-consolidating-its-role-in-the-cloud-native-ecosystem/">popularity and maturity</a>, with industry leaders not only adopting the framework but actively participating in the community through contributions and commercial offerings. One of the most recent contributions comes from the Linux Foundation, <a href="https://training.linuxfoundation.org/blog/23107/">launching an introductory course</a> aimed at DevOps engineers or professionals working on Developer Productivity or Developer Experience. The course is available for free on edX, with a paid option for the certified track.</p>
+<p><a href="https://www.edx.org/course/introduction-to-backstage-developer-portals-made-easy"><img src="/blog/assets/22-11-15/Introduction-to-Backstage-Developer-Portals-Made-Easy-2-768x432.png" alt="Introduction to Backstage: Developer Portals Made Easy (LFS142x): Enroll!"></a></p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA['ICYMI: BackstageCon & KubeCon NA 2022 Recap']]></title>
             <link>https://backstage.io/blog/2022/10/28/backstagecon-kubecon-2022.html</link>
