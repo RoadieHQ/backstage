@@ -392,10 +392,88 @@ const app = createApp({
 <p>You might want to use this method if you have an icon you want to use in several locations.</p></li>
 </ol>
 <p>Note: If the icon is not available as one of the default icons or one you've added then it will fall back to Material UI's <code>LanguageIcon</code></p>
+<h2><a class="anchor" aria-hidden="true" id="custom-sidebar"></a><a href="#custom-sidebar" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom Sidebar</h2>
+<p>As you've seen there are many ways that you can customize your Backstage app. The following section will show you how you can customize the sidebar.</p>
+<h3><a class="anchor" aria-hidden="true" id="sidebar-sub-menu"></a><a href="#sidebar-sub-menu" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sidebar Sub-menu</h3>
+<p>For this example we'll show you how you can expand the sidebar with a sub-menu:</p>
+<ol>
+<li><p>Open the <code>Root.tsx</code> file located in <code>packages/app/src/components/Root</code> as this is where the sidebar code lives</p></li>
+<li><p>Then we want to add the following imports for the icons:</p>
+<pre><code class="hljs css language-ts"><span class="hljs-keyword">import</span> ApiIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Extension'</span>;
+<span class="hljs-keyword">import</span> ComponentIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Memory'</span>;
+<span class="hljs-keyword">import</span> DomainIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Apartment'</span>;
+<span class="hljs-keyword">import</span> ResourceIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Work'</span>;
+<span class="hljs-keyword">import</span> SystemIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Category'</span>;
+<span class="hljs-keyword">import</span> UserIcon <span class="hljs-keyword">from</span> <span class="hljs-string">'@material-ui/icons/Person'</span>;
+</code></pre></li>
+<li><p>Then update the <code>@backstage/core-components</code> import like this:</p>
+<pre><code class="hljs css language-diff">  import {
+    Sidebar,
+    sidebarConfig,
+    SidebarDivider,
+    SidebarGroup,
+    SidebarItem,
+    SidebarPage,
+    SidebarScrollWrapper,
+    SidebarSpace,
+    useSidebarOpenState,
+    Link,
+<span class="hljs-addition">+   GroupIcon,</span>
+<span class="hljs-addition">+   SidebarSubmenu,</span>
+<span class="hljs-addition">+   SidebarSubmenuItem,</span>
+  } from '@backstage/core-components';
+</code></pre></li>
+<li><p>Finally replace <code>&lt;SidebarItem icon={HomeIcon} to=&quot;catalog&quot; text=&quot;Home&quot; /&gt;</code> with this:</p>
+<pre><code class="hljs css language-ts">&lt;SidebarItem icon={HomeIcon} to="catalog" text="Home"&gt;
+  &lt;SidebarSubmenu title="Catalog"&gt;
+    &lt;SidebarSubmenuItem
+      title="Domains"
+      to="catalog?filters[kind]=domain"
+      icon={DomainIcon}
+    /&gt;
+    &lt;SidebarSubmenuItem
+      title="Systems"
+      to="catalog?filters[kind]=system"
+      icon={SystemIcon}
+    /&gt;
+    &lt;SidebarSubmenuItem
+      title="Components"
+      to="catalog?filters[kind]=component"
+      icon={ComponentIcon}
+    /&gt;
+    &lt;SidebarSubmenuItem
+      title="APIs"
+      to="catalog?filters[kind]=api"
+      icon={ApiIcon}
+    /&gt;
+    &lt;SidebarDivider /&gt;
+    &lt;SidebarSubmenuItem
+      title="Resources"
+      to="catalog?filters[kind]=resource"
+      icon={ResourceIcon}
+    /&gt;
+    &lt;SidebarDivider /&gt;
+    &lt;SidebarSubmenuItem
+      title="Groups"
+      to="catalog?filters[kind]=group"
+      icon={GroupIcon}
+    /&gt;
+    &lt;SidebarSubmenuItem
+      title="Users"
+      to="catalog?filters[kind]=user"
+      icon={UserIcon}
+    /&gt;
+  &lt;/SidebarSubmenu&gt;
+&lt;/SidebarItem&gt;
+</code></pre></li>
+</ol>
+<p>When you startup your Backstage app and hover over the Home option on the sidebar you'll now see a nice sub-menu appear with links to the various Kinds in your Catalog. It would look like this:</p>
+<p><img src="./../assets/getting-started/sidebar-submenu-example.png" alt="Sidebar sub-menu example"></p>
+<p>You can see more ways to use this in the <a href="https://backstage.io/storybook/?path=/story/layout-sidebar--sample-scalable-sidebar">Storybook Sidebar examples</a></p>
 <h2><a class="anchor" aria-hidden="true" id="custom-homepage"></a><a href="#custom-homepage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Custom Homepage</h2>
 <p>In addition to a custom theme, a custom logo, you can also customize the
 homepage of your app. Read the full guide on the <a href="/docs/getting-started/homepage">next page</a>.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/18/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started/configure-app-with-plugins"><span class="arrow-prev">← </span><span>Configuring App with plugins</span></a><a class="docs-next button" href="/docs/getting-started/homepage"><span>Backstage homepage - Setup and Customization</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-a-custom-theme">Creating a Custom Theme</a></li><li><a href="#using-your-custom-theme">Using your Custom Theme</a></li><li><a href="#example-of-a-custom-theme">Example of a custom theme</a></li><li><a href="#overriding-backstage-and-material-ui-components-styles">Overriding Backstage and Material UI components styles</a></li><li><a href="#custom-logo">Custom Logo</a></li><li><a href="#icons">Icons</a><ul class="toc-headings"><li><a href="#custom-icons">Custom Icons</a></li><li><a href="#adding-icons">Adding Icons</a></li></ul></li><li><a href="#custom-homepage">Custom Homepage</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/24/2022</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/getting-started/configure-app-with-plugins"><span class="arrow-prev">← </span><span>Configuring App with plugins</span></a><a class="docs-next button" href="/docs/getting-started/homepage"><span>Backstage homepage - Setup and Customization</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#creating-a-custom-theme">Creating a Custom Theme</a></li><li><a href="#using-your-custom-theme">Using your Custom Theme</a></li><li><a href="#example-of-a-custom-theme">Example of a custom theme</a></li><li><a href="#overriding-backstage-and-material-ui-components-styles">Overriding Backstage and Material UI components styles</a></li><li><a href="#custom-logo">Custom Logo</a></li><li><a href="#icons">Icons</a><ul class="toc-headings"><li><a href="#custom-icons">Custom Icons</a></li><li><a href="#adding-icons">Adding Icons</a></li></ul></li><li><a href="#custom-sidebar">Custom Sidebar</a><ul class="toc-headings"><li><a href="#sidebar-sub-menu">Sidebar Sub-menu</a></li></ul></li><li><a href="#custom-homepage">Custom Homepage</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
