@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-import { CatalogBuilder } from '@backstage/plugin-catalog-backend';
+import {
+  CatalogBuilder,
+  CodeOwnersProcessor,
+} from '@backstage/plugin-catalog-backend';
 import { EntityProvider } from '@backstage/plugin-catalog-node';
 import { ScaffolderEntitiesProcessor } from '@backstage/plugin-scaffolder-backend';
 import { Router } from 'express';
@@ -27,6 +30,12 @@ export default async function createPlugin(
   const builder = await CatalogBuilder.create(env);
   builder.addProcessor(new ScaffolderEntitiesProcessor());
   builder.addEntityProvider(providers ?? []);
+  builder.addProcessor(
+    CodeOwnersProcessor.fromConfig(env.config, {
+      logger: env.logger,
+      reader: env.reader,
+    }),
+  );
   const { processingEngine, router } = await builder.build();
   await processingEngine.start();
   return router;

@@ -69,8 +69,8 @@ export class CodeOwnersProcessor implements CatalogProcessor {
     if (
       !entity ||
       !ALLOWED_KINDS.includes(entity.kind) ||
-      !ALLOWED_LOCATION_TYPES.includes(location.type) ||
-      (entity.spec && entity.spec.owner)
+      !ALLOWED_LOCATION_TYPES.includes(location.type)
+      // (entity.spec && entity.spec.owner)
     ) {
       return entity;
     }
@@ -79,11 +79,13 @@ export class CodeOwnersProcessor implements CatalogProcessor {
     if (!scmIntegration) {
       return entity;
     }
-
+    const pattern =
+      entity.metadata?.annotations['backstage.io/managed-by-location'];
     const owner = await findCodeOwnerByTarget(
       this.reader,
       location.target,
       scmIntegration,
+      pattern,
     );
 
     if (!owner) {
