@@ -9,6 +9,7 @@
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> BackstageApp = {
     getPlugins(): BackstagePlugin[];
     getSystemIcon(key: <span class="hljs-built_in">string</span>): IconComponent | <span class="hljs-literal">undefined</span>;
+    createRoot(element: JSX.Element): ComponentType&lt;{}&gt;;
     getProvider(): ComponentType&lt;{}&gt;;
     getRouter(): ComponentType&lt;{}&gt;;
 };
