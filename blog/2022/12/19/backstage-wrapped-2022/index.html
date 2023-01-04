@@ -1,0 +1,130 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Backstage Wrapped 2022 · Backstage Software Catalog and Developer Platform</title><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="generator" content="Docusaurus"/><meta name="description" content="If 2021 was the year of growth for the Backstage project and community, 2022 can be easily defined as the year of maturity. Both the project and the community continued to grow at an incredible pace and the platform is now more stable, more secure, and more powerful than ever."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Backstage Wrapped 2022 · Backstage Software Catalog and Developer Platform"/><meta property="og:type" content="website"/><meta property="og:url" content="https://backstage.io/blog/2022/12/19/backstage-wrapped-2022"/><meta property="og:description" content="If 2021 was the year of growth for the Backstage project and community, 2022 can be easily defined as the year of maturity. Both the project and the community continued to grow at an incredible pace and the platform is now more stable, more secure, and more powerful than ever."/><meta property="og:image" content="https://backstage.io/img/sharing-opengraph.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://backstage.io/img/twitter-summary.png"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css"/><link rel="alternate" type="application/atom+xml" href="https://backstage.io/blog/atom.xml" title="Backstage Software Catalog and Developer Platform Blog ATOM Feed"/><link rel="alternate" type="application/rss+xml" href="https://backstage.io/blog/feed.xml" title="Backstage Software Catalog and Developer Platform Blog RSS Feed"/><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-KSEVGGNCJW"></script><script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments); }
+              gtag('js', new Date());
+              gtag('config', 'G-KSEVGGNCJW');
+            </script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:500,700&amp;display=swap"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://unpkg.com/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script><script type="text/javascript" src="/js/medium-zoom.js"></script><script type="text/javascript" src="/js/dismissable-banner.js"></script><script type="text/javascript" src="/js/scroll-nav-to-view-in-docs.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">Backstage Software Catalog and Developer Platform</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="https://github.com/backstage/backstage" target="_self">GitHub</a></li><li class=""><a href="/docs/overview/what-is-backstage" target="_self">Docs</a></li><li class=""><a href="/plugins" target="_self">Plugins</a></li><li class="siteNavGroupActive"><a href="/blog" target="_self">Blog</a></li><li class=""><a href="/docs/releases/v1.9.0" target="_self">Releases</a></li><li class=""><a href="/demos" target="_self">Demos</a></li><li class=""><a href="/community" target="_self">Community</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Recent Posts</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Recent Posts</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/blog/2022/12/19/backstage-wrapped-2022">Backstage Wrapped 2022</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/11/15/linux-foundation-introduction-to-backstage-course">The Linux Foundation launches its Introduction to Backstage course</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/10/28/backstagecon-kubecon-2022">&#x27;ICYMI: BackstageCon &amp; KubeCon NA 2022 Recap&#x27;</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/09/08/fyi-plugin-analytics-api">FYI 📣 The Plugin Analytics API</a></li><li class="navListItem"><a class="navItem" href="/blog/2022/08/23/backstage-security-audit">Backstage Security Audit &amp; Updates</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer postContainer blogContainer"><div class="wrapper"><div class="lonePost"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle"><a href="/blog/2022/12/19/backstage-wrapped-2022">Backstage Wrapped 2022</a></h1><p class="post-meta">December 19, 2022</p><div class="authorBlock"><p class="post-authorName"><a href="https://github.com/fcorti" target="_blank" rel="noreferrer noopener">Francesco Corti &amp; Suzanne Daniels</a></p></div></header><div><span><p><img src="/blog/assets/2022-12-19/wrapped.png" alt="wrapped header image"></p>
+<p>If 2021 was the year of growth for the Backstage project and community, 2022 can be easily defined as the year of maturity. Both the project and the community continued to grow at an incredible pace and the platform is now more stable, more secure, and more powerful than ever.</p>
+<p>Our community is full of people from across the globe who bring incredible engagement and positive vibes to the project. And we finally got to experience this for the first time in real life during <a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OKySsTuiip3BqmdYZQRnSf">BackstageCon</a>, the very first in-person conference fully dedicated to Backstage, where hundreds of enthusiasts, the maintainers, adopters, and partners joined the event confirming the great momentum and the traction in the market.</p>
+<p>But before anticipating too much, let’s share some stats of this amazing 2022.</p>
+<!--truncate-->
+<h2><a class="anchor" aria-hidden="true" id="we-grew--a-lot"></a><a href="#we-grew--a-lot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>We grew … a lot!</h2>
+<p>Last year we celebrated 75 <a href="https://github.com/backstage/backstage/blob/master/ADOPTERS.md">public adopters</a> and today we have over 600 adopters, confirming the interest around Backstage across all the industries, sectors, and dimensions. Companies like <a href="https://aws.amazon.com/solutions/case-studies/toyota-ecs-case-study/">Toyota North America</a>, Deutsche Bank, Mercedes-Benz, Procter &amp; Gamble, Siemens, LinkedIn, and many more joined the community this year and are actively contributing in growing the product and its maturity.</p>
+<p><img src="/blog/assets/2022-12-19/public-backstage-adopters-2022.png" alt="Accelerated growth of Public Backstage Adopters, from January 2021–December 2022."></p>
+<p>Not only are our adopters growing at an exponential rate, but so too are our contributors. Our <a href="https://discord.gg/backstage-687207715902193673">Discord server</a> is a perfect example of the worlds of our adopters and contributors melding. On average, at any given hour of the day or night, there are more than 500 people online available to talk and provide support on any Backstage topic. Discord discussions run a full gamut of topics – from technical support questions to best practices for onboarding engineers to Backstage – basically, anything and everything an adopter may be interested to know and learn. At the very beginning of 2022, we “only” had 4k Discord members. Today, we have a growing membership of 8.2k.</p>
+<p>Isn’t it what we can call a great and vibrant community of enthusiasts?</p>
+<p>The growth of the ecosystem is not limited to the adopters and contributors. The ecosystem also includes big tech companies interested in growing Backstage by including it as part of their offering and integrations. Our <a href="https://youtube.com/watch?v=GAzKCQO8Vt0&amp;si=EnSIkaIECMiOmarE">collaboration with VMWare</a> is a great example of this, and <a href="https://developers.redhat.com/articles/2022/10/24/red-hat-joins-backstageio-community">RedHat</a> joined the party this year – promising even faster growth in contributions and integrations for the Backstage project.</p>
+<p>Before we go any further, let’s take a quick look at some more numbers, mainly coming from the <a href="https://github.com/backstage/backstage">Official Github repository</a>. This year…</p>
+<ul>
+<li>Our contributors grew from a group of 500 to 900+</li>
+<li>Contributions to the project increased from 9k to 15k+</li>
+<li>The number of forks shot up from 2k to 3k+</li>
+<li>Backstage stars increased from 14k to almost 20k</li>
+<li>And lastly, we welcomed over 550 adopters into our community.</li>
+</ul>
+<p>All of these people driving the enormous growth and maturity of the project are represented in the chart below, which shows cumulative activities per month for Backstage:</p>
+<p><img src="/blog/assets/2022-12-19/github-metrics-for-backstage-io.png" alt="Main Github metrics for Backstage.io."></p>
+<p>Wow… that’s a lot of activity. We’ve generated this animation showing all of your contributions to the Backstage repository in 2022, look at this project grow:</p>
+<iframe width="780" height="440" src="https://www.youtube.com/embed/GoWBvHpH5Cg" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<h2><a class="anchor" aria-hidden="true" id="but-wait-theres-more"></a><a href="#but-wait-theres-more" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>But wait… there’s more</h2>
+<p>The growth of the community is so exciting to see. And with all this community growth, comes growth and maturity of the product, making Backstage better able to support adopters in their developer experience challenges. The Backstage open source project has almost <a href="https://backstage.io/plugins">100 plugins</a>, each one amending Backstage with a tool or service to improve not only adopters’ Backstage apps, but their unique developer experiences. And almost every week we learn of a new one being contributed, which is amazing.</p>
+<p>The Backstage platform itself is leaving 2022 more mature than ever, thanks to milestones such as these:</p>
+<ul>
+<li><a href="https://backstage.io/blog/2022/03/17/backstage-1.0">Backstage is now beyond version 1</a>.</li>
+<li><a href="https://backstage.io/blog/2022/08/23/backstage-security-audit">Backstage had its first Security Audit ever and now can rely on a Threat Model</a>.</li>
+<li><a href="https://backstage.spotify.com/learn/">Backstage Learn helps adopters get started more easily</a>.</li>
+<li><a href="https://www.cncf.io/blog/2022/03/15/backstage-project-joins-the-cncf-incubator/">Backstage reached incubating status as part of the CNCF ecosystem</a>.</li>
+</ul>
+<p>And like every mature project, now Backstage has also a mascot: Bowie the Beaver!</p>
+<p><img src="/blog/assets/2022-12-19/bowie-the-beaver.png" alt="Bowie the Beaver."></p>
+<p>Additionally, we launched a new <a href="https://github.com/backstage/community/tree/main/sigs">Special Interest Groups (SIGs)</a> initiative this year, following the lead of Kubernetes. We believe Backstage SIGs will better coordinate contributions, grow the platform cohesively with the open source community, and allow contributors to dig even deeper as a community member. At this moment in time there two SIGs in place:</p>
+<ul>
+<li>The <a href="https://github.com/backstage/community/blob/main/sigs/sig-catalog/README.md">Catalog SIG</a>, covering all aspects of the systems and components related to the Software Catalog.</li>
+<li>The <a href="https://github.com/backstage/community/blob/main/sigs/sig-adoption/README.md">Adoption SIG</a>, covering all aspects of the adoption journey of Backstage.</li>
+</ul>
+<p>Our plan is to open more SIGs in 2023 to engage more with the community and to keep driving towards cohesive growth for the community and project.</p>
+<p>Last but not least, we mustn't overlook the first ever conference fully dedicated to Backstage: BackstageCon. What was special there? SO much. But in particular two things: seeing everyone in real life and the incredible mood and conversations between maintainers, adopters, partners and enthusiasts. It’s hard to express just how positive and amazing the vibes were in a blog, but you can read our recap <a href="https://backstage.io/blog/2022/10/28/backstagecon-kubecon-2022">here</a> or watch the sessions <a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OKySsTuiip3BqmdYZQRnSf">here</a>. And in the meantime, here are some great numbers from the event:</p>
+<ul>
+<li>250 attendees or a 100% full venue and packed room.</li>
+<li>14 sessions</li>
+<li>17 speakers</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="goodbye-2022-hello-2023"></a><a href="#goodbye-2022-hello-2023" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Goodbye, 2022. Hello, 2023!</h2>
+<p>After this incredible year, thanks to everyone in the global Backstage community who contributed to the open source project in 2022. We are already working on the goals for 2023 – and as a roadmap teaser: we are very much committed to making the journey of adoption easier, faster, more valuable, and overall better. We would not be here today without our amazing community, so thank you for everything!</p>
+<p>Looking forward to continuing collaborating together for an exciting 2023.</p>
+<p>See you then! Happy holidays from everyone on the Backstage team at Spotify!</p>
+</span></div></div><div class="blogSocialSection"></div></div><div class="blog-recent"><a class="button" href="/blog/">Recent Posts</a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#we-grew--a-lot">We grew … a lot!</a></li><li><a href="#but-wait-theres-more">But wait… there’s more</a></li><li><a href="#goodbye-2022-hello-2023">Goodbye, 2022. Hello, 2023!</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
+              var search = docsearch({
+                
+                apiKey: '8d115c9875ba0f4feaee95bab55a1645',
+                indexName: 'backstage',
+                inputSelector: '#search_input_react'
+              });
+            </script></body></html>

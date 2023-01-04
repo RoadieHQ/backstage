@@ -2,12 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://backstage.io/blog</id>
     <title>Backstage Software Catalog and Developer Platform Blog</title>
-    <updated>2022-11-15T06:00:00.000Z</updated>
+    <updated>2022-12-19T06:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://backstage.io/blog"/>
     <subtitle>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</subtitle>
     <logo>https://backstage.io/undefined</logo>
-    <rights>Copyright © 2022 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <rights>Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</rights>
+    <entry>
+        <title type="html"><![CDATA[Backstage Wrapped 2022]]></title>
+        <id>https://backstage.io/blog/2022/12/19/backstage-wrapped-2022.html</id>
+        <link href="https://backstage.io/blog/2022/12/19/backstage-wrapped-2022.html"/>
+        <updated>2022-12-19T06:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p><img src="/blog/assets/2022-12-19/wrapped.png" alt="wrapped header image"></p>
+<p>If 2021 was the year of growth for the Backstage project and community, 2022 can be easily defined as the year of maturity. Both the project and the community continued to grow at an incredible pace and the platform is now more stable, more secure, and more powerful than ever.</p>
+<p>Our community is full of people from across the globe who bring incredible engagement and positive vibes to the project. And we finally got to experience this for the first time in real life during <a href="https://www.youtube.com/playlist?list=PLj6h78yzYM2OKySsTuiip3BqmdYZQRnSf">BackstageCon</a>, the very first in-person conference fully dedicated to Backstage, where hundreds of enthusiasts, the maintainers, adopters, and partners joined the event confirming the great momentum and the traction in the market.</p>
+<p>But before anticipating too much, let’s share some stats of this amazing 2022.</p>
+]]></summary>
+        <author>
+            <name>Francesco Corti &amp; Suzanne Daniels</name>
+            <uri>https://github.com/fcorti</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Linux Foundation launches its Introduction to Backstage course]]></title>
         <id>https://backstage.io/blog/2022/11/15/linux-foundation-introduction-to-backstage-course.html</id>
