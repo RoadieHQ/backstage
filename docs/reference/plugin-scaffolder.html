@@ -20,7 +20,6 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder.createscaffolderfieldextension">createScaffolderFieldExtension(options)</a></td><td>Method for creating field extensions that can be used in the scaffolder frontend form.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.createscaffolderlayout">createScaffolderLayout(options)</a></td><td>Method for creating custom Layouts that can be used in the scaffolder frontend form</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.makefieldschemafromzod">makeFieldSchemaFromZod(returnSchema, uiOptionsSchema)</a></td><td>Utility function to convert zod return and UI options schemas to a CustomFieldExtensionSchema with FieldExtensionComponentProps type inference</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.templatetypepicker">TemplateTypePicker()</a></td><td>The component to select the <code>type</code> of <code>Template</code> that you will see in the table.</td></tr>
@@ -32,18 +31,8 @@
 <tr><th>Interface</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensioncomponentprops">FieldExtensionComponentProps</a></td><td>Type for field extensions and being able to type incoming props easier.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.fieldschema">FieldSchema</a></td><td>FieldSchema encapsulates a JSONSchema7 along with the matching FieldExtensionComponentProps type for a field extension.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.layoutoptions">LayoutOptions</a></td><td>The type of layouts that is passed to the TemplateForms</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderapi">ScaffolderApi</a></td><td>An API to interact with the scaffolder backend.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderdryrunoptions">ScaffolderDryRunOptions</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderdryrunresponse">ScaffolderDryRunResponse</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldergetintegrationslistoptions">ScaffolderGetIntegrationsListOptions</a></td><td>The arguments for <code>getIntegrationsList</code>.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldergetintegrationslistresponse">ScaffolderGetIntegrationsListResponse</a></td><td>The response shape for <code>getIntegrationsList</code>.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderscaffoldoptions">ScaffolderScaffoldOptions</a></td><td>The input options to the <code>scaffold</code> method of the <code>ScaffolderClient</code>.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderscaffoldresponse">ScaffolderScaffoldResponse</a></td><td>The response shape of the <code>scaffold</code> method of the <code>ScaffolderClient</code>.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderstreamlogsoptions">ScaffolderStreamLogsOptions</a></td><td>The input options to the <code>streamLogs</code> method of the <code>ScaffolderClient</code>.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderusetemplatesecrets">ScaffolderUseTemplateSecrets</a></td><td>The return type from the useTemplateSecrets hook.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables</h2>
@@ -52,6 +41,7 @@
 <tr><th>Variable</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/plugin-scaffolder.createscaffolderfieldextension">createScaffolderFieldExtension</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.entitynamepickerfieldextension">EntityNamePickerFieldExtension</a></td><td>The field extension for selecting a name for a new Entity in the Catalog.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.entitypickerfieldextension">EntityPickerFieldExtension</a></td><td>A field extension for selecting an Entity that exists in the Catalog.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.entitypickerfieldschema">EntityPickerFieldSchema</a></td><td></td></tr>
@@ -65,14 +55,13 @@
 <tr><td><a href="/docs/reference/plugin-scaffolder.repourlpickerfieldextension">RepoUrlPickerFieldExtension</a></td><td>The field extension which provides the ability to select a RepositoryUrl. Currently, this is an encoded URL that looks something like the following <code>github.com?repo=myRepoName&amp;owner=backstage</code>.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.repourlpickerfieldschema">RepoUrlPickerFieldSchema</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.rootrouteref">rootRouteRef</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderapiref">scaffolderApiRef</a></td><td>Utility API reference for the <a href="/docs/reference/plugin-scaffolder.scaffolderapi">ScaffolderApi</a><!-- -->.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderfieldextensions">ScaffolderFieldExtensions</a></td><td>The Wrapping component for defining fields extensions inside</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderapiref">scaffolderApiRef</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderfieldextensions">ScaffolderFieldExtensions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderlayouts">ScaffolderLayouts</a></td><td>The wrapping component for defining scaffolder layouts as children</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderpage">ScaffolderPage</a></td><td>The Router and main entrypoint to the Scaffolder plugin.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderplugin">scaffolderPlugin</a></td><td>The main plugin export for the scaffolder.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.selectedtemplaterouteref">selectedTemplateRouteRef</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.taskpage">TaskPage</a></td><td>TaskPage for showing the status of the taskId provided as a param</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.usetemplatesecrets">useTemplateSecrets</a></td><td>Hook to access the secrets context.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.usetemplatesecrets">useTemplateSecrets</a></td><td></td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="type-aliases"></a><a href="#type-aliases" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Aliases</h2>
@@ -81,27 +70,37 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/plugin-scaffolder.customfieldextensionschema">CustomFieldExtensionSchema</a></td><td>Type for the Custom Field Extension schema.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.customfieldvalidator">CustomFieldValidator</a></td><td>Field validation type for Custom Field Extensions.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.customfieldextensionschema">CustomFieldExtensionSchema</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.customfieldvalidator">CustomFieldValidator</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.entitypickeruioptions">EntityPickerUiOptions</a></td><td>The input props that can be specified under <code>ui:options</code> for the <code>EntityPicker</code> field extension.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.entitytagspickeruioptions">EntityTagsPickerUiOptions</a></td><td>The input props that can be specified under <code>ui:options</code> for the <code>EntityTagsPicker</code> field extension.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensioncomponent">FieldExtensionComponent</a></td><td>A type used to wrap up the FieldExtension to embed the ReturnValue and the InputProps</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensionoptions">FieldExtensionOptions</a></td><td>Type for the Custom Field Extension with the name and components and validation function.</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensioncomponent">FieldExtensionComponent</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensioncomponentprops">FieldExtensionComponentProps</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.fieldextensionoptions">FieldExtensionOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.layoutcomponent">LayoutComponent</a></td><td>The type used to wrap up the Layout and embed the input props</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.layouttemplate">LayoutTemplate</a></td><td>The field template from @<!-- -->rjsf/core which is a react component that gets passed @<!-- -->rjsf/core field related props.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.listactionsresponse">ListActionsResponse</a></td><td>The response shape for the <code>listActions</code> call to the <code>scaffolder-backend</code></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.logevent">LogEvent</a></td><td>The shape of a <code>LogEvent</code> message from the <code>scaffolder-backend</code></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.listactionsresponse">ListActionsResponse</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.logevent">LogEvent</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.ownedentitypickeruioptions">OwnedEntityPickerUiOptions</a></td><td>The input props that can be specified under <code>ui:options</code> for the <code>OwnedEntityPicker</code> field extension.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.ownerpickeruioptions">OwnerPickerUiOptions</a></td><td>The input props that can be specified under <code>ui:options</code> for the <code>OwnerPicker</code> field extension.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.repourlpickeruioptions">RepoUrlPickerUiOptions</a></td><td>The input props that can be specified under <code>ui:options</code> for the <code>RepoUrlPicker</code> field extension.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.reviewstepprops">ReviewStepProps</a></td><td>The props for the Last Step in scaffolder template form. Which represents the summary of the input provided by the end user.</td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.routerprops">RouterProps</a></td><td>The props for the entrypoint <code>ScaffolderPage</code> component the plugin.</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderoutputlink">ScaffolderOutputLink</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldertask">ScaffolderTask</a></td><td>The shape of each task returned from the <code>scaffolder-backend</code></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderapi">ScaffolderApi</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderdryrunoptions">ScaffolderDryRunOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderdryrunresponse">ScaffolderDryRunResponse</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldergetintegrationslistoptions">ScaffolderGetIntegrationsListOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldergetintegrationslistresponse">ScaffolderGetIntegrationsListResponse</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderoutputlink">ScaffolderOutputlink</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderscaffoldoptions">ScaffolderScaffoldOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderscaffoldresponse">ScaffolderScaffoldResponse</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderstreamlogsoptions">ScaffolderStreamLogsOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldertask">ScaffolderTask</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldertaskoutput">ScaffolderTaskOutput</a></td><td></td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldertaskstatus">ScaffolderTaskStatus</a></td><td>The status of each task in a Scaffolder Job</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffoldertaskstatus">ScaffolderTaskStatus</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.scaffolderusetemplatesecrets">ScaffolderUseTemplateSecrets</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/plugin-scaffolder.taskpageprops">TaskPageProps</a></td><td>TaskPageProps for constructing a TaskPage</td></tr>
-<tr><td><a href="/docs/reference/plugin-scaffolder.templateparameterschema">TemplateParameterSchema</a></td><td>The shape of each entry of parameters which gets rendered as a separate step in the wizard input</td></tr>
+<tr><td><a href="/docs/reference/plugin-scaffolder.templateparameterschema">TemplateParameterSchema</a></td><td></td></tr>
 </tbody>
 </table>
 </span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#classes">Classes</a></li><li><a href="#functions">Functions</a></li><li><a href="#interfaces">Interfaces</a></li><li><a href="#variables">Variables</a></li><li><a href="#type-aliases">Type Aliases</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>

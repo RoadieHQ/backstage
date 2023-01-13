@@ -8,7 +8,7 @@
 <p>This function should only be called once, during the initialization of the backend.</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">loadBackendConfig</span>(<span class="hljs-params">options: {
-    logger: Logger;
+    logger: LoggerService;
     remote?: LoadConfigOptionsRemote;
     argv: <span class="hljs-built_in">string</span>[];
 }</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">Config</span>&gt;</span>;
@@ -19,7 +19,7 @@
 <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>options</td><td>{ logger: Logger; remote?: <a href="/docs/reference/config-loader.loadconfigoptionsremote">LoadConfigOptionsRemote</a><!-- -->; argv: string[]; }</td><td></td></tr>
+<tr><td>options</td><td>{ logger: <a href="/docs/reference/backend-plugin-api.loggerservice">LoggerService</a><!-- -->; remote?: <a href="/docs/reference/config-loader.loadconfigoptionsremote">LoadConfigOptionsRemote</a><!-- -->; argv: string[]; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>

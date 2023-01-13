@@ -7,7 +7,7 @@
 <p>Creates a default status checking router, that you can add to your express app.</p>
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createStatusCheckRouter</span>(<span class="hljs-params">options: {
-    logger: Logger;
+    logger: LoggerService;
     path?: <span class="hljs-built_in">string</span>;
     statusCheck?: StatusCheck;
 }</span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">express</span>.<span class="hljs-title">Router</span>&gt;</span>;
@@ -18,7 +18,7 @@
 <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td>options</td><td>{ logger: Logger; path?: string; statusCheck?: <a href="/docs/reference/backend-common.statuscheck">StatusCheck</a><!-- -->; }</td><td></td></tr>
+<tr><td>options</td><td>{ logger: <a href="/docs/reference/backend-plugin-api.loggerservice">LoggerService</a><!-- -->; path?: string; statusCheck?: <a href="/docs/reference/backend-common.statuscheck">StatusCheck</a><!-- -->; }</td><td></td></tr>
 </tbody>
 </table>
 <p><b>Returns:</b></p>

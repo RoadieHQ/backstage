@@ -8,6 +8,8 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript">scaffolderPlugin: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).BackstagePlugin&lt;{
     root: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).RouteRef&lt;<span class="hljs-literal">undefined</span>&gt;;
+    selectedTemplate: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).SubRouteRef&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).PathParams&lt;<span class="hljs-string">"/templates/:namespace/:templateName"</span>&gt;&gt;;
+    ongoingTask: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).SubRouteRef&lt;<span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).PathParams&lt;<span class="hljs-string">"/tasks/:taskId"</span>&gt;&gt;;
 }, {
     registerComponent: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).ExternalRouteRef&lt;<span class="hljs-literal">undefined</span>, <span class="hljs-literal">true</span>&gt;;
     viewTechDoc: <span class="hljs-keyword">import</span>(<span class="hljs-string">"@backstage/core-plugin-api"</span>).ExternalRouteRef&lt;{

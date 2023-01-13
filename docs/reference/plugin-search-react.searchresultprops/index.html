@@ -8,6 +8,7 @@
 <p><b>Signature:</b></p>
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> SearchResultProps = Pick&lt;SearchResultStateProps, <span class="hljs-string">'query'</span>&gt; &amp; {
     children: <span class="hljs-function">(<span class="hljs-params">resultSet: SearchResultSet</span>) =&gt;</span> JSX.Element;
+    noResultsComponent?: JSX.Element;
 };
 </code></pre>
 <p><b>References:</b> <a href="/docs/reference/plugin-search-react.searchresultstateprops">SearchResultStateProps</a><!-- -->, <a href="/docs/reference/plugin-search-common.searchresultset">SearchResultSet</a></p>

@@ -8,6 +8,10 @@
 <pre><code class="hljs css language-typescript"><span class="hljs-keyword">type</span> TemplateAction&lt;Input <span class="hljs-keyword">extends</span> JsonObject&gt; = {
     id: <span class="hljs-built_in">string</span>;
     description?: <span class="hljs-built_in">string</span>;
+    examples?: {
+        description: <span class="hljs-built_in">string</span>;
+        example: <span class="hljs-built_in">string</span>;
+    }[];
     supportsDryRun?: <span class="hljs-built_in">boolean</span>;
     schema?: {
         input?: Schema;

@@ -71,7 +71,8 @@
 </ul>
 <p>See the more detailed <a href="/docs/features/search/architecture">architecture</a> and <a href="/docs/features/search/architecture#tech-stack">tech stack</a>.</p>
 <h2><a class="anchor" aria-hidden="true" id="project-roadmap"></a><a href="#project-roadmap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Project roadmap</h2>
-<p>No current plans.</p>
+<p>No current plans. Check <a href="https://github.com/backstage/backstage/issues?q=is%3Aopen+is%3Aissue+label%3Asearch">Backstage issues labeled <code>search</code></a>
+for community-led ideas and initiatives.</p>
 <h2><a class="anchor" aria-hidden="true" id="supported"></a><a href="#supported" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported</h2>
 <p>The following sections show the plugins and search engines currently supported by Backstage Search.</p>
 <h3><a class="anchor" aria-hidden="true" id="plugins-integrated-with-backstage-search"></a><a href="#plugins-integrated-with-backstage-search" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Plugins integrated with Backstage Search</h3>
@@ -93,7 +94,7 @@ the search engines are used.</p>
 <tr><th>Search Engines</th><th>Support Status</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/features/search/search-engines#elasticsearch">ElasticSearch</a></td><td>✅</td></tr>
+<tr><td><a href="/docs/features/search/search-engines#elasticsearch">Elasticsearch/OpenSearch</a></td><td>✅</td></tr>
 <tr><td><a href="/docs/features/search/search-engines#lunr">Lunr</a></td><td>✅</td></tr>
 <tr><td><a href="/docs/features/search/search-engines#postgres">Postgres</a></td><td>Community ✅</td></tr>
 </tbody>
@@ -104,67 +105,7 @@ search engines.</p>
 <p>For any questions, feedback, or to help move search forward, reach out to us in
 the <strong>#search</strong> channel of our
 <a href="https://github.com/backstage/backstage#community">Discord chatroom</a>.</p>
-<h2><a class="anchor" aria-hidden="true" id="use-cases-supported"></a><a href="#use-cases-supported" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use Cases supported</h2>
-<h4><a class="anchor" aria-hidden="true" id="backstage-search-pre-alpha"></a><a href="#backstage-search-pre-alpha" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Backstage Search Pre-Alpha</strong></h4>
-<p>Search Frontend letting you search through the entities of the software catalog.</p>
-<p>The pre-alpha is intended to solve for the following user stories, but will get
-there by means of a front-end only, non-extensible MVP.</p>
-<ul>
-<li>As a software engineer I should be able to navigate to a search page and
-search for entities registered in the Software Catalog.</li>
-<li>As a software engineer I should be able to use the search input field in the
-sidebar to search for entities registered in the Software Catalog.</li>
-<li>As a software engineer I should be able to see the number of results my search
-returned.</li>
-<li>As a software engineer I should be able to filter on metadata (kind,
-lifecycle) when I’ve performed a search.</li>
-<li>As a software engineer I should be able to hide the filters if I don’t need to
-use them.</li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" id="backstage-search-alpha"></a><a href="#backstage-search-alpha" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Backstage Search Alpha</strong></h4>
-<p>Basic “out-of-the-box” in-memory indexing process of entities, and their metadata, registered to the Software Catalog.</p>
-<p>We will consider Backstage Search to be in alpha when the above use-cases are
-met, but built on top of a flexible, extensible platform.</p>
-<ul>
-<li>As an integrator, I should be able to provide all of the pre-alpha experiences
-to my users if I choose, but also be able to customize the experience using a
-composable set of components.</li>
-<li>As a plugin developer, I should have a standard way to expose my plugin's data
-to Backstage Search.</li>
-<li>As an integrator, I should still be able to expose everything in the Software
-Catalog in search, but it should be possible to customize what is searchable.</li>
-<li>As an integrator, although I should be able to customize all of the above, it
-should be possible to have the pre-alpha user experiences covered without
-having to set up and configure a search engine.</li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" id="backstage-search-beta"></a><a href="#backstage-search-beta" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Backstage Search Beta</strong></h4>
-<p>At least one production-ready search engine that supports the same use-cases as in the alpha.</p>
-<p>We will consider Backstage Search to be in a beta phase when the above use-cases
-are met, and can be deployed using a production-ready search engine.</p>
-<ul>
-<li>As an integrator, I should be able to power my Backstage Search experience
-(including querying and indexing) using a production-ready search engine like
-ElasticSearch.</li>
-<li>As an integrator, I should be able to configure the connection to my search
-engine in <strong>app_config.yaml</strong>.</li>
-<li>As an integrator, I should be able to tune the queries sent to my chosen
-search engine according to my organization's needs, but a sensible default
-query should be in place so that I am not required to do so.</li>
-</ul>
-<h4><a class="anchor" aria-hidden="true" id="backstage-search-10"></a><a href="#backstage-search-10" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><strong>Backstage Search 1.0</strong></h4>
-<p>A stable Search API for plugin developers to add search to their plugins, and app integrators to expose that to their users.</p>
-<p>We will consider Backstage Search to be 1.0 when the above
-use-cases are met, and an ecosystem of search-enabled plugins are available and
-stable.</p>
-<ul>
-<li>As a plugin developer, there should be at least one example of a Backstage
-plugin that integrates with search that I can use as inspiration for my own
-plugin's search capabilities (for example, the TechDocs plugin).</li>
-<li>As an app integrator, there should be plenty of examples and documentation on
-how to customize and extend search in my Backstage instance to meet my
-organization's needs.</li>
-</ul>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/4/2023</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/migrating-from-v1beta2-to-v1beta3"><span class="arrow-prev">← </span><span>Migrating to v1beta3 templates</span></a><a class="docs-next button" href="/docs/features/search/getting-started"><span>Getting Started with Search</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-it">What is it?</a></li><li><a href="#features">Features</a></li><li><a href="#project-roadmap">Project roadmap</a></li><li><a href="#supported">Supported</a><ul class="toc-headings"><li><a href="#plugins-integrated-with-backstage-search">Plugins integrated with Backstage Search</a></li><li><a href="#search-engines">Search engines</a></li></ul></li><li><a href="#get-involved">Get involved</a></li><li><a href="#use-cases-supported">Use Cases supported</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/12/2023</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/features/software-templates/migrating-from-v1beta2-to-v1beta3"><span class="arrow-prev">← </span><span>Migrating to v1beta3 templates</span></a><a class="docs-next button" href="/docs/features/search/getting-started"><span>Getting Started with Search</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-it">What is it?</a></li><li><a href="#features">Features</a></li><li><a href="#project-roadmap">Project roadmap</a></li><li><a href="#supported">Supported</a><ul class="toc-headings"><li><a href="#plugins-integrated-with-backstage-search">Plugins integrated with Backstage Search</a></li><li><a href="#search-engines">Search engines</a></li></ul></li><li><a href="#get-involved">Get involved</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div class="footer-title"><a href="/"><h2 class="footerLogo"></h2></a></div><div><h5>Docs</h5><a href="/docs/overview/what-is-backstage">What is Backstage?</a><a href="/docs/getting-started/">Getting started</a><a href="/docs/features/software-catalog/software-catalog-overview">Software Catalog</a><a href="/docs/plugins/create-a-plugin">Create a Plugin</a><a href="/docs/dls/design">Designing for Backstage</a></div><div><h5>Community</h5><a href="https://discord.gg/MUpMjP2">Support chatroom</a><a href="https://github.com/backstage/backstage/blob/master/CONTRIBUTING.md">Contributing</a><a href="https://backstage.spotify.com">Adopting</a><a href="https://github.com/backstage/community">Community Sessions</a><a href="https://info.backstage.spotify.com/newsletter_subscribe">Subscribe to our newsletter</a><a href="https://www.cncf.io/projects/">CNCF Incubation</a></div><div><h5>More</h5><a href="https://spotify.github.io/">Open Source @ Spotify</a><a href="https://engineering.atspotify.com/">Spotify Engineering Blog</a><a href="https://developer.spotify.com/">Spotify for Developers</a><a href="https://github.com/backstage/backstage">GitHub</a><a class="github-button" href="https://github.com/backstage/backstage" data-icon="octicon-star" data-count-href="/backstage/backstage/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/SpotifyEng" class="twitter-follow-button">Follow @SpotifyEng</a></div></div></section><p style="text-align:center"><a href="https://spotify.github.io">Made with ❤️ at Spotify</a></p><p class="copyright">Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</p></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script><script>
                 document.addEventListener('keyup', function(e) {
                   if (e.target !== document.body) {
                     return;
