@@ -13,6 +13,7 @@
 <tbody>
 <tr><td><a href="/docs/reference/backend-app-api.defaultroothttprouter">DefaultRootHttpRouter</a></td><td>The default implementation of the <a href="/docs/reference/backend-plugin-api.roothttprouterservice">RootHttpRouterService</a> interface for <a href="/docs/reference/backend-plugin-api.coreservices.roothttprouter">coreServices.rootHttpRouter</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.middlewarefactory">MiddlewareFactory</a></td><td>A utility to configure common middleware.</td></tr>
+<tr><td><a href="/docs/reference/backend-app-api.winstonlogger">WinstonLogger</a></td><td>A <a href="/docs/reference/backend-plugin-api.loggerservice">LoggerService</a> implementation based on winston.</td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="functions"></a><a href="#functions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Functions</h2>
@@ -21,8 +22,10 @@
 <tr><th>Function</th><th>Description</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="/docs/reference/backend-app-api.createconfigsecretenumerator">createConfigSecretEnumerator(options)</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.createhttpserver">createHttpServer(listener, options, deps)</a></td><td>Creates a Node.js HTTP or HTTPS server instance.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.createspecializedbackend">createSpecializedBackend(options)</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-app-api.loadbackendconfig">loadBackendConfig(options)</a></td><td><p>Load configuration for a Backend.</p><p>This function should only be called once, during the initialization of the backend.</p></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.readcorsoptions">readCorsOptions(config)</a></td><td>Attempts to read a CORS options object from the backend configuration object.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.readhelmetoptions">readHelmetOptions(config)</a></td><td>Attempts to read Helmet options from the backend configuration object.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.readhttpserveroptions">readHttpServerOptions(config)</a></td><td>Reads <a href="/docs/reference/backend-app-api.httpserveroptions">HttpServerOptions</a> from a <a href="/docs/reference/config.config">Config</a> object.</td></tr>
@@ -35,12 +38,15 @@
 </thead>
 <tbody>
 <tr><td><a href="/docs/reference/backend-app-api.backend">Backend</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-app-api.configfactoryoptions">ConfigFactoryOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.createspecializedbackendoptions">CreateSpecializedBackendOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.defaultroothttprouteroptions">DefaultRootHttpRouterOptions</a></td><td>Options for the <a href="/docs/reference/backend-app-api.defaultroothttprouter">DefaultRootHttpRouter</a> class.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.extendedhttpserver">ExtendedHttpServer</a></td><td>An HTTP server extended with utility methods.</td></tr>
+<tr><td><a href="/docs/reference/backend-app-api.httprouterfactoryoptions">HttpRouterFactoryOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.middlewarefactoryerroroptions">MiddlewareFactoryErrorOptions</a></td><td>Options passed to the <a href="/docs/reference/backend-app-api.middlewarefactory.error">MiddlewareFactory.error()</a> middleware.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.middlewarefactoryoptions">MiddlewareFactoryOptions</a></td><td>Options used to create a <a href="/docs/reference/backend-app-api.middlewarefactory">MiddlewareFactory</a><!-- -->.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.roothttprouterconfigureoptions">RootHttpRouterConfigureOptions</a></td><td></td></tr>
+<tr><td><a href="/docs/reference/backend-app-api.winstonloggeroptions">WinstonLoggerOptions</a></td><td></td></tr>
 </tbody>
 </table>
 <h2><a class="anchor" aria-hidden="true" id="variables"></a><a href="#variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variables</h2>
@@ -72,7 +78,6 @@
 <tr><th>Type Alias</th><th>Description</th></tr>
 </thead>
 <tbody>
-<tr><td><a href="/docs/reference/backend-app-api.httprouterfactoryoptions">HttpRouterFactoryOptions</a></td><td></td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.httpservercertificateoptions">HttpServerCertificateOptions</a></td><td>Options for configuring HTTPS for an HTTP server.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.httpserveroptions">HttpServerOptions</a></td><td>Options for starting up an HTTP server.</td></tr>
 <tr><td><a href="/docs/reference/backend-app-api.identityfactoryoptions">IdentityFactoryOptions</a></td><td>An identity client options object which allows extra configurations</td></tr>
