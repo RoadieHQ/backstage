@@ -4,7 +4,7 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>The best place to stay up-to-date with the latest Backstage Software Catalog and Developer Platform news and events.</description>
-        <lastBuildDate>Mon, 19 Dec 2022 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Feb 2023 06:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -13,6 +13,20 @@
             <link>https://backstage.io/blog</link>
         </image>
         <copyright>Copyright © 2023 Backstage Project Authors. All rights reserved. The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our Trademark Usage page: https://www.linuxfoundation.org/trademark-usage</copyright>
+        <item>
+            <title><![CDATA[What’s Ahead in 2023?]]></title>
+            <link>https://backstage.io/blog/2023/02/06/whats-ahead-in-2023.html</link>
+            <guid>https://backstage.io/blog/2023/02/06/whats-ahead-in-2023.html</guid>
+            <pubDate>Mon, 06 Feb 2023 06:00:00 GMT</pubDate>
+            <description><![CDATA[<h1><a class="anchor" aria-hidden="true" id="whats-ahead-in-2023"></a><a href="#whats-ahead-in-2023" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"/></svg></a>What’s Ahead in 2023?</h1> <p><img src="/blog/assets/2023-02-06/whats-ahead.png" alt="Fewer “vibes” and more climbs (up the contribution ladder)"></p> <p>Okay, everyone. Time to move on from all the 2022 reflections, Top 10 lists, and Wrapped(s), and turn our gaze in the other direction — towards 2023. As the Backstage team moves into the new year, we find ourselves asking those...</p>]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Scaling Backstage Ingestion with Incremental Entity Providers]]></title>
+            <link>https://backstage.io/blog/2023/01/31/incremental-entity-provider.html</link>
+            <guid>https://backstage.io/blog/2023/01/31/incremental-entity-provider.html</guid>
+            <pubDate>Tue, 31 Jan 2023 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>At the heart of <a href="https://backstage.io/">Backstage</a> is the <a href="https://backstage.io/docs/features/software-catalog/software-catalog-overview">Backstage Software Catalog</a>, which is a data store that allows an organization to centralize and visualize its many software services and components. Backstage inspects and transforms an organization's disparate softwa...</p>]]></description>
+        </item>
         <item>
             <title><![CDATA[Backstage Wrapped 2022]]></title>
             <link>https://backstage.io/blog/2022/12/19/backstage-wrapped-2022.html</link>
