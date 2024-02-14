@@ -23,12 +23,12 @@ import { TaskWorker, TaskWorkerOptions } from './TaskWorker';
 import { ScmIntegrations } from '@backstage/integration';
 import { TemplateActionRegistry } from '../actions';
 import { NunjucksWorkflowRunner } from './NunjucksWorkflowRunner';
+import { WorkflowRunner } from './types';
 import {
   SerializedTaskEvent,
   TaskBroker,
   TaskContext,
-  WorkflowRunner,
-} from './types';
+} from '@backstage/plugin-scaffolder-node';
 import ObservableImpl from 'zen-observable';
 import waitForExpect from 'wait-for-expect';
 
@@ -257,7 +257,7 @@ describe('Cancellable TaskWorker', () => {
       },
     });
 
-    await taskWorker.start();
+    taskWorker.start();
     await taskBroker.cancel(taskId);
 
     await waitForExpect(() => {

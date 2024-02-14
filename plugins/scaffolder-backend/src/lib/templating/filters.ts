@@ -16,7 +16,7 @@
 import { parseEntityRef } from '@backstage/catalog-model';
 import { ScmIntegrations } from '@backstage/integration';
 import type { JsonObject, JsonValue } from '@backstage/types';
-import { TemplateFilter } from '..';
+import { TemplateFilter } from '@backstage/plugin-scaffolder-node';
 import { parseRepoUrl } from '../../scaffolder/actions/builtin/publish/util';
 import get from 'lodash/get';
 
