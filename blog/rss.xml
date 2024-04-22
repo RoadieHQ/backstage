@@ -4,10 +4,348 @@
         <title>Backstage Software Catalog and Developer Platform Blog</title>
         <link>https://backstage.io/blog</link>
         <description>Backstage Software Catalog and Developer Platform Blog</description>
-        <lastBuildDate>Wed, 27 Mar 2024 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Apr 2024 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Introducing the Backstage Community Plugins Repository]]></title>
+            <link>https://backstage.io/blog/2024/04/19/community-plugins</link>
+            <guid>https://backstage.io/blog/2024/04/19/community-plugins</guid>
+            <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[tl;dr: We've set up the new community plugins repository, and have migrated most of the packages in the plugins directory of the main Backstage repository to their new home!]]></description>
+            <content:encoded><![CDATA[<p><strong>tl;dr</strong>: We've set up the new <a href="https://github.com/backstage/community-plugins" target="_blank" rel="noopener noreferrer">community plugins repository</a>, and have migrated most of the packages in the <code>plugins</code> directory of the main Backstage repository to their new home!</p>
+<p>For those who depended on these plugins, migrating is as simple as <code>yarn backstage-cli versions:bump</code> then <code>yarn backstage-cli versions:migrate</code>. If you're already on <code>1.26.1</code>, then be sure to run <code>yarn backstage-cli versions:bump --skip-migrate</code> then <code>yarn backstage-cli versions:migrate</code> to take advantage of the code reference replacement helpers.</p>
+<!-- -->
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-community-plugins-repo">The community plugins repo<a href="https://backstage.io/blog/2024/04/19/community-plugins#the-community-plugins-repo" class="hash-link" aria-label="Direct link to The community plugins repo" title="Direct link to The community plugins repo">​</a></h2>
+<p>Some of you who have been around a while, or have seen our <a href="https://www.youtube.com/watch?v=ONMBYnhxnNU" target="_blank" rel="noopener noreferrer">Maintainer Track talks</a> at KubeCon, might have seen <a href="https://github.com/backstage/backstage/issues/20266" target="_blank" rel="noopener noreferrer">this RFC</a> which outlines some issues with the scale of the <code>backstage/backstage</code> monorepo, and us as maintainers being the de facto owners of all plugins without a <a href="https://github.com/backstage/backstage/blob/master/GOVERNANCE.md#project-area" target="_blank" rel="noopener noreferrer">project area</a> or <a href="https://github.com/backstage/backstage/blob/master/GOVERNANCE.md#project-area-maintainer" target="_blank" rel="noopener noreferrer">plugin maintainer</a>.</p>
+<p>There was some great discussion in this issue, and some great ideas. One of the ideas was to create a dedicated home for community plugins, with all the burden of release tooling and workspace tooling already set up, which is a pretty big barrier for people wanting to create plugins for Backstage in their own organization or personal account. These plugins would then have the ability to release independently of the main monorepo, and have their own release cadence, which is something that we've been looking at exploring for a while.</p>
+<p>With Red Hat wanting to join forces and help get this set up, this is the path that we picked, and the last few months have been a lot of hard work from both sides getting this repository in shape and coming up with a deprecation plan for these plugins in the main repository.</p>
+<p>Would also like to give a shoutout to all the <a href="https://github.com/backstage/backstage/blob/master/OWNERS.md#community-plugins" target="_blank" rel="noopener noreferrer">Community Plugins project area</a> maintainers, who have been helping get us to this state! <a href="https://github.com/vinzscam" target="_blank" rel="noopener noreferrer">@vinzscam</a> <a href="https://github.com/tudi2d" target="_blank" rel="noopener noreferrer">@tudi2d</a> <a href="https://github.com/BethGriggs" target="_blank" rel="noopener noreferrer">@bethgriggs</a> <a href="https://github.com/kadel" target="_blank" rel="noopener noreferrer">@kadel</a> <a href="https://github.com/awanlin" target="_blank" rel="noopener noreferrer">@awanlin</a> 👏</p>
+<p>And now with the release of <code>1.26.3</code> there's a large amount of plugins from the main monorepo that have been migrated over to the new <a href="https://github.com/backstage/community-plugins" target="_blank" rel="noopener noreferrer">community plugins repository</a>. <!-- -->🎉</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="the-migration">The migration<a href="https://backstage.io/blog/2024/04/19/community-plugins#the-migration" class="hash-link" aria-label="Direct link to The migration" title="Direct link to The migration">​</a></h2>
+<p>With the moving of these plugins, we thought it would also be a good time to move the <code>npm</code> scope, so that end users can differentiate between Backstage packages, and community-maintained packages. So the <code>@backstage-community</code> namespace was born!</p>
+<p>This makes migration a little tricky for end users, as there's going to be code references and <code>package.json</code> dependencies pointing to the older packages which are no longer going to be published.</p>
+<p>We've added some tooling into the <code>@backstage/cli</code> which is going to smooth the transition here. The last versions which are published under the <code>@backstage/</code> scope from the monorepo, will have a special field in the <code>package.json</code> with a hint to the CLI as to what this package is now called.</p>
+<p>The CLI will then be able to replace these references inside the <code>./src</code> folder of your codebase, and update your <code>package.json</code> dependencies to the new <code>@backstage-community</code> scope.</p>
+<p>You can migrate today by running the following:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#9CDCFE;--prism-background-color:#232323"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#9CDCFE;background-color:#232323"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#9CDCFE"><span class="token comment" style="color:rgb(106, 153, 85)"># &lt; 1.26.1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token function" style="color:rgb(220, 220, 170)">yarn</span><span class="token plain"> backstage-cli versions:bump</span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token function" style="color:rgb(220, 220, 170)">yarn</span><span class="token plain"> backstage-cli versions:migrate</span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token comment" style="color:rgb(106, 153, 85)"># 1.26.1</span><span class="token plain"></span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token function" style="color:rgb(220, 220, 170)">yarn</span><span class="token plain"> backstage-cli versions:bump --skip-migrate</span><br></span><span class="token-line" style="color:#9CDCFE"><span class="token plain"></span><span class="token function" style="color:rgb(220, 220, 170)">yarn</span><span class="token plain"> backstage-cli versions:migrate</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>From this latest <code>1.26.3</code> release and onwards, the <code>backstage-cli versions:bump</code> command will automatically check for moved packages, so you shouldn't have to worry about running this every time.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="help-my-plugin-has-been-moved">Help! My plugin has been moved!<a href="https://backstage.io/blog/2024/04/19/community-plugins#help-my-plugin-has-been-moved" class="hash-link" aria-label="Direct link to Help! My plugin has been moved!" title="Direct link to Help! My plugin has been moved!">​</a></h2>
+<p>No stress! If you were a <code>CODEOWNER</code> of the code in the monorepo, these permissions will be migrated over to the <a href="https://github.com/backstage/community-plugins" target="_blank" rel="noopener noreferrer">community plugins repository</a> so you should still have access to the code. And now you're in charge of releasing your own plugin! 🚀 You can do that by following the same flow from the monorepo, with changesets and merging the <code>Version Packages (My Plugin)</code> PR.</p>
+<p>Please reach out to us on <a href="https://discord.com/invite/backstage-687207715902193673" target="_blank" rel="noopener noreferrer">Discord</a> if you have any issues! We're looking forward to working together in the new space!</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-moved">What's moved?<a href="https://backstage.io/blog/2024/04/19/community-plugins#whats-moved" class="hash-link" aria-label="Direct link to What's moved?" title="Direct link to What's moved?">​</a></h2>
+<p>We've taken a pretty big chunk of the plugins from the main monorepo and moved them over to the new repository. There could be more plugins over time that are moved, or even ones that we promote back to the main monorepo.</p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><p>Here's a list of plugins that have been moved with this release</p></summary><div><div class="collapsibleContent_i85q"><ul>
+<li>
+<p><code>@backstage/plugin-adr-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-adr-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-adr</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-airbrake-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-airbrake</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-allure</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-analytics-module-ga</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-analytics-module-ga4</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-analytics-module-newrelic-browser</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-apache-airflow</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-apollo-explorer</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-devops-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-devops-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-devops</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-sites-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-sites-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-azure-sites</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-badges-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-badges</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-bazaar-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-bazaar</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-bitrise</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-cicd-statistics-module-gitlab</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-cicd-statistics</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-circleci</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-cloudbuild</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-code-climate</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-code-coverage-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-code-coverage</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-codescene</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-cost-insights-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-cost-insights</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-dynatrace</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-entity-feedback-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-entity-feedback-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-entity-feedback</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-entity-validation</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-explore-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-explore-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-explore-react</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-explore</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-firehydrant</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-fossa</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-gcalendar</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-gcp-projects</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-git-release-manager</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-github-actions</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-github-deployments</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-github-issues</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-github-pull-requests-board</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-gitops-profiles</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-gocd</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-graphiql</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-graphql-voyager</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-ilert</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-jenkins-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-jenkins-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-jenkins</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-kafka-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-kafka</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-lighthouse-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-lighthouse-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-lighthouse</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-linguist</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-linguist-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-linguist-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-microsoft-calendar</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-newrelic-dashboard</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-newrelic</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-nomad</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-nomad-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-octopus-deploy</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-opencost</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-periskop-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-periskop</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-playlist-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-playlist-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-playlist</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-puppetdb</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-rollbar-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-rollbar</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-sentry</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-shortcuts</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-sonarqube-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-sonarqube-react</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-sonarqube</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-splunk-on-call</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-stack-overflow-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-stack-overflow</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-stackstorm</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-insights-backend-module-jsonfc</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-insights-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-insights-common</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-insights-node</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-insights</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-tech-radar</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-vault-backend</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-vault-node</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-vault</code></p>
+</li>
+<li>
+<p><code>@backstage/plugin-xcmetrics</code></p>
+</li>
+</ul></div></div></details>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-next">What's next?<a href="https://backstage.io/blog/2024/04/19/community-plugins#whats-next" class="hash-link" aria-label="Direct link to What's next?" title="Direct link to What's next?">​</a></h2>
+<p>There's going to be a little bit of time now in this migration period where there's going to be issues and pull requests not in the right place, and we're going to do our best to transfer issues to the community plugins repository instead. We will shortly be removing the code for these plugins from the main monorepo as it now has a new home in the community plugins repository.</p>
+<p>We're also going to be looking at bringing in some more of the great tooling from the <code>backstage/backstage</code> monorepo into the community plugins repository to help out with more automation for dependency bumps, etc.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-can-i-get-involved">How can I get involved?<a href="https://backstage.io/blog/2024/04/19/community-plugins#how-can-i-get-involved" class="hash-link" aria-label="Direct link to How can I get involved?" title="Direct link to How can I get involved?">​</a></h2>
+<p>If you're interested in getting involved with the community and helping us maintain this repository, please reach out either on <a href="https://discord.com/invite/backstage-687207715902193673" target="_blank" rel="noopener noreferrer">Discord</a> or in an issue on the <a href="https://github.com/backstage/community" target="_blank" rel="noopener noreferrer">community repository</a>.</p>
+<p>If you're wanting to contribute some plugins to Backstage, the community plugin repository is open for business <!-- -->🎉<!-- --> and we're looking forward to seeing what you come up with! Head over to the <a href="https://github.com/backstage/community-plugins/tree/main/README.md" target="_blank" rel="noopener noreferrer">community plugins docs</a> to get started creating your own workspace!</p>
+<p>Thanks!</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Backstage in Paris: Wrapping up BackstageCon and KubeCon + CloudNativeCon Europe 2024]]></title>
             <link>https://backstage.io/blog/2024/03/27/backstagecon-kubecon-24</link>
@@ -759,60 +1097,6 @@ Pulumi will then create a container based deployment in Amazon Lightsail.</p>
 <li><a href="https://github.com/backstage/backstage/blob/master/SECURITY.md" target="_blank" rel="noopener noreferrer">Backstage Security Policy</a></li>
 </ul>
 <p>On behalf of the Backstage maintainers and community: thanks to the CNCF, OSTIF, and X41 D-Sec for the opportunity to improve the project.</p>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Releasing Backstage Search 1.0]]></title>
-            <link>https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0</link>
-            <guid>https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0</guid>
-            <pubDate>Tue, 19 Jul 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[TL;DR If you’ve been waiting for Backstage Search to come out of beta, we’re excited to announce that Backstage Search 1.0 is here!]]></description>
-            <content:encoded><![CDATA[<p><strong>TL;DR</strong> If you’ve been waiting for Backstage Search to come out of beta, we’re excited to announce that <a href="https://backstage.io/docs/features/search/#backstage-search-10" target="_blank" rel="noopener noreferrer">Backstage Search 1.0</a> is here!</p>
-<p>We first released the Backstage Search Platform over a year ago. Backstage Search Platform is a search experience built for you, by you.</p>
-<p><img decoding="async" loading="lazy" alt="Releasing Backstage Search 1.0" src="https://backstage.io/assets/images/releasing-backstage-search-v1-9712f17175a99b07d3c0fb933cc3f3a4.png" width="1201" height="631" class="img_ev3q"></p>
-<p>Backstage Search Platform makes it possible for you to search across your entire software ecosystem. With a Search platform that is customizable and extendable, you can identify your needs within your organization and set up search to solve these problems. Whether it is to search through the Software Catalog or technical documentation generated by the TechDocs plugin.</p>
-<!-- -->
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="so-what-is-backstage-search-10">So what is Backstage Search 1.0?<a href="https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0#so-what-is-backstage-search-10" class="hash-link" aria-label="Direct link to So what is Backstage Search 1.0?" title="Direct link to So what is Backstage Search 1.0?">​</a></h2>
-<p>Since the first release of the Backstage Search Platform, we have seen a fantastic community grow around the search plugins. To mention just a few of these contributions:</p>
-<ul>
-<li>More search engine modules: <a href="https://www.npmjs.com/package/@backstage/plugin-search-backend-module-elasticsearch" target="_blank" rel="noopener noreferrer">Elasticsearch</a> originally <a href="https://github.com/backstage/backstage/pull/6569" target="_blank" rel="noopener noreferrer">contributed</a> by Roadie and <a href="https://www.npmjs.com/package/@backstage/plugin-search-backend-module-pg" target="_blank" rel="noopener noreferrer">Postgres</a> originally <a href="https://github.com/backstage/backstage/pull/6682" target="_blank" rel="noopener noreferrer">contributed</a> by SDA SE</li>
-<li>More components: Quick search modal, originally <a href="https://github.com/backstage/backstage/pull/7316" target="_blank" rel="noopener noreferrer">contributed</a> by Expedia Group</li>
-<li>More plugin integrations: TechDocs also <a href="https://github.com/backstage/backstage/pull/6375" target="_blank" rel="noopener noreferrer">contributed</a> by Roadie and <a href="https://github.com/backstage/backstage/pull/4515" target="_blank" rel="noopener noreferrer">Software Catalog</a></li>
-</ul>
-<p>These are just a few contributions of the countless enhancements and improvements made by contributors across the globe. With a well adopted and tested search platform we feel confident to release Backstage Search as 1.0.</p>
-<p>Packages included in Backstage Search 1.0 release are:</p>
-<p><strong>Core search packages</strong></p>
-<ul>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search" target="_blank" rel="noopener noreferrer">@backstage/plugin-search</a></li>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search-react" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-react</a></li>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search-common" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-common</a></li>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search-backend" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-backend</a></li>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search-backend-node" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-backend-node</a></li>
-</ul>
-<p><strong>Modules</strong></p>
-<ul>
-<li><a href="https://www.npmjs.com/package/@backstage/plugin-search-backend-module-elasticsearch" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-backend-module-elasticsearch</a></li>
-</ul>
-<p>No additional features are released as part of the major release as the maintainers of the search packages focused on the following for this release:</p>
-<ul>
-<li>Bug fixes and clean up of deprecations.</li>
-<li>Improved error handling for missing indices.</li>
-<li>Separation of AWS Elastic and Open Elastic support.</li>
-<li>Refactor the packages by moving reusable components from <code>@backstage/plugin-search</code> to <code>@backstage/plugin-search-react</code>.</li>
-<li>Improved documentation including tutorials for how to <a href="https://backstage.io/docs/plugins/integrating-search-into-plugins" target="_blank" rel="noopener noreferrer">Integrate Search into a plugin</a>.</li>
-</ul>
-<p>You might have noticed that the <a href="https://www.npmjs.com/package/@backstage/plugin-search-backend-module-pg" target="_blank" rel="noopener noreferrer">@backstage/plugin-search-backend-module-pg</a> package is not part of 1.0. That’s because that package is a community supported module, and therefore we have not included it as part of 1.0. If you are interested in pushing the Postgres engine to 1.0, feel free to reach out to us in the <a href="https://discord.com/channels/687207715902193673/770283289327566848" target="_blank" rel="noopener noreferrer">#search</a> channel on Discord.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="elasticsearch-as-the-recommended-engine-for-production-usage">Elasticsearch as the recommended engine for production usage<a href="https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0#elasticsearch-as-the-recommended-engine-for-production-usage" class="hash-link" aria-label="Direct link to Elasticsearch as the recommended engine for production usage" title="Direct link to Elasticsearch as the recommended engine for production usage">​</a></h2>
-<p>When the Backstage Search Platform was first released, it came with an in-memory search engine as default - Lunr. While this is a good engine to use on a smaller scale and for local development (to avoid having to set up a search engine instance separately), it also has its limitations such as:</p>
-<ul>
-<li>Lunr does not scale well. Horizontally scaled deployments of Backstage and/or Backstage Search backend using Lunr result in either duplicated indexing processes and indices or inconsistent index state across nodes.</li>
-<li>Lunr’s filter functionality is limited, especially for <a href="https://github.com/olivernn/lunr.js/issues/353" target="_blank" rel="noopener noreferrer">logical AND/OR operators</a>.</li>
-<li>Lunr has a smaller community than Elasticsearch, which could mean that adopters relying on it will have less by way of resources for iterating on and improving search.</li>
-</ul>
-<p>Therefore, we recommend using Elasticsearch for production usage. Moving forward, the search maintainers will prioritize the Elasticsearch engine while we’ll rely on the community to maintain the Postgres engine.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-contribute">How to contribute<a href="https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0#how-to-contribute" class="hash-link" aria-label="Direct link to How to contribute" title="Direct link to How to contribute">​</a></h2>
-<p>If you want to contribute and to further improve search, you can check out the <a href="https://github.com/backstage/backstage/issues?q=is%3Aissue+search+label%3Asearch+is%3Aopen" target="_blank" rel="noopener noreferrer">open issues labeled with search</a> or reach out to us at the <a href="https://discord.com/channels/687207715902193673/770283289327566848" target="_blank" rel="noopener noreferrer">#search</a> Discord channel.</p>
-<h2 class="anchor anchorWithStickyNavbar_LWe7" id="how-to-get-started">How to get started<a href="https://backstage.io/blog/2022/07/19/releasing-backstage-search-1.0#how-to-get-started" class="hash-link" aria-label="Direct link to How to get started" title="Direct link to How to get started">​</a></h2>
-<p>If you haven’t adopted the Backstage Search Platform yet and feel like now is a good time. Head over to the <a href="https://backstage.io/docs/features/search/getting-started" target="_blank" rel="noopener noreferrer">getting started docs</a>.</p>]]></content:encoded>
         </item>
     </channel>
 </rss>
