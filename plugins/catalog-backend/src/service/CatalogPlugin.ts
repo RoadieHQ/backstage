@@ -74,6 +74,14 @@ class CatalogProcessingExtensionPointImpl
     this.#processors.push(...processors.flat());
   }
 
+  getProcessors(): CatalogProcessor[] {
+    return this.#processors;
+  }
+
+  replaceProcessors(processors: Array<CatalogProcessor>) {
+    this.#processors = processors;
+  }
+
   addEntityProvider(
     ...providers: Array<EntityProvider | Array<EntityProvider>>
   ): void {

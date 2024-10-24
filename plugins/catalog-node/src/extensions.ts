@@ -57,6 +57,8 @@ export interface CatalogProcessingExtensionPoint {
   addProcessor(
     ...processors: Array<CatalogProcessor | Array<CatalogProcessor>>
   ): void;
+  getProcessors(): Array<CatalogProcessor>;
+  replaceProcessors(processors: Array<CatalogProcessor>): void;
   addEntityProvider(
     ...providers: Array<EntityProvider | Array<EntityProvider>>
   ): void;
