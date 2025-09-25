@@ -185,6 +185,14 @@ export type CatalogProcessorRefreshKeysResult = {
   key: string;
 };
 
+/**
+ * Decides whether an entity from a given location is allowed to enter the
+ * catalog, according to some rule set.
+ */
+export type CatalogRulesEnforcer = {
+  isAllowed(entity: Entity, location: LocationSpec): boolean;
+};
+
 /** @public */
 export type CatalogProcessorResult =
   | CatalogProcessorLocationResult

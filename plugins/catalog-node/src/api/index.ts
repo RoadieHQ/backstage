@@ -32,6 +32,7 @@ export type {
   CatalogProcessorErrorResult,
   CatalogProcessorResult,
   CatalogProcessorRefreshKeysResult,
+  CatalogRulesEnforcer,
 } from './processor';
 export type {
   EntityProvider,

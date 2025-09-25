@@ -24,6 +24,7 @@ import {
   PlaceholderResolver,
   LocationAnalyzer,
   ScmLocationAnalyzer,
+  CatalogRulesEnforcer,
 } from '@backstage/plugin-catalog-node';
 import {
   Permission,
@@ -113,6 +114,12 @@ export interface CatalogModelExtensionPoint {
    * @param parser - Parser which will used to extract entities from raw data
    */
   setEntityDataParser(parser: CatalogProcessorParser): void;
+
+  /**
+   * Sets a custom rules enforcer
+   * @param rulesEnforcer - Rules enforcer to apply
+   */
+  setRulesEnforcer(rulesEnforcer: CatalogRulesEnforcer): void;
 }
 
 /**

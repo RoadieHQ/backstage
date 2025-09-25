@@ -53,7 +53,6 @@ import {
   validateEntity,
   validateEntityEnvelope,
 } from './util';
-import { CatalogRulesEnforcer } from '../ingestion/CatalogRules';
 import { ProcessorCacheManager } from './ProcessorCacheManager';
 import {
   addEntityAttributes,

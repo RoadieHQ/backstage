@@ -111,6 +111,7 @@ import {
   catalogEntityPermissionResourceRef,
   CatalogPermissionRuleInput,
 } from '@backstage/plugin-catalog-node/alpha';
+import { CatalogRulesEnforcer } from '@backstage/plugin-catalog-node';
 import { filterAndSortProcessors, filterProviders } from './util';
 
 export type CatalogEnvironment = {
@@ -161,6 +162,7 @@ export class CatalogBuilder {
   private locationAnalyzers: ScmLocationAnalyzer[];
   private processorsReplace: boolean;
   private parser: CatalogProcessorParser | undefined;
+  private rulesEnforcer: CatalogRulesEnforcer | undefined;
   private onProcessingError?: (event: {
     unprocessedEntity: Entity;
     errors: Error[];
@@ -366,6 +368,20 @@ export class CatalogBuilder {
   }
 
   /**
+   * Sets up the catalog to use a custom rules enforcer.
+   *
+   * This is the function that gets called immediately after some raw entity
+   * specification data has been read from a remote source, and needs to be
+   * parsed and emitted as structured data.
+   *
+   * @param rulesEnforcer - The custom rulesEnforcer
+   */
+  setRulesEnforcer(rulesEnforcer: CatalogRulesEnforcer): CatalogBuilder {
+    this.rulesEnforcer = rulesEnforcer;
+    return this;
+  }
+
+  /**
    * Adds additional permissions. See
    * {@link @backstage/plugin-permission-node#Permission}.
    *
@@ -456,7 +472,8 @@ export class CatalogBuilder {
       logger,
     });
     const integrations = ScmIntegrations.fromConfig(config);
-    const rulesEnforcer = DefaultCatalogRulesEnforcer.fromConfig(config);
+    const rulesEnforcer =
+      this.rulesEnforcer || DefaultCatalogRulesEnforcer.fromConfig(config);
 
     const unauthorizedEntitiesCatalog = new DefaultEntitiesCatalog({
       database: dbClient,

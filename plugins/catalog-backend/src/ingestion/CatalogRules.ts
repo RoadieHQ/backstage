@@ -18,6 +18,7 @@ import { Config } from '@backstage/config';
 import { Entity } from '@backstage/catalog-model';
 import path from 'path';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
+import { CatalogRulesEnforcer } from '@backstage/plugin-catalog-node';
 import { minimatch } from 'minimatch';
 import { z } from 'zod';
 
@@ -38,14 +39,6 @@ export type CatalogRule = {
 type CatalogRuleAllow = {
   kind: string;
   'spec.type'?: string;
-};
-
-/**
- * Decides whether an entity from a given location is allowed to enter the
- * catalog, according to some rule set.
- */
-export type CatalogRulesEnforcer = {
-  isAllowed(entity: Entity, location: LocationSpec): boolean;
 };
 
 const allowRuleParser = z.array(

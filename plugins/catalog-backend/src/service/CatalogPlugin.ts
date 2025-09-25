@@ -46,6 +46,7 @@ import { merge } from 'lodash';
 import { CatalogBuilder } from './CatalogBuilder';
 import { actionsRegistryServiceRef } from '@backstage/backend-plugin-api/alpha';
 import { createGetCatalogEntityAction } from '../actions/createGetCatalogEntityAction';
+import { CatalogRulesEnforcer } from '@backstage/plugin-catalog-node';
 
 class CatalogLocationsExtensionPointImpl
   implements CatalogLocationsExtensionPoint
@@ -170,6 +171,21 @@ class CatalogModelExtensionPointImpl implements CatalogModelExtensionPoint {
   get entityDataParser() {
     return this.#entityDataParser;
   }
+
+  #rulesEnforcer?: CatalogRulesEnforcer;
+
+  setRulesEnforcer(rulesEnforcer: CatalogRulesEnforcer): void {
+    if (this.#rulesEnforcer) {
+      throw new Error(
+        'Attempted to install second EntityDataParser. Only one can be set.',
+      );
+    }
+    this.#rulesEnforcer = rulesEnforcer;
+  }
+
+  get rulesEnforcer() {
+    return this.#rulesEnforcer;
+  }
 }
 
 /**
@@ -284,6 +300,10 @@ export const catalogPlugin = createBackendPlugin({
 
         if (modelExtensions.entityDataParser) {
           builder.setEntityDataParser(modelExtensions.entityDataParser);
+        }
+
+        if (modelExtensions.rulesEnforcer) {
+          builder.setRulesEnforcer(modelExtensions.rulesEnforcer);
         }
 
         Object.entries(processingExtensions.placeholderResolvers).forEach(
