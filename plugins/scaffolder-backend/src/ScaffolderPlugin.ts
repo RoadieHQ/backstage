@@ -171,10 +171,10 @@ export const scaffolderPlugin = createBackendPlugin({
             additionalTemplateGlobals,
           ),
         };
-        const actions = [
-          // actions provided from other modules
-          ...addedActions,
 
+        const actionMap: Record<string, TemplateAction<any, any>> = {};
+
+        [
           // built-in actions for the scaffolder
           createFetchPlainAction({
             reader,
@@ -203,7 +203,15 @@ export const scaffolderPlugin = createBackendPlugin({
           createFilesystemDeleteAction(),
           createFilesystemRenameAction(),
           createFilesystemReadDirAction(),
-        ];
+          ...addedActions,
+        ].forEach(action => {
+          if (actionMap[action.id]) {
+            log.debug(`Action "${action.id}" is being overridden`);
+          }
+          actionMap[action.id] = action;
+        });
+
+        const actions = Object.values(actionMap);
 
         const actionIds = actions.map(action => action.id).join(', ');
 

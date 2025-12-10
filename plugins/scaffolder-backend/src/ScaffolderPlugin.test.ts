@@ -26,6 +26,10 @@ import {
 import { stringifyEntityRef } from '@backstage/catalog-model';
 import { catalogServiceMock } from '@backstage/plugin-catalog-node/testUtils';
 import { TemplateEntityV1beta3 } from '@backstage/plugin-scaffolder-common';
+import {
+  scaffolderActionsExtensionPoint,
+  createTemplateAction,
+} from '@backstage/plugin-scaffolder-node';
 import { scaffolderAutocompleteExtensionPoint } from '@backstage/plugin-scaffolder-node/alpha';
 
 import { scaffolderPlugin } from './ScaffolderPlugin';
@@ -211,6 +215,59 @@ describe('scaffolderPlugin', () => {
         },
       },
     });
+  });
+
+  it('supports overriding built-in actions via extension point', async () => {
+    const customDescription = 'Custom overridden debug:log action';
+
+    const { server } = await startTestBackend({
+      features: [
+        scaffolderPlugin,
+        createBackendModule({
+          pluginId: 'scaffolder',
+          moduleId: 'custom-actions',
+          register(env) {
+            env.registerInit({
+              deps: {
+                scaffolder: scaffolderActionsExtensionPoint,
+              },
+              async init({ scaffolder }) {
+                scaffolder.addActions(
+                  createTemplateAction({
+                    id: 'debug:log',
+                    description: customDescription,
+                    schema: {
+                      input: {
+                        message: z =>
+                          z
+                            .string({ description: 'Message to output.' })
+                            .optional(),
+                      },
+                    },
+                    async handler(ctx) {
+                      ctx.logger.info(`Custom: ${ctx.input.message}`);
+                    },
+                  }),
+                );
+              },
+            });
+          },
+        }),
+      ],
+    });
+
+    const { body, status } = await request(server).get(
+      '/api/scaffolder/v2/actions',
+    );
+
+    expect(status).toBe(200);
+
+    const debugLogAction = body.find(
+      (action: { id: string }) => action.id === 'debug:log',
+    );
+
+    expect(debugLogAction).toBeDefined();
+    expect(debugLogAction.description).toBe(customDescription);
   });
 
   it('supports listing tasks', async () => {
